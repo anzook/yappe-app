@@ -1,0 +1,19 @@
+{
+  "name": "yappe",
+  "version": "2.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anzook/yappe-app.git"
+  },
+  "author": "Alex, Phill, Mike, Robin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anzook/yappe-app/issues"
+  },
+  "homepage": "https://github.com/anzook/yappe-app#readme"
+}
