@@ -1,10 +1,18 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import {NavLink} from 'react-router-dom';
+// import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Nav from "./components/navbar"
+import Car from "./components/card"
 
 function App() {
     return (
         <div>
-            <h1>Yappy test!</h1>
-        </div>
+     <Nav/>
+     
+         <Car/>
+         </div>
+         
     )
 }
 
