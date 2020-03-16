@@ -5,7 +5,7 @@ require('dotenv').config();
 // const routes = require("./routes");
 
 // Requiring our models for syncing
-const db = require('./client/src/models');
+const db = require('./models');
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -21,8 +21,8 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 // app.use(routes);
 // require('./src/routes/html-routes.js')(app);
-require('./client/src/routes/pet-api-routes.js')(app, db);
-require('./client/src/routes/user-api-routes.js')(app, db);
+require('./routes/pet-api-routes.js')(app, db);
+require('./routes/user-api-routes.js')(app, db);
 
 
 // Connect to the Database

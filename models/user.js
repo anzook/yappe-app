@@ -1,11 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   const User = sequelize.define("user", {
-      user_id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        allowNull: false,
-        autoIncrement: true,
-      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -25,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   User.associate = function(models) {
-    User.belongsToMany(models.pet, { through: 'role' });
+    User.belongsToMany(models.pet, { through: 'user_pet' });
   }
 
   return User;
