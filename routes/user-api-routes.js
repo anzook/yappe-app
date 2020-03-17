@@ -82,17 +82,17 @@ module.exports = function (app) {
         console.log(err)
       });
 
-    let resArray = []
+    let allPets = []
     pets.forEach(pet => {
       userPets.forEach(userPet => {
         if (pet.id === userPet.petId) {
           let petArray = {};
           petArray = [pet, userPet]
-          resArray.push(petArray);
+          allPets.push(petArray);
         }
       })
     })
-    
-    res.json(resArray)
+
+    res.json(allPets)
   })
 };
