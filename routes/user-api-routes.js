@@ -2,8 +2,8 @@
 const db = require('../models');
 
 module.exports = function (app) {
-
-  app.post("/users", async (req, res) => {
+  // route to create user
+  app.post("/api/user", async (req, res) => {
     const user = await db.user.create(
       {
         name: req.body.name,
@@ -17,17 +17,40 @@ module.exports = function (app) {
     res.json(user);
   });
 
-  app.get('/user/:id', ({params}, res) => {
+  // route one user's info
+  app.get('/api/user/:id', ({ params }, res) => {
     db.user.findAll({
       limit: 1,
       where: {
         id: params.id
       }
-    }).then(user => {
-      res.json(user);
-    }).catch(err => {
-      console.log(err)
     })
-  })
+      .then(user => {
+        // send back user data in json
+        res.json(user);
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  });
 
+  // route to update user
+  app.put('/api/user/:id', ({ body, params }, res) => {
+    db.user.update(
+      {
+        name: body.name,
+        email: body.email,
+        password: body.password
+      }, {
+      where: {
+        id: params.id
+      }
+    })
+      .then(updatedUser => {
+        res.json(updatedUser)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  })
 };
