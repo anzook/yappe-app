@@ -35,7 +35,7 @@ module.exports = function (app) {
   });
 
   // route to update user
-  app.put('/api/user/:id', ({ body, params }, res) => {
+  app.put('/api/user', ({ body }, res) => {
     db.user.update(
       {
         name: body.name,
@@ -43,7 +43,7 @@ module.exports = function (app) {
         password: body.password
       }, {
       where: {
-        id: params.id
+        id: body.id
       }
     })
       .then(updatedUser => {
