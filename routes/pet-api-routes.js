@@ -3,7 +3,7 @@ const Op = Sequelize.Op;
 const db = require('../models');
 
 module.exports = function (app) {
-
+  // route to create pet
   app.post("/api/pet", async (req, res) => {
     const pet = await db.pet.create(
       {
@@ -23,6 +23,7 @@ module.exports = function (app) {
     res.json(pet)
   });
 
+  // route that links users and pets in the pivot table
   app.patch("/api/pet", async (req, res) => {
     console.log(req.body);
     const pet = await db.pet.findOne({ where: { id: req.body.pet } });
@@ -33,8 +34,10 @@ module.exports = function (app) {
 
   // route gets all of the pet's info including all of their users
   app.get('/api/pet/:id', async ({ params }, res) => {
+    // array to hold all of the pet's information
     let allInfo = [];
 
+    // get current pet
     const pet = await db.pet.findOne({
       where: {
         id: params.id
@@ -43,8 +46,11 @@ module.exports = function (app) {
       .catch(err => {
         console.log(err)
       })
+
+    // push user info into allInfo array
     allInfo.push(pet);
 
+    // get all columns that are associated with this pet
     const petUsers = await db.user_pet.findAll({
       where: {
         petId: params.id
@@ -54,11 +60,13 @@ module.exports = function (app) {
         console.log(err)
       })
 
+    // store ids of all caretakers
     const userIDs = []
     petUsers.forEach(user => {
       userIDs.push(user.userId)
     })
 
+    // find the user information for the pet's user
     const users = await db.user.findAll({
       where: {
         id: {
@@ -70,6 +78,7 @@ module.exports = function (app) {
         console.log(err)
       });
 
+    // a loop that links the user with the user_pet info
     users.forEach(user => {
       petUsers.forEach(petUser => {
         if (user.id === petUser.userId) {
@@ -79,6 +88,8 @@ module.exports = function (app) {
         }
       })
     })
+
+    // send allInfo array to frontend
     res.json(allInfo)
   });
 

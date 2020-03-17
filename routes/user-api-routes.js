@@ -35,7 +35,7 @@ module.exports = function (app) {
         console.log(err)
       })
 
-    // push list of pets into allInfo array
+    // push user info into allInfo array
     allInfo.push(user);
 
     // get all columns that are associated with this user
@@ -48,13 +48,13 @@ module.exports = function (app) {
         console.log(err)
       })
 
-    // get store ids of all pets
+    // store ids of all pets
     const petIDs = []
     userPets.forEach(pet => {
       petIDs.push(pet.petId)
     })
 
-    // find the pet informatin for the user's pets
+    // find the pet information for the user's pets
     const pets = await db.pet.findAll({
       where: {
         id: {
@@ -76,6 +76,8 @@ module.exports = function (app) {
         }
       })
     })
+
+    // send allInfo array to front end
     res.json(allInfo)
   });
 
