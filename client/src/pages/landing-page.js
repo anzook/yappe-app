@@ -5,6 +5,7 @@ import Col from "../components/Col";
 import Wrapper from "../components/Wrapper";
 import Container from "../components/Container";
 import Hero from "../components/hero"
+import LoginForm from "../components/LoginForm";
 
 function landingPage() {
     return(
@@ -20,7 +21,7 @@ function landingPage() {
                 </Row>
                 <Row>
                     <Col size="md-12">
-                        
+                       <LoginForm /> 
                     </Col>
                 </Row>
             </Container>
