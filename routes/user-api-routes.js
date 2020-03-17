@@ -1,5 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require('../models');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 module.exports = function (app) {
   // route to create user
@@ -23,7 +25,7 @@ module.exports = function (app) {
       limit: 1,
       where: {
         id: params.id
-      }
+      },
     })
       .then(user => {
         // send back user data in json
@@ -52,5 +54,45 @@ module.exports = function (app) {
       .catch(err => {
         console.log(err)
       })
+  })
+
+  // route to get all pets of user
+  app.get('/api/user_pets/:id', async ({ params }, res) => {
+    const userPets = await db.user_pet.findAll({
+      where: {
+        userId: params.id
+      },
+    })
+      .catch(err => {
+        console.log(err)
+      })
+    const petIDs = []
+    userPets.forEach(pet => {
+      petIDs.push(pet.petId)
+    })
+
+    const pets = await db.pet.findAll({
+      where: {
+        id: {
+          [Op.or]: petIDs
+        }
+      }
+    })
+      .catch(err => {
+        console.log(err)
+      });
+
+    let resArray = []
+    pets.forEach(pet => {
+      userPets.forEach(userPet => {
+        if (pet.id === userPet.petId) {
+          let petArray = {};
+          petArray = [pet, userPet]
+          resArray.push(petArray);
+        }
+      })
+    })
+    
+    res.json(resArray)
   })
 };
