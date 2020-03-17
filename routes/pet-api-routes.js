@@ -1,4 +1,5 @@
-
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const db = require('../models');
 
 module.exports = function (app) {
@@ -30,22 +31,58 @@ module.exports = function (app) {
     res.json(pet);
   });
 
-  app.get('/api/pet/:id', ({ params }, res) => {
-    db.pet.findOne({
+  // route gets all of the pet's info including all of their users
+  app.get('/api/pet/:id', async ({ params }, res) => {
+    let allInfo = [];
+
+    const pet = await db.pet.findOne({
       where: {
         id: params.id
       }
     })
-      .then(pet => {
-        // send back user data in json
-        res.json(pet);
-      })
       .catch(err => {
         console.log(err)
       })
+    allInfo.push(pet);
+
+    const petUsers = await db.user_pet.findAll({
+      where: {
+        petId: params.id
+      }
+    })
+      .catch(err => {
+        console.log(err)
+      })
+
+    const userIDs = []
+    petUsers.forEach(user => {
+      userIDs.push(user.userId)
+    })
+
+    const users = await db.user.findAll({
+      where: {
+        id: {
+          [Op.or]: userIDs
+        }
+      }
+    })
+      .catch(err => {
+        console.log(err)
+      });
+
+    users.forEach(user => {
+      petUsers.forEach(petUser => {
+        if (user.id === petUser.userId) {
+          let userArray = {};
+          userArray = [user, petUser]
+          allInfo.push(userArray);
+        }
+      })
+    })
+    res.json(allInfo)
   });
 
-  // route to update user
+  // route to update pet
   app.put('/api/pet', ({ body }, res) => {
     db.pet.update(
       {

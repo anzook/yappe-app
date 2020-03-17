@@ -19,9 +19,9 @@ module.exports = function (app) {
     res.json(user);
   });
 
-  // route one user's info
+  // route gets all of the user's info including all of their pets
   app.get('/api/user/:id', async ({ params }, res) => {
-    let allInfo = []
+    let allInfo = [];
     const user = await db.user.findAll({
       limit: 1,
       where: {
@@ -31,8 +31,7 @@ module.exports = function (app) {
       .catch(err => {
         console.log(err)
       })
-    // let userArray = {};
-    // userArray['user'] = user;
+
     allInfo.push(user);
 
     const userPets = await db.user_pet.findAll({
@@ -64,7 +63,6 @@ module.exports = function (app) {
 
     pets.forEach(pet => {
       userPets.forEach(userPet => {
-        let i = 0;
         if (pet.id === userPet.petId) {
           let petArray = {};
           petArray = [pet, userPet]
@@ -72,7 +70,6 @@ module.exports = function (app) {
         }
       })
     })
-    console.log(allInfo[1])
     res.json(allInfo)
   });
 
