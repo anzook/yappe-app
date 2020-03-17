@@ -21,7 +21,10 @@ module.exports = function (app) {
 
   // route gets all of the user's info including all of their pets
   app.get('/api/user/:id', async ({ params }, res) => {
+    // array to hold all of the user's information
     let allInfo = [];
+
+    // get current user
     const user = await db.user.findAll({
       limit: 1,
       where: {
@@ -32,8 +35,10 @@ module.exports = function (app) {
         console.log(err)
       })
 
+    // push list of pets into allInfo array
     allInfo.push(user);
 
+    // get all columns that are associated with this user
     const userPets = await db.user_pet.findAll({
       where: {
         userId: params.id
@@ -43,13 +48,13 @@ module.exports = function (app) {
         console.log(err)
       })
 
-
-
+    // get store ids of all pets
     const petIDs = []
     userPets.forEach(pet => {
       petIDs.push(pet.petId)
     })
 
+    // find the pet informatin for the user's pets
     const pets = await db.pet.findAll({
       where: {
         id: {
@@ -61,6 +66,7 @@ module.exports = function (app) {
         console.log(err)
       });
 
+      // a loop that links the pet with the user_pet info
     pets.forEach(pet => {
       userPets.forEach(userPet => {
         if (pet.id === userPet.petId) {
