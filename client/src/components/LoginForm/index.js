@@ -1,9 +1,11 @@
-import React from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from "react-bootstrap";
+import React, { Component } from "react";
+import { Button, Form } from "react-bootstrap";
 
 
-function LoginForm(props) {
+export class LoginForm extends Component {
+    render() {
     return (
+        
         <Form>
             <Form.Group controlId="formUserName">
                 <Form.Label>User Name</Form.Label>
@@ -22,6 +24,9 @@ function LoginForm(props) {
             <Button variant="primary" type="submit">
                 Submit
             </Button>
+            </Form>
+           
     )
+    }
     }
     export default LoginForm
