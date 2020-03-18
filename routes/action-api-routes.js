@@ -19,6 +19,20 @@ module.exports = function(app) {
     res.json(action)
 });
 
+app.get('/actions/user', async ({ body }, res) => {
+  const actions = await db.action.findAll({
+    where: {
+      userId: body.id
+    }
+  }).catch(err => {
+    console.log(err);
+  })
+
+  res.json(actions);
+});
+
+app.get('/actions/pet');
+
 app.patch("/actions", async (req, res) => {
     const action = await db.action.findOne({where: {id: req.body.action}});
     await action.update(
