@@ -1,11 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
-    const Action = sequelize.define("action", {
+    const Action = sequelize.define("Action", {
           type: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           isIn: [[
-            'Pee', 'Poop', 'Walk', 'Play', 'Groom', 'Bath', 'Checkup', 'Meds'
+            'pee', 'poop', 'walk', 'play', 'groom', 'bath', 'checkup', 'meds'
           ]]
         }
       },
@@ -16,8 +16,8 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Action.associate = function(models) {
-        Action.belongsTo(models.user);
-        Action.belongsTo(models.pet);
+        Action.belongsTo(models.User);
+        Action.belongsTo(models.Pet);
       }
   
     return Action;

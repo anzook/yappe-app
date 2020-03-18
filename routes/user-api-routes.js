@@ -22,63 +22,67 @@ module.exports = function (app) {
   // route gets all of the user's info including all of their pets
   app.get('/api/user/:id', async ({ params }, res) => {
     // array to hold all of the user's information
-    let allInfo = [];
+    // let allInfo = [];
 
     // get current user
-    const user = await db.user.findAll({
-      limit: 1,
-      where: {
-        id: params.id
-      }
-    })
-      .catch(err => {
-        console.log(err)
-      })
+    // const user = await db.user.findAll({
+    //   limit: 1,
+    //   where: {
+    //     id: params.id
+    //   }
+    // })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
 
     // push user info into allInfo array
-    allInfo.push(user);
+    // allInfo.push(user);
 
     // get all columns that are associated with this user
     const userPets = await db.user_pet.findAll({
       where: {
         userId: params.id
-      }
-    })
+      },
+      include: [
+        db.pet,
+        db.user
+      ]})
       .catch(err => {
         console.log(err)
       })
 
-    // store ids of all pets
-    const petIDs = []
-    userPets.forEach(pet => {
-      petIDs.push(pet.petId)
-    })
+    // // store ids of all pets
+    // const petIDs = []
+    // userPets.forEach(pet => {
+    //   petIDs.push(pet.petId)
+    // })
 
-    // find the pet information for the user's pets
-    const pets = await db.pet.findAll({
-      where: {
-        id: {
-          [Op.or]: petIDs
-        }
-      }
-    })
-      .catch(err => {
-        console.log(err)
-      });
+    // // find the pet information for the user's pets
+    // const pets = await db.pet.findAll({
+    //   where: {
+    //     id: {
+    //       [Op.or]: petIDs
+    //     }
+    //   }
+    // })
+    //   .catch(err => {
+    //     console.log(err)
+    //   });
 
-      // a loop that links the pet with the user_pet info
-    pets.forEach(pet => {
-      userPets.forEach(userPet => {
-        if (pet.id === userPet.petId) {
-          let petArray = {};
-          petArray = [pet, userPet]
-          allInfo.push(petArray);
-        }
-      })
-    })
+    // // a loop that links the pet with the user_pet info
+    // pets.forEach(pet => {
+    //   userPets.forEach(userPet => {
+    //     if (pet.id === userPet.petId) {
+    //       let petArray = {};
+    //       petArray = [pet, userPet]
+    //       allInfo.push(petArray);
+    //     }
+    //   })
+    // })
 
     // send allInfo array to front end
-    res.json(allInfo)
+    // res.json(allInfo);
+    res.json(userPets);
   });
 
   // route to update user

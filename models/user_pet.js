@@ -1,11 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
-    const Role = sequelize.define("user_pet", {
+    const Role = sequelize.define("User_Pet", {
           role: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           isIn: [[
-            'Owner', 'Caretaker', 'Vet', 'Sitter', 'Groomer', 'Walker'
+            'owner', 'caretaker', 'vet', 'sitter', 'groomer', 'walker'
           ]]
         }
       },
