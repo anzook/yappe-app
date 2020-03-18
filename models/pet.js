@@ -33,6 +33,7 @@ module.exports = function(sequelize, DataTypes) {
 
   Pet.associate = function(models) {
     Pet.belongsToMany(models.user, { through: 'user_pet' });
+    Pet.hasMany( models.action );
   }
 
   return Pet;
