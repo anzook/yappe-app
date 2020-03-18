@@ -5,7 +5,7 @@ const db = require('../models');
 module.exports = function (app) {
   // route to create pet
   app.post("/api/pet", async (req, res) => {
-    const pet = await db.pet.create(
+    const pet = await db.Pet.create(
       {
         name: req.body.name,
         age: req.body.age,
@@ -13,7 +13,7 @@ module.exports = function (app) {
         breed: req.body.breed,
       }
     );
-    await pet.addUser(req.body.user, {
+    await Pet.addUser(req.body.user, {
       through:
       {
         role: req.body.role
@@ -26,7 +26,7 @@ module.exports = function (app) {
   // route that links users and pets in the pivot table
   app.patch("/api/pet", async (req, res) => {
     console.log(req.body);
-    const pet = await db.pet.findOne({ where: { id: req.body.pet } });
+    const pet = await db.Pet.findOne({ where: { id: req.body.pet } });
     await pet.addUser(parseInt(req.body.user), { through: { role: req.body.role } });
 
     res.json(pet);
@@ -38,7 +38,7 @@ module.exports = function (app) {
     let allInfo = [];
 
     // get current pet
-    const pet = await db.pet.findOne({
+    const pet = await db.Pet.findOne({
       where: {
         id: params.id
       }
@@ -51,7 +51,7 @@ module.exports = function (app) {
     allInfo.push(pet);
 
     // get all columns that are associated with this pet
-    const petUsers = await db.user_pet.findAll({
+    const petUsers = await db.User_Pets.findAll({
       where: {
         petId: params.id
       }
@@ -67,7 +67,7 @@ module.exports = function (app) {
     })
 
     // find the user information for the pet's user
-    const users = await db.user.findAll({
+    const users = await db.User.findAll({
       where: {
         id: {
           [Op.or]: userIDs
@@ -95,7 +95,7 @@ module.exports = function (app) {
 
   // route to update pet
   app.put('/api/pet', ({ body }, res) => {
-    db.pet.update(
+    db.Pet.update(
       {
         name: body.name,
         age: body.age,
@@ -115,7 +115,7 @@ module.exports = function (app) {
   })
 
   app.delete("/api/pet", async (req, res) => {
-    const pet = await db.pet.destroy({ where: { id: req.body.pet } });
+    const pet = await db.Pet.destroy({ where: { id: req.body.pet } });
 
     res.json(pet);
   });

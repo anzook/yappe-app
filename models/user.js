@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   User.associate = function(models) {
-    User.belongsToMany(models.Pet, { through: 'User_Pet' });
+    User.belongsToMany(models.Pet, { through: 'User_Pets' });
     User.hasMany( models.Action );
 
   }
