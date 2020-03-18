@@ -1,5 +1,4 @@
-#card {
-    height:100px;
-    widows: 50px;
-    border: black;
+.card {
+    border-style: solid;
+    border-color:  black;
 }

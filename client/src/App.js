@@ -1,19 +1,15 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import {NavLink} from 'react-router-dom';
-// import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Nav from "./components/navbar"
-import Car from "./components/card"
-import Main from "./components/main"
+import Dashboard from "./pages/Dashboard"
+import { BrowserRouter as Router, Route } from "react-router-dom"
 
 function App() {
     return (
+        <Router>
         <div>
-            <Nav />
-            <Main />
-
-            <Car />
+           <Route exact path="/" component={Dashboard} />
         </div>
+        </Router>
 
     )
 }

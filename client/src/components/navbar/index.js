@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
-import Navbar from 'react-bootstrap/Navbar'
+import {Nav, Navbar} from 'react-bootstrap'
 import '../navbar/style.css';
 
-export class Nav extends Component {
+export class YapNav extends Component {
     render() {
 
         return (
             <div id="nav">
-            <Navbar>
-            <Navbar.Brand href="#home">Yappe</Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-  <Navbar.Collapse id="responsive-navbar-nav">
-  <Nav.Link href="#home">Home</Nav.Link>
-      <Nav.Link href="#link">Link</Nav.Link>
-                    <Navbar.Text>
-                        Signed in as: <a href="#login">Mark Otto</a>
-                    </Navbar.Text>
-                </Navbar.Collapse>
-            </Navbar>
-         </div>
+               <Navbar>
+        <Navbar.Brand href="#home">YAPPE</Navbar.Brand>
+        <Nav className="mr-auto">
+          <Nav.Link href="#home">Add Care</Nav.Link>
+          <Nav.Link href="#features">Add Dog</Nav.Link>
+          <Nav.Link href="#pricing">Activity log</Nav.Link>
+        </Nav>
+      </Navbar>
+
+            </div>
         )
-        
+
     }
 }
 
 
-export default Nav;
+export default YapNav;

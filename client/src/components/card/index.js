@@ -1,42 +1,30 @@
-import React, { Component } from 'react';
-// import CardGroup from 'react-bootstrap/CardGroup'
+import React, {Component} from 'react';
 import Card from 'react-bootstrap/Card'
-import "../card/style.css"
+import ListGroup from 'react-bootstrap/ListGroup'
+import ListGroupItem from 'react-bootstrap/ListGroup'
+import '../card/style.css';
 
-export class Car extends Component {
-    render() {
+ export class NewCard extends Component {
+  render() {
+    return (
+      <div className="card">
+      <Card style={{ width: '18rem' }}>
+  <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+  <Card.Body>
+  <ListGroup className="list-group-flush">
+    <ListGroupItem>Name: {this.props.name} </ListGroupItem>
+    <ListGroupItem>Breed:  </ListGroupItem> 
+    <ListGroupItem>Age: </ListGroupItem> 
+  </ListGroup> 
+  </Card.Body>
+</Card>
+</div>
 
-        return (
-            <div id="card">
-            
-  <Card>
-    <Card.Img variant="top" src="holder.js/100px160" />
-    <Card.Body>
-      <Card.Title>Dog 1</Card.Title>
-      <Card.Text>
-        this is something about the dog maybe not we could loose this area
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted">where the toggle button is going to be</small>
-    </Card.Footer>
-  </Card>
-
-         </div>
-        )
-        
-    }
+    )
+  }
 }
 
-export default Car;
-
-
-
-
-
-
-
-
+export default NewCard;
 
 
 
