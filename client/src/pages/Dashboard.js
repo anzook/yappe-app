@@ -5,7 +5,7 @@ import DogCard from '../components/card'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import CareCard from '../components/careCard'
-import Footer from '../components/Footer'
+import YapFooter from '../components/Footer'
 
 
 
@@ -14,16 +14,16 @@ function Dashboard() {
 
   return (
     <div>
-      
-      <YapNav/>
-      <Jumbotron/>
+
+      <YapNav />
+      <Jumbotron />
       <Container>
-      <Row xs={2} md={4}>
-      <DogCard/>
-      <CareCard/>
-      </Row>
+        <Row xs={2} md={4}>
+          <DogCard />
+          <CareCard />
+        </Row>
       </Container>
-      <Footer/>
+      <YapFooter />
     </div>
   );
 }

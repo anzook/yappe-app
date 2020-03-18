@@ -7,10 +7,9 @@ function App() {
     return (
         <Router>
         <div>
-           <Route exact path="/" component={Dashboard} />
+           <Route exact path="/dashboard" component={Dashboard} />
         </div>
         </Router>
-
     )
 }
 
