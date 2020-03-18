@@ -23,7 +23,8 @@ app.get('/actions/user', async ({ body }, res) => {
   const actions = await db.action.findAll({
     where: {
       userId: body.id
-    }
+    },
+    include: [db.pet]
   }).catch(err => {
     console.log(err);
   })
@@ -31,7 +32,18 @@ app.get('/actions/user', async ({ body }, res) => {
   res.json(actions);
 });
 
-app.get('/actions/pet');
+app.get('/actions/pet', async ({ body }, res) => {
+  const actions = await db.action.findAll({
+    where: {
+      petId: body.id
+    },
+    include: [db.user]
+  }).catch(err => {
+    console.log(err);
+  })
+
+  res.json(actions);
+})
 
 app.patch("/actions", async (req, res) => {
     const action = await db.action.findOne({where: {id: req.body.action}});
