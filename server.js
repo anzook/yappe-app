@@ -23,6 +23,7 @@ if (process.env.NODE_ENV === "production") {
 // require('./src/routes/html-routes.js')(app);
 require('./routes/pet-api-routes.js')(app, db);
 require('./routes/user-api-routes.js')(app, db);
+require('./routes/action-api-routes.js')(app, db);
 
 
 // Connect to the Database
