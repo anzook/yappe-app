@@ -3,7 +3,7 @@ const db = require('../models');
 
 module.exports = function(app) {
 
-  app.post("/actions", async (req, res) => {
+  app.post("/api/action", async (req, res) => {
     const action = await db.action.create(
       {
         type: req.body.type,
@@ -19,7 +19,7 @@ module.exports = function(app) {
     res.json(action)
 });
 
-app.get('/actions/user', async ({ body }, res) => {
+app.get('/api/actions/user', async ({ body }, res) => {
   const actions = await db.action.findAll({
     where: {
       userId: body.id
@@ -32,7 +32,7 @@ app.get('/actions/user', async ({ body }, res) => {
   res.json(actions);
 });
 
-app.get('/actions/pet', async ({ body }, res) => {
+app.get('/api/actions/pet', async ({ body }, res) => {
   const actions = await db.action.findAll({
     where: {
       petId: body.id
@@ -45,7 +45,7 @@ app.get('/actions/pet', async ({ body }, res) => {
   res.json(actions);
 })
 
-app.patch("/actions", async (req, res) => {
+app.patch("/api/action", async (req, res) => {
     const action = await db.action.findOne({where: {id: req.body.action}});
     await action.update(
         {
@@ -58,7 +58,7 @@ app.patch("/actions", async (req, res) => {
     res.json(action);
 });
 
-app.delete("/actions", async (req, res) => {
+app.delete("/api/action", async (req, res) => {
   const action = await db.action.destroy({where: {id: req.body.action}});
 
   res.json(action);
