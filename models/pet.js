@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  const Pet = sequelize.define("Pet", {
+  const Pet = sequelize.define("pet", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -32,10 +32,8 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Pet.associate = function(models) {
-    Pet.belongsToMany(models.User, { through: 'User_Pets' });
-    Pet.hasMany( models.Action );
+    Pet.belongsToMany(models.user, { through: 'user_pet' });
   }
-
 
   return Pet;
 };

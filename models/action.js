@@ -16,8 +16,8 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Action.associate = function(models) {
-        Action.belongsTo(models.User);
-        Action.belongsTo(models.Pet);
+        Action.belongsTo(models.user);
+        Action.belongsTo(models.pet);
       }
   
     return Action;

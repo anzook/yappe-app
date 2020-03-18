@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  const User = sequelize.define("User", {
+  const User = sequelize.define("user", {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -19,12 +19,8 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   User.associate = function(models) {
-    User.belongsToMany(models.Pet, { through: 'User_Pets' });
-    User.hasMany( models.Action );
-
+    User.belongsToMany(models.pet, { through: 'user_pet' });
   }
-
-  
 
   return User;
 };

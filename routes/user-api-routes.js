@@ -6,7 +6,7 @@ const Op = Sequelize.Op;
 module.exports = function (app) {
   // route to create user
   app.post("/api/user", async (req, res) => {
-    const user = await db.User.create(
+    const user = await db.user.create(
       {
         name: req.body.name,
         email: req.body.email,
@@ -25,7 +25,7 @@ module.exports = function (app) {
     let allInfo = [];
 
     // get current user
-    const user = await db.User.findAll({
+    const user = await db.user.findAll({
       limit: 1,
       where: {
         id: params.id
@@ -39,7 +39,7 @@ module.exports = function (app) {
     allInfo.push(user);
 
     // get all columns that are associated with this user
-    const userPets = await db.User_Pet.findAll({
+    const userPets = await db.user_pet.findAll({
       where: {
         userId: params.id
       }
@@ -55,7 +55,7 @@ module.exports = function (app) {
     })
 
     // find the pet information for the user's pets
-    const pets = await db.Pet.findAll({
+    const pets = await db.pet.findAll({
       where: {
         id: {
           [Op.or]: petIDs
@@ -83,7 +83,7 @@ module.exports = function (app) {
 
   // route to update user
   app.put('/api/user', ({ body }, res) => {
-    db.User.update(
+    db.user.update(
       {
         name: body.name,
         email: body.email,
