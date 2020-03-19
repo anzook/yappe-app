@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         isIn: [[
-          'Pee', 'Poop', 'Walk', 'Play', 'Groom', 'Bath', 'Checkup', 'Meds'
+          'pee', 'poop', 'walk', 'play', 'groom', 'bath', 'checkup', 'meds'
         ]]
       }
     },
