@@ -8,7 +8,14 @@ module.exports = {
                 id: params.id
             },
             // include pet info through association
-            include: [db.pet]
+            include: [{
+                model: db.pet,
+                attributes: {exclude: [
+                    'createdAt',
+                    'updatedAt'
+                ]}, 
+                required: false
+            }]
         })
             .catch(err => {
                 console.log(err)
@@ -24,7 +31,7 @@ module.exports = {
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password
-            }
+            },
         ).catch(err => {
             console.log(err)
         })
