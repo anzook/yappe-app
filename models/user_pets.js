@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    const Role = sequelize.define("User_Pet", {
+    const Role = sequelize.define("user_pets", {
           role: {
         type: DataTypes.STRING,
         allowNull: false,

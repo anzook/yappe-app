@@ -25,12 +25,16 @@ module.exports = function (app) {
 
   // route that links users and pets in the pivot table
   app.patch("/api/pet", async (req, res) => {
-    console.log(req.body);
-    const pet = await db.pet.findOne({ where: { id: req.body.pet } });
-    await pet.addUser(parseInt(req.body.user), { through: { role: req.body.role } });
-
+    const pet = await db.pet.findOne({where: {id: req.body.pet}})
+    .catch(err => {
+      console.log(err)
+    });
+    await pet.addUser(parseInt(req.body.user), {through: {role: req.body.role}})
+    .catch(err => {
+      console.log(err)
+    });
     res.json(pet);
-  });
+});
 
   // route gets all of the pet's info including all of their users
   app.get('/api/pet/:id', async ({ params }, res) => {

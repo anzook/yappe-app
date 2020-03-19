@@ -15,7 +15,6 @@ module.exports = function (app) {
     ).catch(err => {
       console.log(err)
     })
-    console.log(user);
     res.json(user);
   });
 
@@ -39,7 +38,7 @@ module.exports = function (app) {
     allInfo.push(user);
 
     // get all columns that are associated with this user
-    const userPets = await db.user_pet.findAll({
+    const userPets = await db.Role.findAll({
       where: {
         userId: params.id
       }
