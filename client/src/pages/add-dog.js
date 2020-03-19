@@ -9,7 +9,7 @@ function addDog() {
             <Container style={{ marginTop: 0}}>
                 <Row>
                     <Col size="md-12">
-
+                        <h1>yappE</h1>
                     </Col>
                 </Row>
                 <Row>
@@ -21,3 +21,5 @@ function addDog() {
         </div>
     )
 }
+
+export default addDog;
