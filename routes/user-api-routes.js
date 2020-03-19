@@ -22,7 +22,9 @@ module.exports = function (app) {
     const userPets = await db.user.findAll({
       where: {
         id: params.id
-      }, include: [db.pet]
+      },
+      // include pet info through association
+      include: [db.pet]
     })
       .catch(err => {
         console.log(err)

@@ -39,7 +39,9 @@ module.exports = function (app) {
     const petUsers = await db.pet.findAll({
       where: {
         id: params.id
-      }, include:[db.user]
+      }, 
+      // include user info through association
+      include:[db.user]
     })
       .catch(err => {
         console.log(err)
