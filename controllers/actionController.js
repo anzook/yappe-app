@@ -33,14 +33,21 @@ module.exports = {
             where: {
                 userId: params.id
             },
-            include: [db.pet]
+            include: [{
+                model: db.pet,
+                attributes: {exclude: [
+                    'createdAt',
+                    'updatedAt'
+                ]}, 
+                required: false
+            }]
         }).catch(err => {
             console.log(err);
         })
 
         res.json(actions);
     },
-  // function to get actins of pet
+  // function to get actions of pet
     petActionsById: async ({ params }, res) => {
         const actions = await db.action.findAll({
             where: {
