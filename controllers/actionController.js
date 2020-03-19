@@ -54,7 +54,16 @@ module.exports = {
                 petId: params.id
             },
             // include user info through association
-            include: [db.user]
+            include: [{
+                model: db.user,
+                attributes: {exclude: [
+                    'createdAt',
+                    'updatedAt',
+                    'email',
+                    'password'
+                ]}, 
+                required: false,
+            }]
         }).catch(err => {
             console.log(err);
         })
