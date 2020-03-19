@@ -35,7 +35,7 @@ module.exports = {
         ).catch(err => {
             console.log(err)
         })
-        res.json(user);
+        res.json(user.id);
     },
 
     update: ({ params, body }, res) => {
