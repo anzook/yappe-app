@@ -1,10 +1,15 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Dashboard from "./pages/Dashboard"
+import { BrowserRouter as Router, Route } from "react-router-dom"
 
 function App() {
     return (
+        <Router>
         <div>
-            <h1>Yappy test!</h1>
+           <Route exact path="/dashboard" component={Dashboard} />
         </div>
+        </Router>
     )
 }
 
