@@ -1,6 +1,5 @@
 // Requiring our models and passport as we've configured it
 const db = require('../models');
-const Sequelize = require('sequelize');
 
 module.exports = function (app) {
   // route to create user

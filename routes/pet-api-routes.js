@@ -1,4 +1,3 @@
-const Sequelize = require('sequelize');
 const db = require('../models');
 
 module.exports = function (app) {
@@ -71,6 +70,7 @@ module.exports = function (app) {
       })
   })
 
+  // route to delete pet
   app.delete("/api/pet", async (req, res) => {
     const pet = await db.pet.destroy({ where: { id: req.body.pet } });
 
