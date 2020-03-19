@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize');
-const Op = Sequelize.Op;
 const db = require('../models');
 
 module.exports = function (app) {
@@ -38,63 +37,17 @@ module.exports = function (app) {
 
   // route gets all of the pet's info including all of their users
   app.get('/api/pet/:id', async ({ params }, res) => {
-    // array to hold all of the pet's information
-    let allInfo = [];
-
-    // get current pet
-    const pet = await db.pet.findOne({
+    const petUsers = await db.pet.findAll({
       where: {
         id: params.id
-      }
+      }, include:[db.user]
     })
       .catch(err => {
         console.log(err)
       })
-
-    // push user info into allInfo array
-    allInfo.push(pet);
-
-    // get all columns that are associated with this pet
-    const petUsers = await db.user_pet.findAll({
-      where: {
-        petId: params.id
-      }
-    })
-      .catch(err => {
-        console.log(err)
-      })
-
-    // store ids of all caretakers
-    const userIDs = []
-    petUsers.forEach(user => {
-      userIDs.push(user.userId)
-    })
-
-    // find the user information for the pet's user
-    const users = await db.user.findAll({
-      where: {
-        id: {
-          [Op.or]: userIDs
-        }
-      }
-    })
-      .catch(err => {
-        console.log(err)
-      });
-
-    // a loop that links the user with the user_pet info
-    users.forEach(user => {
-      petUsers.forEach(petUser => {
-        if (user.id === petUser.userId) {
-          let userArray = {};
-          userArray = [user, petUser]
-          allInfo.push(userArray);
-        }
-      })
-    })
 
     // send allInfo array to frontend
-    res.json(allInfo)
+    res.json(petUsers)
   });
 
   // route to update pet
