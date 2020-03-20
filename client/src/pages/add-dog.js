@@ -1,6 +1,7 @@
 import React from "react";
 import Row from "../components/Row";
 import Col from "../components/Col";
+import Container from "../components/Container";
 import DogForm from "../components/DogForm";
 
 function addDog() {
