@@ -1,11 +1,17 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3001;
+require('dotenv').config();
 // const routes = require("./routes");
+
+// Requiring our models for syncing
+const db = require('./models');
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static("public"));
+
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -14,11 +20,16 @@ if (process.env.NODE_ENV === "production") {
 
 // Add routes, both API and view
 // app.use(routes);
+// require('./src/routes/html-routes.js')(app);
+require('./routes/pet-api-routes.js')(app, db);
+require('./routes/user-api-routes.js')(app, db);
+require('./routes/action-api-routes.js')(app, db);
+
 
 // Connect to the Database
-
-
-// Start the API server
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+// Sync db and then Start the API server
+db.sequelize.sync({ force: false }).then(function() {
+  app.listen(PORT, function() {
+    console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+  });
 });
