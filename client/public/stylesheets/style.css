@@ -1,0 +1,455 @@
+@import url('https://fonts.googleapis.com/css?family=Marck+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Signika+Negative:400,600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Sriracha&display=swap');
+
+/* ===style for all pages=== */
+* {
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+ 
+body{
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    background-color: #aeaeae;
+    overflow: hidden;
+}
+
+.input{
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* ============End============ */
+
+/* ===========index=========== */
+.landing-body {
+    background-image: url("../images/dogbg3.jpg");
+    background-size: cover;
+    overflow: hidden;
+}
+
+.landing-nav, .dogadd-nav{
+    background: none;
+}
+
+
+.landing-nav h1{
+    font-family: 'Marck Script', cursive;
+    font-size: 85px;
+    color: whitesmoke;
+    margin-left: 40px;
+    text-shadow: 1px 7px 4px rgb(2, 10, 2);
+}
+
+.landing-container{
+    width: 350px;
+    position: absolute;
+    right: 15%;
+    top: 20%;
+    border-radius: 10px;
+    background-color: rgba(14,174,19, 0.2);
+    box-shadow: 5px 10px 18px 10px #232c23;
+}
+.signup{
+    border-radius: 10px 0 0 0;
+}
+
+.login{
+    border-radius: 0 10px 0 0;
+}
+.signup,
+.login, .dogg-add{
+    width: 50%;
+    background-color: rgba(85,171,189, 0.7);
+    height: 55px;
+    float: left;
+    text-align: center;
+    line-height: 55px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-bottom: 4px whitesmoke;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: whitesmoke;
+}
+
+.signup-form,
+.login-form{
+    border-radius: 0 0 10px 10px;
+    background-color: rgba(85,171,189, 0.7);
+    box-sizing: border-box;
+    padding: 25px;
+    clear: both;
+} 
+
+.dogadd-form .button,
+.signup-form .button,
+.login-form .button{
+    text-transform: uppercase;
+    width: 100%;
+    font-weight: 600;
+}
+/* ============End============ */
+
+
+/* ========initial-adds======= */
+
+.notclickable{
+    cursor: default;
+}
+
+.initial-add-body{
+    background-image: url('../images/dogbg4.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    color: white;
+}
+
+#welcome{
+    font-family: 'Sriracha', cursive;
+    margin-left: 10%;
+    font-size: 20px;
+    width: 480px;
+    position: absolute;
+    bottom: 0;
+    font-size: 40px;
+    margin: 100px;
+    margin-left: 50px;
+    text-shadow: 1px 5px 2px rgb(2, 10, 2);
+}
+
+#welcome h1 span{
+    margin-left: 3px;
+    font-size: 55px;
+}
+
+.svg-inline--fa.fa-w-16 {
+    font-size: 18px;
+    margin-left: 5px;
+    text-shadow: 1px 5px 2px rgb(2, 10, 2);
+}
+
+.initial-add-container{
+    position: absolute;
+    right: 0px;
+    width: 350px;
+    margin-right: 6%;
+}
+
+.tab {
+    display: none;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+    opacity: 1;
+}
+  
+/* Mark the steps that are finished and valid: */
+.step.finish {
+    background-color: #4CAF50;
+}
+
+.initial-add-container h2{
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.initial-add-container .field{
+    margin-bottom: 10px;
+}
+
+/* .choice-div, */
+.dog-sex-container{
+    text-align: center;
+}
+/* .choice-div label, */
+.dog-sex-container label{
+    position: relative;
+    cursor: pointer;
+}
+
+/* .choice-div label input, */
+.dog-sex-container label input{
+    display: none;
+}
+
+.dog-sex-container label span{
+    position: relative;
+    display: inline-block;
+    margin: 10px 10px;
+    padding: 5px;
+    width: 30%;
+    border: 2px solid rgb(100, 104, 110);
+    border-radius: 4px;
+    color: rgb(100, 104, 110);
+    /* background: black; */
+    /* z-index: 1; */
+}
+
+.choice-div label span{
+    position: relative;
+    display: inline-block;
+    margin: 10px 10px;
+    padding: 20px;
+    width: 45%;
+    border: 2px solid rgb(100, 104, 110);
+    border-radius: 4px;
+    color: rgb(100, 104, 110);
+}
+
+/* .choice-div label input:checked ~ span, */
+.dog-sex-container label input:checked ~ span{
+    color: white;
+    border: 2px solid #48c774;
+    background: rgb(14, 13, 13);
+    box-shadow: inset 0 0 10px #48c774;
+}
+
+/* .dog-sex-container label input:checked ~ span:before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #6cbdec;
+    z-index: -1;
+    filter: blur(10px);
+} */
+
+.breed-div{
+    width: 100%;
+}
+
+.role-div{
+    width: 100%;
+}
+
+select{
+    width: inherit;
+}
+
+.add-caretaker-tab .label{
+    color: white;
+}
+
+/* ============End============ */
+
+/* ==========Profile========== */
+
+.profile-body{
+    background-color: #e0e0e0;
+    max-height: 100vh;
+    background-image: url("../images/pawsbg.jpg");
+    background-size: cover;
+}
+
+.profile-body .button{
+    background-color: #009eae;
+}
+
+.profile-nav {
+    background-color: rgb(76,207,224, 0.96);
+    border-bottom: 2px solid #aeaeae;
+    height: 105px;
+
+}
+
+.nav-size{
+    max-width: 500px;
+}
+
+#profile-yappe{
+    text-shadow: 1px 7px 4px #262c2c;
+    padding: 0;
+    position: absolute;
+    top: -10px;
+}
+
+.add-dog-btn{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    margin-right: 20px;
+    box-shadow: 5px 6px 25px #555555;
+}
+
+.add-dog-btn:hover{
+    background-color: #aeaeae;
+}
+.fa-paw{
+    margin-right: 4px;
+}
+.buttons .button:not(:last-child):not(.is-fullwidth) {
+    margin-right: 25px;
+}
+
+.profile-card{
+    margin: 30px auto 0;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 400px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 5px 10px 18px #222222;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.profile-card .button{
+    background-color: #009faf;
+    width: 100%;
+    font-weight: 700;
+    font-family: 'Signika Negative', sans-serif;
+}
+
+.button.is-primary.is-hovered, .button.is-primary:hover{
+    background-color: #4dd0e1;
+}
+
+.img-div{
+    padding: 25px;
+    padding-bottom: 0px;
+}
+
+.img-div img{
+    height: 240px;
+    max-width: 100%;
+    margin: auto;
+    display: block;
+    border-radius: 10px 10px 0 0;
+}
+.main-content h2{
+    font-family: 'Signika Negative', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0 25px;
+    border-bottom: 2px solid gray;
+}
+
+.main-content h4{
+    text-align: right;
+}
+
+/* .textarea{
+    display: none;
+} */
+
+.routine-div{
+    padding: 25px;
+    padding-top: 15px;
+    height: 36vh;
+    overflow-y: auto;
+}
+
+#potty-div{
+    padding-top: 0;
+}
+#feed-div, 
+#walked-div{
+    margin-top: 10px;
+}
+
+.main-content button{
+    margin: 10px 0 20px;
+    float: right;
+    clear: both;
+}
+/* width */
+.routine-div::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.routine-div::-webkit-scrollbar-track {
+    background : #f1f1f1;
+    border-radius: 5px;
+}
+
+/* Handle */
+.routine-div::-webkit-scrollbar-thumb {
+    background: #4dd0e1; 
+    border-radius: 5px;
+    height: 20px;
+}
+
+/* Handle on hover */
+.routine-div::-webkit-scrollbar-thumb:hover {
+    background: #009faf; 
+}
+
+
+
+/* ============End============ */
+
+
+/* ========Viewpoints========= */
+@media only screen and (max-width: 1024px) {
+    .landing-container{
+        right: 8%;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .landing-container{
+        position: inherit;
+        margin-top: 135px;
+        /* margin-right: auto; */
+    }
+    
+}
+
+@media only screen and (max-width: 425px) {
+    .landing-container{
+        max-width: 280px;
+        /* position: in; */
+        /* top: 20%; */
+        /* margin-left: auto; */
+        /* margin-right: auto; */
+    }
+
+    .initial-add-body{
+        height: 100vh;
+    }
+
+    .initial-add-body #welcome{
+        display: none;
+    }
+
+    .initial-add-body .initial-add-container{
+        margin-top: 70px;
+    }
+
+    .choice-div label span{
+        position: relative;
+        display: inline-block;
+        margin: 10px 10px;
+        padding: 20px;
+        width: 45%;
+        border: none;
+        border-radius: 4px;
+        background-color: rgb(78, 78, 78);
+        opacity: 0.95;
+        color: white;
+    }
+}
+/* ============End============ */
