@@ -24,11 +24,11 @@ export default {
     },
     // get actions logged by user
     getUserLogs: function (id) {
-        return axios.get('/api/actions/user' + id);
+        return axios.get('/api/actions/user/' + id);
     },
     // get pet actions
-    getPetActions: function (id) {
-        return axios.get('/api/actions/pet' + id);
+    getPetActions: function (petId) {
+        return axios.get('/api/actions/pet/' + petId);
     },
     // update user
     updateUser: function (id, update) {
@@ -42,9 +42,15 @@ export default {
     updateAction: function (id, update) {
         return axios.put('/api/actions/' + id, update);
     },
-    joinUser: function (id, data) {
-        return axios.patch('/api/pet/' + id, data);
+    joinUser: function (petId, data) {
+        return axios.patch('/api/pet/' + petId, data);
     },
+    deletePet: function (id) {
+        return axios.delete('/api/pet/' + id)
+    },
+    deleteAction: function (id) {
+        return axios.delete('/api/actions/' + id)
+    }
 
 }
 
