@@ -72,7 +72,8 @@ module.exports = {
             }
         })
             .then(updatedPet => {
-                res.json(updatedPet)
+                res.send(updatedPet + ' pet updated!')
+
             })
             .catch(err => {
                 console.log(err)
