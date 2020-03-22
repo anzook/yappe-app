@@ -3,10 +3,6 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import "../jumbotron/style.css";
 
 export class jumbotron extends Component {
-    constructor (props) {
-        super(props);
-        this.state =
-    }
     render() {
         return (
             <div id="main">
