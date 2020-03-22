@@ -31,7 +31,7 @@ export class DogForm extends Component {
     // }
     render() {
         return (
-            
+            // <h1> Would you like to:</h1>
                 <Form>
                     <Form.Group controlId="adddog">
                         <Button variant="primary" type="submit">
@@ -40,12 +40,19 @@ export class DogForm extends Component {
                         <Button variant="primary" type="submit">
                             Existing Dog
             </Button>
+                    </Form.Group>     
+                    <Form.Group controlId="newDogName">
+                        <Form.Control type="newDogName" placeholder="Name: Chewbacca" />
                     </Form.Group>
-                    <Form.Group controlId="formDogName">
-                        <Form.Control type="addDogName" placeholder="Name: Chewbacca" />
+                    <Form.Group controlId="newDogAge">
+                        <Form.Control type="newDogAge" placeholder="Age: 8" />
                     </Form.Group>
-                    <Form.Group controlId="addDogAge">
-                        <Form.Control type="addDogAge" placeholder="Age: 4" />
+
+                    <Form.Group controlId="existingDogId">
+                        <Form.Control type="existingDogId" placeholder="Dog Id:" />
+                    </Form.Group>
+                    <Form.Group controlId="userRoleId">
+                        <Form.Control type="userRoleId" placeholder="Role:" />
                     </Form.Group>
                     <Form.Group controlId="dogsex">
                         <Button variant="primary" type="submit">
@@ -72,7 +79,8 @@ export class DogForm extends Component {
                         </Button>
                         </Form.Group>
            </Form>
-           )
+        )
+           
     }
 }
 export default DogForm

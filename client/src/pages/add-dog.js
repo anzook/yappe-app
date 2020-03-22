@@ -35,19 +35,19 @@ class addDog extends Component {
         }) 
     
     }
-    componentDidMount() {
-        // API.getBreeds()
-        // .then(res => {
-        //     let breeds = [];
-        //     Object.keys(res.data.message).forEach(function(breed) {
-        //         breeds.push(breed)
-        //     })
-        //     this.setState({
-        //         breeds: breeds
-        //     })
-        //     console.log(breeds);
-        // })
-    }
+    // componentDidMount() {
+    //     API.getBreeds()
+    //     .then(res => {
+    //         let breeds = [];
+    //         Object.keys(res.data.message).forEach(function(breed) {
+    //             breeds.push(breed)
+    //         })
+    //         this.setState({
+    //             breeds: breeds
+    //         })
+    //         console.log(breeds);
+    //     })
+    // }
 
     render() {
     return (
