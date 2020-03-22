@@ -6,7 +6,13 @@ import Hero from "../components/hero"
 import LoginForm from "../components/LoginForm";
 
 
-API.createUser()
+API.createUser() {
+    name: "",
+    email: "",
+    password: ""
+}.then() {function(res)
+console.log(res);
+}
 
 function landingPage() {
     return(
