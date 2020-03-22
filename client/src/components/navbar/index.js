@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Nav, Navbar} from 'react-bootstrap'
-import '../navbar/style.css';
+import './style.css';
 
 export class YapNav extends Component {
     render() {

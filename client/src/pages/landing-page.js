@@ -2,16 +2,16 @@ import React from "react";
 import Row from "../components/Row";
 import Col from "../components/Col";
 import Container from "../components/Container";
-import Hero from "../components/hero"
+// import Hero from "../components/hero"
 import LoginForm from "../components/LoginForm";
 
 
 function landingPage() {
     return(
         <div>
-            <Hero>
+            {/* <Hero>
                 <h1>YappE</h1>
-            </Hero>
+            </Hero> */}
             <Container style={{ marginTop: 0}}>
                 <Row>
                     <Col size="md-12">
