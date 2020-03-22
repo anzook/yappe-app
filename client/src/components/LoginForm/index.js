@@ -7,23 +7,6 @@ export class LoginForm extends Component {
     return (
         
         <Form>
-            <Form.Group controlId="formUserName">
-                <Form.Label>User Name</Form.Label>
-                <Form.Control type="signup_username" placeholder="User Name" />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="signup_email" placeholder="Email" />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="signup_password" placeholder="Password" />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-                Sign Up
-            </Button>
             <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="login-username" placeholder="Email" />
