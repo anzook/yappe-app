@@ -6,7 +6,6 @@ import API from "../../utils/API";
 export class DogForm extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             breeds: props.breeds,
             name: "",
@@ -27,7 +26,6 @@ export class DogForm extends Component {
                 this.setState({
                     breeds: breeds
                 })
-                console.log(breeds);
             })
     }
 
@@ -44,15 +42,13 @@ export class DogForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log('I was hit!!!')
-        console.log(this.state)
         // API.createPet({
         //     name: this.state.name,
         //     age: this.state.age,
         //     sex: this.state.sex,
         //     breed: this.state.breed
         // }).then(function(res) {
-        //     console.log(res);
+        //     console.log(res.data);
         // }) 
 
         // API.joinUser({
@@ -63,13 +59,7 @@ export class DogForm extends Component {
         // }) 
 
     }
-    // mySubmitHandler = (event) => {
-    //     event.preventDefault();
-    //     alert("Would you like to:")
-    // }
-    // myChangeHandler = (event) => {
-    //     this.setState({ newdog, existingdog: event.target.value });
-    // }
+
     render() {
         return (
             // <h1> Would you like to:</h1>
@@ -98,7 +88,7 @@ export class DogForm extends Component {
                     <Form.Control name='breed' onChange={this.handleInputChange} as="select">
                     <option>Breed...</option>
                     {this.state.breeds.map(breed => (
-                                <option >{breed}</option>
+                                <option key={breed}>{breed}</option>
                             ))}
                     </Form.Control>
                 </Form.Group>
