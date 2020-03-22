@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard"
 import LandingPage from "./pages/landing-page"
 import addDog from "./pages/add-dog";
 import { BrowserRouter as Router, Route } from "react-router-dom"
+import AddDog from "./pages/add-dog";
 
 
 // let array = [
@@ -33,7 +34,7 @@ function App() {
         <Router>
         <div>
             <Route exact path="/" component={LandingPage} />
-            {/* <Route exact path="/add-dog" component={addDog} /> */}
+            <Route exact path="/add-dog" component={AddDog}/>
            <Route exact path="/dashboard" component={Dashboard} />
         </div>
         </Router>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Row from "../components/Row";
 import Col from "../components/Col";
+import Container from "../components/Container";
 import DogForm from "../components/DogForm";
 // import Container from '../components/Container'
 import API from "../utils/API";
@@ -28,7 +29,7 @@ class addDog extends Component {
             <Container style={{ marginTop: 0}}>
                 <Row>
                     <Col size="md-12">
-
+                        <h1>yappE</h1>
                     </Col>
                 </Row>
                 <Row>
@@ -41,4 +42,4 @@ class addDog extends Component {
     )
 }
 }
-export default addDog
+export default addDog;
