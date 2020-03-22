@@ -1,7 +1,31 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap'
+import API from 
 
-export class SignupForm extends Component {
+class SignupForm extends Component {
+
+    state = {
+        name: '',
+        email: '',
+        password: ''
+    }
+
+    handleInputChange = event => {
+        this.setState({
+            [event.target.name]: event.target.value,
+            [event.target.email]: event.target.value,
+            [event.target.password]: event.target.value
+        });
+
+    };
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+        console.log('I was hit!!');
+        console.log(this.state);
+        
+
+    };
 
     render() {
         return (
@@ -11,37 +35,39 @@ export class SignupForm extends Component {
                     <Form.Control
                         type="text"
                         placeholder="Name"
-                        onChange={this.props.handleFormChange}
+                        onChange={this.handleInputChange}
                         name='name'
                     />
                 </Form.Group>
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group >
                     <Form.Label>Email address</Form.Label>
                     <Form.Control
                         type="email"
                         placeholder="Enter email"
-                        onChange={this.props.handleFormChange}
+                        onChange={this.handleInputChange}
                         name='email'
                     />
                 </Form.Group>
-                <Form.Group controlId="formBasicPassword">
+                <Form.Group >
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                         type="password"
                         placeholder="Password"
-                        onChange={this.props.handleFormChange}
+                        onChange={this.handleInputChange}
                         name='password'
+
                     />
                 </Form.Group>
                 <Button
                     variant="primary"
                     type="submit"
-                    onClick={this.props.handleFormSubmit}
+                    onClick={this.handleFormSubmit}
                 >
                     Sign Up
                 </Button>
-            </Form>
+            </Form >
         )
+
     }
 }
 export default SignupForm;
