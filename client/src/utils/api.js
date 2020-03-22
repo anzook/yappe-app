@@ -45,5 +45,8 @@ export default {
     joinUser: function (id, data) {
         return axios.patch('/api/pet/' + id, data);
     },
+    getBreeds: function() {
+        return axios.get("https://dog.ceo/api/breeds/list/all");
+    }
 
 }

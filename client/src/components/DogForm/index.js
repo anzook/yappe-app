@@ -1,12 +1,27 @@
 import React, { Component } from "react";
 import { Button, Form, Dropdown } from "react-bootstrap";
+import API from "../../utils/API";
 
 
 export class DogForm extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = { newdog, existingdog };
-    // }
+    constructor(props) {
+        super(props);
+        console.log(props);
+        this.state = {breeds: props.breeds};
+    }
+    componentDidMount() {
+        API.getBreeds()
+        .then(res => {
+            let breeds = [];
+            Object.keys(res.data.message).forEach(function(breed) {
+                breeds.push(breed)
+            })
+            this.setState({
+                breeds: breeds
+            })
+            console.log(breeds);
+        })
+    }
     // mySubmitHandler = (event) => {
     //     event.preventDefault();
     //     alert("Would you like to:")
@@ -44,17 +59,15 @@ export class DogForm extends Component {
 
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">Dog Breed</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Dog Breed</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Dog Breed</Dropdown.Item>
+                                
+                                {this.state.breeds.map(breed => (
+                                    <Dropdown.Item href="#/action-1">{breed}</Dropdown.Item>
+                                ) )}
                             </Dropdown.Menu>
                         </Dropdown>
                         </Form.Group>
                         <Form.Group controlId="dogsex">
-                            <Button variant="primary" type="submit">
-                                Previous
-                        </Button>
-                            <Button variant="primary" type="submit">
+                         <Button variant="primary" type="submit">
                                 Submit
                         </Button>
                         </Form.Group>
