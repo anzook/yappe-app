@@ -1,8 +1,11 @@
 # [yappe](https://www.google.com "Deployed Application")
 <!-- TODO: UPDATE LINK TO DEP,OYED APPLICATION -->
-### Social dog care made easy <img src="https://github.com/anzook/yappe-app/blob/readMe/assets/images/yappeLogo1.png" title="yappe logo" align="right" width="120">
----
+### Social dog care made easy 
 
+<img src="https://github.com/anzook/yappe-app/blob/readMe/assets/images/yappeLogo1.png" title="yappe logo" align="right" width="120">
+
+
+---
 
 We love our dogs, and we want to ensure they’re taken care of. They support us in our busy and hectic lives, but to them, we are their entire life. So are we doing all we can to make sure they are getting the best care they deserve daily? With yappe, keep track of your dogs' care easily amongst everyone that supports your pup or pups. Get data at a glance, from the mundane potty breaks to reminders to give them meds and make an appointment with the groomer. Share your dogs' important details and keep their routine intact, both for their health and well-being. Your dog loves you, so use yappe to return the love and give them the quality of life they deserve.
 
