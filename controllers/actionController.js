@@ -25,7 +25,8 @@ module.exports = {
                 petId: req.body.pet
             }
         );
-        res.json(action);
+        res.send(action + ' action updated!')
+
     },
   // function to get actions that user logged for all their pets
     userLogsById: async ({ params }, res) => {
