@@ -1,6 +1,6 @@
 import axios from 'axios';
-​
-​
+
+
 export default {
     // create user
     createUser: function (userData) {
@@ -45,5 +45,5 @@ export default {
     joinUser: function (id, data) {
         return axios.patch('/api/pet/' + id, data);
     },
-​
+
 }

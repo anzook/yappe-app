@@ -1,9 +1,28 @@
-import React from "react";
+import React, { Component } from "react";
 import Row from "../components/Row";
 import Col from "../components/Col";
 import DogForm from "../components/DogForm";
+// import Container from '../components/Container'
+import API from "../utils/API";
 
-function addDog() {
+API.createPet({
+    name: "Chewy",
+    age: "8",
+    sex: "male",
+    breed: "Shepard"
+}).then(function(res) {
+    console.log(res);
+}) 
+
+API.joinUser({
+    id: 1,
+    pet: "Chewy"
+}).then(function(res) {
+    console.log(res);
+}) 
+
+class addDog extends Component {
+    render() {
     return (
         <div>
             <Container style={{ marginTop: 0}}>
@@ -21,3 +40,5 @@ function addDog() {
         </div>
     )
 }
+}
+export default addDog

@@ -2,7 +2,7 @@
 const config = {
   'development': {
     'username': process.env.DB_USER || "root",
-    'password': process.env.MYSQL_ROOT_PASS,
+    'password': "root",
     'database': 'yappe_db',
     'host': '127.0.0.1',
     'dialect': 'mysql',
