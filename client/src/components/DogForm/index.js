@@ -46,13 +46,14 @@ export class DogForm extends Component {
             sex: this.state.sex,
             breed: this.state.breed
         }).then(res => {
-            const userId =  window.location.search.substring(1);
+            const userId = window.location.search.substring(1);
             const petId = res.data.id;
             API.joinUser(petId, {
                 user: userId,
                 role: this.state.role
             }).then(pet => {
                 console.log(pet.data)
+                window.location.replace('/dashboard?' + userId);
             })
         })
     }
