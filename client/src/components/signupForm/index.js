@@ -7,7 +7,7 @@ class SignupForm extends Component {
     state = {
         name: '',
         email: '',
-        password: ''
+        password: '',
     }
 
     handleInputChange = event => {
@@ -33,7 +33,6 @@ class SignupForm extends Component {
             window.location.replace('/add-dog?' + userId);
         })
         
-
     };
 
     render() {
