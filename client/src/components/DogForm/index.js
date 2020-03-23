@@ -4,6 +4,7 @@ import API from "../../utils/API";
 
 
 export class DogForm extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -45,9 +46,10 @@ export class DogForm extends Component {
             sex: this.state.sex,
             breed: this.state.breed
         }).then(res => {
-            let petId = res.data.id;
+            const userId =  window.location.search.substring(1);
+            const petId = res.data.id;
             API.joinUser(petId, {
-                user: 26,
+                user: userId,
                 role: this.state.role
             }).then(pet => {
                 console.log(pet.data)
