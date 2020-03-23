@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Jumbotron from '../components/jumbotron'
 import YapNav from '../components/navbar'
 import DogCard from '../components/card'
@@ -10,22 +10,28 @@ import YapFooter from '../components/Footer'
 
 
 
-function Dashboard() {
+class Dashboard extends Components {
 
-  return (
-    <div>
+  componentDidMount() {
+    API.getBreeds()
 
-      <YapNav />
-      <Jumbotron />
-      <Container>
-        <Row xs={2} md={4}>
-          <DogCard />
-          <CareCard />
-        </Row>
-      </Container>
-      <YapFooter />
-    </div>
-  );
+}
+  render() {
+    return (
+      <div>
+
+        <YapNav />
+        <Jumbotron />
+        <Container>
+          <Row xs={2} md={4}>
+            <DogCard />
+            <CareCard />
+          </Row>
+        </Container>
+        <YapFooter />
+      </div>
+    );
+  }
 }
 
 
