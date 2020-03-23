@@ -4,7 +4,7 @@ import Col from "../components/Col";
 import Container from "../components/Container";
 // import Hero from "../components/hero"
 // import LoginForm from "../components/LoginForm";
-import SignupForm from "../components/SignupForm";
+import SignupForm from "../components/signupForm";
 
 
 class LandingPage extends Component {

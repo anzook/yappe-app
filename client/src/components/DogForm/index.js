@@ -33,34 +33,34 @@ export class DogForm extends Component {
         return (
             // <h1> Would you like to:</h1>
                 <Form>
-                    <Form.Group controlId="adddog">
+                    {/* <Form.Group controlId="adddog">
                         <Button variant="primary" type="submit">
                             New Dog
             </Button>
                         <Button variant="primary" type="submit">
                             Existing Dog
             </Button>
-                    </Form.Group>     
+                    </Form.Group>      */}
                     <Form.Group controlId="newDogName">
-                        <Form.Control type="newDogName" placeholder="Name: Chewbacca" />
+                        <Form.Control type="text" placeholder="Name: Chewbacca" />
                     </Form.Group>
                     <Form.Group controlId="newDogAge">
-                        <Form.Control type="newDogAge" placeholder="Age: 8" />
+                        <Form.Control type="text" placeholder="Age: 8" />
                     </Form.Group>
 
                     <Form.Group controlId="existingDogId">
-                        <Form.Control type="existingDogId" placeholder="Dog Id:" />
+                        <Form.Control type="text" placeholder="Dog Id:" />
                     </Form.Group>
                     <Form.Group controlId="userRoleId">
-                        <Form.Control type="userRoleId" placeholder="Role:" />
+                        <Form.Control type="text" placeholder="Role:" />
                     </Form.Group>
                     <Form.Group controlId="dogsex">
-                        <Button variant="primary" type="submit">
+                        {/* <Button variant="primary" type="submit">
                             Male
             </Button>
                         <Button variant="primary" type="submit">
                             Female
-            </Button>
+            </Button> */}
                         <Dropdown>
                             <Dropdown.Toggle variant="info" id="dropdown-basic" placeholder="Breed...">
 
@@ -74,9 +74,9 @@ export class DogForm extends Component {
                         </Dropdown>
                         </Form.Group>
                         <Form.Group controlId="dogsex">
-                         <Button variant="primary" type="submit">
-                                Submit
-                        </Button>
+                         <Button onClick={this.handleFormSubmit} type="submit" value="Submit" />
+                                
+                        {/* </Button> */}
                         </Form.Group>
            </Form>
         )

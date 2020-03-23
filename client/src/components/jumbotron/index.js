@@ -5,7 +5,7 @@ import "../jumbotron/style.css";
 export class jumbotron extends Component {
     constructor (props) {
         super(props);
-        this.state =
+        // this.state =
     }
     render() {
         return (
@@ -21,4 +21,4 @@ export class jumbotron extends Component {
     }
 }
 
-export default jumbotron;
+export default Jumbotron;

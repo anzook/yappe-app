@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap'
-import API from 
+// import API from "../utils/API";
 
 class SignupForm extends Component {
 
