@@ -3,9 +3,6 @@ import Row from "../components/Row";
 import Col from "../components/Col";
 import Container from "../components/Container";
 import DogForm from "../components/DogForm";
-import API from "../utils/API";
-
-
 
 class addDog extends Component {
     state = {

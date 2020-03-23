@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Form, Dropdown } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import API from "../../utils/API";
 
 
@@ -11,7 +11,8 @@ export class DogForm extends Component {
             name: "",
             age: "",
             sex: "",
-            breed: ""
+            breed: "",
+            petId: ""
         };
     }
 
@@ -31,33 +32,27 @@ export class DogForm extends Component {
 
     handleInputChange = event => {
         this.setState({
-            ...this.state,
-            [event.target.name]: event.target.value,
-            [event.target.age]: event.target.value,
-            [event.target.role]: event.target.value,
-            // [event.target.role]: event.target.value,
+            [event.target.name]: event.target.value
         });
 
     };
 
     handleFormSubmit = event => {
         event.preventDefault();
-        // API.createPet({
-        //     name: this.state.name,
-        //     age: this.state.age,
-        //     sex: this.state.sex,
-        //     breed: this.state.breed
-        // }).then(function(res) {
-        //     console.log(res.data);
-        // }) 
-
-        // API.joinUser({
-        //     id: 1,
-        //     pet: this.state.name
-        // }).then(function(res) {
-        //     console.log(res);
-        // }) 
-
+        API.createPet({
+            name: this.state.name,
+            age: this.state.age,
+            sex: this.state.sex,
+            breed: this.state.breed
+        }).then(res => {
+            let petId = res.data.id;
+            API.joinUser(petId, {
+                user: 26,
+                role: this.state.role
+            }).then(res => {
+                console.log(res.data)
+            })
+        })
     }
 
     render() {
@@ -65,12 +60,6 @@ export class DogForm extends Component {
             // <h1> Would you like to:</h1>
             <Form>
                 <Form.Group controlId="adddog">
-                    {/* <Button variant="primary" type="submit">
-                            New Dog
-            </Button>
-                        <Button variant="primary" type="submit">
-                            Existing Dog
-            </Button> */}
                 </Form.Group>
                 <Form.Group>
                     <Form.Control name='name' onChange={this.handleInputChange} type="text" placeholder="Name: Chewbacca" />
@@ -86,10 +75,10 @@ export class DogForm extends Component {
                 </Form.Group>
                 <Form.Group >
                     <Form.Control name='breed' onChange={this.handleInputChange} as="select">
-                    <option>Breed...</option>
-                    {this.state.breeds.map(breed => (
-                                <option key={breed}>{breed}</option>
-                            ))}
+                        <option>Breed...</option>
+                        {this.state.breeds.map(breed => (
+                            <option key={breed}>{breed}</option>
+                        ))}
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>

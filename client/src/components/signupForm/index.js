@@ -19,20 +19,20 @@ class SignupForm extends Component {
 
     };
 
-    // handleFormSubmit = event => {
-    //     event.preventDefault();
-    //     console.log(this.state);
-    //     API.createUser({
-    //         name: this.state.name,
-    //         email: this.state.email,
-    //         password: this.state.password
-    //     })
-    //     .then(res => {
-    //         console.log("This is the user id: " + res.data)
-    //     })
+    handleFormSubmit = event => {
+        event.preventDefault();
+        console.log(this.state);
+        API.createUser({
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password
+        })
+        .then(res => {
+            console.log("This is the user id: " + res.data)
+        })
         
 
-    // };
+    };
 
     render() {
         return (
