@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Row from "../components/Row";
 import Col from "../components/Col";
 import Container from "../components/Container";
-// import Hero from "../components/hero"
+import Hero from "../components/hero"
 // import LoginForm from "../components/LoginForm";
 import SignupForm from "../components/signupForm";
 
@@ -12,7 +12,7 @@ class LandingPage extends Component {
     render() {
         return (
             <div>
-                {/* <Hero/> */}
+                <Hero/>
                 <Container style={{ marginTop: 0 }}>
                     <Row>
                         <Col size="md-12">
