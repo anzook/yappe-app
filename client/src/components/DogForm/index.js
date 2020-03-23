@@ -49,8 +49,8 @@ export class DogForm extends Component {
             API.joinUser(petId, {
                 user: 26,
                 role: this.state.role
-            }).then(res => {
-                console.log(res.data)
+            }).then(pet => {
+                console.log(pet.data)
             })
         })
     }
