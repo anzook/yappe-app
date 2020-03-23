@@ -63,6 +63,9 @@ export default {
     // delete action
     deleteAction: function (actionId) {
         return axios.delete('/api/actions/' + actionId)
+    },
+    getBreeds: function() {
+        return axios.get("https://dog.ceo/api/breeds/list/all");
     }
 
 }
