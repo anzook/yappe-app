@@ -6,14 +6,22 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import CareCard from '../components/careCard'
 import YapFooter from '../components/Footer'
+import API from '../utils/API'
 
 
 
 
-class Dashboard extends Components {
-
+class Dashboard extends Component {
+state = {
+  user: {}
+}
   componentDidMount() {
-    API.getBreeds()
+    const userId = window.location.search.substring(1);
+    API.getUser(userId)
+    .then(res => {
+      this.setState({user: res.data})
+      console.log(this.state)
+    })
 
 }
   render() {
