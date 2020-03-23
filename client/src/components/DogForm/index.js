@@ -6,81 +6,100 @@ import API from "../../utils/API";
 export class DogForm extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
-        this.state = {breeds: props.breeds};
+        this.state = {
+            breeds: props.breeds,
+            name: "",
+            age: "",
+            sex: "",
+            breed: ""
+        };
     }
+
+
     componentDidMount() {
         API.getBreeds()
-        .then(res => {
-            let breeds = [];
-            Object.keys(res.data.message).forEach(function(breed) {
-                breeds.push(breed)
+            .then(res => {
+                let breeds = [];
+                Object.keys(res.data.message).forEach(function (breed) {
+                    breeds.push(breed)
+                })
+                this.setState({
+                    breeds: breeds
+                })
             })
-            this.setState({
-                breeds: breeds
-            })
-            console.log(breeds);
-        })
     }
-    // mySubmitHandler = (event) => {
-    //     event.preventDefault();
-    //     alert("Would you like to:")
-    // }
-    // myChangeHandler = (event) => {
-    //     this.setState({ newdog, existingdog: event.target.value });
-    // }
+
+    handleInputChange = event => {
+        this.setState({
+            ...this.state,
+            [event.target.name]: event.target.value,
+            [event.target.age]: event.target.value,
+            [event.target.role]: event.target.value,
+            // [event.target.role]: event.target.value,
+        });
+
+    };
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+        // API.createPet({
+        //     name: this.state.name,
+        //     age: this.state.age,
+        //     sex: this.state.sex,
+        //     breed: this.state.breed
+        // }).then(function(res) {
+        //     console.log(res.data);
+        // }) 
+
+        // API.joinUser({
+        //     id: 1,
+        //     pet: this.state.name
+        // }).then(function(res) {
+        //     console.log(res);
+        // }) 
+
+    }
+
     render() {
         return (
             // <h1> Would you like to:</h1>
-                <Form>
-                    {/* <Form.Group controlId="adddog">
-                        <Button variant="primary" type="submit">
+            <Form>
+                <Form.Group controlId="adddog">
+                    {/* <Button variant="primary" type="submit">
                             New Dog
             </Button>
                         <Button variant="primary" type="submit">
                             Existing Dog
-            </Button>
-                    </Form.Group>      */}
-                    <Form.Group controlId="newDogName">
-                        <Form.Control type="text" placeholder="Name: Chewbacca" />
-                    </Form.Group>
-                    <Form.Group controlId="newDogAge">
-                        <Form.Control type="text" placeholder="Age: 8" />
-                    </Form.Group>
-
-                    <Form.Group controlId="existingDogId">
-                        <Form.Control type="text" placeholder="Dog Id:" />
-                    </Form.Group>
-                    <Form.Group controlId="userRoleId">
-                        <Form.Control type="text" placeholder="Role:" />
-                    </Form.Group>
-                    <Form.Group controlId="dogsex">
-                        {/* <Button variant="primary" type="submit">
-                            Male
-            </Button>
-                        <Button variant="primary" type="submit">
-                            Female
             </Button> */}
-                        <Dropdown>
-                            <Dropdown.Toggle variant="info" id="dropdown-basic" placeholder="Breed...">
-
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                
-                                {this.state.breeds.map(breed => (
-                                    <Dropdown.Item href="#/action-1">{breed}</Dropdown.Item>
-                                ) )}
-                            </Dropdown.Menu>
-                        </Dropdown>
-                        </Form.Group>
-                        <Form.Group controlId="dogsex">
-                         <Button onClick={this.handleFormSubmit} type="submit" value="Submit" />
-                                
-                        {/* </Button> */}
-                        </Form.Group>
-           </Form>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control name='name' onChange={this.handleInputChange} type="text" placeholder="Name: Chewbacca" />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control name='age' onChange={this.handleInputChange} type="text" placeholder="Age: 8" />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control name='sex' onChange={this.handleInputChange} type="text" placeholder="Sex: Female" />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control name='role' onChange={this.handleInputChange} type="text" placeholder="Role:" />
+                </Form.Group>
+                <Form.Group >
+                    <Form.Control name='breed' onChange={this.handleInputChange} as="select">
+                    <option>Breed...</option>
+                    {this.state.breeds.map(breed => (
+                                <option key={breed}>{breed}</option>
+                            ))}
+                    </Form.Control>
+                </Form.Group>
+                <Form.Group>
+                    <Button onClick={this.handleFormSubmit} variant="primary" type="submit">
+                        Submit
+                        </Button>
+                </Form.Group>
+            </Form>
         )
-           
+
     }
 }
 export default DogForm

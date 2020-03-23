@@ -16,38 +16,27 @@ class addDog extends Component {
         breed: ""
     }
 
-    handleFormSubmit = event => {
-        event.preventDefault();
-        API.createPet({
-            name: this.state.name,
-            age: this.state.age,
-            sex: this.state.sex,
-            breed: this.state.breed
-        }).then(function(res) {
-            console.log(res);
-        }) 
+    // handleFormSubmit = event => {
+    //     event.preventDefault();
+    //     console.log('I was hit!!!')
+    //     API.createPet({
+    //         name: this.state.name,
+    //         age: this.state.age,
+    //         sex: this.state.sex,
+    //         breed: this.state.breed
+    //     }).then(function(res) {
+    //         console.log(res);
+    //     }) 
         
-        API.joinUser({
-            id: 1,
-            pet: this.state.name
-        }).then(function(res) {
-            console.log(res);
-        }) 
+    //     API.joinUser({
+    //         id: 1,
+    //         pet: this.state.name
+    //     }).then(function(res) {
+    //         console.log(res);
+    //     }) 
     
-    }
-    // componentDidMount() {
-    //     API.getBreeds()
-    //     .then(res => {
-    //         let breeds = [];
-    //         Object.keys(res.data.message).forEach(function(breed) {
-    //             breeds.push(breed)
-    //         })
-    //         this.setState({
-    //             breeds: breeds
-    //         })
-    //         console.log(breeds);
-    //     })
     // }
+
 
     render() {
     return (
@@ -60,7 +49,9 @@ class addDog extends Component {
                 </Row>
                 <Row>
                     <Col size="md-12">
-                       <DogForm breeds={this.state.breeds} /> 
+                       <DogForm 
+                       breeds={this.state.breeds}
+                       onClick = {this.handleFormSubmit} /> 
                     </Col>
                 </Row>
             </Container>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap'
-// import API from "../utils/API";
+import API from '../../utils/API'
 
 class SignupForm extends Component {
 
@@ -19,13 +19,20 @@ class SignupForm extends Component {
 
     };
 
-    handleFormSubmit = event => {
-        event.preventDefault();
-        console.log('I was hit!!');
-        console.log(this.state);
+    // handleFormSubmit = event => {
+    //     event.preventDefault();
+    //     console.log(this.state);
+    //     API.createUser({
+    //         name: this.state.name,
+    //         email: this.state.email,
+    //         password: this.state.password
+    //     })
+    //     .then(res => {
+    //         console.log("This is the user id: " + res.data)
+    //     })
         
 
-    };
+    // };
 
     render() {
         return (
