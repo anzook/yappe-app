@@ -1,17 +1,21 @@
 .hero{
     width: 100vw;
+    /* position: fixed */
     /* display: none; */
 };
 
-.signup{
-    /* background-color: red; */
+/* DO NOT REMOVE EMPTY .SIGNUP */
+.signup{}
+
+span.toggleBtn:hover{
+    cursor: pointer;
 }
 
 .formDiv{
     /* display: none; */
     position: fixed;
-    width: 25%;
-    min-width: 300px;
+    width: 100vw;
+    height: 100vh;
     top: 0;
     margin: auto;
 }

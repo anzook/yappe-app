@@ -11,13 +11,22 @@ class LandingPage extends Component {
         super(props);
 
         this.state = {
-            display: 'first'
+            display: 'first',
+            action: `Don't have an account? Sign up.`,
+            className: {
+                loginDiv: 'loginDiv',
+                signUpDiv: 'signUpDiv'
+            }
         };
     }
 
     changeDisplay = () => {
-        let { display } = this.state;
-        this.setState({ display: display === 'first' ? 'second' : 'first' });
+        let { display, action } = this.state;
+        this.setState({
+            display: display === 'first' ? 'second' : 'first',
+            action: action === `Don't have an account? Sign up.` ? 'Already have an account? Log in.' : `Don't have an account? Sign up.`
+            
+        });
     }
     renderForm() {
         let { display } = this.state;
@@ -30,20 +39,18 @@ class LandingPage extends Component {
                 </div>
             )
         } else if (display === 'second') {
-            return(
+            return (
                 <div>
                     <h3>Sign Up</h3>
                     <SignupForm />
                 </div>
-            ) 
+            )
         }
     }
     render() {
         let className = {
             formDiv: 'formDiv',
-            loginDiv: 'loginDiv',
-            signUpDiv: 'signUpDiv'
-
+            toggleBtn: 'toggleBtn'
         };
         return (
             <div>
@@ -51,8 +58,10 @@ class LandingPage extends Component {
                 <div className={className.formDiv}>
                     <Container style={{ marginTop: 0 }}>
                         {this.renderForm()}
-                        <br/>
-                        <button onClick={this.changeDisplay}>Toggle</button>
+                        <br />
+                        <span className={className.toggleBtn} onClick={this.changeDisplay}>
+                            {this.state.action}
+                        </span>
                     </Container>
                 </div>
             </div>
