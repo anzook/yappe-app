@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Jumbotron from '../components/jumbotron'
-import YapNav from '../components/navbar'
-import DogCard from '../components/card'
+import Jumbotron from '../../components/jumbotron'
+import YapNav from '../../components/navbar'
+import DogCard from '../../components/card'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import CareCard from '../components/careCard'
-import YapFooter from '../components/Footer'
-import API from '../utils/API'
+import CareCard from '../../components/careCard'
+import YapFooter from '../../components/Footer'
+import API from '../../utils/API'
 
 
 
