@@ -1,0 +1,17 @@
+.hero{
+    width: 100vw;
+    /* display: none; */
+};
+
+.signup{
+    /* background-color: red; */
+}
+
+.formDiv{
+    /* display: none; */
+    position: fixed;
+    width: 25%;
+    min-width: 300px;
+    top: 0;
+    margin: auto;
+}

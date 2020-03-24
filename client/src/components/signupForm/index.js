@@ -36,8 +36,9 @@ class SignupForm extends Component {
     };
 
     render() {
+        let signup = 'signup';
         return (
-            <Form>
+            <Form className={signup}>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
                     <Form.Control
