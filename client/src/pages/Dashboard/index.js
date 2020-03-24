@@ -16,8 +16,9 @@ state = {
   user: {}
 }
   componentDidMount() {
-    const userId = window.location.search.substring(1);
-    API.getUser(userId)
+    // const userId = window.location.search.substring(1);
+    // API.getUser(userId)
+    API.logoutUser()
     .then(res => {
       this.setState({user: res.data})
       console.log(this.state)

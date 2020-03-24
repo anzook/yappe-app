@@ -12,11 +12,8 @@ class SignupForm extends Component {
 
     handleInputChange = event => {
         this.setState({
-            [event.target.name]: event.target.value,
-            [event.target.email]: event.target.value,
-            [event.target.password]: event.target.value
+            [event.target.name]: event.target.value
         });
-
     };
 
     handleFormSubmit = event => {
@@ -29,10 +26,18 @@ class SignupForm extends Component {
         })
         .then(res => {
             console.log("This is the user id: " + res.data)
-            let userId = res.data
-            window.location.replace('/add-dog?' + userId);
+            // let userId = res.data
+            // window.location.replace('/add-dog?' + userId);
+            if (!res.data.errmsg) {
+                console.log('successful signup, redirecting... ')
+                this.setState({ //redirect to login page
+                    redirectTo: '/'
+                })
+            }
+        }).catch(err => {
+            console.log('Signup error: ')
+            console.log(err)
         })
-        
     };
 
     render() {
@@ -45,6 +50,7 @@ class SignupForm extends Component {
                         placeholder="Name"
                         onChange={this.handleInputChange}
                         name='name'
+                        value={this.state.name}
                     />
                 </Form.Group>
                 <Form.Group >
@@ -53,6 +59,7 @@ class SignupForm extends Component {
                         type="email"
                         placeholder="Enter email"
                         onChange={this.handleInputChange}
+                        value={this.state.email}
                         name='email'
                     />
                 </Form.Group>

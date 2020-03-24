@@ -1,8 +1,11 @@
 const express = require("express");
 const app = express();
+const session = require('express-session')
 const PORT = process.env.PORT || 3001;
 require('dotenv').config();
 // const routes = require("./routes");
+const passport = require('./config/passport');
+
 
 // Requiring our models for syncing
 const db = require('./models');
@@ -12,6 +15,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
+
+app.use(session({secret: 'keyboard dog', resave: true,
+  saveUninitialized: true}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

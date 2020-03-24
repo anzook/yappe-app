@@ -3,7 +3,7 @@ import Row from "../../components/Row";
 import Col from "../../components/Col";
 import Container from "../../components/Container";
 import Hero from "../../components/hero"
-// import LoginForm from "../../components/LoginForm";
+import LoginForm from "../../components/LoginForm";
 import SignupForm from "../../components/SignupForm";
 
 
@@ -18,9 +18,9 @@ class LandingPage extends Component {
                         <Col size="md-12">
                             <h2>Sign Up Form</h2>
                             <SignupForm />
-                            {/* <br />
+                            <br />
                             <h2>Login Form</h2>
-                            <LoginForm /> */}
+                            <LoginForm /> 
                         </Col>
                     </Row>
                 </Container>

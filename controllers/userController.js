@@ -1,11 +1,12 @@
 const db = require('../models');
+const passport = require('../config/passport')
 
 // Defining methods for the userController
 module.exports = {
-    findById: async ({ params }, res) => {
+    findById: async (req, res) => {
         const userPets = await db.user.findAll({
             where: {
-                id: params.id
+                id: req.params.id
             },
             // include pet info through association
             include: [{
@@ -24,7 +25,6 @@ module.exports = {
         res.json(userPets);
 
     },
-
     create: async (req, res) => {
         const user = await db.user.create(
             {
@@ -56,5 +56,20 @@ module.exports = {
                 console.log(err)
             })
     },
+
+    userInfo: function(req, res) {
+        if (!req.user) {
+          // The user is not logged in, send back an empty object
+          res.json({});
+        } else {
+          // Otherwise send back the user's email and id
+          // Sending back a password, even a hashed password, isn't a good idea
+          res.json({
+            name: req.user.name,
+            email: req.user.email,
+            id: req.user.id,
+          });
+        }
+      }
 
 }
