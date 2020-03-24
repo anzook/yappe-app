@@ -1,10 +1,10 @@
 import React from "react";
-// import "./style.css";
+import "./style.css";
 
 function Hero(props) {
     return (
         <div className="hero text-center" style={{ }}>
-            <video autoPlay muted loop><source type="video/mp4" src="/beach_puppy.mp4"></source></video>
+            <video className='video'autoPlay muted loop><source type="video/mp4" src="/beach_puppy.mp4"></source></video>
         </div>
     )
 }
