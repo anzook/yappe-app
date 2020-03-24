@@ -5,7 +5,9 @@
 };
 
 /* DO NOT REMOVE EMPTY .SIGNUP */
-.signup{}
+.signup{
+    background: none;
+}
 
 span.toggleBtn:hover{
     cursor: pointer;
