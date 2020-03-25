@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import { Redirect } from 'react-router-dom'
 // import { Route, Link } from 'react-router-dom'
-import {Nav, Navbar, Button} from 'react-bootstrap'
+import {Nav, Navbar} from 'react-bootstrap'
 import './style.css';
 import API from '../../utils/API'
 
@@ -29,8 +29,8 @@ logout(event) {
 
   render() {
     const loggedIn = this.props.loggedIn;
-    console.log('navbar render, props: ')
-    console.log(this.props);
+    // console.log('navbar render, props: ')
+    // console.log(this.props);
         
     return (
             <div id="nav">
@@ -42,9 +42,6 @@ logout(event) {
           <Nav.Link href="#care">Add Care</Nav.Link>
           <Nav.Link href="#add-dog">Add Dog</Nav.Link>
           <Nav.Link href="#activity">Activity log</Nav.Link> 
-          <Button variant="outline-dark"
-          onClick={this.logout}
-          >Logout</Button>
           </section>)
            : ( 
             <section>

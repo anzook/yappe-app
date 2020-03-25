@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dashboard from "./pages/Dashboard"
 import LandingPage from "./pages/Landing"
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Route } from "react-router-dom"
 import AddDog from "./pages/AddDog";
 import Navbar from "./components/navbar"
 import API from './utils/API'
@@ -33,10 +33,9 @@ class App extends Component {
     
       getUser() {
         API.getUserInfo().then(res => {
-          console.log('Get user response: ')
-          console.log(res.data)
+          // console.log(res.data)
           if (res.data.user) {
-            console.log('Get User: There is a user saved in the server session: ')
+            console.log('Get User: There is a user saved in the server session... ')
     
             this.setState({
               loggedIn: true,

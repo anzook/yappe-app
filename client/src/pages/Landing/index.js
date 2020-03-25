@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+// import { Redirect } from 'react-router-dom'
+
 import Row from "../../components/Row";
 import Col from "../../components/Col";
 import Container from "../../components/Container";
@@ -14,6 +16,7 @@ class LandingPage extends Component {
           loggedIn: false,
           email: null,
           name: null,
+          // redirectTo: "/"
         }
 
         this.getUser = this.getUser.bind(this)
@@ -32,10 +35,10 @@ class LandingPage extends Component {
     
       getUser() {
         API.getUserInfo().then(res => {
-          console.log('Get user response: ')
-          console.log(res.data)
+          // console.log('Get user response: ')
+          // console.log(res.data)
           if (res.data.user) {
-            console.log('Get User: There is a user saved in the server session: ')
+            // console.log('Get User: There is a user saved in the server session: ')
     
             this.setState({
               loggedIn: true,
@@ -43,16 +46,21 @@ class LandingPage extends Component {
                name: res.data.user.name
             })
           } else {
-            console.log('Get user: no user found');
+            // console.log('Get user: no user found');
             this.setState({
               loggedIn: false,
-              username: null
+              username: null,
+              // redirectTo: '/'
             })
+
           }
         })
       }
 
     render() {
+    //   if (this.state.redirectTo) {
+    //     return <Redirect to={{ pathname: this.state.redirectTo }} />
+    // } else {
         return (
             <div>
                 <Hero/>
@@ -70,6 +78,7 @@ class LandingPage extends Component {
             </div>
         )
     }
+  // }
 }
 
 export default LandingPage;

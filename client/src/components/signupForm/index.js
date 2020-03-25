@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// import { Redirect } from 'react-router-dom'
+
 import { Form, Button } from 'react-bootstrap'
 import API from '../../utils/API'
 
@@ -8,6 +10,7 @@ class SignupForm extends Component {
         name: '',
         email: '',
         password: '',
+        // redirectTo: "/"
     }
 
     handleInputChange = event => {
@@ -18,7 +21,7 @@ class SignupForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log(this.state);
+        // console.log(this.state);
         API.createUser({
             name: this.state.name,
             email: this.state.email,
@@ -30,9 +33,9 @@ class SignupForm extends Component {
             // window.location.replace('/add-dog?' + userId);
             if (!res.data.errmsg) {
                 console.log('successful signup, redirecting... ')
-                this.setState({ //redirect to login page
-                    redirectTo: '/'
-                })
+                // this.setState({ //redirect to login page
+                //     redirectTo: '/'
+                // })
             }
         }).catch(err => {
             console.log('Signup error: ')
@@ -41,6 +44,9 @@ class SignupForm extends Component {
     };
 
     render() {
+        // if (this.state.redirectTo) {
+        //     return <Redirect to={{ pathname: this.state.redirectTo }} />
+        // } else {
         return (
             <Form>
                 <Form.Group>
@@ -83,6 +89,7 @@ class SignupForm extends Component {
             </Form >
         )
 
-    }
+    // }
+}
 }
 export default SignupForm;

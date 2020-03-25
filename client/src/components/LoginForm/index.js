@@ -29,23 +29,21 @@ export class LoginForm extends Component {
             password: this.state.password
         })
         .then(res => {
-            console.log('login response: ')
-            console.log(res)
+            console.log('login sent, response... ')
+            // console.log(res)
             if (res.status === 200) {
                 // update App.js state
                 this.props.updateUser({
                     loggedIn: true,
                     username: res.data.email
                 })
-                // update the state to redirect to home
+                // update the state to redirect to user home
                 this.setState({
                     redirectTo: '/dashboard'
                 })
             }
         }).catch(err => {
-            console.log('Login error: ')
-            console.log(err);
-            
+            console.log('Login error: ', err)            
         })
     }
 

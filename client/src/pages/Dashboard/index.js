@@ -21,7 +21,7 @@ state = {
     API.logoutUser()
     .then(res => {
       this.setState({user: res.data})
-      console.log(this.state)
+      // console.log(this.state)
     })
 
 }
@@ -29,7 +29,7 @@ state = {
     return (
       <div>
 
-        {/* <YapNav /> */}
+        <YapNav />
         <Jumbotron />
         <Container>
           <Row xs={2} md={4}>

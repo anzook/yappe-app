@@ -37,7 +37,7 @@ export default {
     // response returns user info as well as all
     // pets under user
     getUserInfo: function (userData) {
-        return axios.get('/user', userData);
+        return axios.get('/api/user', userData);
     },
     // get pet
     // response returns pet info as well as all caretakers
