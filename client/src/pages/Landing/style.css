@@ -1,0 +1,23 @@
+.hero{
+    width: 100vw;
+    /* position: fixed */
+    /* display: none; */
+};
+
+/* DO NOT REMOVE .SIGNUP */
+.signup{
+    background: none;
+}
+
+span.toggleBtn:hover{
+    cursor: pointer;
+}
+
+.formDiv{
+    /* display: none; */
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    margin: auto;
+}
