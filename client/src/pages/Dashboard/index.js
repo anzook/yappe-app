@@ -29,7 +29,7 @@ state = {
     return (
       <div>
 
-        <YapNav />
+        {/* <YapNav /> */}
         <Jumbotron />
         <Container>
           <Row xs={2} md={4}>

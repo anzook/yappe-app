@@ -5,11 +5,16 @@ import { Redirect } from 'react-router-dom'
 
 
 export class LoginForm extends Component {
-    state = {
+    constructor() {
+        super()
+        this.state = {
         email: '',
         password: '',
         redirectTo: null
     }
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
+}
 
     handleInputChange = event => {
         this.setState({

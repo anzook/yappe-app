@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
-import { Route, Link } from 'react-router-dom'
-import {Nav, Navbar} from 'react-bootstrap'
+// import { Redirect } from 'react-router-dom'
+// import { Route, Link } from 'react-router-dom'
+import {Nav, Navbar, Button} from 'react-bootstrap'
 import './style.css';
 import API from '../../utils/API'
 
@@ -42,9 +42,9 @@ logout(event) {
           <Nav.Link href="#care">Add Care</Nav.Link>
           <Nav.Link href="#add-dog">Add Dog</Nav.Link>
           <Nav.Link href="#activity">Activity log</Nav.Link> 
-          <Nav.Link href="#"
+          <Button variant="outline-dark"
           onClick={this.logout}
-          >Logout</Nav.Link> 
+          >Logout</Button>
           </section>)
            : ( 
             <section>
