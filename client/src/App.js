@@ -4,7 +4,6 @@ import Dashboard from "./pages/Dashboard"
 import LandingPage from "./pages/Landing"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import AddDog from "./pages/AddDog";
-import Navbar from "./components/navbar"
 import API from './utils/API'
 
 
@@ -57,10 +56,6 @@ class App extends Component {
         <div className="App">
         <Router>
 
-        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-        {/* greet user if logged in: */}
-        {this.state.loggedIn &&
-          <p>Welcome to yappe, {this.state.username}!</p>}
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/add-dog" component={AddDog}/>
            <Route exact path="/dashboard" component={Dashboard} />

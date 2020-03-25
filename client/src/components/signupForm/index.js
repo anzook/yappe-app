@@ -49,6 +49,7 @@ class SignupForm extends Component {
         // } else {
         let signup = 'signup';
         return (
+
             <Form className={signup}>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>

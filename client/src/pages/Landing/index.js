@@ -2,7 +2,6 @@ import React, { Component } from "react";
 // import { Redirect } from 'react-router-dom'
 
 import Row from "../../components/Row";
-import Col from "../../components/Col";
 import Container from "../../components/Container";
 import Hero from "../../components/hero"
 import LoginForm from "../../components/LoginForm";
@@ -80,7 +79,9 @@ class LandingPage extends Component {
             return (
                 <div>
                     <h3>Login</h3>
-                    <LoginForm />
+                    <LoginForm 
+                    updateUser={this.updateUser}
+                    />
                 </div>
             )
         } else if (display === 'second') {
