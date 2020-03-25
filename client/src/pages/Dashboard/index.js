@@ -26,15 +26,21 @@ state = {
 
 }
   render() {
+    let cards = this.state.user[0]?.pets.map((pet)=>{
+      console.log(pet);
+      return <div>
+          <DogCard name={pet.name} breed={pet.breed} age={pet.age} />
+            <CareCard />
+            
+      </div>
+    })
     return (
       <div>
-
         <YapNav />
         <Jumbotron />
         <Container>
           <Row xs={2} md={4}>
-            <DogCard />
-            <CareCard />
+            {cards}
           </Row>
         </Container>
         <YapFooter />

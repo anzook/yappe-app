@@ -16,6 +16,12 @@ class LandingPage extends Component {
           loggedIn: false,
           email: null,
           name: null,
+            display: 'first',
+            action: `Don't have an account? Sign up.`,
+            className: {
+                loginDiv: 'loginDiv',
+                signUpDiv: 'signUpDiv'
+            }
           // redirectTo: "/"
         }
 
@@ -56,25 +62,60 @@ class LandingPage extends Component {
           }
         })
       }
+      
+  
+    changeDisplay = () => {
+        let { display, action } = this.state;
+        this.setState({
+            display: display === 'first' ? 'second' : 'first',
+            action: action === `Don't have an account? Sign up.` ? 'Already have an account? Log in.' : `Don't have an account? Sign up.`
+            
+        });
+    }
+
+    renderForm() {
+        let { display } = this.state;
+
+        if (display === 'first') {
+            return (
+                <div>
+                    <h3>Login</h3>
+                    <LoginForm />
+                </div>
+            )
+        } else if (display === 'second') {
+            return (
+                <div>
+                    <h3>Sign Up</h3>
+                    <SignupForm />
+                </div>
+            )
+        }
+    }
 
     render() {
     //   if (this.state.redirectTo) {
     //     return <Redirect to={{ pathname: this.state.redirectTo }} />
     // } else {
+      let className = {
+        formDiv: 'formDiv',
+        toggleBtn: 'toggleBtn'
+    };
         return (
             <div>
                 <Hero/>
+                <div className={className.formDiv}>
                 <Container style={{ marginTop: 0 }}>
                     <Row>
-                        <Col size="md-12">
-                            <h2>Sign Up Form</h2>
-                            <SignupForm />
+                            {this.renderForm()}
                             <br />
-                            <h2>Login Form</h2>
-                            <LoginForm updateUser={this.updateUser} loggedIn={this.state.loggedIn}/> 
-                        </Col>
+                            <span className={className.toggleBtn} onClick={this.changeDisplay}>
+                            {this.state.action}
+                        </span>
+                            {/* <LoginForm updateUser={this.updateUser} loggedIn={this.state.loggedIn}/>  */}
                     </Row>
                 </Container>
+            </div>
             </div>
         )
     }

@@ -47,8 +47,9 @@ class SignupForm extends Component {
         // if (this.state.redirectTo) {
         //     return <Redirect to={{ pathname: this.state.redirectTo }} />
         // } else {
+        let signup = 'signup';
         return (
-            <Form>
+            <Form className={signup}>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
                     <Form.Control
