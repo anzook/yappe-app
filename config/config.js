@@ -1,7 +1,7 @@
 
 const config = {
   'development': {
-    'username': process.env.DB_USER || "root",
+    'username': process.env.JAWSDB_URL || "root",
     'password': process.env.MYSQL_ROOT_PASS,
     'database': 'yappe_db',
     'host': '127.0.0.1',
