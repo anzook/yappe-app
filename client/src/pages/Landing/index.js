@@ -3,7 +3,7 @@ import Container from "../../components/Container";
 import Hero from "../../components/hero"
 import './style.css'
 import LoginForm from "../../components/LoginForm";
-import SignupForm from "../../components/SignupForm";
+// 
 
 
 class LandingPage extends Component {
@@ -42,7 +42,7 @@ class LandingPage extends Component {
             return (
                 <div>
                     <h3>Sign Up</h3>
-                    <SignupForm />
+                    {/* <SignupForm /> */}
                 </div>
             )
         }
