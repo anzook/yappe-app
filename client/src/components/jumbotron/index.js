@@ -17,4 +17,4 @@ export class jumbotron extends Component {
     }
 }
 
-export default jumbotron;
+export default Jumbotron;

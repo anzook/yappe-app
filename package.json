@@ -1,6 +1,10 @@
 {
   "name": "yappe",
   "version": "2.0.0",
+  "engines": {
+    "npm": "6.10.2",
+    "node": "12.9.1"
+  },
   "description": "",
   "main": "server.js",
   "scripts": {

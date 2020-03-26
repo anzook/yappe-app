@@ -5,7 +5,8 @@ import ListGroupItem from 'react-bootstrap/ListGroup'
 import '../card/style.css';
 
  export class NewCard extends Component {
-  render() {
+   render() {
+    //  const name = this.props.name
     return (
       <div className="card">
       <Card style={{ width: '18rem' }}>
@@ -13,8 +14,8 @@ import '../card/style.css';
   <Card.Body>
   <ListGroup className="list-group-flush">
     <ListGroupItem>Name: {this.props.name} </ListGroupItem>
-    <ListGroupItem>Breed:  </ListGroupItem> 
-    <ListGroupItem>Age: </ListGroupItem> 
+    <ListGroupItem>Breed: {this.props.breed} </ListGroupItem> 
+    <ListGroupItem>Age: {this.props.age} </ListGroupItem> 
   </ListGroup> 
   </Card.Body>
 </Card>
