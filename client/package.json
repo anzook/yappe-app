@@ -2,7 +2,16 @@
   "name": "yappe",
   "version": "0.1.0",
   "private": true,
+<<<<<<< HEAD
   "proxy": "http://localhost:3001/",
+=======
+  "proxy" : "http://localhost:3001/",
+   "engines": {
+   "npm": "6.10.2",
+   "node": "12.9.1"
+   },
+   
+>>>>>>> origin/test
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",

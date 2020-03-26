@@ -3,7 +3,12 @@ import React, { Component } from "react";
 
 import Row from "../../components/Row";
 import Container from "../../components/Container";
+<<<<<<< HEAD
 import Hero from "../../components/hero"
+=======
+import Hero from "../../components/Hero"
+import './style.css'
+>>>>>>> origin/test
 import LoginForm from "../../components/LoginForm";
 import SignupForm from "../../components/SignupForm";
 import API from "../../utils/API"
