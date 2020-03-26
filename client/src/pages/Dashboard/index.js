@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Jumbotron from '../../components/jumbotron'
-import YapNav from '../../components/navbar'
-import DogCard from '../../components/card'
+import Jumbotron from '../../components/Jumbotron'
+import YapNav from '../../components/NavBar'
+import DogCard from '../../components/Card'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import YapFooter from '../../components/Footer'
