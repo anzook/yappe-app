@@ -6,7 +6,7 @@ import AddExistingDogForm from '../AddExistingDogForm'
 
 function Example() {
     const [breeds] = useState([]);
-    const [toggle, setToggle] = useState('Add a New Dog');
+    const [toggle, setToggle] = useState('Add New Dog');
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -14,12 +14,12 @@ function Example() {
     const handleToggle = (event) => {
         event.preventDefault();
         setToggle(
-            toggle === 'Add a New Dog' ? 'Add Existing Dog' : 'Add a New Dog'
+            toggle === 'Add New Dog' ? 'Add Existing Dog' : 'Add New Dog'
         );
     }
 
     const renderForm = () => {
-        if (toggle === 'Add a New Dog') {
+        if (toggle === 'Add New Dog') {
             return <AddExistingDogForm />
         } else if (toggle === 'Add Existing Dog') {
             return <DogForm breeds={breeds} />
