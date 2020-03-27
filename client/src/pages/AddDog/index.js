@@ -6,7 +6,7 @@ import DogForm from "../../components/DogForm";
 
 class addDog extends Component {
     state = {
-        breeds: [],
+        
     }
 
     render() {
@@ -20,9 +20,7 @@ class addDog extends Component {
                 </Row>
                 <Row>
                     <Col size="md-12">
-                       <DogForm 
-                       breeds={this.state.breeds}
-                       onClick = {this.handleFormSubmit} /> 
+
                     </Col>
                 </Row>
             </Container>

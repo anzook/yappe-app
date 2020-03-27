@@ -46,7 +46,7 @@ export class DogForm extends Component {
             sex: this.state.sex,
             breed: this.state.breed
         }).then(res => {
-            const userId = window.location.search.substring(1);
+            const userId = localStorage.getItem('id');
             const petId = res.data.id;
             API.joinUser(petId, {
                 user: userId,
