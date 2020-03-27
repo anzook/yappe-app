@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Form, Navbar, Button, Nav } from 'react-bootstrap'
-// import './style.css';
+import { Form, Navbar, Button, Nav } from 'react-bootstrap';
+import './style.css'
 
 export class YapNav extends Component {
   render() {
