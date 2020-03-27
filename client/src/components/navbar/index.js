@@ -1,26 +1,61 @@
-import React, { Component } from 'react';
-import {Nav, Navbar} from 'react-bootstrap'
-import './style.css';
+import React from 'react';
+import 'react-bootstrap'
+import {Nav} from 'react-bootstrap'
+import '../navbar/style.css'
 
-export class YapNav extends Component {
-    render() {
+// import React from "react";
+import Sidebar from "react-sidebar";
 
-        return (
-            <div id="nav">
-               <Navbar>
-        <Navbar.Brand href="#home">YAPPE</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Nav.Link href="#home">Add Care</Nav.Link>
-          <Nav.Link href="#features">Add Dog</Nav.Link>
-          <Nav.Link href="#pricing">Activity log</Nav.Link>
-        </Nav>
-      </Navbar>
+const mql = window.matchMedia(`(min-width: 800px)`);
 
-            </div>
-        )
+class Sidenav extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sidebarDocked: mql.matches,
+      sidebarOpen: false
+    };
 
-    }
+    this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
+    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+  }
+
+  componentWillMount() {
+    mql.addListener(this.mediaQueryChanged);
+  }
+
+  componentWillUnmount() {
+    mql.removeListener(this.mediaQueryChanged);
+  }
+
+  onSetSidebarOpen(open) {
+    this.setState({ sidebarOpen: open });
+  }
+
+  mediaQueryChanged() {
+    this.setState({ sidebarDocked: mql.matches, sidebarOpen: false });
+  }
+
+  render() {
+    return (
+      <div className="side">
+      <Sidebar
+        sidebar={<b><Nav >
+        <Nav.Link href="#home">Home</Nav.Link>
+        <Nav.Link href="#features">Features</Nav.Link>
+        <Nav.Link href="#pricing">Pricing</Nav.Link>
+      </Nav></b>}
+        open={this.state.sidebarOpen}
+        docked={this.state.sidebarDocked}
+        onSetOpen={this.onSetSidebarOpen}
+      >
+        <b>
+ 
+        </b>
+      </Sidebar>
+      </div>
+    );
+  }
 }
 
-
-export default YapNav;
+export default Sidenav;

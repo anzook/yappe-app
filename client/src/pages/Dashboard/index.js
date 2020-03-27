@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Jumbotron from '../../components/jumbotron'
-import YapNav from '../../components/navbar'
+// import Jumbotron from '../../components/jumbotron'
+import Sidenav from '../../components/navbar'
 import DogCard from '../../components/card'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import YapFooter from '../../components/Footer'
+import {Container,Col,Row} from 'react-bootstrap'
+// import YapFooter from '../../components/Footer'
 import API from '../../utils/API'
+import '../Dashboard/'
 
 
 
@@ -38,15 +38,17 @@ class Dashboard extends Component {
  
     return (
   <div>
-    <YapNav />
-    <Jumbotron />
+   
+    {/* <Jumbotron /> */}
     <Container>
-      <Row xs={2} md={4}>
-        {cardOne}
-        
-      </Row>
+    <Row>
+    <Col xs={4}> <Sidenav /></Col>
+    <Col xs={4}>{cardOne}</Col>
+    <Col xs={4}>3 of 3</Col>
+  </Row>
+
     </Container>
-    <YapFooter />
+    {/* <YapFooter /> */}
   </div>
 );
   }
