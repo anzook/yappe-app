@@ -4,12 +4,9 @@ import './style.css'
 
 export class YapNav extends Component {
   render() {
-    let className = {
-      nav: 'nav'
-    }
     return (
       <div >
-        <Navbar className={className.nav} bg="light" expand="lg">
+        <Navbar className='nav' expand="lg">
           <Navbar.Brand href="#">yappE</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
