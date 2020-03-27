@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'react-bootstrap'
-import API from '../../utils/API'
+import { Form, Button } from 'react-bootstrap';
+import API from '../../utils/API';
 
 class SignupForm extends Component {
 
@@ -28,16 +28,17 @@ class SignupForm extends Component {
             password: this.state.password
         })
         .then(res => {
-            console.log("This is the user id: " + res.data)
             let userId = res.data
-            window.location.replace('/add-dog?' + userId);
+            localStorage.setItem('id', userId)
+            window.location.replace('/dashboard');
         })
         
     };
 
     render() {
+        let signup = 'signup';
         return (
-            <Form>
+            <Form className={signup}>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
                     <Form.Control

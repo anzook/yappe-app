@@ -13,8 +13,8 @@ export class CareCard extends Component {
                     <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
                     <Card.Body>
                         <ListGroup className="list-group-flush">
-                            <ListGroupItem>Name: </ListGroupItem>
-                            <ListGroupItem>Role:  </ListGroupItem>
+                            <ListGroupItem>Name: {this.props.name}</ListGroupItem>
+                            <ListGroupItem>Role: {this.props.role}  </ListGroupItem>
                         </ListGroup>
                     </Card.Body>
                 </Card>
