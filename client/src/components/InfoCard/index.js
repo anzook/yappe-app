@@ -6,8 +6,9 @@ import Button from 'react-bootstrap/Button';
 class InfoCard extends Component {
     render () {
         return (
+            <div id="infoCard">
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180?text=Image cap" rounded/>
+            <Card.Img variant="top" src="../../../public/images/placeholder-dog.jpg" rounded/>
             <Card.Body>
             <Card.Title>Buffy</Card.Title>
             <ListGroup variant="flush">
@@ -21,9 +22,10 @@ class InfoCard extends Component {
                 <ListGroup.Item>Fed: </ListGroup.Item>
             </ListGroup>
             
-            <Button variant="primary">Go somewhere</Button>
+            <Button variant="primary">Add Activity</Button>
             </Card.Body>
         </Card>
+        </div>
         )
     }
 }
