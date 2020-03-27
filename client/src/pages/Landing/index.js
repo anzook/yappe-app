@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Container from "../../components/Container";
-import Hero from "../../components/Hero"
+import Hero from "../../components/Hero";
 import './style.css'
 import LoginForm from "../../components/LoginForm";
 import SignupForm from "../../components/SignupForm";

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Jumbotron from 'react-bootstrap/Jumbotron'
+// import Jumbotron from 'react-bootstrap/Jumbotron'
 import "./style.css";
 
-export class jumbotron extends Component {
+export class Jumbotron extends Component {
     render() {
         return (
             <div id="main">
