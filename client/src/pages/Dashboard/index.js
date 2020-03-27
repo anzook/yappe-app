@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import YapNav from '../../components/NavBar'
 import DogCard from '../../components/Card'
-import DogForm from '../../components/DogForm'
 import { Container, Row, Col } from 'react-bootstrap';
 import YapFooter from '../../components/Footer'
 import AddDogModal from '../../components/AddDogModal'
