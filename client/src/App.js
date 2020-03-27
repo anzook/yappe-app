@@ -1,11 +1,9 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dashboard from "./pages/Dashboard"
-import Landing from "./pages/Landing"
+import LandingPage from "./pages/Landing"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import AddDog from "./pages/AddDog";
-
-// let userId = 4;
 
 function App() {
     return (
