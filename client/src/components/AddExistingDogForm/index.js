@@ -10,6 +10,7 @@ export class AddExistingDogForm extends Component {
         this.state = {
             petId: null,
             role: null,
+            userId: localStorage.getItem('id')
         };
     }
 
@@ -22,6 +23,11 @@ export class AddExistingDogForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        console.log(this.state);
+        API.joinUser(this.state.petId, {
+            user: this.state.userId,
+            role: this.state.role
+        });
     }
 
     render() {
