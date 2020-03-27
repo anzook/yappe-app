@@ -46,7 +46,7 @@ function AddDogModal() {
                     {renderForm()}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleToggle}>
+                    <Button variant="outline-success" onClick={handleToggle}>
                         {toggle}
                     </Button>
                 </Modal.Footer>
