@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import DogForm from '../DogForm';
-import AddExistingDogForm from '../AddExistingDogForm'
+import AddExistingDogForm from '../AddExistingDogForm';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaw, fas} from '@fortawesome/free-solid-svg-icons'
+import './style.css';
 
 
-function Example() {
+function AddDogModal() {
     const [breeds] = useState([]);
     const [toggle, setToggle] = useState('Add New Dog');
     const [show, setShow] = useState(false);
@@ -28,9 +31,11 @@ function Example() {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                Add Dog
-            </Button>
+            <div className='modal-btn' onClick={handleShow}>
+                <FontAwesomeIcon icon={ fas, faPaw }/>
+                <span className='span'>Add Dog</span>
+            </div>
+            
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -50,4 +55,4 @@ function Example() {
     );
 }
 
-export default Example;
+export default AddDogModal;

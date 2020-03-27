@@ -43,7 +43,7 @@ class Dashboard extends Component {
               <AddDogModal/>
               {/* 1 of 3 */}
             </Col>
-            <Col sx md='auto'>{cardOne}</Col>
+            <Col sx md={6}>{cardOne}</Col>
             <Col sx md={4}>3 of 3</Col>
           </Row>
         </Container>
