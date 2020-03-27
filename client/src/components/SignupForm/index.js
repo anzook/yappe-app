@@ -28,9 +28,9 @@ class SignupForm extends Component {
             password: this.state.password
         })
         .then(res => {
-            console.log("This is the user id: " + res.data)
             let userId = res.data
-            window.location.replace('/add-dog?' + userId);
+            localStorage.setItem('id', userId)
+            window.location.replace('/dashboard');
         })
         
     };
