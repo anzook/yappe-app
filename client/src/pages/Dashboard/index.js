@@ -4,6 +4,7 @@ import DogCard from '../../components/Card'
 import DogForm from '../../components/DogForm'
 import { Container, Row, Col } from 'react-bootstrap';
 import YapFooter from '../../components/Footer'
+import AddDogModal from '../../components/AddDogModal'
 import './style.css'
 import API from '../../utils/API'
 
@@ -12,8 +13,7 @@ import API from '../../utils/API'
 
 class Dashboard extends Component {
   state = {
-    user: {},
-    breeds: []
+    user: {}
   }
   componentDidMount() {
     const userId = localStorage.getItem('id');
@@ -41,10 +41,8 @@ class Dashboard extends Component {
         <Container fluid>
           <Row>
             <Col sx md={2}>
+              <AddDogModal/>
               {/* 1 of 3 */}
-              <DogForm
-                breeds={this.state.breeds}
-                onClick={this.handleFormSubmit} />
             </Col>
             <Col sx md='auto'>{cardOne}</Col>
             <Col sx md={4}>3 of 3</Col>
