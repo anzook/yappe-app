@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-// import { Redirect } from 'react-router-dom' 
-// import { Route, Link } from 'react-router-dom'
-import {Nav, Navbar} from 'react-bootstrap'
-import './style.css';
-import API from '../../utils/API'
+import { Form, Navbar, Nav } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDoorOpen } from '@fortawesome/free-solid-svg-icons'
+// import './style.css'
 
 export class YapNav extends Component {
   constructor() {
@@ -26,39 +25,26 @@ logout(event) {
       console.log('Logout error')
   })
 }
+  handleLogOff = () => {
+    console.log('I was clicked');
+  }
 
   render() {
-    const loggedIn = this.props.loggedIn;
-    // console.log('navbar render, props: ')
-    // console.log(this.props);
-        
     return (
-            <div id="nav">
-               <Navbar>
-        <Navbar.Brand href="#home">YAPPE</Navbar.Brand>
-        <Nav className="mr-auto">
-          { loggedIn ? ( 
-            <section>
-          <Nav.Link href="#care">Add Care</Nav.Link>
-          <Nav.Link href="#add-dog">Add Dog</Nav.Link>
-          <Nav.Link href="#activity">Activity log</Nav.Link> 
-          </section>)
-           : ( 
-            <section>
-          <Nav.Link href="/">Home</Nav.Link>
-
-              </section>
-           ) }
-
-          }
-        </Nav>
-      </Navbar>
-
-            </div>
-        )
-
-    }
+      <div >
+        <Navbar fixed='top' className='nav' expand="lg">
+          <Navbar.Brand href="#">yappE</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto" />
+            <Form inline>
+              <FontAwesomeIcon onClick={this.handleLogOff} className='icon' icon={ faDoorOpen }/>
+            </Form>
+          </Navbar.Collapse>
+        </Navbar>
+      </div>
+    )
+  }
 }
-
 
 export default YapNav;

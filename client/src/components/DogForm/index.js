@@ -46,7 +46,7 @@ export class DogForm extends Component {
             sex: this.state.sex,
             breed: this.state.breed
         }).then(res => {
-            const userId = window.location.search.substring(1);
+            const userId = localStorage.getItem('id');
             const petId = res.data.id;
             API.joinUser(petId, {
                 user: userId,
@@ -74,7 +74,15 @@ export class DogForm extends Component {
                     <Form.Control name='sex' onChange={this.handleInputChange} type="text" placeholder="Sex: Female" />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Control name='role' onChange={this.handleInputChange} type="text" placeholder="Role:" />
+                    <Form.Control name='role' onChange={this.handleInputChange} as="select">
+                        <option>Role...</option>
+                        <option>owner</option>
+                        <option>caretaker</option>
+                        <option>vet</option>
+                        <option>sitter</option>
+                        <option>groomer</option>
+                        <option>walker</option>
+                    </Form.Control>
                 </Form.Group>
                 <Form.Group >
                     <Form.Control name='breed' onChange={this.handleInputChange} as="select">

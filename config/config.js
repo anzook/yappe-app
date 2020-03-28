@@ -1,10 +1,10 @@
 
 const config = {
   'development': {
-    'username': process.env.JAWSDB_URL || "root",
-    'password': process.env.MYSQL_ROOT_PASS,
-    'database': 'yappe_db',
-    'host': '127.0.0.1',
+    'username': process.env.MYSQL_USER,
+    'password': process.env.MYSQL_PASS,
+    'database': process.env.MYSQL_DBNAME,
+    'host': process.env.MYSQL_HOST,
     'dialect': 'mysql',
     'operatorsAliases': false,
   },
@@ -17,12 +17,13 @@ const config = {
     'operatorsAliases': false,
   },
   'production': {
-    'username': 'root',
-    'password': 'root',
-    'database': 'database_production',
-    'host': '127.0.0.1',
+    // 'username': 'root',
+    // 'password': 'root',
+    // 'database': 'database_production',
+    // 'host': '127.0.0.1',
+    "use_env_variable": "JAWSDB_URL",
     'dialect': 'mysql',
-    'operatorsAliases': false,
+    // 'operatorsAliases': false,
   },
 };
 
