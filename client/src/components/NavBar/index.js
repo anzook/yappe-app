@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Navbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDoorOpen } from '@fortawesome/free-solid-svg-icons'
-// import './style.css'
+import './style.css'
 
 export class YapNav extends Component {
 
