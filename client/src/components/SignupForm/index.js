@@ -1,43 +1,71 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import API from '../../utils/API';
+
+import { Form, Button } from 'react-bootstrap'
+import API from '../../utils/API'
 
 class SignupForm extends Component {
-
-    state = {
+    constructor() {
+        super()
+        this.state = {
         name: '',
         email: '',
         password: '',
+        redirectTo: null
     }
+}
 
     handleInputChange = event => {
         this.setState({
-            [event.target.name]: event.target.value,
-            [event.target.email]: event.target.value,
-            [event.target.password]: event.target.value
+            [event.target.name]: event.target.value
         });
-
     };
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log(this.state);
+        // console.log(this.state);
         API.createUser({
             name: this.state.name,
             email: this.state.email,
             password: this.state.password
         })
         .then(res => {
-            let userId = res.data
-            localStorage.setItem('id', userId)
-            window.location.replace('/dashboard');
+            console.log("This is the user id: " + res.data)
+            // let userId = res.data
+            // window.location.replace('/add-dog?' + userId);
+            if (!res.data.errmsg) {
+                console.log('successful signup, logging in... ')
+                API.loginUser({
+                    email: this.state.email,
+                    password: this.state.password
+                })
+                .then(res => {
+                    if (res.status === 200) {
+                        // console.log(res)
+                        console.log('logging in... ')
+
+                        // update App.js state
+                        this.props.updateUser({
+                            loggedIn: true,
+                            email: res.data.email
+                        })
+                    }
+                }).catch(err => {
+                    console.log('Login error: ', err)            
+                })
+            }
+        }).catch(err => {
+            console.log('Signup error: ')
+            console.log(err)
         })
-        
     };
 
     render() {
+        // if (this.state.redirectTo) {
+        //     return <Redirect to={{ pathname: this.state.redirectTo }} />
+        // } else {
         let signup = 'signup';
         return (
+
             <Form className={signup}>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
@@ -46,6 +74,7 @@ class SignupForm extends Component {
                         placeholder="Name"
                         onChange={this.handleInputChange}
                         name='name'
+                        value={this.state.name}
                     />
                 </Form.Group>
                 <Form.Group >
@@ -54,6 +83,7 @@ class SignupForm extends Component {
                         type="email"
                         placeholder="Enter email"
                         onChange={this.handleInputChange}
+                        value={this.state.email}
                         name='email'
                     />
                 </Form.Group>
@@ -77,6 +107,7 @@ class SignupForm extends Component {
             </Form >
         )
 
-    }
+    // }
+}
 }
 export default SignupForm;

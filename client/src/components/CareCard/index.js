@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import Card from 'react-bootstrap/Card'
-import ListGroup from 'react-bootstrap/ListGroup'
-import ListGroupItem from 'react-bootstrap/ListGroup'
-import '../careCard/style.css';
+import React, { Component } from './node_modules/react';
+import Card from './node_modules/react-bootstrap/Card'
+import ListGroup from './node_modules/react-bootstrap/ListGroup'
+import ListGroupItem from './node_modules/react-bootstrap/ListGroup'
+import './style.css';
 
 export class CareCard extends Component {
     render() {
