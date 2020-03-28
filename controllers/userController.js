@@ -4,6 +4,7 @@ const passport = require('../config/passport')
 // Defining methods for the userController
 module.exports = {
     findById: async (req, res) => {
+        console.log("Finding by ID...")
         const userPets = await db.user.findAll({
             where: {
                 id: req.params.id

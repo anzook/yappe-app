@@ -36,8 +36,8 @@ export default {
      // get user info from passport
     // response returns user info as well as all
     // pets under user
-    getUserInfo: function (userData) {
-        return axios.get('/api/user', userData);
+    getUserInfo: function () {
+        return axios.get('/api/user');
     },
     // get pet
     // response returns pet info as well as all caretakers

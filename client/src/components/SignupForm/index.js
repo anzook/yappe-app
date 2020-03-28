@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-// import { Redirect } from 'react-router-dom'
 
 import { Form, Button } from 'react-bootstrap'
 import API from '../../utils/API'
 
 class SignupForm extends Component {
-
-    state = {
+    constructor() {
+        super()
+        this.state = {
         name: '',
         email: '',
         password: '',
-        // redirectTo: "/"
+        redirectTo: null
     }
+}
 
     handleInputChange = event => {
         this.setState({
@@ -32,10 +33,25 @@ class SignupForm extends Component {
             // let userId = res.data
             // window.location.replace('/add-dog?' + userId);
             if (!res.data.errmsg) {
-                console.log('successful signup, redirecting... ')
-                // this.setState({ //redirect to login page
-                //     redirectTo: '/'
-                // })
+                console.log('successful signup, logging in... ')
+                API.loginUser({
+                    email: this.state.email,
+                    password: this.state.password
+                })
+                .then(res => {
+                    if (res.status === 200) {
+                        // console.log(res)
+                        console.log('loging in... ')
+
+                        // update App.js state
+                        this.props.updateUser({
+                            loggedIn: true,
+                            email: res.data.email
+                        })
+                    }
+                }).catch(err => {
+                    console.log('Login error: ', err)            
+                })
             }
         }).catch(err => {
             console.log('Signup error: ')

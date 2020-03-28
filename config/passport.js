@@ -42,27 +42,38 @@ passport.use(new LocalStrategy(
 // Sequelize needs to serialize and deserialize the user
 // Just consider this part boilerplate needed to make it all work
 // called on login, saves the id to session req.session.passport.user = {id:'..'}
-passport.serializeUser((user, done) => {
-	console.log('*** serializeUser called, user: ')
-	console.log(user) // the whole raw user object!
-	console.log('---------')
-	done(null, { _id: user._id })
-})
+// In order to help keep authentication state across HTTP requests,
+// Sequelize needs to serialize and deserialize the user
+// Just consider this part boilerplate needed to make it all work
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
 
-// user object attaches to the request as req.user
-passport.deserializeUser((id, done) => {
-	console.log('DeserializeUser called')
-	db.user.findOne(
-		{ _id: id },
-		'username',
-		(err, user) => {
-			console.log('*** Deserialize user, user:')
-			console.log(user)
-			console.log('--------------')
-			done(null, user)
-		}
-	)
-})
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
+
+// passport.serializeUser((user, done) => {
+// 	console.log('*** serializeUser called, user: ')
+// 	console.log(user) // the whole raw user object!
+// 	console.log('---------')
+// 	done(null, { _id: user._id })
+// })
+
+// // user object attaches to the request as req.user
+// passport.deserializeUser((id, done) => {
+// 	console.log('DeserializeUser called')
+// 	db.user.findOne(
+// 		{ _id: id },
+// 		'username',
+// 		(err, user) => {
+// 			console.log('*** Deserialize user, user:')
+// 			console.log(user)
+// 			console.log('--------------')
+// 			done(null, user)
+// 		}
+// 	)
+// })
 
 // Exporting our configured passport
 module.exports = passport;

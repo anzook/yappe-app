@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Jumbotron from '../../components/Jumbotron'
-import YapNav from '../../components/NavBar'
+import YapNav from '../../components/Navbar'
 import DogCard from '../../components/Card'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -17,15 +17,10 @@ class Dashboard extends Component {
   componentDidMount() {
     // const userId = window.location.search.substring(1);
     // API.getUser(userId)
-    API.logoutUser()
-    .then(res => {
-      this.setState({user: res.data})
-      // console.log(this.state)
-    })
 
   }
   render() {
-    let cardOne = this.state.user[0]?.pets.map((pet) => {
+    // let cardOne = this.state.user[0]?.pets.map((pet) => {
       console.log(pet);
 
       return <div>
@@ -33,7 +28,7 @@ class Dashboard extends Component {
       
       </div>
 
-    })
+    // })
   
                       
  

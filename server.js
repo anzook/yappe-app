@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 
-app.use(session({secret: 'keyboard dog', resave: true,
+app.use(session({secret: 'keyboard dog', proxy: true, resave: true,
   saveUninitialized: true}));
 app.use(passport.initialize());
 app.use(passport.session());

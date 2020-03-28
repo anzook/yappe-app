@@ -1,14 +1,10 @@
 import React, { Component } from "react";
-// import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 import Row from "../../components/Row";
 import Container from "../../components/Container";
-<<<<<<< HEAD
-import Hero from "../../components/hero"
-=======
 import Hero from "../../components/Hero"
 import './style.css'
->>>>>>> origin/test
 import LoginForm from "../../components/LoginForm";
 import SignupForm from "../../components/SignupForm";
 import API from "../../utils/API"
@@ -22,45 +18,42 @@ class LandingPage extends Component {
           name: null,
             display: 'first',
             action: `Don't have an account? Sign up.`,
-            className: {
-                loginDiv: 'loginDiv',
-                signUpDiv: 'signUpDiv'
-            }
-          // redirectTo: "/"
+          redirectTo: '/',
         }
-
         this.getUser = this.getUser.bind(this)
         this.componentDidMount = this.componentDidMount.bind(this)
         this.updateUser = this.updateUser.bind(this)
     }
 
-
     componentDidMount() {
-        this.getUser()
-      }
-    
-      updateUser (userObject) {
-        this.setState(userObject)
-      }
-    
+      this.getUser()
+    }
+  
+    updateUser (userObject) {
+      // this.setState(userObject)
+      this.getUser();
+    }
+
       getUser() {
+        console.log("Calling request for user info... ");
         API.getUserInfo().then(res => {
           // console.log('Get user response: ')
-          // console.log(res.data)
-          if (res.data.user) {
-            // console.log('Get User: There is a user saved in the server session: ')
-    
+          if (res.data.name) {
+            console.log('Get User: There is a user saved in the server session: ')
+            console.log(res)
+
             this.setState({
               loggedIn: true,
-               email: res.data.user.email,
-               name: res.data.user.name
+               email: res.data.email,
+               name: res.data.name,
+               redirectTo: '/dashboard'
             })
           } else {
-            // console.log('Get user: no user found');
+            console.log('Get user: no user found');
             this.setState({
               loggedIn: false,
-              username: null,
-              // redirectTo: '/'
+              email: null,
+              redirectTo: '/'
             })
 
           }
@@ -93,16 +86,18 @@ class LandingPage extends Component {
             return (
                 <div>
                     <h3>Sign Up</h3>
-                    <SignupForm />
+                    <SignupForm 
+                    updateUser={this.updateUser}
+                    />
                 </div>
             )
         }
     }
 
     render() {
-    //   if (this.state.redirectTo) {
-    //     return <Redirect to={{ pathname: this.state.redirectTo }} />
-    // } else {
+      if (this.state.loggedIn) {
+        return <Redirect to={{ pathname: this.state.redirectTo }} />
+    } else {
       let className = {
         formDiv: 'formDiv',
         toggleBtn: 'toggleBtn'
@@ -125,7 +120,7 @@ class LandingPage extends Component {
             </div>
         )
     }
-  // }
+  }
 }
 
 export default LandingPage;
