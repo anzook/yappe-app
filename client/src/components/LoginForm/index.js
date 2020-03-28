@@ -54,7 +54,7 @@ export class LoginForm extends Component {
             <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control 
-                type="login-username" 
+                type="email" 
                 placeholder="Email" 
                 name='email'
                 value={this.state.email}
@@ -66,7 +66,7 @@ export class LoginForm extends Component {
             <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control 
-                type="login_password" 
+                type="password" 
                 placeholder="Password" 
                 name="password"
                 value={this.state.password}
