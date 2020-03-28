@@ -39,7 +39,7 @@ function AddDogModal() {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add Dog</Modal.Title>
+                    {/* <Modal.Title>Add Dog</Modal.Title> */}
                 </Modal.Header>
 
                 <Modal.Body>
