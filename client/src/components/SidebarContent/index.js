@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import AddDogModal from '../AddDogModal'
 import MaterialTitlePanel from "./MaterialTitlePanel";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog, faUserPlus, faClipboardList, faPaw, faHome } from '@fortawesome/free-solid-svg-icons';
- 
+import '../SidebarContent'
  
  
 
@@ -53,7 +54,7 @@ const SidebarContent = props => {
         <p><FontAwesomeIcon  icon={faHome} /> Home </p>
         </a>
         <a href="responsive_example.html" style={styles.sidebarLink}>
-        <p><FontAwesomeIcon  icon={faPaw} /> Add Dog </p>
+        <p><AddDogModal  />  </p>
         </a>
         {/* <div style={styles.divider} /> */}
         <a href="#holder" style={styles.sidebarLink}>
