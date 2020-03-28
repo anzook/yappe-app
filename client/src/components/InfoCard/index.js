@@ -8,7 +8,7 @@ class InfoCard extends Component {
         return (
             <div id="infoCard">
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="../../../images/placeholder-dog.jpg" rounded/>
+            <Card.Img variant="top" src="../../../images/placeholder-dog.jpg" />
             <Card.Body>
             <Card.Title>Buffy</Card.Title>
             <ListGroup variant="flush">

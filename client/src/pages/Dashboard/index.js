@@ -80,7 +80,7 @@ class Dashboard extends Component {
       
     
       // actions={actions} needs to be changed to {this.state.actions} after add activity is created.
-      return <DogCard name={pet.name} actions={actions}  />
+      return <DogCard name={pet.name} actions={actions}  key={pet.id}/>
     
     })
 

@@ -8,7 +8,7 @@ export class NewCard extends Component {
   render() {
     //  const name = this.props.name
     return (
-      <div >
+      
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" src="/images/placeholder-dog.jpg" />
           <Card.Body>
@@ -22,7 +22,7 @@ export class NewCard extends Component {
             </ListGroup>
           </Card.Body>
         </Card>
-      </div>
+      
 
     )
   }

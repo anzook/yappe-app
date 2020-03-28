@@ -42,7 +42,7 @@ class SideNav extends React.Component {
         open={this.state.sidebarOpen}
         docked={this.state.sidebarDocked}
         onSetOpen={this.onSetSidebarOpen}
-      >
+      >test
       </Sidebar>
     );
   }

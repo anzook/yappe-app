@@ -23,7 +23,7 @@ function AddDogModal() {
 
     const renderForm = () => {
         if (toggle === 'Add New Dog') {
-            return <AddExistingDogForm />
+            return <AddExistingDogForm close={handleClose}/>
         } else if (toggle === 'Add Existing Dog') {
             return <DogForm breeds={breeds} />
         }
