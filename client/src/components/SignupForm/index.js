@@ -41,7 +41,7 @@ class SignupForm extends Component {
                 .then(res => {
                     if (res.status === 200) {
                         // console.log(res)
-                        console.log('loging in... ')
+                        console.log('logging in... ')
 
                         // update App.js state
                         this.props.updateUser({

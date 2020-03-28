@@ -5,7 +5,7 @@ const passport = require('../config/passport')
 module.exports = {
     findById: async (req, res) => {
         console.log("Finding by ID...")
-        const userPets = await db.user.findAll({
+        const userPets = await db.user.findOne({
             where: {
                 id: req.params.id
             },

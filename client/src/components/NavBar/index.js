@@ -2,31 +2,28 @@ import React, { Component } from 'react';
 import { Form, Navbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDoorOpen } from '@fortawesome/free-solid-svg-icons'
-// import './style.css'
+import './style.css'
+import API from '../../utils/API'
+
 
 export class YapNav extends Component {
-  constructor() {
-    super()
-    this.logout = this.logout.bind(this)
-}
-  
-logout(event) {
-  event.preventDefault()
-  console.log('logging out... ')
-  API.post('/logout').then(response => {
-    console.log(response.data)
-    if (response.status === 200) {
-      this.props.updateUser({
-        loggedIn: false,
-        username: null
-      })
+    constructor() {
+        super()
+        this.handleLogOff = this.handleLogOff.bind(this)
     }
-  }).catch(error => {
-      console.log('Logout error')
-  })
-}
-  handleLogOff = () => {
-    console.log('I was clicked');
+
+  handleLogOff = (event) => {
+    event.preventDefault()
+      API.logoutUser().then(res => {
+        console.log('Logging out.. ')
+        if (res.status === 200) {
+            this.props.updateUser({
+                loggedIn: false
+          })
+        } 
+      }).catch(error => {
+        console.log('Error logging out')
+    })
   }
 
   render() {

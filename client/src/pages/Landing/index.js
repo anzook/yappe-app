@@ -30,7 +30,7 @@ class LandingPage extends Component {
       this.getUser()
     }
   
-    updateUser (userObject) {
+    updateUser () {
       // this.setState(userObject)
       this.getUser();
     }

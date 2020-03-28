@@ -37,10 +37,7 @@ export class LoginForm extends Component {
                     loggedIn: true,
                     username: res.data.email
                 })
-                // update the state to redirect to user home
-                this.setState({
-                    redirectTo: '/dashboard'
-                })
+              
             }
         }).catch(err => {
             console.log('Login error: ', err)            
