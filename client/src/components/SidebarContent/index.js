@@ -53,8 +53,8 @@ const SidebarContent = props => {
         <a href="index.html" style={styles.sidebarLink}>
         <p><FontAwesomeIcon  icon={faHome} /> Home </p>
         </a>
-        <a href="responsive_example.html" style={styles.sidebarLink}>
-        <p><AddDogModal  />  </p>
+        <a  style={styles.sidebarLink}>
+        <AddDogModal  />  
         </a>
         {/* <div style={styles.divider} /> */}
         <a href="#holder" style={styles.sidebarLink}>
