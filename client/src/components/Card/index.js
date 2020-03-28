@@ -10,12 +10,15 @@ export class NewCard extends Component {
     return (
       <div >
         <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+          <Card.Img variant="top" src="/images/placeholder-dog.jpg" />
           <Card.Body>
             <ListGroup className="list-group-flush">
               <ListGroupItem>Name: {this.props.name} </ListGroupItem>
-              <ListGroupItem>Breed: {this.props.breed} </ListGroupItem>
-              <ListGroupItem>Age: {this.props.age} </ListGroupItem>
+              {this.props.actions.map((action) => {return (
+              <ListGroupItem placeholder="No Activity Logged Yet!">
+                Last Activity
+                {JSON.stringify(this.props.actions)}
+              </ListGroupItem>)})}
             </ListGroup>
           </Card.Body>
         </Card>

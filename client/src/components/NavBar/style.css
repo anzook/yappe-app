@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Marck+Script&display=swap');
+
+body {
+    background-color: #ececf0;
+}
+
+.nav {
+    background-color: #c1f551;
+}
+
+.navbar-brand{
+    font-family: 'Marck Script', cursive;
+    font-size: 25px;
+}
+
+.icon {
+    font-size: 25px;
+    color: #484848;
+}
+
+.icon:hover {
+    cursor: pointer;
+}

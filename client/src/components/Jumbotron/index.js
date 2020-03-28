@@ -2,7 +2,7 @@ import React, { Component } from './node_modules/react'
 import Jumbotron from './node_modules/react-bootstrap/Jumbotron'
 import "./style.css";
 
-export class jumbotron extends Component {
+export class Jumbotron extends Component {
     render() {
         return (
             <div id="main">
