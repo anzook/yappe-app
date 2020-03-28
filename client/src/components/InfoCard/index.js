@@ -8,13 +8,13 @@ class InfoCard extends Component {
         return (
             <div id="infoCard">
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="../../../public/images/placeholder-dog.jpg" rounded/>
+            <Card.Img variant="top" src="../../../images/placeholder-dog.jpg" rounded/>
             <Card.Body>
             <Card.Title>Buffy</Card.Title>
             <ListGroup variant="flush">
                 <ListGroup.Item>Age: {this.props.age} Sex: {this.props.sex}</ListGroup.Item>
                 <ListGroup.Item>Breed: {this.props.breed} </ListGroup.Item>
-                <ListGroup.Item>Dog Tage: {this.props.id} </ListGroup.Item>
+                <ListGroup.Item>Dog Tag: {this.props.id} </ListGroup.Item>
             </ListGroup>
             <Card.Title>Most Recent Activity</Card.Title>
             <ListGroup variant="flush">
