@@ -22,7 +22,7 @@ class SignupForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        // console.log(this.state);
+        console.log("I was hit!");
         API.createUser({
             name: this.state.name,
             email: this.state.email,

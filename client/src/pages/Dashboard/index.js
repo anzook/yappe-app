@@ -5,6 +5,7 @@ import SideNav from "../../components/SideNav";
 import DogCard from "../../components/Card";
 import { Container, Row, Col } from "react-bootstrap";
 import YapFooter from "../../components/Footer";
+import InfoCard from "../../components/InfoCard";
 // import AddDogModal from '../../components/AddDogModal'
 import "./style.css";
 import API from "../../utils/API";
@@ -31,13 +32,7 @@ class Dashboard extends Component {
     this.getUser();
   }
 
-    let actions = [{ type: "peed", detail:"filler" }]
-      
     
-      // actions={actions} needs to be changed to {this.state.actions} after add activity is created.
-      return <DogCard name={pet.name} actions={actions}  />
-    
-    })
     // let infoCard = this.state.user[0]?.actions.map((pet) => {
     //   console.log(actions);
 
@@ -81,11 +76,18 @@ class Dashboard extends Component {
   render() {
     let cardOne = this.state.user?.pets?.map(pet => {
       console.log(pet);
+      let actions = [{ type: "peed", detail:"filler" }]
+      
+    
+      // actions={actions} needs to be changed to {this.state.actions} after add activity is created.
+      return <DogCard name={pet.name} actions={actions}  />
+    
+    })
 
-      return (
-        <DogCard name={pet.name} breed={pet.breed} age={pet.age} key={pet.id} />
-      );
-    });
+      // return (
+      //   <DogCard name={pet.name} breed={pet.breed} age={pet.age} key={pet.id} />
+      // );
+    // });
     if (!this.state.loggedIn) {
       return <Redirect to={{ pathname: this.state.redirectTo }} />
   } else {
