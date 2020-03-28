@@ -81,15 +81,11 @@ class Dashboard extends Component {
         <Container fluid>
           <Row>
             <Col xs md={2}>
-              <SideNav />
+              <SideNav/>
               {/* 1 of 3 */}
             </Col>
-            <Col xs md={6}>
-              {cardOne}
-            </Col>
-            <Col xs md={4}>
-              3 of 3
-            </Col>
+            <Col xs md={6}>{cardOne}</Col>
+            <Col xs md={4}>3 of 3</Col>
           </Row>
         </Container>
         <YapFooter />
