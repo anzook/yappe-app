@@ -7,7 +7,7 @@ import YapFooter from '../../components/Footer'
 // import AddDogModal from '../../components/AddDogModal'
 import './style.css'
 import API from '../../utils/API'
-import '../Dashboard/'
+// import '../Dashboard/'
 
 
 
