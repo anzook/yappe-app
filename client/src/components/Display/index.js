@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import InfoCard from "../../components/InfoCard";
+import DogInfo from '../DogInfo';
 import './style.css';
 
 export default class Display extends Component{
@@ -10,6 +10,6 @@ export default class Display extends Component{
       }
 
       render() {
-          return <InfoCard />
+          return <DogInfo />
       }
 }
