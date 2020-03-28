@@ -6,10 +6,8 @@ import DogCard from "../../components/Card";
 import { Container, Row, Col } from "react-bootstrap";
 import YapFooter from "../../components/Footer";
 import InfoCard from "../../components/InfoCard";
-// import AddDogModal from '../../components/AddDogModal'
 import "./style.css";
 import API from "../../utils/API";
-// import '../Dashboard/'
 
 class Dashboard extends Component {
   constructor() {
@@ -102,6 +100,7 @@ class Dashboard extends Component {
             </Col>
             <Col xs md={6}>{cardOne}</Col>
             <Col xs md={4}><InfoCard /></Col>
+            {/* <Col xs md={4}><InfoCard /></Col> */}
             
           </Row>
         </Container>
