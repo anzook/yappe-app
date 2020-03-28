@@ -23,15 +23,27 @@ class Dashboard extends Component {
         console.log(this.state)
       })
 
+   const petId = localStorage.getItem('id');
+    API.getPetActions(petId)
+     .then(res => {
+      this.setState({ user: res.data })
+      console.log(this.state)
+      })
+
   }
   render() {
     let cardOne = this.state.user[0]?.pets.map((pet) => {
       console.log(pet);
 
       return <DogCard name={pet.name} breed={pet.breed} age={pet.age} key={pet.id} />
-
-
+    
     })
+    let infoCard = this.state.user[0]?.actions.map((pet) => {
+      console.log(actions);
+
+      return <InfoCard 
+    })   
+    
 
 
 

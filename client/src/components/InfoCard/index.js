@@ -14,6 +14,7 @@ class InfoCard extends Component {
             <ListGroup variant="flush">
                 <ListGroup.Item>Age: {this.props.age} Sex: {this.props.sex}</ListGroup.Item>
                 <ListGroup.Item>Breed: {this.props.breed} </ListGroup.Item>
+                <ListGroup.Item>Dog Tage: {this.props.id} </ListGroup.Item>
             </ListGroup>
             <Card.Title>Most Recent Activity</Card.Title>
             <ListGroup variant="flush">
