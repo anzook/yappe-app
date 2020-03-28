@@ -1,3 +1,8 @@
 .container-fluid{
     margin-top: 90px;
+    height: 80vh;
+}
+
+.row {
+    height: inherit;
 }

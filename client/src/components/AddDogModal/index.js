@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import DogForm from '../DogForm';
 import AddExistingDogForm from '../AddExistingDogForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaw, fas} from '@fortawesome/free-solid-svg-icons'
+import { faPaw } from '@fortawesome/free-solid-svg-icons'
 import './style.css';
 
 
@@ -32,7 +32,7 @@ function AddDogModal() {
     return (
         <>
             <div className='modal-btn' onClick={handleShow}>
-                <FontAwesomeIcon icon={ fas, faPaw }/>
+                <FontAwesomeIcon icon={ faPaw }/>
                 <span className='span'>Add Dog</span>
             </div>
             

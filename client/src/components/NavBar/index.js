@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Navbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDoorOpen, fas} from '@fortawesome/free-solid-svg-icons'
+import { faDoorOpen } from '@fortawesome/free-solid-svg-icons'
 import './style.css'
 
 export class YapNav extends Component {
@@ -19,7 +19,7 @@ export class YapNav extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto" />
             <Form inline>
-              <FontAwesomeIcon onClick={this.handleLogOff} className='icon' icon={ fas, faDoorOpen }/>
+              <FontAwesomeIcon onClick={this.handleLogOff} className='icon' icon={ faDoorOpen }/>
             </Form>
           </Navbar.Collapse>
         </Navbar>
