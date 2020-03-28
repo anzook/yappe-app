@@ -5,7 +5,7 @@ import SideNav from "../../components/SideNav";
 import DogCard from "../../components/Card";
 import { Container, Row, Col } from "react-bootstrap";
 import YapFooter from "../../components/Footer";
-import InfoCard from "../../components/InfoCard";
+import Display from '../../components/Display'
 import "./style.css";
 import API from "../../utils/API";
 
@@ -99,7 +99,7 @@ class Dashboard extends Component {
               {/* 1 of 3 */}
             </Col>
             <Col xs md={6}>{cardOne}</Col>
-            <Col xs md={4}><InfoCard /></Col>
+            <Col xs md={4}><Display /></Col>
             {/* <Col xs md={4}><InfoCard /></Col> */}
             
           </Row>
