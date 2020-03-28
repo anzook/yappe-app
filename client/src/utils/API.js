@@ -7,6 +7,16 @@ export default {
     createUser: function (userData) {
         return axios.post('/api/user', userData);
     },
+   // logs in user
+    // response returns session
+    loginUser: function (userData) {
+        return axios.post('/login', userData);
+    },
+    // logs out user
+    // redirects to landing
+    logoutUser: function () {
+        return axios.get('/logout');
+    },
     // create pet
     // response returns all created pet info
     createPet: function (petData) {
@@ -22,6 +32,12 @@ export default {
     // pets under user
     getUser: function (userId) {
         return axios.get('/api/user/' + userId);
+    },
+     // get user info from passport
+    // response returns user info as well as all
+    // pets under user
+    getUserInfo: function () {
+        return axios.get('/api/user');
     },
     // get pet
     // response returns pet info as well as all caretakers
