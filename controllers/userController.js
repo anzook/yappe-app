@@ -1,5 +1,5 @@
 const db = require('../models');
-const passport = require('../config/passport')
+// const passport = require('../config/passport')
 
 // Defining methods for the userController
 module.exports = {
@@ -39,7 +39,7 @@ module.exports = {
         res.json(user.id);
     },
 
-    update: ({ params, body }, res) => {
+    update: ( { params, body }, res) => {
         db.user.update(
             {
                 name: body.name,
