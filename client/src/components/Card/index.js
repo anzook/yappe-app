@@ -5,11 +5,12 @@ import ListGroupItem from 'react-bootstrap/ListGroup'
 import './style.css';
 
 export class NewCard extends Component {
+  
   render() {
     //  const name = this.props.name
     return (
       
-        <Card style={{ width: '18rem' }}>
+        <Card onClick={this.props.onClick} style={{ width: '18rem' }}>
           <Card.Img variant="top" src="/images/placeholder-dog.jpg" />
           <Card.Body>
             <ListGroup className="list-group-flush">

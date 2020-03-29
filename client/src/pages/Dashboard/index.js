@@ -18,6 +18,7 @@ class Dashboard extends Component {
       name: null,
       id: null,
       redirectTo: '/dashboard',
+      display: 'activities',
       user: {}
     };
     this.getUser = this.getUser.bind(this);
@@ -25,18 +26,11 @@ class Dashboard extends Component {
     this.updateUser = this.updateUser.bind(this)
   }
 
-  updateUser () {
-    // this.setState(userObject)
+  updateUser() {
     this.getUser();
   }
 
-    
-    // let infoCard = this.state.user[0]?.actions.map((pet) => {
-    //   console.log(actions);
 
-    //   return <InfoCard 
-    // })   
-    
 
   getUser = () => {
     console.log("Calling request for user info... ");
@@ -45,12 +39,12 @@ class Dashboard extends Component {
       if (sessionRes.data.name) {
         console.log("user id: ", sessionRes.data.id);
         API.getUser(sessionRes.data.id).then(res => {
-          this.setState({ 
-            user: res.data, 
+          this.setState({
+            user: res.data,
             loggedIn: true,
-          email: sessionRes.data.email,
-          name: sessionRes.data.name,
-          id: sessionRes.data.id
+            email: sessionRes.data.email,
+            name: sessionRes.data.name,
+            id: sessionRes.data.id
           });
         });
 
@@ -68,47 +62,59 @@ class Dashboard extends Component {
 
   componentDidMount() {
     this.getUser();
-    
+
+
   }
+
+  changeDisplay = () => {
+    let { display } = this.state;
+    console.log('I was hit')
+    this.setState({
+      display: display === 'activities' ? 'dog-info' : 'dog-info'
+  });
+
+}
+
+renderDisplay() {
+    let { display } = this.state;
+
+    if (display === 'activities') {
+        return <h1>Activities!!!</h1>
+    } else if (display === 'dog-info') {
+        return <Display />
+    }
+}
 
   render() {
     let cardOne = this.state.user?.pets?.map(pet => {
-      console.log(pet);
-      let actions = [{ type: "peed", detail:"filler" }]
-      
-    
-      // actions={actions} needs to be changed to {this.state.actions} after add activity is created.
-      return <DogCard name={pet.name} actions={actions}  key={pet.id}/>
-    
+      let actions = [{ type: "peed", detail: "filler" }]
+      return <DogCard onClick={this.changeDisplay} name={pet.name} actions={actions} key={pet.id} />
+
     })
 
-      // return (
-      //   <DogCard name={pet.name} breed={pet.breed} age={pet.age} key={pet.id} />
-      // );
-    // });
     if (!this.state.loggedIn) {
       return <Redirect to={{ pathname: this.state.redirectTo }} />
-  } else {
-    return (
-      <div>
-        <YapNav updateUser={this.updateUser} loggedIn={this.state.loggedIn}/>
-        <Container fluid>
-          <Row>
-            <Col xs md={2}>
-              <SideNav/>
-              {/* 1 of 3 */}
-            </Col>
-            <Col xs md={6}>{cardOne}</Col>
-            <Col xs md={4}><Display /></Col>
-            {/* <Col xs md={4}><InfoCard /></Col> */}
-            
-          </Row>
-        </Container>
-        <YapFooter />
-      </div>
-    );
+    } else {
+      return (
+        <div>
+          <YapNav updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+          <Container fluid>
+            <Row>
+              <Col xs md={2}>
+                <SideNav />
+                {/* 1 of 3 */}
+              </Col>
+              <Col xs md={6}>{cardOne}</Col>
+              <Col xs md={4}>{this.renderDisplay()}</Col>
+              {/* <Col xs md={4}><InfoCard /></Col> */}
+
+            </Row>
+          </Container>
+          <YapFooter />
+        </div>
+      );
+    }
   }
-}
 }
 
 export default Dashboard;

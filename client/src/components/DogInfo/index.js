@@ -5,14 +5,16 @@ import './style.css';
 export default class DogInfo extends Component {
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             display: 'info',
+            petName: props.petName,
+            petId: props.petId
         };
     }
     changeDisplay = () => {
         let { display } = this.state;
         this.setState({
-            display: display === 'info' ? 'activites' : 'info'            
+            display: display === 'info' ? 'activites' : 'info'
         });
     }
 
@@ -22,7 +24,7 @@ export default class DogInfo extends Component {
         if (display === 'info') {
             return (
                 <div>
-                    <h3>DOG's NAME</h3>
+                    <h1>Name: {this.state.petName}</h1>
                     <div className='option-div'>
                         <span onClick={this.changeDisplay}>Add Activity</span>
                         <span>See All Activites</span>
@@ -32,7 +34,7 @@ export default class DogInfo extends Component {
         } else if (display === 'activites') {
             return (
                 <div>
-                    <h3>DOG's NAME</h3>
+                    <h1>Name: {this.state.petName}</h1>
                     <div className='option-div'>
                         <span onClick={this.changeDisplay}>Cancel</span>
                     </div>
