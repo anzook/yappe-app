@@ -5,7 +5,7 @@ import SideNav from "../../components/SideNav";
 import DogCard from "../../components/Card";
 import { Container, Row, Col } from "react-bootstrap";
 import YapFooter from "../../components/Footer";
-import Display from '../../components/Display'
+import DogInfo from '../../components/DogInfo'
 import "./style.css";
 import API from "../../utils/API";
 
@@ -81,7 +81,7 @@ renderDisplay() {
     if (display === 'activities') {
         return <h1>Activities!!!</h1>
     } else if (display === 'dog-info') {
-        return <Display />
+        return <DogInfo />
     }
 }
 
