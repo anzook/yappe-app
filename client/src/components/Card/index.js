@@ -4,7 +4,7 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroup'
 import './style.css';
 
-export class NewCard extends Component {
+export class DogCard extends Component {
 
   constructor(props) {
     super(props);
@@ -36,7 +36,7 @@ export class NewCard extends Component {
   }
 }
 
-export default NewCard;
+export default DogCard;
 
 
 
