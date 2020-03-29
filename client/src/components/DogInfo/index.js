@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
 import DogInformation from '../DogInformation';
+import ActivitiesForm from "../ActivitiesForm";
 import './style.css';
 
 export default class DogInfo extends Component {
@@ -37,6 +38,7 @@ export default class DogInfo extends Component {
             return (
                 <div>
                     <h1>Name: {this.state.petName}</h1>
+                    <ActivitiesForm />
                     <div className='option-div'>
                         <span onClick={this.changeDisplay}>Cancel</span>
                     </div>
