@@ -37,7 +37,7 @@ module.exports = {
 
     // function that gets all of the pet's info including all of their users
     findById: async ({ params }, res) => {
-        const petUsers = await db.pet.findAll({
+        const petUsers = await db.pet.findOne({
             where: {
                 id: params.id
             },
@@ -56,7 +56,7 @@ module.exports = {
             .catch(err => {
                 console.log(err)
             })
-        res.json(petUsers)
+        res.json(petUsers);
     },
     // route to update pet
     update: ({ params, body }, res) => {

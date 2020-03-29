@@ -9,10 +9,10 @@ export default class DogInfo extends Component {
         super(props);
         this.state = {
             display: 'info',
-            petName: props.petName,
-            petId: props.petId
+            userLoggedActivities:{}
         };
     }
+    
     changeDisplay = () => {
         let { display } = this.state;
         this.setState({
@@ -26,8 +26,8 @@ export default class DogInfo extends Component {
         if (display === 'info') {
             return (
                 <div>
-                    <h1>Name: {this.state.petName}</h1>
-                    <DogInformation />
+                    <h1>Name: {this.props.pet.name}</h1>
+                    <DogInformation id={this.props.pet.id}/>
                     <div className='option-div'>
                         <span onClick={this.changeDisplay}>Add Activity</span>
                         <span>See All Activites</span>
@@ -37,8 +37,8 @@ export default class DogInfo extends Component {
         } else if (display === 'activites') {
             return (
                 <div>
-                    <h1>Name: {this.state.petName}</h1>
-                    <ActivitiesForm />
+                    <h1>Name: {this.props.pet.name}</h1>
+                    <ActivitiesForm change={this.changeDisplay} user={this.props.user} pet={this.props.pet.id}/>
                     <div className='option-div'>
                         <span onClick={this.changeDisplay}>Cancel</span>
                     </div>
@@ -50,7 +50,7 @@ export default class DogInfo extends Component {
     render() {
         return (
             <Container>
-                <img src='' />
+                <img src='/images/placeholder-dog.jpg' />
                 <div>{this.renderWindow()}</div>
             </Container>
         )

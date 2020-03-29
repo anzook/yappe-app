@@ -19,7 +19,8 @@ class Dashboard extends Component {
       id: null,
       redirectTo: '/dashboard',
       display: 'activities',
-      user: {}
+      petSelect: null,
+      user: null
     };
     this.getUser = this.getUser.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -33,11 +34,8 @@ class Dashboard extends Component {
 
 
   getUser = () => {
-    console.log("Calling request for user info... ");
     API.getUserInfo().then(sessionRes => {
-      // console.log('Get user response: ')
       if (sessionRes.data.name) {
-        console.log("user id: ", sessionRes.data.id);
         API.getUser(sessionRes.data.id).then(res => {
           this.setState({
             user: res.data,
@@ -49,7 +47,6 @@ class Dashboard extends Component {
         });
 
       } else {
-        console.log("Get user: no user found");
         this.setState({
           loggedIn: false,
           email: null,
@@ -66,29 +63,34 @@ class Dashboard extends Component {
 
   }
 
-  changeDisplay = () => {
-    let { display } = this.state;
-    console.log('I was hit')
-    this.setState({
-      display: display === 'activities' ? 'dog-info' : 'dog-info'
-  });
-
-}
-
-renderDisplay() {
-    let { display } = this.state;
-
-    if (display === 'activities') {
-        return <h1>Activities!!!</h1>
-    } else if (display === 'dog-info') {
-        return <DogInfo />
+  changeDisplay = (petInfo) => {    let { display } = this.state;
+    if (display === 'activities'){
+      this.setState({
+        display: 'dog-info',
+        // display === 'activities' ? 'dog-info' : 'dog-info',
+        petSelect: petInfo
+      });
+    } else {
+      this.setState({
+        petSelect: petInfo
+      });
     }
-}
+  }
+
+  renderDisplay() {
+    let { display } = this.state;
+    if (display === 'activities') {
+      return <h1>Activities!!!</h1>
+    } else if (display === 'dog-info') {
+      return <DogInfo user={this.state.id} pet={this.state.petSelect}/>
+    }
+  }
 
   render() {
     let cardOne = this.state.user?.pets?.map(pet => {
       let actions = [{ type: "peed", detail: "filler" }]
-      return <DogCard onClick={this.changeDisplay} name={pet.name} actions={actions} key={pet.id} />
+      let Infopet = { id: pet.id, name: pet.name };
+      return <DogCard onClick={() => {this.changeDisplay(Infopet)}} name={pet.name} actions={actions} id={pet.id} key={pet.id} />
 
     })
 
