@@ -4,7 +4,7 @@ import YapNav from "../../components/Navbar";
 import SideNav from "../../components/SideNav";
 import DogCard from "../../components/Card";
 import { Container, Row, Col } from "react-bootstrap";
-import YapFooter from "../../components/Footer";
+// import YapFooter from "../../components/Footer";
 import DogInfo from '../../components/DogInfo'
 import "./style.css";
 import API from "../../utils/API";
@@ -112,7 +112,7 @@ class Dashboard extends Component {
 
             </Row>
           </Container>
-          <YapFooter />
+          {/* <YapFooter /> */}
         </div>
       );
     }

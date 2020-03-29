@@ -1,7 +1,7 @@
-.card {
+.dog-card {
     border-style: solid;
 }
 
-.card:hover{
+.dog-card:hover{
     cursor: pointer;
 }

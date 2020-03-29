@@ -1,5 +1,27 @@
-.option-div{
+.option-div {
     display: grid;
-    float: right;
+    text-align: right;
     margin-right: 20px;
+
+}
+
+.dog-display-image {
+    width: inherit;
+    height: 250px;
+}
+
+.age-sex-ul {
+    display: flex;
+    list-style: none;
+    margin-right: 20px;
+    padding: 0;
+}
+
+.age-sex-ul li{
+    margin-right: 20px;
+}
+
+.activity-ul {
+    list-style: none;
+    padding: 0;
 }

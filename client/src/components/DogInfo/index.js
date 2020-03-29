@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container';
+import { Container, ListGroup, Card } from 'react-bootstrap';
 import DogInformation from '../DogInformation';
 import ActivitiesForm from "../ActivitiesForm";
 import './style.css';
@@ -9,10 +9,10 @@ export default class DogInfo extends Component {
         super(props);
         this.state = {
             display: 'info',
-            userLoggedActivities:{}
+            userLoggedActivities: {}
         };
     }
-    
+
     changeDisplay = () => {
         let { display } = this.state;
         this.setState({
@@ -25,24 +25,38 @@ export default class DogInfo extends Component {
 
         if (display === 'info') {
             return (
-                <div>
-                    <h1>Name: {this.props.pet.name}</h1>
-                    <DogInformation id={this.props.pet.id}/>
-                    <div className='option-div'>
+                <Card >
+                    <ListGroup variant="flush">
+                        <ListGroup.Item><h2>{this.props.pet.name}</h2></ListGroup.Item>
+                        <img className='dog-display-image' src='/images/placeholder-dog.jpg' />
+                        {/* <ListGroup.Item></ListGroup.Item> */}
+                    </ListGroup>
+                    <DogInformation id={this.props.pet.id} />
+                    <Card.Body className='option-div' variant="flush">
                         <span onClick={this.changeDisplay}>Add Activity</span>
                         <span>See All Activites</span>
-                    </div>
-                </div>
+                    </Card.Body>
+                </Card>
             )
         } else if (display === 'activites') {
             return (
-                <div>
-                    <h1>Name: {this.props.pet.name}</h1>
-                    <ActivitiesForm change={this.changeDisplay} user={this.props.user} pet={this.props.pet.id}/>
+                <Card >
+                    <ListGroup variant="flush">
+                        <ListGroup.Item><h2>{this.props.pet.name}</h2></ListGroup.Item>
+                        <img className='dog-display-image' src='/images/placeholder-dog.jpg' />
+                    </ListGroup>
+                    <Card.Body>
+                        <Card.Title>Add Activity</Card.Title>
+                        <ListGroup variant="flush">
+                            <ListGroup.Item>
+                                <ActivitiesForm change={this.changeDisplay} user={this.props.user} pet={this.props.pet.id} />
+                            </ListGroup.Item>
+                        </ListGroup>
+                    </Card.Body>
                     <div className='option-div'>
                         <span onClick={this.changeDisplay}>Cancel</span>
                     </div>
-                </div>
+                </Card>
             )
         }
     }
@@ -50,7 +64,6 @@ export default class DogInfo extends Component {
     render() {
         return (
             <Container>
-                <img src='/images/placeholder-dog.jpg' />
                 <div>{this.renderWindow()}</div>
             </Container>
         )
