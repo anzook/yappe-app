@@ -54,6 +54,9 @@ module.exports = {
             where: {
                 petId: params.id
             },
+            order: [[
+                'updatedAt', 'DESC'
+            ]],
             // include user info through association
             include: [{
                 model: db.user,
