@@ -15,7 +15,6 @@ export default class DogInformation extends Component {
     componentDidMount() {
         API.getPet(this.props.id)
             .then(res => {
-                console.log(res)
                 API.getPetActions(this.props.id)
                     .then(activities => {
                         this.setState({
@@ -24,12 +23,46 @@ export default class DogInformation extends Component {
                         })
                     })
             })
-        console.log(this.state)
     }
 
+    latestActivities = () => {
+        let activities = this.state.petActivities;
+        console.log(activities)
+        const actArray=[];
+
+        if (activities.length < 3) {
+            for (let i = activities.length-1; i < 0; i--) {
+                actArray.push(
+                    <ListGroup variant="flush">
+                        <ListGroup.Item className='no-padding'>
+                            <ul className='activity-ul'>
+                                <li><h6>Activity: {activities[i].type}</h6></li>
+                                <li><h6>Date: {activities[i].createdAt}</h6></li>
+                            </ul>
+                        </ListGroup.Item>
+                    </ListGroup>
+                )
+            }
+
+        } else {
+            for (let i = activities.length-1; i <= activities.length-4; i--) {
+                actArray.push(
+                    <ListGroup variant="flush">
+                        <ListGroup.Item className='no-padding'>
+                            <ul className='activity-ul'>
+                                <li><h6>Activity: {activities[i].type}</h6></li>
+                                <li><h6>Date: {activities[i].createdAt}</h6></li>
+                            </ul>
+                        </ListGroup.Item>
+                    </ListGroup>
+                )
+            }
+        }
+        console.log(actArray)
+        return actArray;
+    }
 
     render() {
-        console.log(this.props)
         return (
             <div>
                 <ListGroup variant='flush'>
@@ -42,14 +75,7 @@ export default class DogInformation extends Component {
                     </ListGroup.Item>
                     <ListGroup.Item>
                         <h4>Most Recent Activities</h4>
-                        <ListGroup variant="flush">
-                            <ListGroup.Item className='no-padding'>
-                                <ul className='activity-ul'>
-                                    <li><h6>Activity: </h6></li>
-                                    <li><h6>Date: </h6></li>
-                                </ul>
-                            </ListGroup.Item>
-                        </ListGroup>
+                        {this.latestActivities()}
                     </ListGroup.Item>
                 </ListGroup>
                 {/* {this.handleRender()} */}
