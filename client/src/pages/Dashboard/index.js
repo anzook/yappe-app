@@ -63,14 +63,15 @@ class Dashboard extends Component {
 
   }
 
-  changeDisplay = (petInfo) => {    let { display } = this.state;
-    if (display === 'activities'){
+  changeDisplay = (petInfo) => {
+    let { display } = this.state;
+    if (display === 'activities') {
       this.setState({
         display: 'dog-info',
-        // display === 'activities' ? 'dog-info' : 'dog-info',
         petSelect: petInfo
       });
-    } else {
+    }
+    if (display === 'dog-info') {
       this.setState({
         petSelect: petInfo
       });
@@ -79,18 +80,32 @@ class Dashboard extends Component {
 
   renderDisplay() {
     let { display } = this.state;
+    console.log(this.state.petSelect)
     if (display === 'activities') {
       return <h1>Activities!!!</h1>
     } else if (display === 'dog-info') {
-      return <DogInfo user={this.state.id} pet={this.state.petSelect}/>
+      return <DogInfo
+        user={this.state.id}
+        pet={this.state.petSelect}
+        name={this.state.petSelect.name}
+        age={this.state.petSelect.age}
+
+      />
     }
   }
 
   render() {
     let cardOne = this.state.user?.pets?.map(pet => {
       let actions = [{ type: "peed", detail: "filler" }]
-      let Infopet = { id: pet.id, name: pet.name };
-      return <DogCard onClick={() => {this.changeDisplay(Infopet)}} name={pet.name} actions={actions} id={pet.id} key={pet.id} />
+      let Infopet = { id: pet.id, name: pet.name, age: pet.age, sex: pet.sex, breed: pet.breed };
+      return <DogCard onClick={() => {
+        this.changeDisplay(Infopet)
+      }}
+        name={pet.name}
+        actions={actions}
+        id={pet.id}
+        key={pet.id}
+      />
 
     })
 

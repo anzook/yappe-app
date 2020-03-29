@@ -12,34 +12,33 @@ export default class DogInformation extends Component {
         }
     }
 
-    handleRender() {
+    componentDidMount() {
         API.getPet(this.props.id)
             .then(res => {
-                // console.log(res)
+                console.log(res)
                 API.getPetActions(this.props.id)
                     .then(activities => {
-                        // console.log(activities)
-                        // this.setState({
-                        //     pet: pet,
-                        //     petActivities: activities
-                        // })
+                        this.setState({
+                            pet: res.data,
+                            petActivities: activities.data
+                        })
                     })
             })
-        // console.log(this.state)
-
+        console.log(this.state)
     }
 
 
     render() {
+        console.log(this.props)
         return (
             <div>
                 <ListGroup variant='flush'>
                     <ListGroup.Item>
                         <ul className='age-sex-ul'>
-                            <li><h6>Age: </h6></li>
-                            <li><h6>Sex: </h6></li>
+                            <li><h6>Age: {this.props.age}</h6></li>
+                            <li><h6>Sex: {this.props.sex}</h6></li>
                         </ul>
-                        <h6>Breed: </h6>
+                        <h6>Breed: {this.props.breed}</h6>
                     </ListGroup.Item>
                     <ListGroup.Item>
                         <h4>Most Recent Activities</h4>
@@ -53,7 +52,7 @@ export default class DogInformation extends Component {
                         </ListGroup>
                     </ListGroup.Item>
                 </ListGroup>
-                {this.handleRender()}
+                {/* {this.handleRender()} */}
             </div>
         )
     }

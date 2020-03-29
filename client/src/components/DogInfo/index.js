@@ -29,9 +29,13 @@ export default class DogInfo extends Component {
                     <ListGroup variant="flush">
                         <ListGroup.Item><h2>{this.props.pet.name}</h2></ListGroup.Item>
                         <img className='dog-display-image' src='/images/placeholder-dog.jpg' />
-                        {/* <ListGroup.Item></ListGroup.Item> */}
                     </ListGroup>
-                    <DogInformation id={this.props.pet.id} />
+                    <DogInformation 
+                    id={this.props.pet.id}
+                    age={this.props.pet.age}
+                    sex={this.props.pet.sex}
+                    breed={this.props.pet.breed}
+                     />
                     <Card.Body className='option-div' variant="flush">
                         <span onClick={this.changeDisplay}>Add Activity</span>
                         <span>See All Activites</span>
@@ -53,9 +57,9 @@ export default class DogInfo extends Component {
                             </ListGroup.Item>
                         </ListGroup>
                     </Card.Body>
-                    <div className='option-div'>
+                    <Card.Body className='option-div' variant="flush">
                         <span onClick={this.changeDisplay}>Cancel</span>
-                    </div>
+                    </Card.Body>
                 </Card>
             )
         }
