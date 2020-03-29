@@ -7,62 +7,71 @@ export default class DogInformation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pet: {},
-            petActivities: {}
+            pet: null,
+            petActivities: null,
+            activitiesReversed: null
         }
     }
 
-    componentDidMount() {
-        API.getPet(this.props.id)
-            .then(res => {
-                API.getPetActions(this.props.id)
-                    .then(activities => {
-                        this.setState({
-                            pet: res.data,
-                            petActivities: activities.data
-                        })
-                    })
-            })
-    }
+    // componentDidMount() {
+    //     API.getPet(this.props.id)
+    //         .then(res => {
+    //             API.getPetActions(this.props.id)
+    //                 .then(activities => {
+    //                     console.log(activities);
+    //                     // let reversedArray = activities.data;
+    //                     // reversedArray.reverse();
+    //                     // console.log(activities);
+    //                     // console.log(reversedArray);
+    //                     // this.setState({
+    //                     //     pet: res.data,
+    //                     //     petActivities: activities.data,
+    //                     //     activitiesReversed: reversedArray
+    //                     // })
+    //                 })
+    //         })
+    // }
 
-    latestActivities = () => {
-        let activities = this.state.petActivities;
-        console.log(activities)
-        const actArray=[];
+    // latestActivities = () => {
+    //     let activities = this.state.petActivities;
+    //     console.log(activities)
+    //     const actArray=[];
 
-        if (activities.length < 3) {
-            for (let i = activities.length-1; i < 0; i--) {
-                actArray.push(
-                    <ListGroup variant="flush">
-                        <ListGroup.Item className='no-padding'>
-                            <ul className='activity-ul'>
-                                <li><h6>Activity: {activities[i].type}</h6></li>
-                                <li><h6>Date: {activities[i].createdAt}</h6></li>
-                            </ul>
-                        </ListGroup.Item>
-                    </ListGroup>
-                )
-            }
+    //     if (activities.length < 3) {
+    //         for (let i = activities.length-1; i < 0; i--) {
+    //             actArray.push(
+    //                 <ListGroup variant="flush">
+    //                     <ListGroup.Item className='no-padding'>
+    //                         <ul className='activity-ul'>
+    //                             <li><h6>Activity: {activities[i].type}</h6></li>
+    //                             <li><h6>Date: {activities[i].createdAt}</h6></li>
+    //                         </ul>
+    //                     </ListGroup.Item>
+    //                 </ListGroup>
+    //             )
+    //         }
 
-        } else {
-            for (let i = activities.length-1; i <= activities.length-4; i--) {
-                actArray.push(
-                    <ListGroup variant="flush">
-                        <ListGroup.Item className='no-padding'>
-                            <ul className='activity-ul'>
-                                <li><h6>Activity: {activities[i].type}</h6></li>
-                                <li><h6>Date: {activities[i].createdAt}</h6></li>
-                            </ul>
-                        </ListGroup.Item>
-                    </ListGroup>
-                )
-            }
-        }
-        console.log(actArray)
-        return actArray;
-    }
+    //     } else {
+    //         for (let i = activities.length-1; i <= activities.length-4; i--) {
+    //             actArray.push(
+    //                 <ListGroup variant="flush">
+    //                     <ListGroup.Item className='no-padding'>
+    //                         <ul className='activity-ul'>
+    //                             <li><h6>Activity: {activities[i].type}</h6></li>
+    //                             <li><h6>Date: {activities[i].createdAt}</h6></li>
+    //                         </ul>
+    //                     </ListGroup.Item>
+    //                 </ListGroup>
+    //             )
+    //         }
+    //     }
+    //     console.log(actArray)
+    //     return actArray;
+    // }
 
     render() {
+        // console.log(this.state);
+        
         return (
             <div>
                 <ListGroup variant='flush'>
@@ -75,7 +84,7 @@ export default class DogInformation extends Component {
                     </ListGroup.Item>
                     <ListGroup.Item>
                         <h4>Most Recent Activities</h4>
-                        {this.latestActivities()}
+                       {/* <p>{this.state.petActivities[0].id}</p>  */}
                     </ListGroup.Item>
                 </ListGroup>
                 {/* {this.handleRender()} */}

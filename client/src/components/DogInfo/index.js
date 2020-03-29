@@ -9,7 +9,8 @@ export default class DogInfo extends Component {
         super(props);
         this.state = {
             display: 'info',
-            userLoggedActivities: {}
+            userLoggedActivities: {},
+            
         };
     }
 
