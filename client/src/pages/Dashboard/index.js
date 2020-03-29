@@ -11,6 +11,8 @@ import "./style.css";
 import API from "../../utils/API";
 // import '../Dashboard/'
 
+const mql = window.matchMedia(`(min-width: 800px)`);
+
 class Dashboard extends Component {
   constructor() {
     super();
@@ -105,7 +107,7 @@ class Dashboard extends Component {
             
           </Row>
         </Container>
-        <YapFooter />
+       
       </div>
     );
   }

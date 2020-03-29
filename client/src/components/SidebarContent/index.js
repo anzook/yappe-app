@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import AddDogModal from '../AddDogModal'
 import MaterialTitlePanel from "./MaterialTitlePanel";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog, faUserPlus, faClipboardList, faPaw, faHome } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faUserPlus, faClipboardList, faPaw, faHome, faToolbox } from '@fortawesome/free-solid-svg-icons';
 import '../SidebarContent'
  
  
@@ -50,22 +50,29 @@ const SidebarContent = props => {
   return (
     <MaterialTitlePanel title="Menu" style={style}>
       <div style={styles.content}>
-        <a href="index.html" style={styles.sidebarLink}>
+        {/* <a href="index.html" style={styles.sidebarLink}>
         <p><FontAwesomeIcon  icon={faHome} /> Home </p>
-        </a>
+        </a> */}
         <a  style={styles.sidebarLink}>
         <AddDogModal  />  
         </a>
         {/* <div style={styles.divider} /> */}
-        <a href="#holder" style={styles.sidebarLink}>
-       <p><FontAwesomeIcon  icon={faUserPlus} /> Add CareTaker </p>
+        <a style={styles.sidebarLink}>
+       <FontAwesomeIcon  icon={faUserPlus} />
+       <span className='span'>Add Caretaker</span>
+        </a>
+        <a href="https://github.com/anzook/yappe-app" style={styles.sidebarLink}>
+       <FontAwesomeIcon  icon={faToolbox} />
+       <span className='span'>Help us improve</span>
         </a>
         <a href="#holder" style={styles.sidebarLink}>
-       <p><FontAwesomeIcon  icon={faClipboardList} /> Activity Log </p>
+       <FontAwesomeIcon  icon={faClipboardList} /> 
+       <span className='span'>Activity Log</span>
         </a>
         <a href="#holder" style={styles.sidebarLink}>
-       <p><FontAwesomeIcon  icon={faCog} /> Settings </p>
-        </a>
+       <FontAwesomeIcon  icon={faCog} />
+       <span className='span'>Settings</span>
+       </a>
       </div>
     </MaterialTitlePanel>
   );

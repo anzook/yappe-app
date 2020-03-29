@@ -3,7 +3,7 @@ import Sidebar from "react-sidebar";
 import SidebarContent from '../SidebarContent'
 
 
-const mql = window.matchMedia(`(min-width: 800px)`);
+const mql = window.matchMedia(`(min-width: 600px)`);
 
 class SideNav extends React.Component {
   constructor(props) {
@@ -35,6 +35,7 @@ class SideNav extends React.Component {
 
   render() {
     return (
+      <div id="side">
       <Sidebar
         sidebar={<b>
           <SidebarContent />
@@ -44,6 +45,7 @@ class SideNav extends React.Component {
         onSetOpen={this.onSetSidebarOpen}
       >test
       </Sidebar>
+      </div>
     );
   }
 }
