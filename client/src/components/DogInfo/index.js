@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container'
+import Container from 'react-bootstrap/Container';
+import DogInformation from '../DogInformation';
 import './style.css';
 
 export default class DogInfo extends Component {
@@ -25,6 +26,7 @@ export default class DogInfo extends Component {
             return (
                 <div>
                     <h1>Name: {this.state.petName}</h1>
+                    <DogInformation />
                     <div className='option-div'>
                         <span onClick={this.changeDisplay}>Add Activity</span>
                         <span>See All Activites</span>
