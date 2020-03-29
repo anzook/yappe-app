@@ -44,7 +44,6 @@ module.exports = {
             {
                 name: body.name,
                 email: body.email,
-                password: body.password
             }, {
             where: {
                 id: params.id

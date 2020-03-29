@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import AddDogModal from '../AddDogModal'
 import MaterialTitlePanel from "./MaterialTitlePanel";
+import SettingsModal from "../SettingsModal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog, faUserPlus, faClipboardList, faPaw, faHome } from '@fortawesome/free-solid-svg-icons';
 import '../SidebarContent'
@@ -63,8 +64,8 @@ const SidebarContent = props => {
         <a href="#holder" style={styles.sidebarLink}>
        <p><FontAwesomeIcon  icon={faClipboardList} /> Activity Log </p>
         </a>
-        <a href="#holder" style={styles.sidebarLink}>
-       <p><FontAwesomeIcon  icon={faCog} /> Settings </p>
+        <a style={styles.sidebarLink}>
+    <SettingsModal />
         </a>
       </div>
     </MaterialTitlePanel>
