@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import API from '../../utils/API';
-import { ListGroup, Card } from 'react-bootstrap'
+// import API from '../../utils/API';
+import { ListGroup } from 'react-bootstrap'
 import './style.css';
 
 export default class DogInformation extends Component {

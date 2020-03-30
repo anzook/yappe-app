@@ -9,7 +9,6 @@ import DogInfo from '../../components/DogInfo'
 import "./style.css";
 import API from "../../utils/API";
 
-const mql = window.matchMedia(`(min-width: 800px)`);
 
 class Dashboard extends Component {
   constructor() {
