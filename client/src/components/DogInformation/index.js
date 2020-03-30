@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import API from '../../utils/API';
-import { ListGroup, Card } from 'react-bootstrap'
+import ListGroup from 'react-bootstrap/ListGroup'
 import './style.css';
 
 export default class DogInformation extends Component {
@@ -12,68 +11,7 @@ export default class DogInformation extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     API.getPet(this.props.id)
-    //         .then(res => {
-    //             API.getPetActions(this.props.id)
-    //                 .then(activities => {
-    //                     console.log(activities);
-    //                     // let reversedArray = activities.data;
-    //                     // reversedArray.reverse();
-    //                     // console.log(activities);
-    //                     // console.log(reversedArray);
-    //                     // this.setState({
-    //                     //     pet: res.data,
-    //                     //     petActivities: activities.data,
-    //                     //     activitiesReversed: reversedArray
-    //                     // })
-    //                 })
-    //         })
-    // }
-
-    // latestActivities = () => {
-    //     let activities = this.state.petActivities;
-    //     console.log(activities)
-    //     const actArray=[];
-
-    //     if (activities.length < 3) {
-    //         for (let i = activities.length-1; i < 0; i--) {
-    //             actArray.push(
-    //                 <ListGroup variant="flush">
-    //                     <ListGroup.Item className='no-padding'>
-    //                         <ul className='activity-ul'>
-    //                             <li><h6>Activity: {activities[i].type}</h6></li>
-    //                             <li><h6>Date: {activities[i].createdAt}</h6></li>
-    //                         </ul>
-    //                     </ListGroup.Item>
-    //                 </ListGroup>
-    //             )
-    //         }
-
-    //     } else {
-    //         for (let i = activities.length-1; i <= activities.length-4; i--) {
-    //             actArray.push(
-    //                 <ListGroup variant="flush">
-    //                     <ListGroup.Item className='no-padding'>
-    //                         <ul className='activity-ul'>
-    //                             <li><h6>Activity: {activities[i].type}</h6></li>
-    //                             <li><h6>Date: {activities[i].createdAt}</h6></li>
-    //                         </ul>
-    //                     </ListGroup.Item>
-    //                 </ListGroup>
-    //             )
-    //         }
-    //     }
-    //     console.log(actArray)
-    //     return actArray;
-    // }
-
     render() {
-        // const actionsPet = this.props.actions;
-        // console.log(actionsPet[0]);
-        // console.log(actionsPet[0].id);
-        // console.log(this.props.actions[0]);
-
         return (
 
             <div>
@@ -87,16 +25,14 @@ export default class DogInformation extends Component {
                     </ListGroup.Item>
                     <ListGroup.Item>
                         <h4>Most Recent Activities</h4>
-                        {this.props.actions.map((action) => (
-                            <ul>
-                                <li>Activity: {action.type}</li>
-                                <li>Date: {action.updatedAt}</li>
+                        {this.props.actions.slice(0, 3).map((action) => (
+                            <ul className='actions-ul'>
+                                <li><h6>Activity: {action.type}</h6></li>
+                                <li><h6>Date: {action.updatedAt.slice(0, 10)}</h6></li>
                             </ul>
-                            // <ListGroup.Item>{action.type}</ListGroup.Item>
                         ))}
                     </ListGroup.Item>
                 </ListGroup>
-                {/* {this.handleRender()} */}
             </div>
         )
     }
