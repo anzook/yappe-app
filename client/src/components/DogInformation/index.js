@@ -8,8 +8,7 @@ export default class DogInformation extends Component {
         super(props);
         this.state = {
             pet: null,
-            petActivities: null,
-            activitiesReversed: null
+            activitiesReversed: null,
         }
     }
 
@@ -70,9 +69,13 @@ export default class DogInformation extends Component {
     // }
 
     render() {
-        // console.log(this.state);
-        
+        // const actionsPet = this.props.actions;
+        // console.log(actionsPet[0]);
+        // console.log(actionsPet[0].id);
+        // console.log(this.props.actions[0]);
+
         return (
+
             <div>
                 <ListGroup variant='flush'>
                     <ListGroup.Item>
@@ -84,7 +87,13 @@ export default class DogInformation extends Component {
                     </ListGroup.Item>
                     <ListGroup.Item>
                         <h4>Most Recent Activities</h4>
-                       {/* <p>{this.state.petActivities[0].id}</p>  */}
+                        {this.props.actions.map((action) => (
+                            <ul>
+                                <li>Activity: {action.type}</li>
+                                <li>Date: {action.updatedAt}</li>
+                            </ul>
+                            // <ListGroup.Item>{action.type}</ListGroup.Item>
+                        ))}
                     </ListGroup.Item>
                 </ListGroup>
                 {/* {this.handleRender()} */}

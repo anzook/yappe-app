@@ -9,8 +9,8 @@ export default class DogInfo extends Component {
         super(props);
         this.state = {
             display: 'info',
-            userLoggedActivities: {},
-            
+            userLoggedActivities: null,
+            petActivites: {}
         };
     }
 
@@ -20,6 +20,8 @@ export default class DogInfo extends Component {
             display: display === 'info' ? 'activites' : 'info'
         });
     }
+
+
 
     renderWindow() {
         let { display } = this.state;
@@ -31,12 +33,13 @@ export default class DogInfo extends Component {
                         <ListGroup.Item><h2>{this.props.pet.name}</h2></ListGroup.Item>
                         <img className='dog-display-image' src='/images/placeholder-dog.jpg' />
                     </ListGroup>
-                    <DogInformation 
-                    id={this.props.pet.id}
-                    age={this.props.pet.age}
-                    sex={this.props.pet.sex}
-                    breed={this.props.pet.breed}
-                     />
+                    <DogInformation
+                        id={this.props.pet.id}
+                        age={this.props.pet.age}
+                        sex={this.props.pet.sex}
+                        breed={this.props.pet.breed}
+                        actions={this.props.actions}
+                    />
                     <Card.Body className='option-div' variant="flush">
                         <span onClick={this.changeDisplay}>Add Activity</span>
                         <span>See All Activites</span>

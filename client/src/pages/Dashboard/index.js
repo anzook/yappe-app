@@ -20,7 +20,8 @@ class Dashboard extends Component {
       redirectTo: '/dashboard',
       display: 'activities',
       petSelect: null,
-      user: null
+      user: null,
+      petActivities: []
     };
     this.getUser = this.getUser.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -30,8 +31,6 @@ class Dashboard extends Component {
   updateUser() {
     this.getUser();
   }
-
-
 
   getUser = () => {
     API.getUserInfo().then(sessionRes => {
@@ -59,10 +58,18 @@ class Dashboard extends Component {
 
   componentDidMount() {
     this.getUser();
-
-
   }
 
+  getActions(petId){
+    API.getPetActions(petId)
+    .then(res => {
+      this.setState({
+        ...this.state,
+        petActivities: res.data
+      })
+    })
+  }
+  
   changeDisplay = (petInfo) => {
     let { display } = this.state;
     if (display === 'activities') {
@@ -83,13 +90,15 @@ class Dashboard extends Component {
     console.log(this.state.petSelect)
     if (display === 'activities') {
       return <h1>Activities!!!</h1>
-    } else if (display === 'dog-info') {
+    }
+    else if (display === 'dog-info') {
+      // this.getActions();
       return <DogInfo
         user={this.state.id}
         pet={this.state.petSelect}
         name={this.state.petSelect.name}
         age={this.state.petSelect.age}
-
+        actions={this.state.petActivities}
       />
     }
   }
@@ -98,9 +107,8 @@ class Dashboard extends Component {
     let cardOne = this.state.user?.pets?.map(pet => {
       let actions = [{ type: "peed", detail: "filler" }]
       let Infopet = { id: pet.id, name: pet.name, age: pet.age, sex: pet.sex, breed: pet.breed };
-      return <DogCard onClick={() => {
-        this.changeDisplay(Infopet)
-      }}
+      return <DogCard
+        onClick={() => { this.changeDisplay(Infopet); this.getActions(Infopet.id);}}
         name={pet.name}
         actions={actions}
         id={pet.id}
