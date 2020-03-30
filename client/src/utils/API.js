@@ -45,6 +45,12 @@ export default {
     getPet: function (petId) {
         return axios.get('/api/pet/' + petId);
     },
+      // get pets from array of pet Ids
+    // response returns pet info as well as all caretakers
+    // of pet
+    getPets: function (petIds) {
+        return axios.get('/api/pets/', petIds);
+    },
     // get actions logged by user
     // response is all the actions the user logged
     getUserLogs: function (userId) {

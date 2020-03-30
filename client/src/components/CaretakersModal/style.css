@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Thambi+2:400,500&display=swap');
+
+
+.modal-btn:hover{
+    cursor: pointer;
+}
+
+svg.svg-inline--fa.fa-paw.fa-w-16{
+    font-size: 1.35rem;
+    margin-right: 8px;
+}
+
+.span{
+    font-size: 1.35rem;
+    font-family: 'Baloo Thambi 2', cursive;
+    font-weight: 500;
+}

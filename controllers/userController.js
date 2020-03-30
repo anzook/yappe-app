@@ -9,9 +9,22 @@ module.exports = {
             where: {
                 id: req.params.id
             },
+            attributes: {exclude: [
+                'createdAt',
+                'updatedAt',
+                'password'
+            ]},
             // include pet info through association
             include: [{
                 model: db.pet,
+                include: [{
+                 model: db.user,
+                 attributes: {exclude: [
+                    'createdAt',
+                    'updatedAt',
+                    'password'
+                ]},
+            }],
                 attributes: {exclude: [
                     'createdAt',
                     'updatedAt'

@@ -17,6 +17,9 @@ module.exports = function (app) {
   app.route("/api/pet", isAuthenticated)
     .post(petController.create);
 
+    app.route("/api/pets", isAuthenticated)
+    .get(petController.findAllById);
+
   app.route("/api/pet/:id", isAuthenticated)
     .patch(petController.joinUser)
     .get(petController.findById)

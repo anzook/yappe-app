@@ -58,6 +58,28 @@ module.exports = {
             })
         res.json(petUsers)
     },
+     // function that gets all of the pet's info including all of their users
+     findAllById: async ({ body }, res) => {
+        const petUsers = await db.pet.findAll({
+            where: {
+                id: body.id
+            },
+            // include user info through association
+            include: [{
+                model: db.user,
+                attributes: {exclude: [
+                    'createdAt',
+                    'updatedAt',
+                    'password'
+                ]}, 
+                required: false
+            }]
+        })
+            .catch(err => {
+                console.log(err)
+            })
+        res.json(petUsers)
+    },
     // route to update pet
     update: ({ params, body }, res) => {
         db.pet.update(
