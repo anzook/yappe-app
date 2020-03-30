@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import YapNav from "../../components/Navbar";
 import SideNav from "../../components/SideNav";
 import DogCard from "../../components/Card";
+import DoughnutChart from "../../components/DoughnutChart";
 import { Container, Row, Col } from "react-bootstrap";
 import DogInfo from '../../components/DogInfo'
 import "./style.css";
@@ -88,7 +89,7 @@ class Dashboard extends Component {
     let { display } = this.state;
     console.log(this.state.petSelect)
     if (display === 'activities') {
-      return <h1>Activities!!!</h1>
+      return <DoughnutChart />
     }
     else if (display === 'dog-info') {
       return <DogInfo
@@ -123,12 +124,9 @@ class Dashboard extends Component {
             <Row>
               <Col xs md={2}>
                 <SideNav />
-                {/* 1 of 3 */}
               </Col>
               <Col xs md={6}>{cardOne}</Col>
               <Col xs md={4}>{this.renderDisplay()}</Col>
-              {/* <Col xs md={4}><InfoCard /></Col> */}
-
             </Row>
           </Container>
           {/* <YapFooter /> */}
