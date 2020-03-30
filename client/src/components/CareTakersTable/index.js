@@ -31,6 +31,7 @@ export class CareTakersTable extends Component {
     for (let i = 0; i < dogs.length; i++) {
         let children = []
         children.push(<td rowSpan={dogs[i].users.length}>{dogs[i].name}</td>)
+        //  Inner loop depending on number of children
         for (let j = 0; j < dogs[i].users.length; j++) {
         children.push(<td>{dogs[i].users[j].name}</td>)
         children.push(<td>{dogs[i].users[j].user_pets.role}</td>)
