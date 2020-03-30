@@ -1,5 +1,5 @@
 const db = require('../models');
-const passport = require('../config/passport')
+// const passport = require('../config/passport')
 
 // Defining methods for the userController
 module.exports = {
@@ -9,9 +9,22 @@ module.exports = {
             where: {
                 id: req.params.id
             },
+            attributes: {exclude: [
+                'createdAt',
+                'updatedAt',
+                'password'
+            ]},
             // include pet info through association
             include: [{
                 model: db.pet,
+                include: [{
+                 model: db.user,
+                 attributes: {exclude: [
+                    'createdAt',
+                    'updatedAt',
+                    'password'
+                ]},
+            }],
                 attributes: {exclude: [
                     'createdAt',
                     'updatedAt'
@@ -39,12 +52,11 @@ module.exports = {
         res.json(user.id);
     },
 
-    update: ({ params, body }, res) => {
+    update: ( { params, body }, res) => {
         db.user.update(
             {
                 name: body.name,
                 email: body.email,
-                password: body.password
             }, {
             where: {
                 id: params.id
