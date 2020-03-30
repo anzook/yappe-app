@@ -3,9 +3,9 @@ import { Redirect } from 'react-router-dom'
 import YapNav from "../../components/Navbar";
 import SideNav from "../../components/SideNav";
 import DogCard from "../../components/Card";
-import DoughnutChart from "../../components/DoughnutChart";
 import { Container, Row, Col } from "react-bootstrap";
 import DogInfo from '../../components/DogInfo'
+import FirstGlance from '../../components/FirstGlance';
 import "./style.css";
 import API from "../../utils/API";
 
@@ -89,7 +89,7 @@ class Dashboard extends Component {
     let { display } = this.state;
     console.log(this.state.petSelect)
     if (display === 'activities') {
-      return <DoughnutChart />
+      return <FirstGlance />
     }
     else if (display === 'dog-info') {
       return <DogInfo
