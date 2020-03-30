@@ -105,7 +105,9 @@ class LandingPage extends Component {
     };
         return (
             <div>
+                
                 <Hero/>
+                
                 <div className={className.formDiv}>
                 <Container style={{ marginTop: 0 }}>
                     <Row>
