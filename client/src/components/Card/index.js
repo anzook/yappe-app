@@ -25,7 +25,7 @@ export class NewCard extends Component {
 
   render() {
     return (
-      <Card className='dog-card' onClick={this.props.onClick} style={{ width: '18rem' }}>
+      <Card className='dog-card' onClick={this.props.onClick} style={{ width: '15rem' }}>
         <Card.Img variant="top" src="/images/placeholder-dog.jpg" />
         <Card.Body>
           <ListGroup className="list-group-flush">
