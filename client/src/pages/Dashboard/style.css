@@ -10,3 +10,9 @@ body {
 .row {
     height: inherit;
 }
+
+.col-md-2.col {
+    padding: 0;
+    overflow-y: scroll;
+    height: 92vh;
+}

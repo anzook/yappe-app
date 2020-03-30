@@ -27,7 +27,7 @@ export default class LineChart extends Component {
     render() {
         return(
             <div style={{position:'relative', width: '82%', height: "60vh"}}>
-                <h3>Your Activites Logs</h3>
+                <h3>Your Logged Activities</h3>
                 <Line
                     options={{
                         responsive: true
