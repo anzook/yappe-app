@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import AddDogModal from '../AddDogModal'
-import ActivityLog from '../SideActivity'
+// import ActivityLog from '../SideActivity'
 import {NavLink} from 'react-bootstrap'
 import MaterialTitlePanel from "./MaterialTitlePanel";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog, faUserPlus, faToolbox } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faUserPlus, faToolbox, faClipboardList } from '@fortawesome/free-solid-svg-icons';
 import '../SidebarContent'
  
  
@@ -63,9 +63,10 @@ const SidebarContent = props => {
        <FontAwesomeIcon  icon={faToolbox} />
        <span className='span'>Help us improve</span>
         </a>
-        <NavLink style={styles.sidebarLink}>
-        <ActivityLog />
-        </NavLink>
+        <a href="../components/SideActivity" style={styles.sidebarLink}>
+        <FontAwesomeIcon icon={faClipboardList}/>
+        <span className='span'>ActivityLog</span>
+        </a>
         <NavLink href="#holder" style={styles.sidebarLink}>
        <FontAwesomeIcon  icon={faCog} />
        <span className='span'>Settings</span>
