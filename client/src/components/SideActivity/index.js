@@ -7,19 +7,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
 
 
-function ActivityLog() {
+class ActivityLog extends Component {
 
 
    
   constructor(props) {
       super(props);
       this.state = {
+          showmodal: false,
           userId: null,
+          hidemodal: true,
           userLogs: []
           
       };
   }
-
+ 
+  
 
 
   componentDidMount() {
@@ -33,7 +36,20 @@ function ActivityLog() {
       })
   }
 
-  
+  handleShow = (event)=>{
+    event.preventDefault()
+    this.setState({
+        showmodal: true,
+        
+    })
+  }
+
+  handleClose = (event) => {
+      event.preventDefault()
+      this.setState({
+          showmodal: false,
+      })
+  }
 
 
     render() {
@@ -42,15 +58,15 @@ function ActivityLog() {
 
         return (
             <>
-              <div className='modal-btn' >
+              <div className='modal-btn' onClick={this.handleShow} >
                   <FontAwesomeIcon icon={faClipboardList}/>
                   <span className='span'>Activity Log</span>
               </div>
               
-                <Modal.Dialog  >
-                    <Modal.Header closeButton>
-                        <Modal.Title>Activity Log</Modal.Title>
-                    </Modal.Header>
+                <Modal show={this.state.showmodal} onHide={this.state.hidemodal} >
+                    {/* <Modal.Header closeButton>
+                    
+                    </Modal.Header> */}
 
                     <Modal.Body>
                         <Table striped bordered hover variant="responsive">
@@ -74,10 +90,10 @@ function ActivityLog() {
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button variant="secondary">Close</Button>
+                        <Button onClick={this.handleClose} variant="secondary">Close</Button>
                         <Button variant="primary">Save changes</Button>
                     </Modal.Footer>
-                </Modal.Dialog>
+                </Modal>
 
                 
 
@@ -87,3 +103,5 @@ function ActivityLog() {
         )
     }
 }
+
+export default ActivityLog;
