@@ -3,6 +3,7 @@ import API from '../../utils/API'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroup'
+import Container from 'react-bootstrap/Container'
 import './style.css';
 
 export class NewCard extends Component {
@@ -25,23 +26,20 @@ export class NewCard extends Component {
 
   render() {
     return (
-      <Card className='dog-card' onClick={this.props.onClick} style={{ width: '15rem' }}>
-        <Card.Img variant="top" src="/images/placeholder-dog.jpg" />
-        <Card.Body>
-          <ListGroup className="list-group-flush">
-            <ListGroupItem>Name: {this.props.name} </ListGroupItem>
-            <ListGroupItem placeholder="No Activity Logged Yet!">
-              Last Activity
-              <ul className='actions-ul'>
-                <li><h6>Activity: {this.state.action?.type}</h6></li>
-                <li><h6>Date: {this.state.action?.updatedAt?.slice(0, 10)}</h6></li>
-              </ul>
-            </ListGroupItem>
-          </ListGroup>
-        </Card.Body>
-      </Card>
-
-
+      <Container>
+        <Card className='dog-card' onClick={this.props.onClick} style={{ width: '21rem' }}>
+          <Card.Body>
+            <img src="/images/placeholder-dog.jpg" className='dog-card-image' />
+            <ListGroup className="list-group-flush dog-card-list">
+              <ListGroupItem>{this.props.name} </ListGroupItem>
+              <ListGroupItem placeholder="No Activity Logged Yet!">
+                <ListGroupItem>Role: {this.state.action?.type}</ListGroupItem>
+                <ListGroupItem>Last Interaction: {this.state.action?.updatedAt?.slice(0, 10)}</ListGroupItem>
+              </ListGroupItem>
+            </ListGroup>
+          </Card.Body>
+        </Card>
+      </Container>
     )
   }
 }

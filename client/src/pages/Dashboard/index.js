@@ -87,7 +87,6 @@ class Dashboard extends Component {
 
   renderDisplay() {
     let { display } = this.state;
-    console.log(this.state.petSelect)
     if (display === 'activities') {
       return <FirstGlance />
     }
@@ -118,15 +117,15 @@ class Dashboard extends Component {
       return <Redirect to={{ pathname: this.state.redirectTo }} />
     } else {
       return (
-        <div>
+        <div className='dashboard-div'>
           <YapNav updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
           <Container fluid>
             <Row>
               <Col xs md={1}>
                 <SideNav />
               </Col>
-              <Col xs md={2}>{cardOne}</Col>
-              <Col xs md={9}>{this.renderDisplay()}</Col>
+              <Col xs md={3}>{cardOne}</Col>
+              <Col xs md={8}>{this.renderDisplay()}</Col>
             </Row>
           </Container>
           {/* <YapFooter /> */}
