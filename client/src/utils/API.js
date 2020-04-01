@@ -7,7 +7,7 @@ export default {
     createUser: function (userData) {
         return axios.post('/api/user', userData);
     },
-   // logs in user
+    // logs in user
     // response returns session
     loginUser: function (userData) {
         return axios.post('/login', userData);
@@ -33,7 +33,7 @@ export default {
     getUser: function (userId) {
         return axios.get('/api/user/' + userId);
     },
-     // get user info from passport
+    // get user info from passport
     // response returns user info as well as all
     // pets under user
     getUserInfo: function () {
@@ -50,10 +50,20 @@ export default {
     getUserLogs: function (userId) {
         return axios.get('/api/actions/user/' + userId);
     },
+    // get actions logged by user of a specific pet
+    // response is all the actions the user logged
+    getUserLogsByPet: function (userId, petId) {
+        return axios.get('/api/actions/user/' + userId + '/pet');
+    },
     // get pet actions
     // response is all the actions the done by the pet
     getPetActions: function (petId) {
         return axios.get('/api/actions/pet/' + petId);
+    },
+    // get pet actions
+    // response is all the actions the done by the pet
+    getPetActionsByUser: function (petId, userId) {
+        return axios.get('/api/actions/pet/' + petId + '/user');
     },
     // update user
     updateUser: function (userId, update) {
@@ -80,7 +90,7 @@ export default {
     deleteAction: function (actionId) {
         return axios.delete('/api/actions/' + actionId)
     },
-    getBreeds: function() {
+    getBreeds: function () {
         return axios.get("https://dog.ceo/api/breeds/list/all");
     }
 
