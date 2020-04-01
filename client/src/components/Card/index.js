@@ -15,6 +15,14 @@ export class NewCard extends Component {
     };
   }
 
+interaction() {
+    const action = this.state.action;
+    if (action) {
+      return this.state.action?.updatedAt?.slice(0, 10);
+    }
+    return 'No log';
+  }
+
   componentDidMount() {
     API.getPetActions(this.props.id)
       .then(res => {
@@ -29,12 +37,12 @@ export class NewCard extends Component {
       <Container>
         <Card className='dog-card' onClick={this.props.onClick} style={{ width: '21rem' }}>
           <Card.Body>
-            <img src="/images/placeholder-dog.jpg" className='dog-card-image' />
+            <img alt='Pet photo' src="/images/placeholder-dog.jpg" className='dog-card-image' />
             <ListGroup className="list-group-flush dog-card-list">
               <ListGroupItem>{this.props.name} </ListGroupItem>
+              <ListGroupItem>Role: {this.props.role}</ListGroupItem>
               <ListGroupItem placeholder="No Activity Logged Yet!">
-                <ListGroupItem>Role: {this.props.role}</ListGroupItem>
-                <ListGroupItem>Last Interaction: {this.state.action?.updatedAt?.slice(0, 10)}</ListGroupItem>
+                <ListGroupItem>Last Interaction: {this.interaction()}</ListGroupItem>
               </ListGroupItem>
             </ListGroup>
           </Card.Body>

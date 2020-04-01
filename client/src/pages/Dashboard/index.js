@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom'
+import { 
+  Redirect,
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom'
 import YapNav from "../../components/Navbar";
 import SideNav from "../../components/SideNav";
 import DogCard from "../../components/Card";
