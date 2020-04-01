@@ -42,7 +42,7 @@ class Dashboard extends Component {
             loggedIn: true,
             email: sessionRes.data.email,
             name: sessionRes.data.name,
-            id: sessionRes.data.id
+            id: sessionRes.data.id,
           });
         });
 
@@ -110,6 +110,7 @@ class Dashboard extends Component {
         name={pet.name}
         id={pet.id}
         key={pet.id}
+        role={pet.user_pets.role}
       />
 
     })

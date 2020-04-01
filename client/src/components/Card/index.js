@@ -33,7 +33,7 @@ export class NewCard extends Component {
             <ListGroup className="list-group-flush dog-card-list">
               <ListGroupItem>{this.props.name} </ListGroupItem>
               <ListGroupItem placeholder="No Activity Logged Yet!">
-                <ListGroupItem>Role: {this.state.action?.type}</ListGroupItem>
+                <ListGroupItem>Role: {this.props.role}</ListGroupItem>
                 <ListGroupItem>Last Interaction: {this.state.action?.updatedAt?.slice(0, 10)}</ListGroupItem>
               </ListGroupItem>
             </ListGroup>
