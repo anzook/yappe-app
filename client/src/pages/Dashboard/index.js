@@ -36,6 +36,7 @@ class Dashboard extends Component {
     API.getUserInfo().then(sessionRes => {
       if (sessionRes.data.name) {
         API.getUser(sessionRes.data.id).then(res => {
+          console.log(res.data)
           this.setState({
             user: res.data,
             loggedIn: true,
