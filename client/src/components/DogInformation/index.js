@@ -14,7 +14,7 @@ export default class DogInformation extends Component {
 
     render() {
         return (
-            <div>
+            <div className='profile-div'>
                 <Card style={{ 'margin-bottom': '20px' }}>
                     <Container className='dog-profile-container'>
                         <Row >
