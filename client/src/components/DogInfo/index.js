@@ -38,7 +38,6 @@ export default class DogInfo extends Component {
                             age={this.props.pet.age}
                             sex={this.props.pet.sex}
                             breed={this.props.pet.breed}
-                            actions={this.props.actions}
                         />
                         <div className='option-div' variant="flush">
                             <span onClick={this.changeDisplay}>Add Activity</span>
