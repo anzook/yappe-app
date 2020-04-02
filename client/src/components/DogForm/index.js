@@ -13,12 +13,17 @@ export class DogForm extends Component {
             age: "",
             sex: "",
             breed: "",
-            petId: ""
+            petId: "",
+            id: null
         };
     }
 
 
     componentDidMount() {
+        API.getUserInfo()
+        .then(res=> {
+            this.setState({id: res.data.id})
+        })
         API.getBreeds()
             .then(res => {
                 let breeds = [];
@@ -46,7 +51,7 @@ export class DogForm extends Component {
             sex: this.state.sex,
             breed: this.state.breed
         }).then(res => {
-            const userId = localStorage.getItem('id');
+            const userId = this.state.id;
             const petId = res.data.id;
             API.joinUser(petId, {
                 user: userId,
@@ -93,7 +98,7 @@ export class DogForm extends Component {
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
-                    <Button onClick={this.handleFormSubmit} variant="primary" type="submit">
+                    <Button className="float-right" onClick={this.handleFormSubmit} variant="primary" type="submit">
                         Submit
                         </Button>
                 </Form.Group>

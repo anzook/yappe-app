@@ -37,7 +37,7 @@ app.get('/api/user', function(req, res) {
 });
 
   // Matches with "/api/user/:id"
-  app.route('/api/user/:id')
+  app.route('/api/user/:id', isAuthenticated)
     .get(userController.findById)
     .put(userController.update);
 

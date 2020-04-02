@@ -1,14 +1,20 @@
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom'
+import { 
+  Redirect,
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom'
 import YapNav from "../../components/Navbar";
 import SideNav from "../../components/SideNav";
 import DogCard from "../../components/Card";
+import RecentActivity from "../../components/RecentActivityCard";
 import { Container, Row, Col } from "react-bootstrap";
-import YapFooter from "../../components/Footer";
-// import AddDogModal from '../../components/AddDogModal'
+import DogInfo from '../../components/DogInfo'
+import FirstGlance from '../../components/FirstGlance';
 import "./style.css";
 import API from "../../utils/API";
-// import '../Dashboard/'
+
 
 class Dashboard extends Component {
   constructor() {
@@ -19,36 +25,35 @@ class Dashboard extends Component {
       name: null,
       id: null,
       redirectTo: '/dashboard',
-      user: {}
+      display: 'activities',
+      petSelect: null,
+      user: null,
+      petActivities: []
     };
     this.getUser = this.getUser.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.updateUser = this.updateUser.bind(this)
   }
 
-  updateUser () {
-    // this.setState(userObject)
+  updateUser() {
     this.getUser();
   }
 
   getUser = () => {
-    console.log("Calling request for user info... ");
     API.getUserInfo().then(sessionRes => {
-      // console.log('Get user response: ')
       if (sessionRes.data.name) {
-        console.log("user id: ", sessionRes.data.id);
         API.getUser(sessionRes.data.id).then(res => {
-          this.setState({ 
-            user: res.data, 
+          console.log(res.data)
+          this.setState({
+            user: res.data,
             loggedIn: true,
-          email: sessionRes.data.email,
-          name: sessionRes.data.name,
-          id: sessionRes.data.id
+            email: sessionRes.data.email,
+            name: sessionRes.data.name,
+            id: sessionRes.data.id,
           });
         });
 
       } else {
-        console.log("Get user: no user found");
         this.setState({
           loggedIn: false,
           email: null,
@@ -61,38 +66,82 @@ class Dashboard extends Component {
 
   componentDidMount() {
     this.getUser();
-    
+  }
+
+  getActions = (petId) => {
+    API.getPetActions(petId)
+      .then(res => {
+        this.setState({
+          ...this.state,
+          petActivities: res.data
+        })
+      })
+  }
+
+  changeDisplay = (petInfo) => {
+    let { display } = this.state;
+    if (display === 'activities') {
+      this.setState({
+        display: 'dog-info',
+        petSelect: petInfo
+      });
+    }
+    if (display === 'dog-info') {
+      this.setState({
+        petSelect: petInfo
+      });
+    }
+  }
+
+  renderDisplay() {
+    let { display } = this.state;
+    if (display === 'activities') {
+      return <FirstGlance />
+    }
+    else if (display === 'dog-info') {
+      return <DogInfo
+        user={this.state.id}
+        pet={this.state.petSelect}
+        name={this.state.petSelect.name}
+        age={this.state.petSelect.age}
+        actions={this.state.petActivities}
+      />
+    }
   }
 
   render() {
     let cardOne = this.state.user?.pets?.map(pet => {
-      console.log(pet);
+      let Infopet = { id: pet.id, name: pet.name, age: pet.age, sex: pet.sex, breed: pet.breed };
+      return <DogCard
+        onClick={() => { this.changeDisplay(Infopet); this.getActions(Infopet.id); }}
+        name={pet.name}
+        id={pet.id}
+        key={pet.id}
+        role={pet.user_pets.role}
+      />
 
-      return (
-        <DogCard name={pet.name} breed={pet.breed} age={pet.age} key={pet.id} />
-      );
-    });
+    })
+
     if (!this.state.loggedIn) {
       return <Redirect to={{ pathname: this.state.redirectTo }} />
-  } else {
-    return (
-      <div>
-        <YapNav updateUser={this.updateUser} loggedIn={this.state.loggedIn}/>
-        <Container fluid>
-          <Row>
-            <Col xs md={2}>
-              <SideNav/>
-              {/* 1 of 3 */}
-            </Col>
-            <Col xs md={6}>{cardOne}</Col>
-            <Col xs md={4}>3 of 3</Col>
-          </Row>
-        </Container>
-        <YapFooter />
-      </div>
-    );
+    } else {
+      return (
+        <div className='dashboard-div'>
+          <YapNav updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+          <Container fluid>
+            <Row>
+              <Col xs md={1}>
+                <SideNav />
+              </Col>
+              <Col xs md={3}>{cardOne}</Col>
+              <Col xs md={8}>{this.renderDisplay()}</Col>
+            </Row>
+          </Container>
+          {/* <YapFooter /> */}
+        </div>
+      );
+    }
   }
-}
 }
 
 export default Dashboard;

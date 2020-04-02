@@ -37,7 +37,7 @@ module.exports = {
 
     // function that gets all of the pet's info including all of their users
     findById: async ({ params }, res) => {
-        const petUsers = await db.pet.findAll({
+        const petUsers = await db.pet.findOne({
             where: {
                 id: params.id
             },
@@ -48,6 +48,28 @@ module.exports = {
                     'createdAt',
                     'updatedAt',
                     'email',
+                    'password'
+                ]}, 
+                required: false
+            }]
+        })
+            .catch(err => {
+                console.log(err)
+            })
+        res.json(petUsers);
+    },
+     // function that gets all of the pet's info including all of their users
+     findAllById: async ({ body }, res) => {
+        const petUsers = await db.pet.findAll({
+            where: {
+                id: body.id
+            },
+            // include user info through association
+            include: [{
+                model: db.user,
+                attributes: {exclude: [
+                    'createdAt',
+                    'updatedAt',
                     'password'
                 ]}, 
                 required: false

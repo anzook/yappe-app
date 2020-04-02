@@ -23,7 +23,7 @@ function AddDogModal() {
 
     const renderForm = () => {
         if (toggle === 'Add New Dog') {
-            return <AddExistingDogForm />
+            return <AddExistingDogForm close={handleClose}/>
         } else if (toggle === 'Add Existing Dog') {
             return <DogForm breeds={breeds} />
         }
@@ -33,7 +33,7 @@ function AddDogModal() {
         <>
             <div className='modal-btn' onClick={handleShow}>
                 <FontAwesomeIcon icon={ faPaw }/>
-                <span className='span'>Add Dog</span>
+                {/* <span className='span'>Add Dog</span> */}
             </div>
             
 
@@ -42,11 +42,11 @@ function AddDogModal() {
                     <Modal.Title>Add Dog</Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body>
+                <Modal.Body id="modal-body">
                     {renderForm()}
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="outline-success" onClick={handleToggle}>
+                <Modal.Footer  id="modal-footer">
+                    <Button className="float-left" variant="outline-success" onClick={handleToggle}>
                         {toggle}
                     </Button>
                 </Modal.Footer>

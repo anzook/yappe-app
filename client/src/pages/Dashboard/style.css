@@ -1,12 +1,22 @@
 body {
     background-color: #f0f0f0;
+    overflow: hidden;
 }
 
+.dashboard-div{
+    margin-top: 20px;
+}
 .container-fluid{
     margin-top: 90px;
-    height: 80vh;
+    height: 90vh;
 }
 
 .row {
     height: inherit;
+}
+
+.col-md-2.col {
+    padding: 0;
+    overflow-y: scroll;
+    height: 92vh;
 }

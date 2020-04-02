@@ -1,31 +1,58 @@
 import React, { Component } from 'react';
+import API from '../../utils/API'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroup'
+import Container from 'react-bootstrap/Container'
 import './style.css';
 
-export class NewCard extends Component {
+export class DogCard extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      action: []
+    };
+  }
+
+interaction() {
+    const action = this.state.action;
+    if (action) {
+      return this.state.action?.updatedAt?.slice(0, 10);
+    }
+    return 'No log';
+  }
+
+  componentDidMount() {
+    API.getPetActions(this.props.id)
+      .then(res => {
+        this.setState({
+          action: res.data[0]
+        })
+      })
+  }
+
   render() {
-    //  const name = this.props.name
     return (
-      <div >
-        <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+      <Container>
+        <Card className='dog-card' onClick={this.props.onClick} style={{ width: '21rem' }}>
           <Card.Body>
-            <ListGroup className="list-group-flush">
-              <ListGroupItem>Name: {this.props.name} </ListGroupItem>
-              <ListGroupItem>Breed: {this.props.breed} </ListGroupItem>
-              <ListGroupItem>Age: {this.props.age} </ListGroupItem>
+            <img alt='Pet photo' src="/images/placeholder-dog.jpg" className='dog-card-image' />
+            <ListGroup className="list-group-flush dog-card-list">
+              <ListGroupItem>{this.props.name} </ListGroupItem>
+              <ListGroupItem>Role: {this.props.role}</ListGroupItem>
+              <ListGroupItem placeholder="No Activity Logged Yet!">
+                <ListGroupItem>Last Interaction: {this.interaction()}</ListGroupItem>
+              </ListGroupItem>
             </ListGroup>
           </Card.Body>
         </Card>
-      </div>
-
+      </Container>
     )
   }
 }
 
-export default NewCard;
+export default DogCard;
 
 
 

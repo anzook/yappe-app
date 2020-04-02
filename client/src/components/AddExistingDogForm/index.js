@@ -10,8 +10,16 @@ export class AddExistingDogForm extends Component {
         this.state = {
             petId: null,
             role: null,
-            userId: localStorage.getItem('id')
+            id: null,
+            close: props.close
         };
+    }
+
+    componentDidMount() {
+        API.getUserInfo()
+            .then(res => {
+                this.setState({ id: res.data.id })
+            })
     }
 
     handleInputChange = event => {
@@ -25,9 +33,11 @@ export class AddExistingDogForm extends Component {
         event.preventDefault();
         console.log(this.state);
         API.joinUser(this.state.petId, {
-            user: this.state.userId,
+            user: this.state.id,
             role: this.state.role
-        });
+        }).then(res => {
+            window.location.reload();
+        })
     }
 
     render() {

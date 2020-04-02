@@ -1,21 +1,22 @@
-.signup-form,
-.login-form{
-    border-radius: 0 0 10px 10px;
-    background-color: rgba(85,171,189, 0.7);
+.signup {
+    margin: auto;
+    border-radius: 25px;
+    background-color: rgba(192, 213, 216, 0.7);
     box-sizing: border-box;
     padding: 25px;
     clear: both;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 } 
 
 .signup{
-    border-radius: 10px 0 0 0;
+    border-radius: 25px;
 }
 
+/* .signup,
 .login{
-    border-radius: 0 10px 0 0;
-}
-.signup,
-.login, .dogg-add{
     width: 50%;
     background-color: rgba(85,171,189, 0.7);
     height: 55px;
@@ -28,7 +29,7 @@
     cursor: pointer;
     text-transform: uppercase;
     color: whitesmoke;
-}
+} */
 .signup-form .button,
 .login-form .button{
     text-transform: uppercase;

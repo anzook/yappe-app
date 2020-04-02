@@ -15,3 +15,16 @@ svg.svg-inline--fa.fa-paw.fa-w-16{
     font-family: 'Baloo Thambi 2', cursive;
     font-weight: 500;
 }
+
+#modal-header {
+    background-color: #1ee09d;
+}
+
+#modal-footer {
+    background-color: #1ee09d;
+    flex-direction: row-reverse;
+}
+
+#modal-body {
+    background-color: #f5f5f5;
+}

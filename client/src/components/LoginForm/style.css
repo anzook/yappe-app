@@ -1,25 +1,29 @@
-.signup-form,
-.login-form{
-    border-radius: 0 0 10px 10px;
-    background-color: rgba(85,171,189, 0.7);
+@import url('https://fonts.googleapis.com/css?family=Baloo+Thambi+2:400,500&display=swap');
+
+h1 {
+    font-size: 1.35rem;
+    font-family: 'Marck Script', cursive;
+    font-weight: 500;
+    color: whitesmoke;
+}
+
+.login-form  {
+    border-radius: 25px;
+    background-color: rgba(192, 213, 216, 0.7);
     box-sizing: border-box;
     padding: 25px;
     clear: both;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 } 
 
-.signup{
-    border-radius: 10px 0 0 0;
-}
-
-.login{
-    border-radius: 0 10px 0 0;
-}
-.signup,
-.login, .dogg-add{
+.login {
     width: 50%;
-    background-color: rgba(85,171,189, 0.7);
+    background-color: rgba(192, 213, 216, 0.7);
     height: 55px;
-    float: left;
+    /* float: left; */
     text-align: center;
     line-height: 55px;
     font-weight: 600;
