@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
 import API from '../../utils/API'
-// import { Redirect } from 'react-router-dom'
-
+import { Redirect } from 'react-router-dom'
+import "./style.css";
 
 export class LoginForm extends Component {
     constructor() {
@@ -49,8 +49,10 @@ export class LoginForm extends Component {
         //     return <Redirect to={{ pathname: this.state.redirectTo }} />
         // } else {
     return (
-        
-        <Form>
+        <div>
+            <h1>yappE</h1>
+               
+        <Form className="login-form">
             <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control 
@@ -82,7 +84,7 @@ export class LoginForm extends Component {
                 Log In
             </Button>
             </Form>
-           
+        </div>   
     )
     }
 // }

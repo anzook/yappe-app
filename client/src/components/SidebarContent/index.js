@@ -70,9 +70,9 @@ const SidebarContent = props => {
         <CaretakersModal />
 
         </a>
-        <a href="#holder" style={styles.sidebarLink}>
-       <p><FontAwesomeIcon  icon={faClipboardList} /> Activity Log </p>
-        </a>
+        <NavLink style={styles.sidebarLink}>
+        <ActivityLog />
+        </NavLink>
         <a style={styles.sidebarLink}>
     <SettingsModal />
         </a>

@@ -42,11 +42,11 @@ function AddDogModal() {
                     <Modal.Title>Add Dog</Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body>
+                <Modal.Body id="modal-body">
                     {renderForm()}
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="outline-success" onClick={handleToggle}>
+                <Modal.Footer  id="modal-footer">
+                    <Button className="float-left" variant="outline-success" onClick={handleToggle}>
                         {toggle}
                     </Button>
                 </Modal.Footer>
