@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ListGroup, Card, Button, CardColumns, Container, Row, Col } from 'react-bootstrap';
-
+import ActivitiesFormModal from '../../components/ActivityFormModal'
 import './style.css';
 import API from '../../utils/API';
 
@@ -73,7 +73,7 @@ export default class DogInformation extends Component {
                             <Col className='dog-profile-img-div'>
                                 <img alt='Pet Photo' src='/images/placeholder-dog.jpg' />
                                 <div className='dog-profile-btn-div'>
-                                    <Button variant="primary">Add Activity</Button>
+                                    <ActivitiesFormModal user={this.props.user} pet={this.props.id}/>
                                     <Button variant="secondary">Ask Question</Button>
                                 </div>
                             </Col>
