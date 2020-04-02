@@ -43,7 +43,7 @@ export default class DogInformation extends Component {
     render() {
         let caretakers = this.state.caretakers?.map(caretaker => {
             return (
-                <Card>
+                <Card key={caretaker.id}>
                     <ul>
                         <li>Name: {caretaker.name}</li>
                         <li>Role: {caretaker.user_pets.role}</li>
@@ -52,6 +52,20 @@ export default class DogInformation extends Component {
                 </Card>
             )
         })
+
+        let actions = this.state.petActivities.slice(0, 5).map(activity => {
+            return (
+                <ListGroup.Item key={activity.id}>
+                    <ul className='actions-ul'>
+                        <li>Activity: {activity.type}</li>
+                        <li>Logged by: {activity.user.name}</li>
+                        <li>Date: {activity.updatedAt.slice(0, 10)}</li>
+                    </ul>
+                </ListGroup.Item>
+            )
+
+        })
+
         return (
             <div className='profile-div'>
                 <Card >
@@ -132,16 +146,14 @@ export default class DogInformation extends Component {
                     <Card className='profile-activities-card'>
                         <Card.Header>
                             Recent Activites
-                        <a>See All Activities</a>
-                        </Card.Header>
+                        {/* <span>See All Activities</span> */}
+                        </Card.Header >
                         <ListGroup variant="flush">
-                            <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                            <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                            <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+                            {actions}
                         </ListGroup>
-                    </Card>
-                </div>
-            </div>
+                    </Card >
+                </div >
+            </div >
 
             // {/* // <div>
             //     <ListGroup variant='flush'>
