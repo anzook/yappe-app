@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, ListGroup, Card } from 'react-bootstrap';
+import { Container, ListGroup, Card, Button } from 'react-bootstrap';
 import DogInformation from '../DogInformation';
 import ActivitiesForm from "../ActivitiesForm";
 import './style.css';
@@ -28,24 +28,24 @@ export default class DogInfo extends Component {
 
         if (display === 'info') {
             return (
-                <Card >
-                    <ListGroup variant="flush">
-                        <ListGroup.Item><h2>{this.props.pet.name}</h2></ListGroup.Item>
-                        <img className='dog-display-image' src='/images/placeholder-dog.jpg' />
-                    </ListGroup>
-                    <DogInformation
-                        id={this.props.pet.id}
-                        age={this.props.pet.age}
-                        sex={this.props.pet.sex}
-                        breed={this.props.pet.breed}
-                        actions={this.props.actions}
-                    />
-                    <Card.Body className='option-div' variant="flush">
-                        <span onClick={this.changeDisplay}>Add Activity</span>
-                        <span>See All Activites</span>
-                    </Card.Body>
-                </Card>
+                <Container>
+                        {/* <ListGroup variant="flush">
+                            <ListGroup.Item><h2>{this.props.pet.name}</h2></ListGroup.Item>
+                            <img className='dog-display-image' src='/images/placeholder-dog.jpg' />
+                        </ListGroup> */}
+                        <DogInformation
+                            id={this.props.pet.id}
+                            age={this.props.pet.age}
+                            sex={this.props.pet.sex}
+                            breed={this.props.pet.breed}
+                        />
+                        <div className='option-div' variant="flush">
+                            <span onClick={this.changeDisplay}>Add Activity</span>
+                            <span>See All Activites</span>
+                        </div>
+                </Container>
             )
+
         } else if (display === 'activites') {
             return (
                 <Card >
@@ -71,9 +71,7 @@ export default class DogInfo extends Component {
 
     render() {
         return (
-            <Container>
                 <div>{this.renderWindow()}</div>
-            </Container>
         )
     }
 }
