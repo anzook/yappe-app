@@ -33,7 +33,7 @@ function AddDogModal() {
         <>
             <div className='modal-btn' onClick={handleShow}>
                 <FontAwesomeIcon icon={ faPaw }/>
-                <span className='span'>Add Dog</span>
+                {/* <span className='span'>Add Dog</span> */}
             </div>
             
 

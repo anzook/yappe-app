@@ -16,7 +16,7 @@ function CaretakersModal() {
         <>
             <div className='modal-btn' onClick={handleShow}>
                 <FontAwesomeIcon icon={ faUserPlus }/>
-                <span className='span'> Caretakers</span>
+                {/* <span className='span'> Caretakers</span> */}
             </div>
             
 

@@ -60,7 +60,7 @@ class ActivityLog extends Component {
             <>
               <div className='modal-btn' onClick={this.handleShow} >
                   <FontAwesomeIcon icon={faClipboardList}/>
-                  <span className='span'>Activity Log</span>
+                  {/* <span className='span'>Activity Log</span> */}
               </div>
               
                 <Modal show={this.state.showmodal} onHide={this.state.hidemodal} >

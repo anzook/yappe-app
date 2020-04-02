@@ -57,13 +57,8 @@ const SidebarContent = props => {
         <NavLink  style={styles.sidebarLink}>
         <AddDogModal  />  
         </NavLink>
-        <NavLink style={styles.sidebarLink}>
-       <FontAwesomeIcon  icon={faUserPlus} />
-       <span className='span'>Add Caretaker</span>
-        </NavLink>
         <a href="https://github.com/anzook/yappe-app" style={styles.sidebarLink}>
        <FontAwesomeIcon  icon={faToolbox} />
-       <span className='span'>Help us improve</span>
         </a>
         {/* <div style={styles.divider} /> */}
         <a style={styles.sidebarLink}>
