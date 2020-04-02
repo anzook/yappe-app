@@ -4,6 +4,8 @@ import AddDogModal from '../AddDogModal'
 import ActivityLog from '../SideActivity'
 import {NavLink} from 'react-bootstrap'
 import MaterialTitlePanel from "./MaterialTitlePanel";
+import SettingsModal from "../SettingsModal";
+import CaretakersModal from "../CaretakersModal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog, faUserPlus, faToolbox, } from '@fortawesome/free-solid-svg-icons';
 import '../SidebarContent'
@@ -63,13 +65,17 @@ const SidebarContent = props => {
        <FontAwesomeIcon  icon={faToolbox} />
        <span className='span'>Help us improve</span>
         </a>
-        <NavLink style={styles.sidebarLink}>
-        <ActivityLog />
-        </NavLink>
-        <NavLink href="#holder" style={styles.sidebarLink}>
-       <FontAwesomeIcon  icon={faCog} />
-       <span className='span'>Settings</span>
-       </NavLink>
+        {/* <div style={styles.divider} /> */}
+        <a style={styles.sidebarLink}>
+        <CaretakersModal />
+
+        </a>
+        <a href="#holder" style={styles.sidebarLink}>
+       <p><FontAwesomeIcon  icon={faClipboardList} /> Activity Log </p>
+        </a>
+        <a style={styles.sidebarLink}>
+    <SettingsModal />
+        </a>
       </div>
     </MaterialTitlePanel>
   );
