@@ -10,7 +10,7 @@ import SideNav from "../../components/SideNav";
 import DogCard from "../../components/Card";
 import RecentActivity from "../../components/RecentActivityCard";
 import { Container, Row, Col } from "react-bootstrap";
-import DogInfo from '../../components/DogInfo'
+import DogInformation from '../../components/DogInformation'
 import FirstGlance from '../../components/FirstGlance';
 import "./style.css";
 import API from "../../utils/API";
@@ -99,10 +99,12 @@ class Dashboard extends Component {
       return <FirstGlance user={this.state.user}/>
     }
     else if (display === 'dog-info') {
-      return <DogInfo
+      return <DogInformation
         user={this.state.id}
-        pet={this.state.petSelect}
+        id={this.state.petSelect.id}
         name={this.state.petSelect.name}
+        sex={this.state.petSelect.sex}
+        breed={this.state.petSelect.breed}
         age={this.state.petSelect.age}
         actions={this.state.petActivities}
       />

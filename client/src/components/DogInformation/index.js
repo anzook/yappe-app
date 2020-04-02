@@ -28,16 +28,15 @@ export default class DogInformation extends Component {
     getPetInfo = () => {
         API.getPet(this.props.id)
             .then(pet => {
-                API.getPetActions(this.props.id)
-                    .then(actions => {
-                        this.setState({
-                            pet: pet.data,
-                            caretakers: pet.data.users,
-                            petActivities: actions.data,
-                            previousPetID: this.props.id
-                        })
-                    })
+                this.setState({
+                    pet: pet.data,
+                    caretakers: pet.data.users,
+                    petActivities: this.props.actions,
+                    previousPetID: this.props.id
+                })
+
             })
+
     }
 
     render() {
