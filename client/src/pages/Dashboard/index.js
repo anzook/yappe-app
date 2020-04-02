@@ -96,7 +96,7 @@ class Dashboard extends Component {
   renderDisplay() {
     let { display } = this.state;
     if (display === 'activities') {
-      return <FirstGlance />
+      return <FirstGlance user={this.state.user}/>
     }
     else if (display === 'dog-info') {
       return <DogInfo
