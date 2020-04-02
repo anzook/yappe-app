@@ -4,7 +4,7 @@ import './style.css';
 import ActivitiesForm from '../ActivitiesForm';
 
 
-function ActivitiesFormModal() {
+function ActivitiesFormModal(props) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -20,7 +20,7 @@ function ActivitiesFormModal() {
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton></Modal.Header>
                 <Modal.Body>
-                    < ActivitiesForm />
+                    < ActivitiesForm close={handleClose} user={props.user} pet={props.pet}/>
                 </Modal.Body>
             </Modal>
         </>

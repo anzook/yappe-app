@@ -89,9 +89,11 @@ export default class DoughnutChart extends Component {
 	}
 
 	render() {
-		let counts = this.getData()
+		let counts = this.getData();
+		let {allActivitiesTypes} = this.state;
+		let typesNoRepeats = allActivitiesTypes.filter((type, index) => allActivitiesTypes.indexOf(type) === index);
 		const data = {
-			labels: this.state.allActivitiesTypes
+			labels: typesNoRepeats
 			,
 			datasets: [{
 				data: counts,
