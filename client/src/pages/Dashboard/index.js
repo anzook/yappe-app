@@ -1,11 +1,17 @@
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom'
+import { 
+  Redirect,
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom'
 import YapNav from "../../components/Navbar";
 import SideNav from "../../components/SideNav";
 import DogCard from "../../components/Card";
 import RecentActivity from "../../components/RecentActivityCard";
 import { Container, Row, Col } from "react-bootstrap";
 import DogInfo from '../../components/DogInfo'
+import FirstGlance from '../../components/FirstGlance';
 import "./style.css";
 import API from "../../utils/API";
 
@@ -36,12 +42,13 @@ class Dashboard extends Component {
     API.getUserInfo().then(sessionRes => {
       if (sessionRes.data.name) {
         API.getUser(sessionRes.data.id).then(res => {
+          console.log(res.data)
           this.setState({
             user: res.data,
             loggedIn: true,
             email: sessionRes.data.email,
             name: sessionRes.data.name,
-            id: sessionRes.data.id
+            id: sessionRes.data.id,
           });
         });
 
@@ -87,10 +94,10 @@ class Dashboard extends Component {
 
   renderDisplay() {
     let { display } = this.state;
-    console.log(this.state.petSelect)
     if (display === 'activities') {
-      return (<RecentActivity />)
-    } else if (display === 'dog-info') {
+      return <FirstGlance />
+    }
+    else if (display === 'dog-info') {
       return <DogInfo
         user={this.state.id}
         pet={this.state.petSelect}
@@ -109,6 +116,7 @@ class Dashboard extends Component {
         name={pet.name}
         id={pet.id}
         key={pet.id}
+        role={pet.user_pets.role}
       />
 
     })
@@ -117,19 +125,15 @@ class Dashboard extends Component {
       return <Redirect to={{ pathname: this.state.redirectTo }} />
     } else {
       return (
-        <div>
+        <div className='dashboard-div'>
           <YapNav updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
           <Container fluid>
             <Row>
-              <Col xs md={2}>
+              <Col xs md={1}>
                 <SideNav />
-                {/* 1 of 3 */}
               </Col>
-              <Col xs md={6}>{cardOne}</Col>
-              <Col xs md={4}>{this.renderDisplay()}</Col>
-              {/* <Col xs md={4}><InfoCard /></Col> */}
-             
-
+              <Col xs md={3}>{cardOne}</Col>
+              <Col xs md={8}>{this.renderDisplay()}</Col>
             </Row>
           </Container>
           {/* <YapFooter /> */}

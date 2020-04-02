@@ -13,18 +13,26 @@ module.exports = function (app) {
 
   // Matches with "/api/action"
   app.route("/api/actions", isAuthenticated)
-  .post(actionController.create);
+    .post(actionController.create);
 
   // Matches with "/api/action/:id"
   app.route("/api/actions/:id", isAuthenticated)
-  .put(actionController.update)
-  .delete(actionController.delete);
+    .put(actionController.update)
+    .delete(actionController.delete);
+
+  // Matches with "/api/actions/user"
+  app.route('/api/actions/user/:id', isAuthenticated)
+    .get(actionController.userLogsById);
 
   // Matches with "/api/actions/user/:id"
-  app.route('/api/actions/user/:id', isAuthenticated)
-  .get(actionController.userLogsById);
+  app.route('/api/actions/user/:id/pet', isAuthenticated)
+    .get(actionController.userLogsByPet);
 
-  // Matches with "/api/actions/pet/:id"
+  // Matches with "/api/actions/pet"
   app.route('/api/actions/pet/:id', isAuthenticated)
-  .get(actionController.petActionsById);
+    .get(actionController.petActionsById);  
+    
+    // Matches with "/api/actions/pet/:id"
+    app.route('/api/actions/pet/:id/user', isAuthenticated)
+      .get(actionController.petActionsByUser);
 };
