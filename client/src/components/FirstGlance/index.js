@@ -28,7 +28,7 @@ export default class FirstGlance extends Component {
 
   render() {
     let donutCharts = this.state.ownedPets?.map(pet => {
-      return <li key={pet.id}><DoughnutChart petInfo={pet} /></li>
+      return <li key={pet.id}><DoughnutChart petId={pet.id} petName={pet.name} /></li>
     })
 
     return (<Container>

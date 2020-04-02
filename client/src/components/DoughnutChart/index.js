@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API from '../../utils/API'
 import { Doughnut } from 'react-chartjs-2';
 import { Container, Row, Col } from 'react-bootstrap'
 import './style.css'
@@ -30,12 +31,29 @@ export default class DoughnutChart extends Component {
 		super(props);
 
 		this.state = {
-			name: null,
-			activity: null,
-			caretaker: null,
-			date: null
+			pet: [this.props.petInfo],
+			activities: [],
+			lastActivity: [],
+			date: null,
+			lastCaretaker: null
 		}
 	}
+
+	componentDidMount() {
+		this.getPetActivities()
+	}
+
+	getPetActivities(){
+		API.getPetActions(this.props.petId)
+		.then(res => {
+			this.setState({
+				activities: res.data,
+				lastActivity: res.data[0],
+				lastCaretaker: res.data[0].user.name
+			})
+		})
+	}
+
 	render() {
 		return (
 			<Container className='yourDogCard'>
@@ -43,11 +61,11 @@ export default class DoughnutChart extends Component {
 					<Doughnut data={data} />
 				</div>
 				<div>
-					<h4>Name: {this.state.name}</h4>
+					<h4>{this.props.petName}</h4>
 					<ul className='removeUlStyling donut-ul'>
-						<li>Last Activity: tesing{this.state.activity} </li>
-						<li>Logged By: testing{this.state.caretaker}</li>
-						<li>Date: testing{this.state.date}</li>
+						<li>Last Activity: {this.state.lastActivity?.type} </li>
+						<li>Logged By: {this.state.lastCaretaker}</li>
+						<li>Date: {this.state.lastActivity?.updatedAt?.slice(0, 10)}</li>
 					</ul>
 				</div>
 			</Container>
