@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { Form, Button } from 'react-bootstrap'
 import API from '../../utils/API'
+import "./style.css";
 
 class SignupForm extends Component {
     constructor() {
