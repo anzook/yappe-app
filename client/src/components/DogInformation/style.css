@@ -1,12 +1,14 @@
 .no-padding {
     padding: 0;
 }
-.profile-div{
+
+.profile-div {
     height: 88vh;
     overflow-y: scroll;
     overflow-x: hidden;
     padding-bottom: 20px;
 }
+
 .dog-profile-container {
     padding: 20px;
 }
@@ -39,8 +41,6 @@
 }
 
 .careteam-info-div ul {
-    display: block;
-    list-style: none;
     padding: 0 25px;
     margin-bottom: 0;
 }
@@ -58,20 +58,21 @@
     display: -webkit-box;
 }
 
-.careteam-info-div{
+.careteam-info-div {
     margin-bottom: 20px;
 }
 
-.team-contribution-card{
+.team-contribution-card {
     text-align: center;
 }
 
-.team-contribution-card .ul-div{
+.team-contribution-card .ul-div {
     display: flex;
     width: fit-content;
     margin: auto;
     margin-top: 9px;
-    justify-content: initial;}
+    justify-content: initial;
+}
 
 .team-members-card.card {
     background: none;
@@ -93,6 +94,10 @@
 
 .team-members-div {
     overflow-y: scroll;
+}
+
+.team-members-div ul {
+    padding: 0;
 }
 
 .team-members-div .card {

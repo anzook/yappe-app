@@ -31,9 +31,9 @@ export default class DogInformation extends Component {
                                     <Card.Subtitle className="mb-2 text-muted">Parent: </Card.Subtitle>
                                     <ListGroup variant="flush">
                                         <ul>
-                                            <li>Age: </li>
-                                            <li>Breed: </li>
-                                            <li>Sex: </li>
+                                            <li>Age: {this.props.age}</li>
+                                            <li>Sex: {this.props.sex}</li>
+                                            <li>Breed: {this.props.breed}</li>
                                         </ul>
                                     </ListGroup>
                                 </Card.Body>
