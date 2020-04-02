@@ -1,27 +1,8 @@
 import React, { Component } from 'react';
 import API from '../../utils/API'
 import { Doughnut } from 'react-chartjs-2';
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import './style.css'
-
-// const data = {
-// 	labels: [
-// 		'Bath', 'Checkup', 'Groom', 'Meds', 'Pee', 'Play', 'Poop', 'Walk',
-// 	],
-// 	datasets: [{
-// 		data: [300, 50, 100],
-// 		backgroundColor: [
-// 			'#FF6384',
-// 			'#36A2EB',
-// 			'#FFCE56'
-// 		],
-// 		hoverBackgroundColor: [
-// 			'#FF6384',
-// 			'#36A2EB',
-// 			'#FFCE56'
-// 		]
-// 	}]
-// };
 
 export default class DoughnutChart extends Component {
 

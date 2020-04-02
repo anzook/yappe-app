@@ -7,7 +7,7 @@ import MaterialTitlePanel from "./MaterialTitlePanel";
 import SettingsModal from "../SettingsModal";
 import CaretakersModal from "../CaretakersModal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog, faUserPlus, faToolbox, } from '@fortawesome/free-solid-svg-icons';
+import { faToolbox, } from '@fortawesome/free-solid-svg-icons';
 import '../SidebarContent'
  
  

@@ -2,13 +2,10 @@ import React, { Component } from "react";
 import { 
   Redirect,
   BrowserRouter as Router,
-  Switch,
-  Route,
 } from 'react-router-dom'
 import YapNav from "../../components/Navbar";
 import SideNav from "../../components/SideNav";
 import DogCard from "../../components/Card";
-import RecentActivity from "../../components/RecentActivityCard";
 import { Container, Row, Col } from "react-bootstrap";
 import DogInformation from '../../components/DogInformation'
 import FirstGlance from '../../components/FirstGlance';
