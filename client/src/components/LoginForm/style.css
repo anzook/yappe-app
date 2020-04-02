@@ -1,27 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Baloo+Thambi+2:400,500&display=swap');
 
-<h1> {
+h1 {
     font-size: 1.35rem;
-    font-family: 'Baloo Thambi 2', cursive;
+    font-family: 'Marck Script', cursive;
     font-weight: 500;
     color: whitesmoke;
 }
 
-form {
-    border-radius: 10px;
+.login-form  {
+    border-radius: 25px;
     background-color: rgba(192, 213, 216, 0.7);
     box-sizing: border-box;
     padding: 25px;
     clear: both;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 } 
-
-.signup{
-    border-radius: 10px 0 0 0;
-}
-
-.login{
-    border-radius: 0 10px 0 0;
-}
 
 .login {
     width: 50%;
