@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import API from "../../utils/API";
 
 export class CareTakersTable extends Component {
@@ -35,7 +35,14 @@ export class CareTakersTable extends Component {
         for (let j = 0; j < dogs[i].users.length; j++) {
         children.push(<td>{dogs[i].users[j].name}</td>)
         children.push(<td>{dogs[i].users[j].user_pets.role}</td>)
-        children.push(<td>{dogs[i].users[j].email}</td>)
+        children.push(<td>
+           <Button 
+           href={"mailto:"+ dogs[i].users[j].email +"?subject=Yappe-%20a%20message%20for%20" + dogs[i].users[j].name +"%20regarding%20"+dogs[i].name}
+           target="_blank" rel="noopener noreferrer"
+           variant="outline-success">
+           Email
+                    </Button>
+          </td>)
         table.push(<tr>{children}</tr>)
         children = []
     }
