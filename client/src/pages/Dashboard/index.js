@@ -131,7 +131,8 @@ class Dashboard extends Component {
           <SidebarContent />
             <Row>
               <Col xs md={4} className='dog-cards-col'>{cardOne}</Col>
-              <Col xs md={8}>{this.renderDisplay()}</Col>
+              <Col xs md={8}>{this.renderDisplay()}
+              </Col>
             </Row>
           </Container>
           {/* <YapFooter /> */}

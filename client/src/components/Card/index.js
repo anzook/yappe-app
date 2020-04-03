@@ -35,7 +35,7 @@ interaction() {
   render() {
     return (
       <Container>
-        <Card className='dog-card' onClick={this.props.onClick} style={{ width: '21rem' }}>
+        <Card className='dog-card' onClick={this.props.onClick} style={{ maxWidth: '21rem' }}>
           <Card.Body>
             <img alt='Pet' src="/images/placeholder-dog.jpg" className='dog-card-image' />
             <ListGroup className="list-group-flush dog-card-list">
