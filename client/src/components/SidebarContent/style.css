@@ -31,6 +31,11 @@ svg.svg-inline--{
     margin-bottom: 33px;
     color: #5c5c5c;
 }
+
+.sidebar-ul li:hover,
+.sidebar-ul li a:hover{
+    color: #00ad6e;
+}
 .sidebar-ul li a{
     text-decoration: none;
     color: #5c5c5c;
