@@ -130,7 +130,7 @@ class Dashboard extends Component {
           <Container fluid>
           <SidebarContent />
             <Row>
-              <Col xs md={{  offset: 1 }}>{cardOne}</Col>
+              <Col xs md={4} className='dog-cards-col'>{cardOne}</Col>
               <Col xs md={8}>{this.renderDisplay()}</Col>
             </Row>
           </Container>

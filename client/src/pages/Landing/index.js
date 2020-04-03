@@ -78,12 +78,14 @@ class LandingPage extends Component {
     if (display === 'first') {
       return (
         <div>
-          <Overlay />
           <h3>Login</h3>
           <LoginForm
             updateUser={this.updateUser}
           />
-          
+          <span className='toggleBtn' onClick={this.changeDisplay}>
+            {this.state.action}
+          </span>
+
         </div>
       )
     } else if (display === 'second') {
@@ -93,6 +95,10 @@ class LandingPage extends Component {
           <SignupForm
             updateUser={this.updateUser}
           />
+          <span className='toggleBtn' onClick={this.changeDisplay}>
+            {this.state.action}
+          </span>
+
         </div>
       )
     }
@@ -111,13 +117,11 @@ class LandingPage extends Component {
           <Hero />
           <div className={className.formDiv}>
             <Container style={{ marginTop: 0 }}>
-              <Row>
+              <div>
                 {this.renderForm()}
                 <br />
-                <span className={className.toggleBtn} onClick={this.changeDisplay}>
-                  {this.state.action}
-                </span>
-              </Row>
+
+              </div>
             </Container>
           </div>
         </div>
