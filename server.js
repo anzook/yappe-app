@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path = require('path');
 const session = require('express-session')
 const PORT = process.env.PORT || 3001;
 require('dotenv').config();
@@ -13,7 +14,7 @@ const db = require('./models');
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"));
+// app.use(express.static("public"));
 
 
 app.use(session({secret: 'keyboard dog', proxy: true, resave: true,
@@ -22,8 +23,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Serve up static assets (usually on heroku)
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("client/build"));
+// }
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+}
+else {
+  app.use(express.static(path.join(__dirname, '/client/public')));
 }
 
 // Add routes, both API and view
