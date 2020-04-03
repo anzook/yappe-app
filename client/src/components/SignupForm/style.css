@@ -5,14 +5,20 @@
     box-sizing: border-box;
     padding: 25px;
     clear: both;
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-} 
+    transform: translate(-50%, -50%); */
+}
 
 .signup{
     border-radius: 25px;
+}
+
+h1 {
+    font-size: 48px;
+    padding-bottom: 20px;
+    text-shadow: 2px 2px darkgrey;
 }
 
 /* .signup,

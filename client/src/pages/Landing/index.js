@@ -76,20 +76,26 @@ class LandingPage extends Component {
 
     if (display === 'first') {
       return (
-        <div>
-          <h3>Login</h3>
+        <div className="form">
+          
           <LoginForm
             updateUser={this.updateUser}
           />
+          <span className="toggleBtn" onClick={this.changeDisplay}>
+                  {this.state.action}
+                </span>
         </div>
       )
     } else if (display === 'second') {
       return (
-        <div>
-          <h3>Sign Up</h3>
+        <div className="form">
+          
           <SignupForm
             updateUser={this.updateUser}
           />
+          <span className="toggleBtn" onClick={this.changeDisplay}>
+                  {this.state.action}
+                </span>
         </div>
       )
     }
@@ -111,9 +117,7 @@ class LandingPage extends Component {
               <Row>
                 {this.renderForm()}
                 <br />
-                <span className={className.toggleBtn} onClick={this.changeDisplay}>
-                  {this.state.action}
-                </span>
+                
               </Row>
             </Container>
           </div>

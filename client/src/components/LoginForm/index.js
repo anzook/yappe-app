@@ -44,6 +44,66 @@ export class LoginForm extends Component {
         })
     }
 
+    // constructor() {
+    //     super()
+    //     this.state = {
+    //       loggedIn: false,
+    //       email: null,
+    //       name: null,
+    //       display: 'first',
+    //       action: `Don't have an account? Sign up.`,
+    //       redirectTo: '/',
+    //     }
+    //     this.getUser = this.getUser.bind(this)
+    //     this.componentDidMount = this.componentDidMount.bind(this)
+    //     this.updateUser = this.updateUser.bind(this)
+    //   }
+    
+    //   componentDidMount() {
+    //     this.getUser()
+    //   }
+    
+    //   updateUser() {
+    //     // this.setState(userObject)
+    //     this.getUser();
+    //   }
+    
+    //   getUser() {
+    //     console.log("Calling request for user info... ");
+    //     API.getUserInfo().then(res => {
+    //       // console.log('Get user response: ')
+    //       if (res.data.name) {
+    //         console.log('Get User: There is a user saved in the server session: ')
+    //         console.log(res)
+    
+    //         this.setState({
+    //           loggedIn: true,
+    //           email: res.data.email,
+    //           name: res.data.name,
+    //           redirectTo: '/dashboard'
+    //         })
+    //       } else {
+    //         console.log('Get user: no user found');
+    //         this.setState({
+    //           loggedIn: false,
+    //           email: null,
+    //           redirectTo: '/'
+    //         })
+    
+    //       }
+    //     })
+    //   }
+    
+    
+      // changeDisplay = () => {
+      //   let { display, action } = this.state;
+      //   this.setState({
+      //     display: display === 'first' ? 'second' : 'first',
+      //     action: action === `Don't have an account? Sign up.` ? 'Already have an account? Log in.' : `Don't have an account? Sign up.`
+    
+      //   });
+      // }
+
     render() {
         // if (this.state.redirectTo) {
         //     return <Redirect to={{ pathname: this.state.redirectTo }} />
@@ -53,6 +113,7 @@ export class LoginForm extends Component {
             <h1>yappE</h1>
                
         <Form className="login-form">
+         <h3>Login</h3>
             <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control 
@@ -84,7 +145,7 @@ export class LoginForm extends Component {
                 Log In
             </Button>
             </Form>
-        </div>   
+          </div>   
     )
     }
 // }

@@ -66,8 +66,11 @@ class SignupForm extends Component {
         // } else {
         let signup = 'signup';
         return (
+            <div>
+            <h1>yappE</h1>
 
             <Form className={signup}>
+                <h3>Sign Up</h3>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
                     <Form.Control
@@ -106,6 +109,7 @@ class SignupForm extends Component {
                     Sign Up
                 </Button>
             </Form >
+            </div>
         )
 
     // }
