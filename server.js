@@ -28,7 +28,9 @@ app.use(passport.session());
 // }
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
- 
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '/client/build/index.html'));
+  });
 }
 else {
   app.use(express.static(path.join(__dirname, '/client/public')));
@@ -41,6 +43,11 @@ require('./routes/pet-api-routes.js')(app, db);
 require('./routes/user-api-routes.js')(app, db);
 require('./routes/action-api-routes.js')(app, db);
 
+if  (process.env.NODE_ENV === "production") {
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client/build/index.html'));
+});
+}
 
 // Connect to the Database
 // Sync db and then Start the API server
