@@ -1,23 +1,37 @@
 @import url('https://fonts.googleapis.com/css?family=Marck+Script&display=swap');
 
 body {
-    background-color: #ececf0;
+    background-color: #f5f5f5;
 }
 
 .nav {
-    background-color: #c1f551;
+    background-color: #1ee09d;
+    padding: 0 20px;
 }
 
 .navbar-brand{
     font-family: 'Marck Script', cursive;
-    font-size: 25px;
+    font-size: 23px;
 }
 
-.icon {
+.nav .icon {
     font-size: 25px;
-    color: #484848;
+    color: #1b1b1b;
 }
 
-.icon:hover {
+.nav .icon:hover {
     cursor: pointer;
+}
+
+button.navbar-toggler.collapsed {
+    border: none;
+}
+
+.navbar-light .navbar-toggler {
+    border: none;
+    border-color: none;
+}
+
+.nav button:focus {
+    outline:none; 
 }
