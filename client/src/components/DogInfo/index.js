@@ -51,7 +51,7 @@ export default class DogInfo extends Component {
                 <Card >
                     <ListGroup variant="flush">
                         <ListGroup.Item><h2>{this.props.pet.name}</h2></ListGroup.Item>
-                        <img className='dog-display-image' src='/images/placeholder-dog.jpg' />
+                        <img className='dog-display-image' src='/images/placeholder-dog.jpg' alt='a dog' />
                     </ListGroup>
                     <Card.Body>
                         <Card.Title>Add Activity</Card.Title>

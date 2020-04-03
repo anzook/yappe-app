@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import AddDogModal from '../AddDogModal'
+import ActivityLog from '../SideActivity'
+import {NavLink} from 'react-bootstrap'
 import MaterialTitlePanel from "./MaterialTitlePanel";
 import SettingsModal from "../SettingsModal";
 import CaretakersModal from "../CaretakersModal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog, faUserPlus, faClipboardList, faPaw, faHome } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faUserPlus, faToolbox, } from '@fortawesome/free-solid-svg-icons';
 import '../SidebarContent'
  
  
@@ -39,33 +41,33 @@ const SidebarContent = props => {
     ? { ...styles.sidebar, ...props.style }
     : styles.sidebar;
 
-  const links = [];
+  // const links = [];
 
-  for (let ind = 0; ind < 10; ind++) {
-    links.push(
-      <a key={ind} href="#" style={styles.sidebarLink.coffee}>
-        Mock menu item {ind}
-      </a>
-    );
-  }
+  // for (let ind = 0; ind < 10; ind++) {
+  //   links.push(
+  //     <a key={ind} href="#" style={styles.sidebarLink.coffee}>
+  //       Mock menu item {ind}
+  //     </a>
+  //   );
+  // }
 
   return (
     <MaterialTitlePanel title="Menu" style={style}>
       <div style={styles.content}>
-        <a href="index.html" style={styles.sidebarLink}>
-        <p><FontAwesomeIcon  icon={faHome} /> Home </p>
-        </a>
-        <a  style={styles.sidebarLink}>
+        <NavLink  style={styles.sidebarLink}>
         <AddDogModal  />  
+        </NavLink>
+        <a href="https://github.com/anzook/yappe-app" style={styles.sidebarLink}>
+       <FontAwesomeIcon  icon={faToolbox} />
         </a>
         {/* <div style={styles.divider} /> */}
         <a style={styles.sidebarLink}>
         <CaretakersModal />
 
         </a>
-        <a href="#holder" style={styles.sidebarLink}>
-       <p><FontAwesomeIcon  icon={faClipboardList} /> Activity Log </p>
-        </a>
+        <NavLink style={styles.sidebarLink}>
+        <ActivityLog />
+        </NavLink>
         <a style={styles.sidebarLink}>
     <SettingsModal />
         </a>

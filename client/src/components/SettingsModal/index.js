@@ -19,7 +19,7 @@ function SettingsModal() {
         <>
             <div className='modal-btn' onClick={handleShow}>
                 <FontAwesomeIcon icon={ faCog }/>
-                <span className='span'> User Settings</span>
+                {/* <span className='span'> User Settings</span> */}
             </div>
             
 

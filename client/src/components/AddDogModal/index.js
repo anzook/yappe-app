@@ -33,13 +33,13 @@ function AddDogModal() {
         <>
             <div className='modal-btn' onClick={handleShow}>
                 <FontAwesomeIcon icon={ faPaw }/>
-                <span className='span'>Add Dog</span>
+                {/* <span className='span'>Add Dog</span> */}
             </div>
             
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header id="modal-header" closeButton>
-                    {/* <Modal.Title>Add Dog</Modal.Title> */}
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Dog</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body id="modal-body">
