@@ -67,20 +67,20 @@ export default class DogInformation extends Component {
 
         return (
             <div className='profile-div'>
-                <Card >
+                <Card className='dog-profile-intro-card'>
                     <Container className='dog-profile-container'>
                         <Row >
                             <Col className='dog-profile-img-div'>
                                 <img alt='Pet' src='/images/placeholder-dog.jpg' />
                                 <div className='dog-profile-btn-div'>
-                                    <ActivitiesFormModal user={this.props.user} pet={this.props.id}/>
-                                    <Button variant="secondary">Ask Question</Button>
+                                    <ActivitiesFormModal user={this.props.user} pet={this.props.id} />
+                                    <Button className='ask-btn' variant="secondary">Ask Question</Button>
                                 </div>
                             </Col>
                             <Col xs md={8} className='profile-intro-card'>
                                 <Card.Body>
-                                    <Card.Title>{this.state.pet.name}</Card.Title>
-                                    <Card.Subtitle className="mb-2 text-muted">Parent: </Card.Subtitle>
+                                    <Card.Title className='pet-name-profile'>{this.state.pet.name}</Card.Title>
+                                    <Card.Subtitle className="parent-name-sub">Parent: ########</Card.Subtitle>
                                     <ListGroup variant="flush">
                                         <ul>
                                             <li>Age: {this.state.pet.age}</li>
@@ -153,28 +153,6 @@ export default class DogInformation extends Component {
                     </Card >
                 </div >
             </div >
-
-            // {/* // <div>
-            //     <ListGroup variant='flush'>
-            //         <ListGroup.Item>
-            //             <ul className='age-sex-ul'>
-            //                 <li><h6>Age: {this.props.age}</h6></li>
-            //                 <li><h6>Sex: {this.props.sex}</h6></li>
-            //             </ul>
-            //             <h6>Breed: {this.props.breed}</h6>
-            //         </ListGroup.Item>
-            //         <ListGroup.Item>
-            //             <h4>Most Recent Activities</h4>
-            //             {this.props.actions.slice(0, 3).map((action) => ( */}
-            // {/* //                 <ul className='actions-ul'>
-            //                     <li><h6>Activity: {action.type}</h6></li>
-            //                     <li><h6>Date: {action.updatedAt.slice(0, 10)}</h6></li>
-            //                 </ul>
-            //             ))}
-            //         </ListGroup.Item> */}
-            // {/* //     </ListGroup> */}
-            // {/* // </div> */}
-
         )
     }
 }

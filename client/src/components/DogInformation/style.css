@@ -2,11 +2,20 @@
     padding: 0;
 }
 
+.dog-profile-intro-card {
+    -webkit-box-shadow: 0px 3px 25px -7px rgba(0, 0, 0, 0.27);
+    -moz-box-shadow: 0px 3px 25px -7px rgba(0, 0, 0, 0.27);
+    box-shadow: 0px 3px 25px -7px rgba(0, 0, 0, 0.27);
+    border-radius: 7px;
+    margin-bottom: 20px;
+}
+
 .profile-div {
     height: 88vh;
     overflow-y: scroll;
     overflow-x: hidden;
     padding-bottom: 20px;
+    padding: 0 60px 20px;
 }
 
 .dog-profile-container {
@@ -38,6 +47,18 @@
     display: block;
     list-style: none;
     padding: 0;
+}
+
+.pet-name-profile{
+    font-size: 1.5rem;
+    margin-bottom: .40rem;
+    font-weight: 600;
+    color: #5c5c5c;
+}
+
+.parent-name-sub{
+    color: #1ee09d;
+    margin-bottom: 15px;
 }
 
 .careteam-info-div ul {
@@ -105,3 +126,18 @@
     padding-left: 20px;
     padding-top: 10px;
 }
+
+.dog-profile-btn-div button {
+    margin: 0 6px;
+    border: none;
+    
+}
+
+.ask-btn{
+    background-color: #1ee09d
+}
+
+.ask-btn:hover{
+    background-color: #00ad6e;
+}
+

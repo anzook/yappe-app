@@ -12,7 +12,7 @@ function ActivitiesFormModal(props) {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button className='add-act-modal-btn' onClick={handleShow}>
                 Add Activity
             </Button>
 
