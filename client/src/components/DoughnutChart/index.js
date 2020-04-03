@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import API from '../../utils/API'
 import { Doughnut } from 'react-chartjs-2';
 import { Container } from 'react-bootstrap'
+import Functions from '../../utils/Functions'
 import './style.css'
 
 export default class DoughnutChart extends Component {
@@ -28,7 +29,7 @@ export default class DoughnutChart extends Component {
 		API.getPetActions(this.props.petId)
 			.then(res => {
 				let organized = res.data.map(action => {
-					return action.type
+					return Functions.capitalize(action.type)
 				})
 
 				organized.sort()
@@ -36,7 +37,7 @@ export default class DoughnutChart extends Component {
 				this.setState({
 					activities: res.data,
 					lastActivity: res.data[0],
-					lastCaretaker: res.data[0].user.name,
+					lastCaretaker: Functions.capitalize(res.data[0].user.name),
 					allActivitiesTypes: organized
 
 				})
@@ -71,7 +72,7 @@ export default class DoughnutChart extends Component {
 
 	render() {
 		let counts = this.getData();
-		let {allActivitiesTypes} = this.state;
+		let { allActivitiesTypes } = this.state;
 		let typesNoRepeats = allActivitiesTypes.filter((type, index) => allActivitiesTypes.indexOf(type) === index);
 		const data = {
 			labels: typesNoRepeats
@@ -79,39 +80,39 @@ export default class DoughnutChart extends Component {
 			datasets: [{
 				data: counts,
 				backgroundColor: [
+					'#238c8f',
 					'#1ee09d',
-					'#FF8F00',
-					'#E74C3C',
-					'#F4D03F',
-					'#3498DB',
-					'#17202A',
-					'#F4F6F7',
+					'#fae45a',
+					'#ef7125',
+					'#ff8374',
+					'#90dc9e',
+					'#af0808',
 				],
 				hoverBackgroundColor: [
+					'#238c8f',
 					'#1ee09d',
-					'#FF8F00',
-					'#E74C3C',
-					'#F4D03F',
-					'#3498DB',
-					'#17202A',
-					'#F4F6F7',
+					'#fae45a',
+					'#ef7125',
+					'#ff8374',
+					'#90dc9e',
+					'#af0808',
 				]
 			}]
 		}
 		return (
 			<Container className='yourDogCard'>
-				<div>
-					<Doughnut data={data} 
-					options={
-						{legend: {position:"left"}}} />
-				</div>
-				<div>
+				<div className='pet-info-div'>
 					<h4>{this.props.petName}</h4>
 					<ul className='removeUlStyling donut-ul'>
-						<li>Last Activity: {this.state.lastActivity?.type} </li>
+						<li>Last Activity: {Functions.capitalize(this.state.lastActivity?.type)} </li>
 						<li>Logged By: {this.state.lastCaretaker}</li>
 						<li>Date: {this.state.lastActivity?.updatedAt?.slice(0, 10)}</li>
 					</ul>
+				</div>
+				<div>
+					<Doughnut data={data}
+						options={
+							{ legend: { position: "right" } }} />
 				</div>
 			</Container>
 		)

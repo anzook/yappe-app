@@ -12,12 +12,12 @@ export default class LineChart extends Component {
                 datasets: [
                     {
                         label: 'Your Dogs',
-                        backgroundColor:'rgba(255, 0, 255, 0.75)',
+                        backgroundColor:'rgba(239,113,37, 0.75)',
                         data: [4, 5, 1, 10, 32, 2, 4]
                     },
                     {
-                        label: 'Subscriptions',
-                        backgroundColor:'rgba(0, 255, 0, 0.75)',
+                        label: 'Other Dogs',
+                        backgroundColor:'rgba(30, 224, 157, 0.75)',
                         data: [14, 15, 21, 0, 12, 4, 2]
                     }
                 ]
@@ -26,11 +26,12 @@ export default class LineChart extends Component {
     }
     render() {
         return(
-            <div style={{position:'relative', width: '82%', height: "60vh"}}>
+            <div className='line-chart-div' style={{ width: '90%', height: "60vh"}}>
                 <h3>Your Logged Activities</h3>
                 <Line
                     options={{
-                        responsive: true
+                        responsive: true,
+                        legend:{position:'left'}
                     }}
                     data={this.state.data}
                 />

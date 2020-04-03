@@ -10,6 +10,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import DogInformation from '../../components/DogInformation'
 import FirstGlance from '../../components/FirstGlance';
 import "./style.css";
+import Funtions from '../../utils/Functions'
 import API from "../../utils/API";
 
 
@@ -99,9 +100,9 @@ class Dashboard extends Component {
       return <DogInformation
         user={this.state.id}
         id={this.state.petSelect.id}
-        name={this.state.petSelect.name}
-        sex={this.state.petSelect.sex}
-        breed={this.state.petSelect.breed}
+        name={Funtions.capitalize(this.state.petSelect.name)}
+        sex={Funtions.capitalize(this.state.petSelect.sex)}
+        breed={Funtions.capitalize(this.state.petSelect.breed)}
         age={this.state.petSelect.age}
         actions={this.state.petActivities}
       />
@@ -113,10 +114,10 @@ class Dashboard extends Component {
       let Infopet = { id: pet.id, name: pet.name, age: pet.age, sex: pet.sex, breed: pet.breed };
       return <DogCard
         onClick={() => { this.changeDisplay(Infopet); this.getActions(Infopet.id); }}
-        name={pet.name}
+        name={Funtions.capitalize(pet.name)}
         id={pet.id}
         key={pet.id}
-        role={pet.user_pets.role}
+        role={Funtions.capitalize(pet.user_pets.role)}
       />
 
     })

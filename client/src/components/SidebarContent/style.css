@@ -41,3 +41,17 @@ svg.svg-inline--{
     color: #5c5c5c;
     font-size: 1.35rem;
 }
+
+svg.svg-inline--fa.fa-cog.fa-w-16,
+svg.svg-inline--fa.fa-paw.fa-w-16,
+svg.svg-inline--fa.fa-github.fa-w-16 {
+    font-size: 1.75rem;
+}
+
+svg.svg-inline--fa.fa-user-friends.fa-w-20 {
+    font-size: 1.4rem;
+}
+
+svg.svg-inline--fa.fa-clipboard-list.fa-w-12 {
+    font-size: 1.65rem;
+}

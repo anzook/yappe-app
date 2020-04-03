@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
 
 body {
     background-color: #f0f0f0;
     overflow: hidden;
     font-family: 'Roboto', sans-serif;
-
+    letter-spacing: .5px;
 }
 
 .container-fluid{
@@ -19,6 +19,6 @@ body {
     padding: 0;
     overflow-y: scroll;
     height: 92vh;
-    padding-left: 100px;
+    padding-left: 70px;
     z-index: 0;
 }

@@ -1,16 +1,29 @@
 .removeUlStyling {
     list-style: none;
     padding: 0;
+    color: #828282;
 }
 
 .donut-ul li {
     margin: 0;
+    margin-bottom: -2px;
     height: auto;
     width: auto;
+    font-weight: 400;
+    font-size: 1rem;
     border-right: none;
 }
 
 .yourDogCard {
     display: flex;
     border-right: solid 2px #dedede;
+}
+
+.yourDogCard .pet-info-div{
+    margin-top: 20px;
+}
+
+.yourDogCard .pet-info-div h4{
+    font-weight: 500;
+    margin-bottom: 5px
 }
