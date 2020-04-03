@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom'
 import YapNav from "../../components/Navbar";
-import SideNav from "../../components/SideNav";
+import SidebarContent from "../../components/SidebarContent";
 import DogCard from "../../components/Card";
 import { Container, Row, Col } from "react-bootstrap";
 import DogInformation from '../../components/DogInformation'
@@ -129,8 +129,8 @@ class Dashboard extends Component {
           <YapNav updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
           <Container fluid>
             <Row>
-              <Col xs md={1}>
-                <SideNav />
+              <Col xs={1} md={1}>
+                <SidebarContent />
               </Col>
               <Col xs md={3}>{cardOne}</Col>
               <Col xs md={8}>{this.renderDisplay()}</Col>

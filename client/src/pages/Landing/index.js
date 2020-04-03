@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom'
+import Overlay from '../../components/Overlay'
 
 import Row from "../../components/Row";
 import Container from "../../components/Container";
@@ -77,10 +78,12 @@ class LandingPage extends Component {
     if (display === 'first') {
       return (
         <div>
+          <Overlay />
           <h3>Login</h3>
           <LoginForm
             updateUser={this.updateUser}
           />
+          
         </div>
       )
     } else if (display === 'second') {

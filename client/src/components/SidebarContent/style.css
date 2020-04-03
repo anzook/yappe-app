@@ -10,3 +10,21 @@ svg.svg-inline--{
     font-family: 'Baloo Thambi 2', cursive;
     font-weight: 500;
 }
+
+.sidebar-ul{
+    list-style: none;
+    padding: 0;
+    background-color: #fff;
+    height: 285px;
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 32px;
+}
+
+.sidebar-ul li{
+    margin-bottom: 25px;
+    color: #5c5c5c;
+}
+.sidebar-ul li a{
+    text-decoration: none;
+}
