@@ -13,6 +13,7 @@
 
 span.toggleBtn:hover{
     cursor: pointer;
+    color: white;
 }
 
 .formDiv{

@@ -60,7 +60,7 @@ export class AddExistingDogForm extends Component {
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
-                    <Button onClick={this.handleFormSubmit} variant="primary" type="submit">
+                    <Button onClick={this.handleFormSubmit} className="float-right" variant="outline-success" type="submit">
                         Submit
                         </Button>
                 </Form.Group>

@@ -38,7 +38,7 @@ function AddDogModal() {
             
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
+                <Modal.Header id="modal-header" closeButton>
                     <Modal.Title>Add Dog</Modal.Title>
                 </Modal.Header>
 
@@ -46,7 +46,7 @@ function AddDogModal() {
                     {renderForm()}
                 </Modal.Body>
                 <Modal.Footer  id="modal-footer">
-                    <Button className="float-left" variant="outline-success" onClick={handleToggle}>
+                    <Button className="toggle-button" variant="outline-success" onClick={handleToggle}>
                         {toggle}
                     </Button>
                 </Modal.Footer>
