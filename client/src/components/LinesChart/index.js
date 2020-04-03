@@ -11,7 +11,7 @@ export default class LineChart extends Component {
                 labels: ['1', '2', '3', '4', '5', '6', '7'],
                 datasets: [
                     {
-                        label: 'Videos Made',
+                        label: 'Your Dogs',
                         backgroundColor:'rgba(255, 0, 255, 0.75)',
                         data: [4, 5, 1, 10, 32, 2, 4]
                     },
