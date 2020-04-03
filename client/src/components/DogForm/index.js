@@ -98,7 +98,7 @@ export class DogForm extends Component {
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
-                    <Button className="float-right" onClick={this.handleFormSubmit} variant="outline-success" type="submit">
+                    <Button id="dog-form-btn" className="float-right" onClick={this.handleFormSubmit} variant="outline-success" type="submit">
                         Submit
                         </Button>
                 </Form.Group>

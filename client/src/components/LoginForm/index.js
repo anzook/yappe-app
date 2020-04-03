@@ -137,7 +137,7 @@ export class LoginForm extends Component {
                 />
             </Form.Group>          
 
-            <Button 
+            <Button id="login-btn"
             variant="primary" 
             type="submit"
             onClick={this.handleFormSubmit}

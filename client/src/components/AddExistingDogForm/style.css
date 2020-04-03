@@ -1,3 +1,12 @@
-.dog-form-btn {
+#add-dog-btn {
     float: right;
+    background-color: white;
+    color: #1ee09d;
+    border: 2px solid #1ee09d;
+    border-radius: 12px;
+}
+
+.add-dog-btn:hover {
+    background-color: #1ee09d;
+    color: white;
 }

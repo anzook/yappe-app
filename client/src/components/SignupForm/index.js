@@ -101,7 +101,7 @@ class SignupForm extends Component {
 
                     />
                 </Form.Group>
-                <Button
+                <Button id="signup-btn"
                     variant="primary"
                     type="submit"
                     onClick={this.handleFormSubmit}
