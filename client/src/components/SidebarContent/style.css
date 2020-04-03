@@ -24,6 +24,7 @@ svg.svg-inline--{
     top: 0;
     left: 0;
     padding-top: 15%;
+    z-index: 1;
 }
 
 .sidebar-ul li{

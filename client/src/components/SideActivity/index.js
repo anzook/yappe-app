@@ -16,7 +16,7 @@ class ActivityLog extends Component {
         this.state = {
             showmodal: false,
             userId: null,
-            hidemodal: true,
+            // hidemodal: true,
             userLogs: []
 
         };
@@ -53,7 +53,6 @@ class ActivityLog extends Component {
     }
 
     handleShow = (event) => {
-        event.preventDefault()
         this.setState({
             showmodal: true,
 
@@ -61,7 +60,6 @@ class ActivityLog extends Component {
     }
 
     handleClose = (event) => {
-        event.preventDefault()
         this.setState({
             showmodal: false,
         })
@@ -75,7 +73,7 @@ class ActivityLog extends Component {
                     {this.renderAddDogIcon()}
                 </div>
 
-                <Modal show={this.state.showmodal} onHide={this.state.hidemodal} >
+                <Modal show={this.state.showmodal} onHide={this.handleClose} >
                     {/* <Modal.Header closeButton>
                     
                     </Modal.Header> */}

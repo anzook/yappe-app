@@ -19,4 +19,5 @@ body {
     overflow-y: scroll;
     height: 92vh;
     padding-left: 55px;
+    z-index: 0;
 }
