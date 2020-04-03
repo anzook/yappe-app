@@ -111,13 +111,14 @@ class Dashboard extends Component {
 
   render() {
     let cardOne = this.state.user?.pets?.map(pet => {
-      let Infopet = { id: pet.id, name: pet.name, age: pet.age, sex: pet.sex, breed: pet.breed };
+      let Infopet = { id: pet.id, name: pet.name, age: pet.age, sex: pet.sex, breed: pet.breed, pictureLink: pet.pictureLink };
       return <DogCard
         onClick={() => { this.changeDisplay(Infopet); this.getActions(Infopet.id); }}
         name={pet.name}
         id={pet.id}
         key={pet.id}
         role={pet.user_pets.role}
+        pictureLink={pet.pictureLink}
       />
 
     })
