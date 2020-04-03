@@ -101,7 +101,9 @@ export default class DoughnutChart extends Component {
 		return (
 			<Container className='yourDogCard'>
 				<div>
-					<Doughnut data={data} />
+					<Doughnut data={data} 
+					options={
+						{legend: {position:"left"}}} />
 				</div>
 				<div>
 					<h4>{this.props.petName}</h4>
