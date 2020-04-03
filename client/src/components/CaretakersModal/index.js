@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { faUserFriends } from '@fortawesome/free-solid-svg-icons'
 import './style.css';
 import CareTakersTable from '../CareTakersTable';
 
@@ -15,7 +15,7 @@ function CaretakersModal() {
     return (
         <>
             <div className='modal-btn' onClick={handleShow}>
-                <FontAwesomeIcon icon={ faUserPlus }/>
+                <FontAwesomeIcon icon={ faUserFriends }/>
                 {/* <span className='span'> Caretakers</span> */}
             </div>
             

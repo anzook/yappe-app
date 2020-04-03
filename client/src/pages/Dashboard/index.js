@@ -128,11 +128,9 @@ class Dashboard extends Component {
         <div className='dashboard-div'>
           <YapNav updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
           <Container fluid>
+          <SidebarContent />
             <Row>
-              <Col xs={1} md={1}>
-                <SidebarContent />
-              </Col>
-              <Col xs md={3}>{cardOne}</Col>
+              <Col xs md={{  offset: 1 }}>{cardOne}</Col>
               <Col xs md={8}>{this.renderDisplay()}</Col>
             </Row>
           </Container>

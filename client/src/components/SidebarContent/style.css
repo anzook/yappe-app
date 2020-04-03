@@ -15,16 +15,23 @@ svg.svg-inline--{
     list-style: none;
     padding: 0;
     background-color: #fff;
-    height: 285px;
+    height: 100%;
+    width: 55px;
     text-align: center;
     border-radius: 10px;
     padding-top: 32px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 15%;
 }
 
 .sidebar-ul li{
-    margin-bottom: 25px;
+    margin-bottom: 33px;
     color: #5c5c5c;
 }
 .sidebar-ul li a{
     text-decoration: none;
+    color: #5c5c5c;
+    font-size: 1.35rem;
 }
