@@ -22,8 +22,8 @@ export default class ActivitiesForm extends Component {
             pet: this.props.pet
         })
             .then(res => {
-                // console.log(res);
-                this.props.change();
+                console.log(res);
+                this.props.close();
             })
     }
 
@@ -55,7 +55,7 @@ export default class ActivitiesForm extends Component {
                     <Form.Control name='details' onChange={this.handleInputChange} as="textarea" rows="3" />
                 </Form.Group>
                 <Form.Group>
-                    <Button onClick={this.handleSubmit} variant="primary" type="submit">
+                    <Button className='activity-form-btn' onClick={this.handleSubmit} variant="primary" type="submit">
                         Submit
                 </Button>
                 </Form.Group>

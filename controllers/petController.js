@@ -48,7 +48,6 @@ module.exports = {
                 attributes: {exclude: [
                     'createdAt',
                     'updatedAt',
-                    'email',
                     'password'
                 ]}, 
                 required: false

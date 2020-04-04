@@ -1,5 +1,5 @@
-import React, {Component, useState} from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Modal, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table'
 import API from '../../utils/API'
 import './style.css';
@@ -10,60 +10,70 @@ import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
 class ActivityLog extends Component {
 
 
-   
-  constructor(props) {
-      super(props);
-      this.state = {
-          showmodal: false,
-          userId: null,
-          hidemodal: true,
-          userLogs: []
-          
-      };
-  }
- 
-  
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            showmodal: false,
+            userId: null,
+            // hidemodal: true,
+            userLogs: []
+
+        };
+    }
+
+    renderTooltip = (props) => {
+        return (
+            <Tooltip id="button-tooltip" {...props}>
+                Add Dog
+            </Tooltip>
+        );
+    }
+
+    renderAddDogIcon = () => (
+        <OverlayTrigger
+            placement="right"
+            delay={{ show: 250, hide: 400 }}
+            overlay={this.renderTooltip}
+        >
+            <FontAwesomeIcon icon={faClipboardList} />
+        </OverlayTrigger>
+    );
 
 
-  componentDidMount() {
-      API.getUserLogs(3)
-      .then(res=> {
-          console.log(res)
-          this.setState({
-              userLogs:res.data
+    componentDidMount() {
+        API.getUserLogs(3)
+            .then(res => {
+                console.log(res)
+                this.setState({
+                    userLogs: res.data
+                })
+
             })
+    }
 
-      })
-  }
+    handleShow = (event) => {
+        this.setState({
+            showmodal: true,
 
-  handleShow = (event)=>{
-    event.preventDefault()
-    this.setState({
-        showmodal: true,
-        
-    })
-  }
+        })
+    }
 
-  handleClose = (event) => {
-      event.preventDefault()
-      this.setState({
-          showmodal: false,
-      })
-  }
-
+    handleClose = (event) => {
+        this.setState({
+            showmodal: false,
+        })
+    }
 
     render() {
 
-        
-
         return (
             <>
-              <div className='modal-btn' onClick={this.handleShow} >
-                  <FontAwesomeIcon icon={faClipboardList}/>
-                  {/* <span className='span'>Activity Log</span> */}
-              </div>
-              
-                <Modal show={this.state.showmodal} onHide={this.state.hidemodal} >
+                <div className='modal-btn' onClick={this.handleShow} >
+                    {this.renderAddDogIcon()}
+                </div>
+
+                <Modal show={this.state.showmodal} onHide={this.handleClose} >
                     {/* <Modal.Header closeButton>
                     
                     </Modal.Header> */}
@@ -95,11 +105,7 @@ class ActivityLog extends Component {
                     </Modal.Footer>
                 </Modal>
 
-                
-
-
             </>
-
         )
     }
 }

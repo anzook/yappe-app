@@ -14,9 +14,16 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
+    margin-right: 20px;
 }
 
-.dog-card-list {
-    float: right;
-    clear: both;
+.dog-card .card-body{
+    display: flex;
+}
+
+.dog-card-name{
+    font-weight: 600;
+    color: #5c5c5c;
+    margin-bottom: 7px;
+    border-bottom: 1px solid #e7e7e7;
 }

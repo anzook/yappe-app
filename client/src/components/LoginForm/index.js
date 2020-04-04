@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
 import API from '../../utils/API'
-import { Redirect } from 'react-router-dom'
 import "./style.css";
 
 export class LoginForm extends Component {

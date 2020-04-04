@@ -1,28 +1,9 @@
 import React, { Component } from 'react';
+import API from '../../utils/API'
 import { Doughnut } from 'react-chartjs-2';
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
+import Functions from '../../utils/Functions'
 import './style.css'
-
-const data = {
-	labels: [
-		'Red',
-		'Green',
-		'Yellow'
-	],
-	datasets: [{
-		data: [300, 50, 100],
-		backgroundColor: [
-			'#FF6384',
-			'#36A2EB',
-			'#FFCE56'
-		],
-		hoverBackgroundColor: [
-			'#FF6384',
-			'#36A2EB',
-			'#FFCE56'
-		]
-	}]
-};
 
 export default class DoughnutChart extends Component {
 
@@ -30,25 +11,108 @@ export default class DoughnutChart extends Component {
 		super(props);
 
 		this.state = {
-			name: null,
-			activity: null,
-			caretaker: null,
-			date: null
+			pet: [this.props.petInfo],
+			activities: [],
+			lastActivity: [],
+			lastCaretaker: null,
+			allActivitiesTypes: [],
+			chartData: [],
 		}
 	}
+
+	componentDidMount() {
+		this.getPetActivities()
+		this.getData()
+	}
+
+	getPetActivities() {
+		API.getPetActions(this.props.petId)
+			.then(res => {
+				let organized = res.data.map(action => {
+					return Functions.capitalize(action.type)
+				})
+
+				organized.sort()
+
+				this.setState({
+					activities: res.data,
+					lastActivity: res.data[0],
+					lastCaretaker: Functions.capitalize(res.data[0].user.name),
+					allActivitiesTypes: organized
+
+				})
+			})
+	}
+
+	getData() {
+		let dataToChart = []
+		let current = null;
+		let cnt = 0;
+		this.state.allActivitiesTypes.forEach(type => {
+			if (type !== current) {
+				if (cnt > 0) {
+					dataToChart.push(cnt);
+					current = type;
+					cnt = 1;
+				} else {
+					current = type;
+					cnt = 1;
+				}
+			} else {
+				cnt++;
+			}
+		})
+
+		if (cnt > 0) {
+			dataToChart.push(cnt);
+		}
+
+		return dataToChart
+	}
+
 	render() {
+		let counts = this.getData();
+		let { allActivitiesTypes } = this.state;
+		let typesNoRepeats = allActivitiesTypes.filter((type, index) => allActivitiesTypes.indexOf(type) === index);
+		const data = {
+			labels: typesNoRepeats
+			,
+			datasets: [{
+				data: counts,
+				backgroundColor: [
+					'#238c8f',
+					'#1ee09d',
+					'#fae45a',
+					'#ef7125',
+					'#ff8374',
+					'#90dc9e',
+					'#af0808',
+				],
+				hoverBackgroundColor: [
+					'#238c8f',
+					'#1ee09d',
+					'#fae45a',
+					'#ef7125',
+					'#ff8374',
+					'#90dc9e',
+					'#af0808',
+				]
+			}]
+		}
 		return (
 			<Container className='yourDogCard'>
-				<div>
-					<Doughnut data={data} />
+				<div className='pet-info-div'>
+					<h4>{this.props.petName}</h4>
+					<ul className='removeUlStyling donut-ul'>
+						<li>Last Activity: {Functions.capitalize(this.state.lastActivity?.type)} </li>
+						<li>Logged By: {this.state.lastCaretaker}</li>
+						<li>Date: {this.state.lastActivity?.updatedAt?.slice(0, 10)}</li>
+					</ul>
 				</div>
 				<div>
-					<h4>Name: {this.state.name}</h4>
-					<ul className='removeUlStyling donut-ul'>
-						<li>Last Activity: tesing{this.state.activity} </li>
-						<li>Logged By: testing{this.state.caretaker}</li>
-						<li>Date: testing{this.state.date}</li>
-					</ul>
+					<Doughnut data={data}
+						options={
+							{ legend: { position: "right" } }} />
 				</div>
 			</Container>
 		)

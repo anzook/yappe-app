@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom'
+import Overlay from '../../components/Overlay'
 
 import Row from "../../components/Row";
 import Container from "../../components/Container";
@@ -77,25 +78,27 @@ class LandingPage extends Component {
     if (display === 'first') {
       return (
         <div className="form">
-          
+
           <LoginForm
             updateUser={this.updateUser}
           />
-          <span className="toggleBtn" onClick={this.changeDisplay}>
-                  {this.state.action}
-                </span>
+          <span className='toggleBtn' onClick={this.changeDisplay}>
+            {this.state.action}
+          </span>
+
         </div>
       )
     } else if (display === 'second') {
       return (
         <div className="form">
-          
+
           <SignupForm
             updateUser={this.updateUser}
           />
-          <span className="toggleBtn" onClick={this.changeDisplay}>
-                  {this.state.action}
-                </span>
+          <span className='toggleBtn' onClick={this.changeDisplay}>
+            {this.state.action}
+          </span>
+
         </div>
       )
     }
@@ -114,11 +117,10 @@ class LandingPage extends Component {
           <Hero />
           <div className={className.formDiv}>
             <Container style={{ marginTop: 0 }}>
-              <Row>
+              <div>
                 {this.renderForm()}
                 <br />
-                
-              </Row>
+              </div>
             </Container>
           </div>
         </div>

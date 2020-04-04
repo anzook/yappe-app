@@ -2,17 +2,15 @@ import React, { Component } from "react";
 import { 
   Redirect,
   BrowserRouter as Router,
-  Switch,
-  Route,
 } from 'react-router-dom'
 import YapNav from "../../components/Navbar";
-import SideNav from "../../components/SideNav";
+import SidebarContent from "../../components/SidebarContent";
 import DogCard from "../../components/Card";
-import RecentActivity from "../../components/RecentActivityCard";
 import { Container, Row, Col } from "react-bootstrap";
-import DogInfo from '../../components/DogInfo'
+import DogInformation from '../../components/DogInformation'
 import FirstGlance from '../../components/FirstGlance';
 import "./style.css";
+import Funtions from '../../utils/Functions'
 import API from "../../utils/API";
 
 
@@ -96,13 +94,15 @@ class Dashboard extends Component {
   renderDisplay() {
     let { display } = this.state;
     if (display === 'activities') {
-      return <FirstGlance />
+      return <FirstGlance user={this.state.user}/>
     }
     else if (display === 'dog-info') {
-      return <DogInfo
+      return <DogInformation
         user={this.state.id}
-        pet={this.state.petSelect}
-        name={this.state.petSelect.name}
+        id={this.state.petSelect.id}
+        name={Funtions.capitalize(this.state.petSelect.name)}
+        sex={Funtions.capitalize(this.state.petSelect.sex)}
+        breed={Funtions.capitalize(this.state.petSelect.breed)}
         age={this.state.petSelect.age}
         actions={this.state.petActivities}
       />
@@ -114,11 +114,11 @@ class Dashboard extends Component {
       let Infopet = { id: pet.id, name: pet.name, age: pet.age, sex: pet.sex, breed: pet.breed, pictureLink: pet.pictureLink };
       return <DogCard
         onClick={() => { this.changeDisplay(Infopet); this.getActions(Infopet.id); }}
-        name={pet.name}
+        name={Funtions.capitalize(pet.name)}
         id={pet.id}
         key={pet.id}
-        role={pet.user_pets.role}
         pictureLink={pet.pictureLink}
+        role={Funtions.capitalize(pet.user_pets.role)}
       />
 
     })
@@ -130,12 +130,11 @@ class Dashboard extends Component {
         <div className='dashboard-div'>
           <YapNav id="yap-nav" updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
           <Container fluid>
+          <SidebarContent />
             <Row>
-              <Col xs md={1}>
-                <SideNav />
+              <Col xs md={4} className='dog-cards-col'>{cardOne}</Col>
+              <Col xs md={8}>{this.renderDisplay()}
               </Col>
-              <Col xs md={3}>{cardOne}</Col>
-              <Col xs md={8}>{this.renderDisplay()}</Col>
             </Row>
           </Container>
           {/* <YapFooter /> */}
