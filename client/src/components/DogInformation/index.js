@@ -47,6 +47,20 @@ export default class DogInformation extends Component {
     render() {
         let emailInvite = 'mailto:?subject=Yappe-%20you\'ve%20been%20invited%20to%20join%20' + this.state.pet.name + '%20on%20yappe!&body=You%20have%20invited%20you%20to%20use%20yappe%3A%20https%3A%2F%2Fyappeapp.herokuapp.com%2F%0D%0AUse%20dog%20tag%20' + this.state.pet.id + '%20to%20add%20' + this.state.pet.name +'.'
 
+        let dateText = (dateInfo) => {
+            let dt = new Date(dateInfo);
+
+            return(`${
+                (dt.getMonth()+1).toString().padStart(2, '0')}/${
+                dt.getDate().toString().padStart(2, '0')}/${
+                dt.getFullYear().toString().padStart(4, '0')} ${
+                dt.getHours().toString().padStart(2, '0')}:${
+                dt.getMinutes().toString().padStart(2, '0')}`
+            );
+            //dateFormat needs small library
+            // dateFormat(date, "dS mmm, h:MMTT");
+        }
+
         let caretakers = this.state.caretakers?.map(caretaker => {
             return (
                 <li key={caretaker.id}>
@@ -67,7 +81,7 @@ export default class DogInformation extends Component {
                     <ul className='actions-ul'>
                         <li>Activity: {Functions.capitalize(activity.type)}</li>
                         <li>Logged by: {Functions.capitalize(activity.user.name)}</li>
-                        <li>Date: {activity.updatedAt.slice(0, 10)}</li>
+                        <li>Timestamp: {dateText(activity.updatedAt)}</li>
                     </ul>
                 </ListGroup.Item>
             )

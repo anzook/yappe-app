@@ -16,9 +16,43 @@ export class DogCard extends Component {
   }
 
   interaction() {
+    let dateText = (dateInfo) => {
+      let date = new Date(dateInfo);
+      function timeSince(date) {
+
+          let seconds = Math.floor((new Date() - date) / 1000);
+      
+          let interval = Math.floor(seconds / 31536000);
+      
+          if (interval > 1) {
+              return interval + " years";
+          }
+          interval = Math.floor(seconds / 2592000);
+          if (interval > 1) {
+              return interval + " months";
+          }
+          interval = Math.floor(seconds / 86400);
+          if (interval > 1) {
+              return interval + " days";
+          }
+          interval = Math.floor(seconds / 3600);
+          if (interval > 1) {
+              return interval + " hours";
+          }
+          interval = Math.floor(seconds / 60);
+          if (interval > 1) {
+              return interval + " minutes";
+          }
+          return Math.floor(seconds) + " seconds";
+      }
+      //dateFormat needs small library
+      // dateFormat(date, "dS mmm, h:MMTT");
+      return timeSince( date)
+  }
+    
     const action = this.state.action;
     if (action) {
-      return this.state.action?.updatedAt?.slice(0, 10);
+      return dateText( this.state.action?.updatedAt) + " ago";
     }
     return 'No log';
   }

@@ -34,6 +34,7 @@ module.exports = {
             where: {
                 userId: params.id
             },
+            order: [['createdAt', 'DESC']],
             include: [{
                 model: db.pet,
                 attributes: {
@@ -41,7 +42,7 @@ module.exports = {
                         'createdAt',
                         'updatedAt'
                     ]
-                },
+                },  
                 required: false
             }]
         }).catch(err => {
