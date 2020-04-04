@@ -3,10 +3,5 @@
     padding: 0;
     display: -webkit-box;
     overflow-x: scroll;
+    margin-bottom: 10px;
 }
-
-/* .fg-ul li { */
-    /* height: 25vh;
-    width: 30%; */
-    /* border-right: solid 2px #dedede; */
-/* } */

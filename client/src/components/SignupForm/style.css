@@ -4,12 +4,7 @@
     background-color: rgba(192, 213, 216, 0.7);
     box-sizing: border-box;
     padding: 25px;
-    clear: both;
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
-}
+} 
 
 .signup{
     border-radius: 25px;
