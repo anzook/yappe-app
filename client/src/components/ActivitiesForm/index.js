@@ -14,7 +14,6 @@ export default class ActivitiesForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        // console.log(this.state);
         API.createAction({
             type: this.state.activities,
             detail: this.state.details,
