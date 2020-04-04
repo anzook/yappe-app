@@ -23,7 +23,7 @@ export default class DogInformation extends Component {
         this.getPetInfo();
     }
 
-    
+
     componentDidUpdate() {
         if (this.state.previousPetID !== this.props.id) {
             this.getPetInfo();
@@ -74,6 +74,11 @@ export default class DogInformation extends Component {
 
         })
 
+        let caretakerOwn = this.state?.caretakers?.filter(caretaker => caretaker.user_pets.role === 'owner');
+        let parents = caretakerOwn?.map(parent => {
+            return parent.name
+        })
+
         return (
             <div className='profile-div'>
                 <Card className='dog-profile-intro-card'>
@@ -92,7 +97,7 @@ export default class DogInformation extends Component {
                             <Col xs md={8} className='profile-intro-card'>
                                 <Card.Body>
                                     <Card.Title className='pet-name-profile'>{Functions.capitalize(this.state.pet.name)}</Card.Title>
-                                    <Card.Subtitle className="parent-name-sub">Parent: ########</Card.Subtitle>
+                                    <Card.Subtitle className="parent-name-sub">Parent: {parents} </Card.Subtitle>
                                     <ListGroup variant="flush">
                                         <ul>
                                             <li>Age: {this.state.pet.age}</li>
@@ -142,12 +147,6 @@ export default class DogInformation extends Component {
                             <ul className='caretakers-info-ul'>
                                 {caretakers}
                             </ul>
-                            {/* <Card className='team-members-card'>
-                                <Card.Header>Team Members</Card.Header>
-                                <div className='team-members-div'>
-                                    {caretakers}
-                                </div>
-                            </Card> */}
                         </Col>
                     </Row>
                 </div>
@@ -156,7 +155,6 @@ export default class DogInformation extends Component {
                     <Card className='profile-activities-card'>
                         <Card.Header>
                             Recent Activites
-                        {/* <span>See All Activities</span> */}
                         </Card.Header >
                         <ListGroup variant="flush">
                             {actions}

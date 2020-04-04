@@ -1,7 +1,31 @@
-.fg-ul{
+.fg-ul {
     list-style: none;
     padding: 0;
     display: -webkit-box;
     overflow-x: scroll;
     margin-bottom: 10px;
+}
+
+.no-pet-div {
+    text-align: center;
+}
+
+.no-pet-div h1 {
+    font-family: 'Roboto', sans-serif;
+    color: #5c5c5c;
+    text-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+.brand {
+    font-family: 'Marck Script', cursive;
+    color: #1ee09d;
+    font-size: 8rem;
+}
+
+.no-pet-div h2 {
+    font-family: 'Roboto', sans-serif;
+    color: #5c5c5c;
+    margin-top: 27px;
 }
