@@ -75,7 +75,7 @@ export default class DogInformation extends Component {
         return (
             <div className='profile-div'>
                 <Card className='dog-profile-intro-card'>
-                    <span className='invite-span'>Send Invite<FontAwesomeIcon icon={faTags} /></span>
+                    <a className='invite-a'>Send Invite<FontAwesomeIcon icon={faTags} /></a>
                     <Container className='dog-profile-container'>
                         <Row >
                             <Col className='dog-profile-img-div'>

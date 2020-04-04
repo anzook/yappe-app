@@ -10,7 +10,7 @@
     margin-bottom: 20px;
 }
 
-span.invite-span {
+a.invite-a {
     position: relative;
     left: 770px;
     top: 15px;
@@ -18,16 +18,17 @@ span.invite-span {
     width: fit-content;
 }
 
-span.invite-span:hover{
+a.invite-a:hover{
+    color: #a2a2a2;
     cursor: pointer;
 }
 
-span.invite-span:hover svg{
+a.invite-a:hover svg{
     color: #1ee09d;
     cursor: pointer;
 }
 
-span.invite-span svg{
+a.invite-a svg{
     font-size: 1.15rem;
     margin-left: 7px;
 }
