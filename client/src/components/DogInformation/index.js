@@ -23,7 +23,7 @@ export default class DogInformation extends Component {
         this.getPetInfo();
     }
 
-
+    
     componentDidUpdate() {
         if (this.state.previousPetID !== this.props.id) {
             this.getPetInfo();
