@@ -3,6 +3,7 @@ import { ListGroup, Card, Button, Container, Row, Col } from 'react-bootstrap';
 import ActivitiesFormModal from '../../components/ActivityFormModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons'
+import { faTags } from '@fortawesome/free-solid-svg-icons'
 import './style.css';
 import API from '../../utils/API';
 import Functions from '../../utils/Functions'
@@ -74,6 +75,7 @@ export default class DogInformation extends Component {
         return (
             <div className='profile-div'>
                 <Card className='dog-profile-intro-card'>
+                    <span className='invite-span'>Send Invite<FontAwesomeIcon icon={faTags} /></span>
                     <Container className='dog-profile-container'>
                         <Row >
                             <Col className='dog-profile-img-div'>
