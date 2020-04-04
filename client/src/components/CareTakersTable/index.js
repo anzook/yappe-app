@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Table, Button } from "react-bootstrap";
+import Functions from '../../utils/Functions'
 import API from "../../utils/API";
 
 export class CareTakersTable extends Component {
@@ -32,8 +33,8 @@ export class CareTakersTable extends Component {
         children.push(<td rowSpan={dogs[i].users.length}>{dogs[i].name}</td>)
         //  Inner loop depending on number of children
         for (let j = 0; j < dogs[i].users.length; j++) {
-        children.push(<td>{dogs[i].users[j].name}</td>)
-        children.push(<td>{dogs[i].users[j].user_pets.role}</td>)
+        children.push(<td>{Functions.capitalize(dogs[i].users[j].name)}</td>)
+        children.push(<td>{Functions.capitalize(dogs[i].users[j].user_pets.role)}</td>)
         children.push(<td>
            <Button 
            href={"mailto:"+ dogs[i].users[j].email +"?subject=Yappe-%20a%20message%20for%20" + dogs[i].users[j].name +"%20regarding%20"+dogs[i].name}

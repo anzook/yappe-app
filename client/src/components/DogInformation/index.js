@@ -3,6 +3,7 @@ import { ListGroup, Card, Button, Container, Row, Col } from 'react-bootstrap';
 import ActivitiesFormModal from '../../components/ActivityFormModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons'
+import { faTags } from '@fortawesome/free-solid-svg-icons'
 import './style.css';
 import API from '../../utils/API';
 import Functions from '../../utils/Functions'
@@ -44,6 +45,8 @@ export default class DogInformation extends Component {
     }
 
     render() {
+        let emailInvite = 'mailto:?subject=Yappe-%20you\'ve%20been%20invited%20to%20join%20' + this.state.pet.name + '%20on%20yappe!&body=You%20have%20invited%20you%20to%20use%20yappe%3A%20https%3A%2F%2Fyappeapp.herokuapp.com%2F%0D%0AUse%20dog%20tag%20' + this.state.pet.id + '%20to%20add%20' + this.state.pet.name +'.'
+
         let caretakers = this.state.caretakers?.map(caretaker => {
             return (
                 <li key={caretaker.id}>
@@ -51,7 +54,7 @@ export default class DogInformation extends Component {
                         <Card.Body>
                             <Card.Title>{Functions.capitalize(caretaker.name)}</Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">{Functions.capitalize(caretaker.user_pets.role)}</Card.Subtitle>
-                            <a href={'mailto:' + caretaker.email}><FontAwesomeIcon icon={faPaperPlane} /></a>
+                            <a href={'mailto:'+caretaker.email+'?subject=Yappe-%20a%20message%20about%20' + this.state.pet.name} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faPaperPlane} /></a>
                         </Card.Body>
                     </Card>
                 </li>
@@ -74,6 +77,7 @@ export default class DogInformation extends Component {
         return (
             <div className='profile-div'>
                 <Card className='dog-profile-intro-card'>
+                    <a href={emailInvite} target="_blank" rel="noopener noreferrer" className='invite-a'>Send Invite<FontAwesomeIcon icon={faTags} /></a>
                     <Container className='dog-profile-container'>
                         <Row >
                             <Col className='dog-profile-img-div'>
@@ -82,7 +86,7 @@ export default class DogInformation extends Component {
                                     <img alt='Pet Photo' src='/images/placeholder-dog.jpg' />}
                                 <div className='dog-profile-btn-div'>
                                     <ActivitiesFormModal user={this.props.user} pet={this.props.id} />
-                                    <Button className='ask-btn' variant="secondary">Ask Question</Button>
+                                    <Button className='ask-btn' variant="secondary">Post</Button>
                                 </div>
                             </Col>
                             <Col xs md={8} className='profile-intro-card'>
@@ -103,11 +107,7 @@ export default class DogInformation extends Component {
                                         <li className='li-stat'>{this.state.caretakers.length}</li>
                                     </ul>
                                     <ul>
-                                        <li className='li-title'>Questions</li>
-                                        <li className='li-stat'>00</li>
-                                    </ul>
-                                    <ul>
-                                        <li className='li-title'>Answers</li>
+                                        <li className='li-title'>Posts</li>
                                         <li className='li-stat'>00</li>
                                     </ul>
                                 </ListGroup>
