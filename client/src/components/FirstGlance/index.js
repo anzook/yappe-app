@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LineChart from '../../components/LinesChart';
 import DoughnutChart from "../../components/DoughnutChart";
 import { Container, Row, Col } from 'react-bootstrap';
+import Function from '../../utils/Functions'
 
 import './style.css';
 
@@ -16,6 +17,23 @@ export default class FirstGlance extends Component {
 
   componentDidMount() {
     this.getOwnedPets()
+  }
+
+  checkPets() {
+    if (this.state.user.pets.length > 0) {
+      return(
+        <LineChart />
+      )
+    } else {
+      return(
+        <div className='no-pet-div'>
+          <h1>Welcome to </h1>
+          <span className='brand'>yappE</span>
+          <h1>{Function.capitalize(this.state.user.name)}!</h1>
+          <h2>Use the paw on the left side to add your first dog!</h2>
+        </div>
+      )
+    }
   }
 
   getOwnedPets() {
@@ -40,7 +58,7 @@ export default class FirstGlance extends Component {
         </Col>
       </Row>
       <Row>
-        <Col><LineChart /></Col>
+        <Col>{this.checkPets()}</Col>
       </Row>
     </Container>)
 

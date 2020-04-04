@@ -40,6 +40,7 @@ export class DogForm extends Component {
     handleInputChange = event => {
         this.setState({
             [event.target.name]: event.target.value
+            
         });
 
     };
@@ -55,19 +56,18 @@ export class DogForm extends Component {
         }).then(res => {
             const userId = this.state.id;
             const petId = res.data.id;
+            const sex = this.state.sex
             API.joinUser(petId, {
                 user: userId,
                 role: this.state.role
             }).then(pet => {
-                console.log(pet.data)
-                window.location.replace('/dashboard?' + userId);
+                window.location.replace('/dashboard');
             })
         })
     }
 
     render() {
         return (
-            // <h1> Would you like to:</h1>
             <Form>
                 <Form.Group controlId="adddog">
                 </Form.Group>
@@ -78,7 +78,11 @@ export class DogForm extends Component {
                     <Form.Control name='age' onChange={this.handleInputChange} type="text" placeholder="Age: 8" />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Control name='sex' onChange={this.handleInputChange} type="text" placeholder="Sex: Female" />
+                    <Form.Control name='sex' onChange={this.handleInputChange} as="select" placeholder="Sex:">
+                        <option>Sex</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </Form.Control>
                 </Form.Group>
                 <Form.Group>
                     <Form.Control name='role' onChange={this.handleInputChange} as="select">

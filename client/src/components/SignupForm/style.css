@@ -1,9 +1,9 @@
 .signup {
-    margin: auto;
     border-radius: 25px;
     background-color: rgba(192, 213, 216, 0.7);
     box-sizing: border-box;
     padding: 25px;
+    width: 250px;
 } 
 
 .signup{
