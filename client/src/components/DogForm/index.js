@@ -61,15 +61,13 @@ export class DogForm extends Component {
                 user: userId,
                 role: this.state.role
             }).then(pet => {
-                console.log(pet.data)
-                window.location.replace('/dashboard?' + userId);
+                window.location.replace('/dashboard');
             })
         })
     }
 
     render() {
         return (
-            // <h1> Would you like to:</h1>
             <Form>
                 <Form.Group controlId="adddog">
                 </Form.Group>
@@ -81,6 +79,7 @@ export class DogForm extends Component {
                 </Form.Group>
                 <Form.Group>
                     <Form.Control name='sex' onChange={this.handleInputChange} as="select" placeholder="Sex:">
+                        <option>Sex</option>
                         <option>Male</option>
                         <option>Female</option>
                     </Form.Control>

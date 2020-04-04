@@ -3,6 +3,7 @@ import { ListGroup, Card, Button, Container, Row, Col } from 'react-bootstrap';
 import ActivitiesFormModal from '../../components/ActivityFormModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons'
+import { faTags } from '@fortawesome/free-solid-svg-icons'
 import './style.css';
 import API from '../../utils/API';
 import Functions from '../../utils/Functions'
@@ -44,6 +45,22 @@ export default class DogInformation extends Component {
     }
 
     render() {
+        let emailInvite = 'mailto:?subject=Yappe-%20you\'ve%20been%20invited%20to%20join%20' + this.state.pet.name + '%20on%20yappe!&body=You%20have%20invited%20you%20to%20use%20yappe%3A%20https%3A%2F%2Fyappeapp.herokuapp.com%2F%0D%0AUse%20dog%20tag%20' + this.state.pet.id + '%20to%20add%20' + this.state.pet.name +'.'
+
+        let dateText = (dateInfo) => {
+            let dt = new Date(dateInfo);
+
+            return(`${
+                (dt.getMonth()+1).toString().padStart(2, '0')}/${
+                dt.getDate().toString().padStart(2, '0')}/${
+                dt.getFullYear().toString().padStart(4, '0')} ${
+                dt.getHours().toString().padStart(2, '0')}:${
+                dt.getMinutes().toString().padStart(2, '0')}`
+            );
+            //dateFormat needs small library
+            // dateFormat(date, "dS mmm, h:MMTT");
+        }
+
         let caretakers = this.state.caretakers?.map(caretaker => {
             return (
                 <li key={caretaker.id}>
@@ -51,7 +68,7 @@ export default class DogInformation extends Component {
                         <Card.Body>
                             <Card.Title>{Functions.capitalize(caretaker.name)}</Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">{Functions.capitalize(caretaker.user_pets.role)}</Card.Subtitle>
-                            <a href={'mailto:' + caretaker.email}><FontAwesomeIcon icon={faPaperPlane} /></a>
+                            <a href={'mailto:'+caretaker.email+'?subject=Yappe-%20a%20message%20about%20' + this.state.pet.name} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faPaperPlane} /></a>
                         </Card.Body>
                     </Card>
                 </li>
@@ -64,16 +81,22 @@ export default class DogInformation extends Component {
                     <ul className='actions-ul'>
                         <li>Activity: {Functions.capitalize(activity.type)}</li>
                         <li>Logged by: {Functions.capitalize(activity.user.name)}</li>
-                        <li>Date: {activity.updatedAt.slice(0, 10)}</li>
+                        <li>Timestamp: {dateText(activity.updatedAt)}</li>
                     </ul>
                 </ListGroup.Item>
             )
 
         })
 
+        let caretakerOwn = this.state?.caretakers?.filter(caretaker => caretaker.user_pets.role === 'owner');
+        let parents = caretakerOwn?.map(parent => {
+            return parent.name
+        })
+
         return (
             <div className='profile-div'>
                 <Card className='dog-profile-intro-card'>
+                    <a href={emailInvite} target="_blank" rel="noopener noreferrer" className='invite-a'>Send Invite<FontAwesomeIcon icon={faTags} /></a>
                     <Container className='dog-profile-container'>
                         <Row >
                             <Col className='dog-profile-img-div'>
@@ -82,13 +105,13 @@ export default class DogInformation extends Component {
                                     <img alt='Pet Photo' src='/images/placeholder-dog.jpg' />}
                                 <div className='dog-profile-btn-div'>
                                     <ActivitiesFormModal user={this.props.user} pet={this.props.id} />
-                                    <Button className='ask-btn' variant="secondary">Ask Question</Button>
+                                    <Button className='ask-btn' variant="secondary">Post</Button>
                                 </div>
                             </Col>
                             <Col xs md={8} className='profile-intro-card'>
                                 <Card.Body>
                                     <Card.Title className='pet-name-profile'>{Functions.capitalize(this.state.pet.name)}</Card.Title>
-                                    <Card.Subtitle className="parent-name-sub">Parent: ########</Card.Subtitle>
+                                    <Card.Subtitle className="parent-name-sub">Parent: {parents} </Card.Subtitle>
                                     <ListGroup variant="flush">
                                         <ul>
                                             <li>Age: {this.state.pet.age}</li>
@@ -103,11 +126,7 @@ export default class DogInformation extends Component {
                                         <li className='li-stat'>{this.state.caretakers.length}</li>
                                     </ul>
                                     <ul>
-                                        <li className='li-title'>Questions</li>
-                                        <li className='li-stat'>00</li>
-                                    </ul>
-                                    <ul>
-                                        <li className='li-title'>Answers</li>
+                                        <li className='li-title'>Posts</li>
                                         <li className='li-stat'>00</li>
                                     </ul>
                                 </ListGroup>
@@ -142,12 +161,6 @@ export default class DogInformation extends Component {
                             <ul className='caretakers-info-ul'>
                                 {caretakers}
                             </ul>
-                            {/* <Card className='team-members-card'>
-                                <Card.Header>Team Members</Card.Header>
-                                <div className='team-members-div'>
-                                    {caretakers}
-                                </div>
-                            </Card> */}
                         </Col>
                     </Row>
                 </div>
@@ -156,7 +169,6 @@ export default class DogInformation extends Component {
                     <Card className='profile-activities-card'>
                         <Card.Header>
                             Recent Activites
-                        {/* <span>See All Activities</span> */}
                         </Card.Header >
                         <ListGroup variant="flush">
                             {actions}

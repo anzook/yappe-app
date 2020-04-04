@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom'
-import Row from "../../components/Row";
 import Container from "../../components/Container";
 import Hero from "../../components/Hero";
 import './style.css'

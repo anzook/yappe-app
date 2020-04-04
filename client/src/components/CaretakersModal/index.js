@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal } from 'react-bootstrap';
+import { Modal, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserFriends } from '@fortawesome/free-solid-svg-icons'
 import './style.css';
@@ -12,11 +12,28 @@ function CaretakersModal() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const renderAddDogIcon = () => (
+        <OverlayTrigger
+            placement="right"
+            delay={{ show: 250, hide: 400 }}
+            overlay={renderTooltip}
+        >
+                <FontAwesomeIcon icon={ faUserFriends }/>
+        </OverlayTrigger>
+    );
+
+   const renderTooltip = (props) => {
+        return (
+            <Tooltip id="button-tooltip" {...props}>
+                Caretakers Quick-list
+            </Tooltip>
+        );
+    }
+
     return (
         <>
             <div className='modal-btn' onClick={handleShow}>
-                <FontAwesomeIcon icon={ faUserFriends }/>
-                {/* <span className='span'> Caretakers</span> */}
+                {renderAddDogIcon() } 
             </div>
             
 

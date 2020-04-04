@@ -5,6 +5,8 @@ import API from '../../utils/API'
 import './style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
+import Functions from '../../utils/Functions'
+
 
 
 class ActivityLog extends Component {
@@ -25,7 +27,7 @@ class ActivityLog extends Component {
     renderTooltip = (props) => {
         return (
             <Tooltip id="button-tooltip" {...props}>
-                Add Dog
+                Activities List
             </Tooltip>
         );
     }
@@ -42,13 +44,14 @@ class ActivityLog extends Component {
 
 
     componentDidMount() {
-        API.getUserLogs(3)
+        API.getUserInfo().then(sessionRes => {
+        API.getUserLogs(sessionRes.data.id)
             .then(res => {
                 console.log(res)
                 this.setState({
                     userLogs: res.data
                 })
-
+            })
             })
     }
 
@@ -64,6 +67,32 @@ class ActivityLog extends Component {
             showmodal: false,
         })
     }
+
+    createTable = () => {
+        let dateText = (dateInfo) => {
+            let dt = new Date(dateInfo);
+            return(`${
+                (dt.getMonth()+1).toString().padStart(2, '0')}/${
+                dt.getDate().toString().padStart(2, '0')}/${
+                dt.getFullYear().toString().padStart(4, '0')}`
+            );
+        }
+
+
+        let table = []
+        let actions = this.state.userLogs
+        // Outer loop to create parent
+        for (let i = 0; i < actions.length; i++) {
+            let children = []
+            children.push(<td>{Functions.capitalize(actions[i].pet.name)}</td>)
+            children.push(<td>{  dateText(actions[i].updatedAt)}</td>)
+            children.push(<td>{Functions.capitalize(actions[i].type)}</td>)
+            children.push(<td>{Functions.capitalize(actions[i].detail)}</td>)
+            table.push(<tr>{children}</tr>)
+            children = []
+        }
+        return table
+      }
 
     render() {
 
@@ -89,19 +118,15 @@ class ActivityLog extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>{this.state.userLogs[0]?.pet?.name}</td>
-                                    <td>{this.state.userLogs[0]?.updatedAt}</td>
-                                    <td>{this.state.userLogs[0]?.type}</td>
-                                    <td> {this.state.userLogs[0]?.detail} </td>
-                                </tr>
+                            {this.createTable()}
+                              
                             </tbody>
                         </Table>
                     </Modal.Body>
 
                     <Modal.Footer>
                         <Button onClick={this.handleClose} variant="secondary">Close</Button>
-                        <Button variant="primary">Save changes</Button>
+                        {/* <Button variant="primary">Save changes</Button> */}
                     </Modal.Footer>
                 </Modal>
 

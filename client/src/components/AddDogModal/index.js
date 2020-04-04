@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import DogForm from '../DogForm';
 import AddExistingDogForm from '../AddExistingDogForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -21,6 +21,24 @@ function AddDogModal() {
         );
     }
 
+    const renderAddDogIcon = () => (
+        <OverlayTrigger
+            placement="right"
+            delay={{ show: 250, hide: 400 }}
+            overlay={renderTooltip}
+        >
+                <FontAwesomeIcon icon={ faPaw }/>
+        </OverlayTrigger>
+    );
+
+   const renderTooltip = (props) => {
+        return (
+            <Tooltip id="button-tooltip" {...props}>
+                Add Dog
+            </Tooltip>
+        );
+    }
+    
     const renderForm = () => {
         if (toggle === 'Add New Dog') {
             return <AddExistingDogForm close={handleClose}/>
@@ -32,7 +50,7 @@ function AddDogModal() {
     return (
         <>
             <div className='modal-btn' onClick={handleShow}>
-                <FontAwesomeIcon icon={ faPaw }/>
+            {renderAddDogIcon() }           
             </div>
             
 

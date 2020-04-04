@@ -12,6 +12,7 @@ export default class ActivitiesForm extends Component {
         }
     }
 
+
     handleSubmit = event => {
         event.preventDefault();
         API.createAction({
@@ -21,8 +22,7 @@ export default class ActivitiesForm extends Component {
             pet: this.props.pet
         })
             .then(res => {
-                console.log(res);
-                this.props.close();
+                window.location.replace('/dashboard');
             })
     }
 
