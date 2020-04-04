@@ -15,7 +15,7 @@ export class DogCard extends Component {
     };
   }
 
-interaction() {
+  interaction() {
     const action = this.state.action;
     if (action) {
       return this.state.action?.updatedAt?.slice(0, 10);
@@ -35,13 +35,15 @@ interaction() {
   render() {
     return (
       <Container>
-        <Card className='dog-card' onClick={this.props.onClick} style={{ width: '21rem' }}>
+        <Card className='dog-card' onClick={this.props.onClick} style={{ maxWidth: '25rem' }}>
           <Card.Body>
-            <img alt='Pet photo' src="/images/placeholder-dog.jpg" className='dog-card-image' />
+            {this.props.pictureLink ?
+              <img alt='Pet photo' src={this.props.pictureLink} className='dog-card-image' /> :
+              <img alt='Pet photo' src="/images/placeholder-dog.jpg" className='dog-card-image' />}
             <ListGroup className="list-group-flush dog-card-list">
-              <ListGroupItem>{this.props.name} </ListGroupItem>
+              <ListGroupItem className='dog-card-name'>{this.props.name} </ListGroupItem>
               <ListGroupItem>Role: {this.props.role}</ListGroupItem>
-              <ListGroupItem placeholder="No Activity Logged Yet!">
+              <ListGroupItem muted placeholder="No Activity Logged Yet!">
                 <ListGroupItem>Last Interaction: {this.interaction()}</ListGroupItem>
               </ListGroupItem>
             </ListGroup>

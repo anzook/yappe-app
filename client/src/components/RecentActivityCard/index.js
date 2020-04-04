@@ -20,7 +20,7 @@ class RecentActivity extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log(this.state);
+        // console.log(this.state);
         API.getUserLogs({
             type: this.state.activities,
             detail: this.state.details,
@@ -28,7 +28,7 @@ class RecentActivity extends Component {
             pet: this.props.pet
         })
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 this.props.change();
             })
     }

@@ -13,6 +13,7 @@ export class DogForm extends Component {
             age: "",
             sex: "",
             breed: "",
+            pictureLink: "",
             petId: "",
             id: null
         };
@@ -49,7 +50,8 @@ export class DogForm extends Component {
             name: this.state.name,
             age: this.state.age,
             sex: this.state.sex,
-            breed: this.state.breed
+            breed: this.state.breed,
+            pictureLink: this.state.pictureLink
         }).then(res => {
             const userId = this.state.id;
             const petId = res.data.id;
@@ -96,6 +98,9 @@ export class DogForm extends Component {
                             <option key={breed}>{breed}</option>
                         ))}
                     </Form.Control>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control name='pictureLink' onChange={this.handleInputChange} type="text" placeholder="Link to a picture of your pup" />
                 </Form.Group>
                 <Form.Group>
                     <Button className="float-right" onClick={this.handleFormSubmit} variant="primary" type="submit">

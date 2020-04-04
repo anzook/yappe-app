@@ -2,11 +2,20 @@
     padding: 0;
 }
 
+.dog-profile-intro-card {
+    -webkit-box-shadow: 0px 3px 25px -7px rgba(0, 0, 0, 0.27);
+    -moz-box-shadow: 0px 3px 25px -7px rgba(0, 0, 0, 0.27);
+    box-shadow: 0px 3px 25px -7px rgba(0, 0, 0, 0.27);
+    border-radius: 7px;
+    margin-bottom: 20px;
+}
+
 .profile-div {
     height: 88vh;
     overflow-y: scroll;
     overflow-x: hidden;
     padding-bottom: 20px;
+    padding: 0 60px 20px;
 }
 
 .dog-profile-container {
@@ -35,9 +44,21 @@
 }
 
 .profile-intro-card ul, .careteam-info-div ul {
-    display: block;
+    /* display: block; */
     list-style: none;
     padding: 0;
+}
+
+.pet-name-profile {
+    font-size: 1.5rem;
+    margin-bottom: .40rem;
+    font-weight: 600;
+    color: #5c5c5c;
+}
+
+.parent-name-sub {
+    color: #1ee09d;
+    margin-bottom: 15px;
 }
 
 .careteam-info-div ul {
@@ -56,14 +77,38 @@
 .profile-listgroup {
     border-top: 1px #dedede solid;
     display: -webkit-box;
+    padding-top: 19px;
+}
+
+.li-title {
+    color: #a2a2a2;
+}
+
+.li-stat {
+    font-size: 1.75rem;
+    color: #5c5c5c;
 }
 
 .careteam-info-div {
     margin-bottom: 20px;
 }
 
+.careteam-info-div h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
 .team-contribution-card {
     text-align: center;
+    border-radius: 25px;
+    -webkit-box-shadow: 1px 7px 17px -7px rgba(0, 0, 0, 0.33);
+    -moz-box-shadow: 1px 7px 17px -7px rgba(0, 0, 0, 0.33);
+    box-shadow: 1px 7px 17px -7px rgba(0, 0, 0, 0.33);
+}
+
+.team-contribution-card .card-title {
+    font-size: 1.25rem;
+    color: #a2a2a2;
 }
 
 .team-contribution-card .ul-div {
@@ -72,6 +117,11 @@
     margin: auto;
     margin-top: 9px;
     justify-content: initial;
+}
+
+.pet-act-total-span {
+    font-size: 3rem;
+    color: #1ee09d;
 }
 
 .team-members-card.card {
@@ -104,4 +154,43 @@
     margin-bottom: 5px;
     padding-left: 20px;
     padding-top: 10px;
+}
+
+.dog-profile-btn-div button {
+    margin: 0 6px;
+    border: none;
+}
+
+.ask-btn {
+    background-color: #1ee09d
+}
+
+.ask-btn:hover {
+    background-color: #00ad6e;
+}
+
+.caretaker-contact {
+    height: 70px;
+    box-shadow: 1px 8px 8px -3px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+.caretakers-info-ul {
+    display: flex;
+}
+
+.caretakers-info-ul li {
+    margin-right: 20px;
+}
+
+.caretaker-contact a {
+    position: relative;
+    bottom: 60px;
+    left: 80px;
+    font-size: 1.5rem;
+    color: #1ee09d;
+}
+
+.caretaker-contact .card-body {
+    padding: 10px;
 }

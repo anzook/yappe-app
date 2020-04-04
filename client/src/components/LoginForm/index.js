@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
 import API from '../../utils/API'
-import { Redirect } from 'react-router-dom'
 import "./style.css";
 
 export class LoginForm extends Component {
@@ -29,7 +28,7 @@ export class LoginForm extends Component {
             password: this.state.password
         })
         .then(res => {
-            console.log('login sent, response... ')
+            // console.log('login sent, response... ')
             // console.log(res)
             if (res.status === 200) {
                 // update App.js state
@@ -40,7 +39,7 @@ export class LoginForm extends Component {
               
             }
         }).catch(err => {
-            console.log('Login error: ', err)            
+            // console.log('Login error: ', err)            
         })
     }
 
@@ -137,7 +136,7 @@ export class LoginForm extends Component {
                 />
             </Form.Group>          
 
-            <Button 
+            <Button id="login-btn"
             variant="primary" 
             type="submit"
             onClick={this.handleFormSubmit}

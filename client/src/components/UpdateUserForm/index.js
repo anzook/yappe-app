@@ -43,11 +43,11 @@ export class UpdateUserForm extends Component {
             email: this.state.email,
         }).then(res => {
             if (res.status === 200) {
-                console.log('Updating User... ')
+                // console.log('Updating User... ')
 
             }
         }).catch(err => {
-            console.log('Error updating user: ', err)            
+            // console.log('Error updating user: ', err)            
         })
 }
 

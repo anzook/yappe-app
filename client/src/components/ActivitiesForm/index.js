@@ -14,7 +14,6 @@ export default class ActivitiesForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log(this.state);
         API.createAction({
             type: this.state.activities,
             detail: this.state.details,
@@ -23,7 +22,7 @@ export default class ActivitiesForm extends Component {
         })
             .then(res => {
                 console.log(res);
-                this.props.change();
+                this.props.close();
             })
     }
 
@@ -55,7 +54,7 @@ export default class ActivitiesForm extends Component {
                     <Form.Control name='details' onChange={this.handleInputChange} as="textarea" rows="3" />
                 </Form.Group>
                 <Form.Group>
-                    <Button onClick={this.handleSubmit} variant="primary" type="submit">
+                    <Button className='activity-form-btn' onClick={this.handleSubmit} variant="primary" type="submit">
                         Submit
                 </Button>
                 </Form.Group>

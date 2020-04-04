@@ -28,7 +28,11 @@ module.exports = function(sequelize, DataTypes) {
     breed: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
+    },
+    pictureLink: {
+      type: DataTypes.TEXT('long'),
+      allowNull: true,
+    },
   });
 
   Pet.associate = function(models) {

@@ -31,7 +31,6 @@ export class AddExistingDogForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log(this.state);
         API.joinUser(this.state.petId, {
             user: this.state.id,
             role: this.state.role
@@ -60,7 +59,7 @@ export class AddExistingDogForm extends Component {
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
-                    <Button onClick={this.handleFormSubmit} variant="primary" type="submit">
+                    <Button onClick={this.handleFormSubmit} id="add-dog-btn"className="float-right" variant="outline-success" type="submit">
                         Submit
                         </Button>
                 </Form.Group>

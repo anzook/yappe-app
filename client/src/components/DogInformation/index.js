@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { ListGroup, Card, Button, CardColumns, Container, Row, Col } from 'react-bootstrap';
-
+import { ListGroup, Card, Button, Container, Row, Col } from 'react-bootstrap';
+import ActivitiesFormModal from '../../components/ActivityFormModal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane } from '@fortawesome/free-regular-svg-icons'
 import './style.css';
 import API from '../../utils/API';
+import Functions from '../../utils/Functions'
 
 export default class DogInformation extends Component {
     constructor(props) {
@@ -19,6 +22,7 @@ export default class DogInformation extends Component {
         this.getPetInfo();
     }
 
+
     componentDidUpdate() {
         if (this.state.previousPetID !== this.props.id) {
             this.getPetInfo();
@@ -28,66 +32,83 @@ export default class DogInformation extends Component {
     getPetInfo = () => {
         API.getPet(this.props.id)
             .then(pet => {
-                API.getPetActions(this.props.id)
-                    .then(actions => {
-                        this.setState({
-                            pet: pet.data,
-                            caretakers: pet.data.users,
-                            petActivities: actions.data,
-                            previousPetID: this.props.id
-                        })
-                    })
+                this.setState({
+                    pet: pet.data,
+                    caretakers: pet.data.users,
+                    petActivities: this.props.actions,
+                    previousPetID: this.props.id
+                })
+
             })
+
     }
 
     render() {
         let caretakers = this.state.caretakers?.map(caretaker => {
             return (
-                <Card>
-                    <ul>
-                        <li>Name: {caretaker.name}</li>
-                        <li>Role: {caretaker.user_pets.role}</li>
-                        <li>Last Interaction: </li>
-                    </ul>
-                </Card>
+                <li key={caretaker.id}>
+                    <Card className='caretaker-contact' style={{ width: '8rem' }}>
+                        <Card.Body>
+                            <Card.Title>{Functions.capitalize(caretaker.name)}</Card.Title>
+                            <Card.Subtitle className="mb-2 text-muted">{Functions.capitalize(caretaker.user_pets.role)}</Card.Subtitle>
+                            <a href={'mailto:' + caretaker.email}><FontAwesomeIcon icon={faPaperPlane} /></a>
+                        </Card.Body>
+                    </Card>
+                </li>
             )
         })
+
+        let actions = this.state.petActivities.slice(0, 5).map(activity => {
+            return (
+                <ListGroup.Item key={activity.id}>
+                    <ul className='actions-ul'>
+                        <li>Activity: {Functions.capitalize(activity.type)}</li>
+                        <li>Logged by: {Functions.capitalize(activity.user.name)}</li>
+                        <li>Date: {activity.updatedAt.slice(0, 10)}</li>
+                    </ul>
+                </ListGroup.Item>
+            )
+
+        })
+
         return (
             <div className='profile-div'>
-                <Card >
+                <Card className='dog-profile-intro-card'>
                     <Container className='dog-profile-container'>
                         <Row >
                             <Col className='dog-profile-img-div'>
-                                <img alt='Pet Photo' src='/images/placeholder-dog.jpg' />
+                                {this.state.pet.pictureLink ?
+                                    <img alt='Pet Photo' src={this.state.pet.pictureLink} /> :
+                                    <img alt='Pet Photo' src='/images/placeholder-dog.jpg' />}
                                 <div className='dog-profile-btn-div'>
-                                    <Button variant="primary">Add Activity</Button>
-                                    <Button variant="secondary">Ask Question</Button>
+                                    <ActivitiesFormModal user={this.props.user} pet={this.props.id} />
+                                    <Button className='ask-btn' variant="secondary">Ask Question</Button>
                                 </div>
                             </Col>
                             <Col xs md={8} className='profile-intro-card'>
                                 <Card.Body>
-                                    <Card.Title>{this.state.pet.name}</Card.Title>
-                                    <Card.Subtitle className="mb-2 text-muted">Parent: </Card.Subtitle>
+                                    <Card.Title className='pet-name-profile'>{Functions.capitalize(this.state.pet.name)}</Card.Title>
+                                    <Card.Subtitle className="parent-name-sub">Parent: ########</Card.Subtitle>
                                     <ListGroup variant="flush">
                                         <ul>
                                             <li>Age: {this.state.pet.age}</li>
-                                            <li>Sex: {this.state.pet.sex}</li>
-                                            <li>Breed: {this.state.pet.breed}</li>
+                                            <li>Sex: {Functions.capitalize(this.state.pet.sex)}</li>
+                                            <li>Breed: {Functions.capitalize(this.state.pet.breed)}</li>
                                         </ul>
                                     </ListGroup>
                                 </Card.Body>
                                 <ListGroup className='profile-listgroup' variant="flush">
                                     <ul>
-                                        <li>Careteam</li>
-                                        <li>{this.state.caretakers.length}</li>
+                                        <li className='li-title'>Careteam</li>
+                                        <li className='li-stat'>{this.state.caretakers.length}</li>
                                     </ul>
                                     <ul>
-                                        <li>Questions</li>
-                                        <li>##</li>
+                                        <li className='li-title'>Questions</li>
+                                        <li className='li-stat'>00</li>
                                     </ul>
                                     <ul>
-                                        <li>Answers</li>
-                                        <li>##</li>
+                                        <li className='li-title'>Answers</li>
+                                        <li className='li-stat'>00</li>
                                     </ul>
                                 </ListGroup>
                             </Col>
@@ -101,16 +122,16 @@ export default class DogInformation extends Component {
                         <Col>
                             <Card className='team-contribution-card'>
                                 <Card.Body>
-                                    <Card.Title>Team Contribution</Card.Title>
-                                    <span>{this.state.petActivities.length}</span>
+                                    <Card.Title className=''>Total Activities Logged</Card.Title>
+                                    <span className='pet-act-total-span'>{this.state.petActivities.length}</span>
                                     <div className='ul-div'>
                                         <ul>
-                                            <li>Team</li>
-                                            <li>##</li>
+                                            <li className='li-title'>Team</li>
+                                            <li className='li-stat'>##</li>
                                         </ul>
                                         <ul>
-                                            <li>You</li>
-                                            <li>##</li>
+                                            <li className='li-title'>You</li>
+                                            <li className='li-stat'>##</li>
                                         </ul>
                                     </div>
                                 </Card.Body>
@@ -118,12 +139,15 @@ export default class DogInformation extends Component {
                         </Col>
 
                         <Col xs md={8}>
-                            <Card className='team-members-card'>
+                            <ul className='caretakers-info-ul'>
+                                {caretakers}
+                            </ul>
+                            {/* <Card className='team-members-card'>
                                 <Card.Header>Team Members</Card.Header>
                                 <div className='team-members-div'>
                                     {caretakers}
                                 </div>
-                            </Card>
+                            </Card> */}
                         </Col>
                     </Row>
                 </div>
@@ -132,38 +156,14 @@ export default class DogInformation extends Component {
                     <Card className='profile-activities-card'>
                         <Card.Header>
                             Recent Activites
-                        <a>See All Activities</a>
-                        </Card.Header>
+                        {/* <span>See All Activities</span> */}
+                        </Card.Header >
                         <ListGroup variant="flush">
-                            <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                            <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                            <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+                            {actions}
                         </ListGroup>
-                    </Card>
-                </div>
-            </div>
-
-            // {/* // <div>
-            //     <ListGroup variant='flush'>
-            //         <ListGroup.Item>
-            //             <ul className='age-sex-ul'>
-            //                 <li><h6>Age: {this.props.age}</h6></li>
-            //                 <li><h6>Sex: {this.props.sex}</h6></li>
-            //             </ul>
-            //             <h6>Breed: {this.props.breed}</h6>
-            //         </ListGroup.Item>
-            //         <ListGroup.Item>
-            //             <h4>Most Recent Activities</h4>
-            //             {this.props.actions.slice(0, 3).map((action) => ( */}
-            // {/* //                 <ul className='actions-ul'>
-            //                     <li><h6>Activity: {action.type}</h6></li>
-            //                     <li><h6>Date: {action.updatedAt.slice(0, 10)}</h6></li>
-            //                 </ul>
-            //             ))}
-            //         </ListGroup.Item> */}
-            // {/* //     </ListGroup> */}
-            // {/* // </div> */}
-
+                    </Card >
+                </div >
+            </div >
         )
     }
 }
