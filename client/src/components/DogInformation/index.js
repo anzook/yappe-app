@@ -3,6 +3,7 @@ import { ListGroup, Card, Button, Container, Row, Col } from 'react-bootstrap';
 import ActivitiesFormModal from '../../components/ActivityFormModal'
 import './style.css';
 import API from '../../utils/API';
+import Functions from '../../utils/Functions'
 
 export default class DogInformation extends Component {
     constructor(props) {
@@ -44,8 +45,8 @@ export default class DogInformation extends Component {
             return (
                 <Card key={caretaker.id}>
                     <ul>
-                        <li>Name: {caretaker.name}</li>
-                        <li>Role: {caretaker.user_pets.role}</li>
+                        <li>Name: {Functions.capitalize(caretaker.name)}</li>
+                        <li>Role: {Functions.capitalize(caretaker.user_pets.role)}</li>
                         <li>Last Interaction: </li>
                     </ul>
                 </Card>
@@ -56,8 +57,8 @@ export default class DogInformation extends Component {
             return (
                 <ListGroup.Item key={activity.id}>
                     <ul className='actions-ul'>
-                        <li>Activity: {activity.type}</li>
-                        <li>Logged by: {activity.user.name}</li>
+                        <li>Activity: {Functions.capitalize(activity.type)}</li>
+                        <li>Logged by: {Functions.capitalize(activity.user.name)}</li>
                         <li>Date: {activity.updatedAt.slice(0, 10)}</li>
                     </ul>
                 </ListGroup.Item>
@@ -84,23 +85,23 @@ export default class DogInformation extends Component {
                                     <ListGroup variant="flush">
                                         <ul>
                                             <li>Age: {this.state.pet.age}</li>
-                                            <li>Sex: {this.state.pet.sex}</li>
-                                            <li>Breed: {this.state.pet.breed}</li>
+                                            <li>Sex: {Functions.capitalize(this.state.pet.sex)}</li>
+                                            <li>Breed: {Functions.capitalize(this.state.pet.breed)}</li>
                                         </ul>
                                     </ListGroup>
                                 </Card.Body>
                                 <ListGroup className='profile-listgroup' variant="flush">
                                     <ul>
-                                        <li>Careteam</li>
-                                        <li>{this.state.caretakers.length}</li>
+                                        <li className='li-title'>Careteam</li>
+                                        <li className='li-stat'>{this.state.caretakers.length}</li>
                                     </ul>
                                     <ul>
-                                        <li>Questions</li>
-                                        <li>##</li>
+                                        <li className='li-title'>Questions</li>
+                                        <li className='li-stat'>00</li>
                                     </ul>
                                     <ul>
-                                        <li>Answers</li>
-                                        <li>##</li>
+                                        <li className='li-title'>Answers</li>
+                                        <li className='li-stat'>00</li>
                                     </ul>
                                 </ListGroup>
                             </Col>
@@ -114,16 +115,16 @@ export default class DogInformation extends Component {
                         <Col>
                             <Card className='team-contribution-card'>
                                 <Card.Body>
-                                    <Card.Title>Team Contribution</Card.Title>
-                                    <span>{this.state.petActivities.length}</span>
+                                    <Card.Title className=''>Total Activities Logged</Card.Title>
+                                    <span className='pet-act-total-span'>{this.state.petActivities.length}</span>
                                     <div className='ul-div'>
                                         <ul>
-                                            <li>Team</li>
-                                            <li>##</li>
+                                            <li className='li-title'>Team</li>
+                                            <li className='li-stat'>##</li>
                                         </ul>
                                         <ul>
-                                            <li>You</li>
-                                            <li>##</li>
+                                            <li className='li-title'>You</li>
+                                            <li className='li-stat'>##</li>
                                         </ul>
                                     </div>
                                 </Card.Body>
