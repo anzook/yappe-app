@@ -19,6 +19,7 @@ export default class DogInformation extends Component {
         this.getPetInfo();
     }
 
+
     componentDidUpdate() {
         if (this.state.previousPetID !== this.props.id) {
             this.getPetInfo();
@@ -58,7 +59,7 @@ export default class DogInformation extends Component {
                     <Container className='dog-profile-container'>
                         <Row >
                             <Col className='dog-profile-img-div'>
-                                <img alt='Pet Photo' src='/images/placeholder-dog.jpg' />
+                               {this.state.pet.pictureLink ? <img alt='Pet Photo' src={this.state.pet.pictureLink} /> : <img alt='Pet Photo' src='/images/placeholder-dog.jpg' />}
                                 <div className='dog-profile-btn-div'>
                                     <Button variant="primary">Add Activity</Button>
                                     <Button variant="secondary">Ask Question</Button>

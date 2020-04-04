@@ -10,6 +10,7 @@ module.exports = {
                 age: req.body.age,
                 sex: req.body.sex,
                 breed: req.body.breed,
+                pictureLink: req.body.pictureLink
             }
         );
         await pet.addUser(req.body.user, {

@@ -38,6 +38,7 @@ export default class DogInfo extends Component {
                             age={this.props.pet.age}
                             sex={this.props.pet.sex}
                             breed={this.props.pet.breed}
+                            pictureLink={this.props.pet.pictureLink}
                         />
                         <div className='option-div' variant="flush">
                             <span onClick={this.changeDisplay}>Add Activity</span>
@@ -51,7 +52,7 @@ export default class DogInfo extends Component {
                 <Card >
                     <ListGroup variant="flush">
                         <ListGroup.Item><h2>{this.props.pet.name}</h2></ListGroup.Item>
-                        <img className='dog-display-image' src='/images/placeholder-dog.jpg' alt='a dog' />
+            {this.props.pet.pictureLink ?  <img className='dog-display-image' src={this.props.pet.pictureLink} alt={this.props.pet.id+" picture Link"}/> : <img className='dog-display-image' src='/images/placeholder-dog.jpg' alt='a dog' /> }
                     </ListGroup>
                     <Card.Body>
                         <Card.Title>Add Activity</Card.Title>
