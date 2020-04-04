@@ -19,7 +19,7 @@ class NavSide extends React.Component {
  
   render() {
     return (
-      <div>
+      <div id="side-bar-div">
       <Sidebar
         sidebar={<b>YAPPE</b>}
         open={this.state.sidebarOpen}

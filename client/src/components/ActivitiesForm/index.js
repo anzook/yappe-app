@@ -14,7 +14,7 @@ export default class ActivitiesForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log(this.state);
+        // console.log(this.state);
         API.createAction({
             type: this.state.activities,
             detail: this.state.details,
@@ -22,7 +22,7 @@ export default class ActivitiesForm extends Component {
             pet: this.props.pet
         })
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 this.props.change();
             })
     }

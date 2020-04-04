@@ -36,7 +36,7 @@ class LandingPage extends Component {
   }
 
   getUser() {
-    console.log("Calling request for user info... ");
+    // console.log("Calling request for user info... ");
     API.getUserInfo().then(res => {
       // console.log('Get user response: ')
       if (res.data.name) {
@@ -50,7 +50,7 @@ class LandingPage extends Component {
           redirectTo: '/dashboard'
         })
       } else {
-        console.log('Get user: no user found');
+        // console.log('Get user: no user found');
         this.setState({
           loggedIn: false,
           email: null,

@@ -43,7 +43,7 @@ class Dashboard extends Component {
     API.getUserInfo().then(sessionRes => {
       if (sessionRes.data.name) {
         API.getUser(sessionRes.data.id).then(res => {
-          console.log(res.data)
+          // console.log(res.data)
           this.setState({
             user: res.data,
             loggedIn: true,
@@ -127,7 +127,7 @@ class Dashboard extends Component {
     } else {
       return (
         <div className='dashboard-div'>
-          <YapNav updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+          <YapNav id="yap-nav" updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
           <Container fluid>
             <Row>
               <Col xs md={1}>

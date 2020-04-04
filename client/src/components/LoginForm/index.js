@@ -29,7 +29,7 @@ export class LoginForm extends Component {
             password: this.state.password
         })
         .then(res => {
-            console.log('login sent, response... ')
+            // console.log('login sent, response... ')
             // console.log(res)
             if (res.status === 200) {
                 // update App.js state
@@ -40,7 +40,7 @@ export class LoginForm extends Component {
               
             }
         }).catch(err => {
-            console.log('Login error: ', err)            
+            // console.log('Login error: ', err)            
         })
     }
 

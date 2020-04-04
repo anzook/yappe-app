@@ -15,14 +15,14 @@ export class YapNav extends Component {
   handleLogOff = (event) => {
     event.preventDefault()
       API.logoutUser().then(res => {
-        console.log('Logging out.. ')
+        // console.log('Logging out.. ')
         if (res.status === 200) {
             this.props.updateUser({
                 loggedIn: false
           })
         } 
       }).catch(error => {
-        console.log('Error logging out')
+        // console.log('Error logging out')
     })
   }
 

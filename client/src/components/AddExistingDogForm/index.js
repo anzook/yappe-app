@@ -31,7 +31,7 @@ export class AddExistingDogForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log(this.state);
+        // console.log(this.state);
         API.joinUser(this.state.petId, {
             user: this.state.id,
             role: this.state.role

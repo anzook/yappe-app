@@ -8,6 +8,10 @@
     height: 80%;
     overflow: auto;
   }
+
+  #side-bar-div {
+    background-color: #1ee09d;
+  }
   
   /* Sidebar links */
   .Nav a {
