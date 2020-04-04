@@ -79,6 +79,7 @@ export class DogForm extends Component {
                 </Form.Group>
                 <Form.Group>
                     <Form.Control name='sex' onChange={this.handleInputChange} as="select" placeholder="Sex:">
+                        <option>Sex</option>
                         <option>Male</option>
                         <option>Female</option>
                     </Form.Control>
