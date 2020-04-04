@@ -15,7 +15,6 @@ export class CareTakersTable extends Component {
   componentDidMount() {
     API.getUserInfo().then(res => {
       API.getUser(res.data.id).then(user => {
-        // console.log("Calling step 1: ", user.data);
         this.setState({
           id: res.data.id,
           dogData: user.data.pets
