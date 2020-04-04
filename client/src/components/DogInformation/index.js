@@ -75,7 +75,7 @@ export default class DogInformation extends Component {
         return (
             <div className='profile-div'>
                 <Card className='dog-profile-intro-card'>
-                    <a className='invite-a'>Send Invite<FontAwesomeIcon icon={faTags} /></a>
+                    <a href='#' className='invite-a'>Send Invite<FontAwesomeIcon icon={faTags} /></a>
                     <Container className='dog-profile-container'>
                         <Row >
                             <Col className='dog-profile-img-div'>
@@ -84,7 +84,7 @@ export default class DogInformation extends Component {
                                     <img alt='Pet Photo' src='/images/placeholder-dog.jpg' />}
                                 <div className='dog-profile-btn-div'>
                                     <ActivitiesFormModal user={this.props.user} pet={this.props.id} />
-                                    <Button className='ask-btn' variant="secondary">Ask Question</Button>
+                                    <Button className='ask-btn' variant="secondary">Post</Button>
                                 </div>
                             </Col>
                             <Col xs md={8} className='profile-intro-card'>
@@ -105,11 +105,7 @@ export default class DogInformation extends Component {
                                         <li className='li-stat'>{this.state.caretakers.length}</li>
                                     </ul>
                                     <ul>
-                                        <li className='li-title'>Questions</li>
-                                        <li className='li-stat'>00</li>
-                                    </ul>
-                                    <ul>
-                                        <li className='li-title'>Answers</li>
+                                        <li className='li-title'>Posts</li>
                                         <li className='li-stat'>00</li>
                                     </ul>
                                 </ListGroup>
