@@ -12,6 +12,10 @@ export default class ActivitiesForm extends Component {
         }
     }
 
+    componentDidUpdate() {
+        
+    }
+
     handleSubmit = event => {
         event.preventDefault();
         API.createAction({

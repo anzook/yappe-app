@@ -59,15 +59,13 @@ export class DogForm extends Component {
                 user: userId,
                 role: this.state.role
             }).then(pet => {
-                console.log(pet.data)
-                window.location.replace('/dashboard?' + userId);
+                window.location.replace('/dashboard');
             })
         })
     }
 
     render() {
         return (
-            // <h1> Would you like to:</h1>
             <Form>
                 <Form.Group controlId="adddog">
                 </Form.Group>
