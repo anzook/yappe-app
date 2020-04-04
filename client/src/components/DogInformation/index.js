@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { ListGroup, Card, Button, Container, Row, Col } from 'react-bootstrap';
-import ActivitiesFormModal from '../../components/ActivityFormModal'
+import ActivitiesFormModal from '../../components/ActivityFormModal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faPaperPlane} from '@fortawesome/free-regular-svg-icons'
 import './style.css';
 import API from '../../utils/API';
 import Functions from '../../utils/Functions'
@@ -43,13 +45,15 @@ export default class DogInformation extends Component {
     render() {
         let caretakers = this.state.caretakers?.map(caretaker => {
             return (
-                <Card key={caretaker.id}>
-                    <ul>
-                        <li>Name: {Functions.capitalize(caretaker.name)}</li>
-                        <li>Role: {Functions.capitalize(caretaker.user_pets.role)}</li>
-                        <li>Last Interaction: </li>
-                    </ul>
-                </Card>
+                <li key={caretaker.id}>
+                    <Card className='caretaker-contact' style={{ width: '8rem' }}>
+                        <Card.Body>
+                            <Card.Title>{Functions.capitalize(caretaker.name)}</Card.Title>
+                            <Card.Subtitle className="mb-2 text-muted">{Functions.capitalize(caretaker.user_pets.role)}</Card.Subtitle>
+                            <a href={'mailto:' + caretaker.email}><FontAwesomeIcon icon={ faPaperPlane }/></a>
+                        </Card.Body>
+                    </Card>
+                </li>
             )
         })
 
@@ -80,7 +84,7 @@ export default class DogInformation extends Component {
                             </Col>
                             <Col xs md={8} className='profile-intro-card'>
                                 <Card.Body>
-                                    <Card.Title className='pet-name-profile'>{this.state.pet.name}</Card.Title>
+                                    <Card.Title className='pet-name-profile'>{Functions.capitalize(this.state.pet.name)}</Card.Title>
                                     <Card.Subtitle className="parent-name-sub">Parent: ########</Card.Subtitle>
                                     <ListGroup variant="flush">
                                         <ul>
@@ -132,12 +136,15 @@ export default class DogInformation extends Component {
                         </Col>
 
                         <Col xs md={8}>
-                            <Card className='team-members-card'>
+                            <ul className='caretakers-info-ul'>
+                                {caretakers}
+                            </ul>
+                            {/* <Card className='team-members-card'>
                                 <Card.Header>Team Members</Card.Header>
                                 <div className='team-members-div'>
                                     {caretakers}
                                 </div>
-                            </Card>
+                            </Card> */}
                         </Col>
                     </Row>
                 </div>
