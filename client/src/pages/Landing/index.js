@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom'
-import Overlay from '../../components/Overlay'
-
-import Row from "../../components/Row";
 import Container from "../../components/Container";
 import Hero from "../../components/Hero";
 import './style.css'
