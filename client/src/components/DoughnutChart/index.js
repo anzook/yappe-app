@@ -37,7 +37,7 @@ export default class DoughnutChart extends Component {
 				this.setState({
 					activities: res.data,
 					lastActivity: res.data[0],
-					lastCaretaker: Functions.capitalize(res.data[0].user.name),
+					lastCaretaker: Functions.capitalize(res.data[0]?.user?.name),
 					allActivitiesTypes: organized
 
 				})
