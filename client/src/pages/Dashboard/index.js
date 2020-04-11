@@ -9,7 +9,7 @@ import DashboardDesktop from '../../components/DashboardDesktop';
 import YapNav from "../../components/Navbar";
 import SidebarContent from "../../components/SidebarContent";
 import DogCard from "../../components/Card";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, ThemeProvider } from "react-bootstrap";
 import DogInformation from '../../components/DogInformation'
 import FirstGlance from '../../components/FirstGlance';
 import "./style.css";
@@ -133,11 +133,15 @@ class Dashboard extends Component {
           <YapNav id="yap-nav" updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
 
           <Breakpoint customQuery="(max-width: 991px)">
-            <DashboardMobile />
+            <DashboardMobile
+              user={this.state.name}
+              userInfo={this.state.user}
+              render={this.renderDisplay()}
+            />
           </Breakpoint>
 
           <Breakpoint customQuery="(min-width: 992px)">
-            <DashboardDesktop cards={cardOne} render={this.renderDisplay()}/>
+            <DashboardDesktop cards={cardOne} render={this.renderDisplay()} />
           </Breakpoint>
 
           {/* <Container fluid>
