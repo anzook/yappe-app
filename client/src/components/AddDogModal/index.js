@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Breakpoint } from 'react-socks';
 import { Modal, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import DogForm from '../DogForm';
 import AddExistingDogForm from '../AddExistingDogForm';
@@ -22,26 +23,43 @@ function AddDogModal() {
     }
 
     const renderAddDogIcon = () => (
-        <OverlayTrigger
-            placement="right"
-            delay={{ show: 250, hide: 400 }}
-            overlay={renderTooltip}
-        >
-                <FontAwesomeIcon icon={ faPaw }/>
-        </OverlayTrigger>
+        <div>
+            <Breakpoint customQuery="(max-width: 1026px)">
+                <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={renderTooltip}
+                >
+                    <div>
+                        <FontAwesomeIcon icon={faPaw} />
+                        <h6>Add Dog</h6>
+                    </div>
+                </OverlayTrigger>
+            </Breakpoint>
+
+            <Breakpoint customQuery="(min-width: 1027px)">
+                <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={renderTooltip}
+                >
+                    <FontAwesomeIcon icon={faPaw} />
+                </OverlayTrigger>
+            </Breakpoint>
+        </div>
     );
 
-   const renderTooltip = (props) => {
+    const renderTooltip = (props) => {
         return (
             <Tooltip id="button-tooltip" {...props}>
                 Add Dog
             </Tooltip>
         );
     }
-    
+
     const renderForm = () => {
         if (toggle === 'Add New Dog') {
-            return <AddExistingDogForm close={handleClose}/>
+            return <AddExistingDogForm close={handleClose} />
         } else if (toggle === 'Add Existing Dog') {
             return <DogForm breeds={breeds} />
         }
@@ -50,9 +68,9 @@ function AddDogModal() {
     return (
         <>
             <div className='modal-btn' onClick={handleShow}>
-            {renderAddDogIcon() }           
+                {renderAddDogIcon()}
             </div>
-            
+
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header id="modal-header" closeButton>
@@ -62,7 +80,7 @@ function AddDogModal() {
                 <Modal.Body id="modal-body">
                     {renderForm()}
                 </Modal.Body>
-                <Modal.Footer  id="modal-footer">
+                <Modal.Footer id="modal-footer">
                     <Button className="toggle-button" variant="outline-success" onClick={handleToggle}>
                         {toggle}
                     </Button>
