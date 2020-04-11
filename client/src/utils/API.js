@@ -98,7 +98,21 @@ export default {
     },
     getBreeds: function () {
         return axios.get("https://dog.ceo/api/breeds/list/all");
-    }
-
+    },
+    createPost: function (post) {
+        return axios.post('/api/posts/', post);
+    },
+    getPost: function (postID) {
+        return axios.get('/api/posts/' + postID);
+    },
+    updatePost: function (postID, data) {
+        return axios.put('/api/posts/' + postID, data);
+    },
+    deletePost: function (postID) {
+        return axios.delete('/api/posts/' + postID);
+    },
+    getPetPost: function (petID) {
+        return axios.get('/api/posts/pets/' + petID);
+    },
 }
 
