@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Breakpoint } from 'react-socks';
 import { Modal, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table'
 import API from '../../utils/API'
@@ -24,6 +25,35 @@ class ActivityLog extends Component {
         };
     }
 
+
+
+    renderAddDogIcon = () => (
+        <div>
+            <Breakpoint customQuery="(max-width: 991px)">
+                <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={this.renderTooltip}
+                >
+                    <div>
+                    <FontAwesomeIcon icon={faClipboardList} />
+                        <h6>Activity Log</h6>
+                    </div>
+                </OverlayTrigger>
+            </Breakpoint>
+
+            <Breakpoint customQuery="(min-width: 992px)">
+                <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={this.renderTooltip}
+                >
+            <FontAwesomeIcon icon={faClipboardList} />
+                </OverlayTrigger>
+            </Breakpoint>
+        </div>
+    );
+
     renderTooltip = (props) => {
         return (
             <Tooltip id="button-tooltip" {...props}>
@@ -32,27 +62,17 @@ class ActivityLog extends Component {
         );
     }
 
-    renderAddDogIcon = () => (
-        <OverlayTrigger
-            placement="right"
-            delay={{ show: 250, hide: 400 }}
-            overlay={this.renderTooltip}
-        >
-            <FontAwesomeIcon icon={faClipboardList} />
-        </OverlayTrigger>
-    );
-
 
     componentDidMount() {
         API.getUserInfo().then(sessionRes => {
-        API.getUserLogs(sessionRes.data.id)
-            .then(res => {
-                console.log(res)
-                this.setState({
-                    userLogs: res.data
+            API.getUserLogs(sessionRes.data.id)
+                .then(res => {
+                    console.log(res)
+                    this.setState({
+                        userLogs: res.data
+                    })
                 })
-            })
-            })
+        })
     }
 
     handleShow = (event) => {
@@ -71,8 +91,8 @@ class ActivityLog extends Component {
     createTable = () => {
         let dateText = (dateInfo) => {
             let dt = new Date(dateInfo);
-            return(`${
-                (dt.getMonth()+1).toString().padStart(2, '0')}/${
+            return (`${
+                (dt.getMonth() + 1).toString().padStart(2, '0')}/${
                 dt.getDate().toString().padStart(2, '0')}/${
                 dt.getFullYear().toString().padStart(4, '0')}`
             );
@@ -85,14 +105,14 @@ class ActivityLog extends Component {
         for (let i = 0; i < actions.length; i++) {
             let children = []
             children.push(<td>{Functions.capitalize(actions[i].pet.name)}</td>)
-            children.push(<td>{  dateText(actions[i].updatedAt)}</td>)
+            children.push(<td>{dateText(actions[i].updatedAt)}</td>)
             children.push(<td>{Functions.capitalize(actions[i].type)}</td>)
             children.push(<td>{Functions.capitalize(actions[i].detail)}</td>)
             table.push(<tr>{children}</tr>)
             children = []
         }
         return table
-      }
+    }
 
     render() {
 
@@ -118,8 +138,8 @@ class ActivityLog extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                            {this.createTable()}
-                              
+                                {this.createTable()}
+
                             </tbody>
                         </Table>
                     </Modal.Body>
