@@ -25,16 +25,10 @@ function AddDogModal() {
     const renderAddDogIcon = () => (
         <div>
             <Breakpoint customQuery="(max-width: 991px)">
-                <OverlayTrigger
-                    placement="right"
-                    delay={{ show: 250, hide: 400 }}
-                    overlay={renderTooltip}
-                >
                     <div>
                         <FontAwesomeIcon icon={faPaw} />
                         <h6>Add Dog</h6>
                     </div>
-                </OverlayTrigger>
             </Breakpoint>
 
             <Breakpoint customQuery="(min-width: 992px)">

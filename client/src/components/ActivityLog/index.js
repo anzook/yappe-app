@@ -30,16 +30,10 @@ class ActivityLog extends Component {
     renderAddDogIcon = () => (
         <div>
             <Breakpoint customQuery="(max-width: 991px)">
-                <OverlayTrigger
-                    placement="right"
-                    delay={{ show: 250, hide: 400 }}
-                    overlay={this.renderTooltip}
-                >
-                    <div>
+                <div>
                     <FontAwesomeIcon icon={faClipboardList} />
-                        <h6>Activity Log</h6>
-                    </div>
-                </OverlayTrigger>
+                    <h6>Activity Log</h6>
+                </div>
             </Breakpoint>
 
             <Breakpoint customQuery="(min-width: 992px)">
@@ -48,7 +42,7 @@ class ActivityLog extends Component {
                     delay={{ show: 250, hide: 400 }}
                     overlay={this.renderTooltip}
                 >
-            <FontAwesomeIcon icon={faClipboardList} />
+                    <FontAwesomeIcon icon={faClipboardList} />
                 </OverlayTrigger>
             </Breakpoint>
         </div>
