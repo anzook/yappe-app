@@ -4,8 +4,9 @@ import { Form, Navbar, Nav } from 'react-bootstrap';
 import AddDogModal from '../AddDogModal'
 import ActivityLog from '../ActivityLog';
 import SettingsModal from "../SettingsModal";
+import CaretakersModal from "../CaretakersModal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
 import './style.css'
 import API from '../../utils/API'
 
@@ -41,10 +42,14 @@ export class YapNav extends Component {
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto" />
-                <ActivityLog/>
-                <AddDogModal/>
+                <ActivityLog />
+                <CaretakersModal />
+                <AddDogModal />
                 <SettingsModal />
-                <FontAwesomeIcon onClick={this.handleLogOff} className='icon' icon={faSignOutAlt} />
+                <div>
+                  <FontAwesomeIcon onClick={this.handleLogOff} className='icon' icon={faPowerOff} />
+                  <h6>Logout</h6>
+                </div>
               </Navbar.Collapse>
             </Navbar>
           </div>
@@ -58,7 +63,7 @@ export class YapNav extends Component {
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto" />
-                  <FontAwesomeIcon onClick={this.handleLogOff} className='icon' icon={faSignOutAlt} />
+                <FontAwesomeIcon onClick={this.handleLogOff} className='icon' icon={faPowerOff} />
               </Navbar.Collapse>
             </Navbar>
           </div>
