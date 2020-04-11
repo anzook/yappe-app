@@ -86,11 +86,11 @@ class ActivityLog extends Component {
         // Outer loop to create parent
         for (let i = 0; i < actions.length; i++) {
             let children = []
-            children.push(<td>{Functions.capitalize(actions[i].pet.name)}</td>)
-            children.push(<td>{  dateText(actions[i].updatedAt)}</td>)
-            children.push(<td>{Functions.capitalize(actions[i].type)}</td>)
-            children.push(<td>{Functions.capitalize(actions[i].detail)}</td>)
-            table.push(<tr>{children}</tr>)
+            children.push(<td key={actions[i].id+'name'} >{Functions.capitalize(actions[i].pet.name)}</td>)
+            children.push(<td key={actions[i].id+ 'ts'}>{  dateText(actions[i].updatedAt)}</td>)
+            children.push(<td key={actions[i].id+ 'type'}>{Functions.capitalize(actions[i].type)}</td>)
+            children.push(<td key={actions[i].id+ 'detail'}>{Functions.capitalize(actions[i].detail)}</td>)
+            table.push(<tr key={actions[i].id}>{children}</tr>)
             children = []
         }
         return table
