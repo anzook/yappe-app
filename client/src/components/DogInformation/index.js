@@ -15,7 +15,9 @@ export default class DogInformation extends Component {
             pet: [],
             caretakers: [],
             petActivities: [],
-            previousPetID: null
+            previousPetID: null,
+            userActivities: 0,
+            othersActivities: 0
         }
     }
 
@@ -29,6 +31,12 @@ export default class DogInformation extends Component {
             this.getPetInfo();
         }
     }
+
+    // updateActivityCounts() {
+    //     this.state.petActivities.slice(0, 5).map(activity => {    
+    //         if (activity.user.name === "")
+    //     })
+    //     }
 
     getPetInfo = () => {
         API.getPet(this.props.id)
@@ -76,6 +84,7 @@ export default class DogInformation extends Component {
         })
 
         let actions = this.state.petActivities.slice(0, 5).map(activity => {
+            console.log(activity);
             return (
                 <ListGroup.Item key={activity.id}>
                     <ul className='actions-ul'>
