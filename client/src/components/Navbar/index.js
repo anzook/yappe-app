@@ -46,7 +46,7 @@ export class YapNav extends Component {
                 <CaretakersModal />
                 <AddDogModal />
                 <SettingsModal />
-                <div>
+                <div className='nav-icon-mobile-div'>
                   <FontAwesomeIcon onClick={this.handleLogOff} className='icon' icon={faPowerOff} />
                   <h6>Logout</h6>
                 </div>

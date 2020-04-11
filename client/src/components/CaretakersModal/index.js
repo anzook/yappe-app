@@ -16,7 +16,7 @@ function CaretakersModal() {
     const renderAddDogIcon = () => (
         <div>
         <Breakpoint customQuery="(max-width: 991px)">
-                <div>
+                <div className='nav-icon-mobile-div'>
                     <FontAwesomeIcon icon={faUserFriends} />
                     <h6>Caretakers</h6>
                 </div>

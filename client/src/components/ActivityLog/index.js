@@ -30,7 +30,7 @@ class ActivityLog extends Component {
     renderAddDogIcon = () => (
         <div>
             <Breakpoint customQuery="(max-width: 991px)">
-                <div>
+                <div className='nav-icon-mobile-div'>
                     <FontAwesomeIcon icon={faClipboardList} />
                     <h6>Activity Log</h6>
                 </div>

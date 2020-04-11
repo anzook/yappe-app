@@ -18,7 +18,7 @@ function SettingsModal() {
     const renderAddDogIcon = () => (
         <div>
             <Breakpoint customQuery="(max-width: 991px)">
-                    <div>
+                    <div className='nav-icon-mobile-div'>
                         <FontAwesomeIcon icon={faCog} />
                         <h6>Settings</h6>
                     </div>

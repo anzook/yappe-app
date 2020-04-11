@@ -25,7 +25,7 @@ function AddDogModal() {
     const renderAddDogIcon = () => (
         <div>
             <Breakpoint customQuery="(max-width: 991px)">
-                    <div>
+                    <div className='nav-icon-mobile-div'>
                         <FontAwesomeIcon icon={faPaw} />
                         <h6>Add Dog</h6>
                     </div>
