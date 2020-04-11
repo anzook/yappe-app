@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Breakpoint } from 'react-socks'
 import { Form, Navbar, Nav } from 'react-bootstrap';
 import AddDogModal from '../AddDogModal'
+import ActivityLog from '../ActivityLog';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import './style.css'
@@ -39,6 +40,7 @@ export class YapNav extends Component {
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto" />
+                <ActivityLog/>
                 <AddDogModal/>
                 <FontAwesomeIcon onClick={this.handleLogOff} className='icon' icon={faSignOutAlt} />
               </Navbar.Collapse>
