@@ -32,7 +32,7 @@ export class YapNav extends Component {
     return (
       <div>
         {/* render navbar's mobile view */}
-        <Breakpoint customQuery="(max-width: 1026px)">
+        <Breakpoint customQuery="(max-width: 991px)">
           <div >
             <Navbar fixed='top' className='nav' expand="lg">
               <Navbar.Brand href="/dashboard">yappE</Navbar.Brand>
@@ -47,7 +47,7 @@ export class YapNav extends Component {
         </Breakpoint>
 
         {/* render navbar's desktop view */}
-        <Breakpoint customQuery="(min-width: 1027px)">
+        <Breakpoint customQuery="(min-width: 992px)">
           <div >
             <Navbar fixed='top' className='nav' expand="lg">
               <Navbar.Brand href="/dashboard">yappE</Navbar.Brand>

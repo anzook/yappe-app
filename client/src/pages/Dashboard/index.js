@@ -132,11 +132,11 @@ class Dashboard extends Component {
         <div className='dashboard-div'>
           <YapNav id="yap-nav" updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
 
-          <Breakpoint customQuery="(max-width: 1026px)">
+          <Breakpoint customQuery="(max-width: 991px)">
             <DashboardMobile />
           </Breakpoint>
 
-          <Breakpoint customQuery="(min-width: 1027px)">
+          <Breakpoint customQuery="(min-width: 992px)">
             <DashboardDesktop cards={cardOne} render={this.renderDisplay()}/>
           </Breakpoint>
 
