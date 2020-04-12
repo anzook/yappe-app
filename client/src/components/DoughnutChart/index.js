@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Breakpoint } from 'react-socks';
 import API from '../../utils/API'
 import { Doughnut } from 'react-chartjs-2';
-import { Container } from 'react-bootstrap'
+import { Container, Card } from 'react-bootstrap'
 import Functions from '../../utils/Functions'
 import './style.css'
 
@@ -73,23 +74,41 @@ export default class DoughnutChart extends Component {
 				]
 			}]
 		}
-		if (this.state.activities.length  !== 0) {
+		if (this.state.activities.length !== 0) {
 			return (
-				<Container className='yourDogCard'>
+				<Container className='yourDogCard' >
+					<Breakpoint customQuery="(max-width: 991px)" style={{ width: '13rem' }}>
+						<Card className='pet-donut-card-mobile'>
+							<Card.Body>
+								<h4 className='h4-donut-mobile'>{Functions.capitalize(this.props.petName)}</h4>
+								<div>
+									<Doughnut data={data}
+										options={
+											{
+												responsive: true,
+												maintainAspectRatio: false,
+												legend: { position: "left" }
+											}} />
+								</div>
+							</Card.Body>
+						</Card>
+					</Breakpoint>
 
-					<div className='pet-info-div'>
-						<h4>{Functions.capitalize(this.props.petName)}</h4>
-						<ul className='removeUlStyling donut-ul'>
-							<li>Last Activity: {Functions.capitalize(this.state.lastActivity?.type)} </li>
-							<li>Logged By: {this.state.lastCaretaker}</li>
-							<li>Date: {this.state.lastActivity?.updatedAt?.slice(0, 10)}</li>
-						</ul>
-					</div>
-					<div>
-						<Doughnut data={data}
-							options={
-								{ legend: { position: "right" } }} />
-					</div>
+					<Breakpoint customQuery="(min-width: 992px)">
+						<div className='pet-info-div'>
+							<h4>{Functions.capitalize(this.props.petName)}</h4>
+							<ul className='removeUlStyling donut-ul donut-ul-mobile'>
+								<li>Last Activity: {Functions.capitalize(this.state.lastActivity?.type)} </li>
+								<li>Logged By: {this.state.lastCaretaker}</li>
+								<li>Date: {this.state.lastActivity?.updatedAt?.slice(0, 10)}</li>
+							</ul>
+						</div>
+						<div>
+							<Doughnut data={data}
+								options={
+									{ legend: { position: "right" } }} />
+						</div>
+					</Breakpoint>
 				</Container>
 
 			)

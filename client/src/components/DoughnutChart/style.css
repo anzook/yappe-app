@@ -31,3 +31,11 @@
     font-weight: 500;
     margin-bottom: 5px
 }
+
+.h4-donut-mobile{
+    margin: 0 !important;
+}
+
+.pet-donut-card-mobile{
+    padding: 0;
+}

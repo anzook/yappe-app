@@ -41,7 +41,7 @@ export default class DashboardMobile extends Component {
         let { display } = this.state;
         if (display === 'activities') {
         return <FirstGlanceMobile 
-            user={this.state.userInfo}
+            user={this.props.userInfo}
         />
         }
         else if (display === 'dog-info') {

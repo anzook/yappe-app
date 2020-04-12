@@ -8,7 +8,7 @@ export default class DashboardDesktop extends Component {
         super();
         this.state = {
             cards: [],
-            renderDisplay: null
+            display: 'activities',
         };
     }
 
@@ -24,7 +24,7 @@ export default class DashboardDesktop extends Component {
                 <Row>
                     <SidebarContent />
                     <Col xs md={4} className='dog-cards-col'>{this.state.cards}</Col>
-                    <Col xs md={8}>{this.state.renderDisplay}</Col>
+                    <Col xs md={8}>{this.props.render}</Col>
                 </Row>
             </Container>
         )
