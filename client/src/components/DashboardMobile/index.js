@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap'
-import './style.css'
+import { Container, Row, Col } from 'react-bootstrap';
+import FirstGlanceMobile from '../FirstGlanceMobile';
+import DogProfileMobile from '../DogProfileMobile';
+import './style.css';
 
 export default class DashboardMobile extends Component {
     constructor() {
@@ -38,10 +40,15 @@ export default class DashboardMobile extends Component {
     renderDisplay() {
         let { display } = this.state;
         if (display === 'activities') {
-        return <h2>In First Glance</h2>
+        return <FirstGlanceMobile 
+            user={this.state.userInfo}
+        />
         }
         else if (display === 'dog-info') {
-            return <h2>In Dog Profile with {this.state.petSelect.name}</h2>
+            return <DogProfileMobile
+                user={this.state.userInfo}
+                pet={this.state.petSelect}
+            />
         }
     }
 
