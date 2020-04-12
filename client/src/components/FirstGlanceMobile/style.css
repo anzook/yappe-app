@@ -16,7 +16,8 @@
     height: 40vh;
     flex-wrap: wrap;
     padding: 0;
-    overflow-y: scroll;
+    justify-content: center;
+    overflow-y: auto;
 }
 
 .firstglance-donut-ul li{
