@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 import AddDogModal from '../AddDogModal'
-import ActivityLog from '../SideActivity'
+import ActivityLog from '../ActivityLog'
 import SettingsModal from "../SettingsModal";
 import CaretakersModal from "../CaretakersModal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

@@ -1,0 +1,34 @@
+.firstglance-container-mobile.container-fluid{
+    padding-top: 0;
+}
+
+.firstglance-dogcards-ul{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    width: 100vw;
+    overflow-x: auto;
+}
+
+.firstglance-donut-ul{
+    display: flex;
+    list-style: none;
+    height: 40vh;
+    flex-wrap: wrap;
+    padding: 0;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.firstglance-donut-ul li{
+    padding-right: 10px;
+    margin-bottom: 20px;
+}
+
+.firstglance-donut-ul .yourDogCard {
+    border: none;
+    padding: 0;
+}
+
+
+
