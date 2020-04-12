@@ -38,7 +38,7 @@ export class YapNav extends Component {
         <Breakpoint customQuery="(max-width: 991px)">
           <div >
             <Navbar fixed='top' className='nav' expand="lg">
-              <Navbar.Brand href="/dashboard">yappE</Navbar.Brand>
+              <Navbar.Brand className='yappe-icon-nav-mobile'href="/dashboard">yappE</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto" />

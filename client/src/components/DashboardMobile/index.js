@@ -59,7 +59,7 @@ export default class DashboardMobile extends Component {
         return (
             <Container fluid className='mobile-view-dashboard-container'>
                 <Row><Col className='intro-info-div'>
-                    <h4>Hey there, {this.state.user}</h4>
+                    <h4>Welcome, {this.state.user}</h4>
                     <ul className='intro-info-ul'>
                         {petNames}
                     </ul>
