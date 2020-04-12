@@ -65,14 +65,14 @@ export default class DogCardMobile extends Component {
 
     render() {
         return (
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '16rem' }} className='dog-card-mobile-card'>
                 <Card.Body>
-                    <Card.Title>{this.props.pet.name}</Card.Title>
+                    <h4>{this.props.pet.name}</h4>
                     {this.props.pictureLink ?
                         <img alt='Pet photo' src={this.props.pictureLink} className='dog-card-mobile-image' /> :
                         <img alt='Pet photo' src="/images/placeholder-dog.jpg" className='dog-card-mobile-image' />}
-                    <h4>Role: {this.props.role}</h4>
-                    <h4>Last Interaction: {this.interaction()}</h4>
+                    <h5>Role: {this.props.role}</h5>
+                    <h5>Last Interaction: {this.interaction()}</h5>
                 </Card.Body>
             </Card>
         )

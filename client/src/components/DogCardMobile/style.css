@@ -1,0 +1,22 @@
+.dog-card-mobile-image{
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.dog-card-mobile-card{
+    border-radius: 30px;
+}
+
+.dog-card-mobile-card h4,
+.dog-card-mobile-card h5{
+    text-transform: capitalize;
+}
+
+.dog-card-mobile-card h5{
+    font-size: 0.9rem;
+}

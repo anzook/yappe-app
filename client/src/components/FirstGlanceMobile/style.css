@@ -1,9 +1,16 @@
+.firstglance-container-mobile.container-fluid{
+    padding-top: 0;
+}
+
 .firstglance-dogcards-ul{
     list-style: none;
     padding: 0;
     display: flex;
+    width: 100vw;
+    overflow-x: auto;
 }
 
 .firstglance-dogcards-ul li{
-    margin-right: 20px;
+    padding-right: 10px;
+    margin-left: 10px;
 }
