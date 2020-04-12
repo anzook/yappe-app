@@ -42,6 +42,7 @@ export default class DashboardMobile extends Component {
         if (display === 'activities') {
         return <FirstGlanceMobile 
             user={this.props.userInfo}
+            onClick = {this.changeDisplay}
         />
         }
         else if (display === 'dog-info') {

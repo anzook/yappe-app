@@ -65,7 +65,7 @@ export default class DogCardMobile extends Component {
 
     render() {
         return (
-            <Card style={{ width: '16rem' }} className='dog-card-mobile-card'>
+            <Card style={{ width: '16rem' }} className='dog-card-mobile-card' onClick = {() =>{this.props.onClick(this.props.pet)}}>
                 <Card.Body>
                     <h4>{this.props.pet.name}</h4>
                     {this.props.pictureLink ?

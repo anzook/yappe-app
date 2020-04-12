@@ -10,7 +10,7 @@ export default class FirstGlanceMobile extends Component {
         super(props);
         this.state = {
             user: [],
-            ownedPets:[],
+            ownedPets: [],
         }
     }
 
@@ -37,6 +37,7 @@ export default class FirstGlanceMobile extends Component {
                     pet={pet}
                     pictureLink={pet.pictureLink}
                     role={pet.user_pets.role}
+                    onClick = {this.props.onClick}
                 />
             </li>
         })
