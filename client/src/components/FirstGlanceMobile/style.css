@@ -1,0 +1,9 @@
+.firstglance-dogcards-ul{
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.firstglance-dogcards-ul li{
+    margin-right: 20px;
+}

@@ -19,12 +19,23 @@ export default class FirstGlanceMobile extends Component {
     }
 
     render() {
+        const dogCards = this.props.user?.pets?.map(pet => {
+            return <li key={pet.id}>
+                <DogCardMobile
+                    id={pet.id}
+                    pet={pet}
+                    pictureLink={pet.pictureLink}
+                    role={pet.user_pets.role}
+                />
+            </li>
+        })
+
         return (
-            <Container fluid>
+            <Container fluid className='firstglance-container-mobile'>
                 <Row>
-                    <Col>
-                    <DogCardMobile />
-                    </Col>
+                    <ul className='firstglance-dogcards-ul'>
+                        {dogCards}
+                    </ul>
                 </Row>
                 <Row>
                     <Col>
