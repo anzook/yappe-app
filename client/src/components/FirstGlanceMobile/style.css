@@ -10,12 +10,24 @@
     overflow-x: auto;
 }
 
-.firstglance-dogcards-ul li{
-    padding-right: 10px;
-    margin-left: 10px;
+.firstglance-donut-ul{
+    display: flex;
+    list-style: none;
+    height: 40vh;
+    flex-wrap: wrap;
+    padding: 0;
+    overflow-y: scroll;
 }
 
-.firstglance-donut-ul{
-    list-style: none;
+.firstglance-donut-ul li{
+    padding-right: 10px;
+    margin-bottom: 20px;
+}
+
+.firstglance-donut-ul .yourDogCard {
+    border: none;
     padding: 0;
 }
+
+
+

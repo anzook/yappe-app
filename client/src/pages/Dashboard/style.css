@@ -3,6 +3,7 @@
 body {
     background-color: #f0f0f0;
     /* overflow: hidden; */
+    height: 100vh;
     font-family: 'Roboto', sans-serif;
     letter-spacing: .5px;
 }

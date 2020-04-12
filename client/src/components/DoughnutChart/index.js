@@ -77,7 +77,8 @@ export default class DoughnutChart extends Component {
 		if (this.state.activities.length !== 0) {
 			return (
 				<Container className='yourDogCard' >
-					<Breakpoint customQuery="(max-width: 991px)" style={{ width: '13rem' }}>
+					{/* Mobile view */}
+					<Breakpoint customQuery="(max-width: 991px)" style={{ width: '10rem' }}>
 						<Card className='pet-donut-card-mobile'>
 							<Card.Body>
 								<h4 className='h4-donut-mobile'>{Functions.capitalize(this.props.petName)}</h4>
@@ -94,6 +95,7 @@ export default class DoughnutChart extends Component {
 						</Card>
 					</Breakpoint>
 
+					{/* Desktop view */}
 					<Breakpoint customQuery="(min-width: 992px)">
 						<div className='pet-info-div'>
 							<h4>{Functions.capitalize(this.props.petName)}</h4>
