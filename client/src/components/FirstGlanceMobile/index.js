@@ -39,7 +39,7 @@ export default class FirstGlanceMobile extends Component {
                 </Row>
                 <Row>
                     <Col>
-                        <h2>Your Pets</h2>
+                        <h4>Your Pets</h4>
                         <DogOwnedCardMobile />
                     </Col>
                 </Row>
