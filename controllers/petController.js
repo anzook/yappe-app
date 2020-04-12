@@ -86,8 +86,7 @@ module.exports = {
             {
                 name: body.name,
                 age: body.age,
-                sex: body.sex,
-                breed: body.breed,
+                pictureLink: body.pictureLink
             }, {
             where: {
                 id: params.id

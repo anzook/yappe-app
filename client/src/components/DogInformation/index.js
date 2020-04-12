@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { ListGroup, Card, Button, Container, Row, Col } from 'react-bootstrap';
 import ActivitiesFormModal from '../../components/ActivityFormModal';
+import DogSettingsModal from '../../components/DogSettingsModal';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons'
 import { faTags } from '@fortawesome/free-solid-svg-icons'
@@ -41,7 +43,7 @@ export default class DogInformation extends Component {
             othersActivities: 0
         })
         this.state.petActivities.forEach( activity => {  
-            console.log(activity)
+            // console.log(activity)
          
             console.log(this.state.id)
             if (activity.userId === this.state.id){
@@ -149,6 +151,7 @@ export default class DogInformation extends Component {
                                 <div className='dog-profile-btn-div'>
                                     <ActivitiesFormModal user={this.props.user} pet={this.props.id} />
                                     <Button className='ask-btn' variant="secondary">Post</Button>
+                                    < DogSettingsModal user={this.props.user} pet={this.props.id} />
                                 </div>
                             </Col>
                             <Col xs md={8} className='profile-intro-card'>
