@@ -121,7 +121,8 @@ a.invite-a svg{
     font-size: 1.5rem;
 }
 
-.team-contribution-card {
+.team-contribution-card,
+.team-contribution-card-mobile {
     text-align: center;
     border-radius: 25px;
     -webkit-box-shadow: 1px 7px 17px -7px rgba(0, 0, 0, 0.33);
@@ -129,12 +130,14 @@ a.invite-a svg{
     box-shadow: 1px 7px 17px -7px rgba(0, 0, 0, 0.33);
 }
 
-.team-contribution-card .card-title {
+.team-contribution-card .card-title,
+.team-contribution-card-mobile .card-title {
     font-size: 1.25rem;
     color: #a2a2a2;
 }
 
-.team-contribution-card .ul-div {
+.team-contribution-card .ul-div,
+.team-contribution-card-mobile .ul-div {
     display: flex;
     width: fit-content;
     margin: auto;

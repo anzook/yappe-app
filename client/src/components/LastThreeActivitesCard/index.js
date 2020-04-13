@@ -20,7 +20,7 @@ export default class LastThreeActivitesCard extends Component {
             </ListGroup.Item>
         })
         return (
-            <Card >
+            <Card className='last-three-activities-card'>
                 <ListGroup variant="flush">
                     {activities}
                 </ListGroup>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { StickyContainer, Sticky } from 'react-sticky';
 import { Container, Row, Col } from 'react-bootstrap';
 import FirstGlanceMobile from '../FirstGlanceMobile';
 import DogProfileMobile from '../DogProfileMobile';
@@ -40,10 +41,10 @@ export default class DashboardMobile extends Component {
     renderDisplay() {
         let { display } = this.state;
         if (display === 'activities') {
-        return <FirstGlanceMobile 
-            user={this.props.userInfo}
-            onClick = {this.changeDisplay}
-        />
+            return <FirstGlanceMobile
+                user={this.props.userInfo}
+                onClick={this.changeDisplay}
+            />
         }
         else if (display === 'dog-info') {
             return <DogProfileMobile
@@ -59,13 +60,17 @@ export default class DashboardMobile extends Component {
         })
         return (
             <Container fluid className='mobile-view-dashboard-container'>
-                <Row><Col className='intro-info-div'>
-                    <h4>Welcome, {this.state.user}</h4>
-                    <ul className='intro-info-ul'>
-                        {petNames}
-                    </ul>
-                </Col></Row>
-                <Row><Col className='window-div'>{this.renderDisplay()}</Col></Row>
+                <StickyContainer>
+
+                    <Row className='intro-info-row-mobile'><Col className='intro-info-div'>
+                        <h4>Welcome, {this.state.user}</h4>
+                        <ul className='intro-info-ul'>
+                            {petNames}
+                        </ul>
+                    </Col></Row>
+                    <Row><Col className='window-div'>{this.renderDisplay()}</Col></Row>
+                </StickyContainer>
+
             </Container>
         )
     }

@@ -44,29 +44,33 @@ export default class DogProfileMobile extends Component {
                 <DogProfileDropdown />
                 <div className='dog-profile-info-mobile'>
                     {this.state.pet.pictureLink ?
-                        <img alt='Pet photo' src={this.state.pet.pictureLink} className='dog-card-mobile-image' /> :
-                        <img alt='Pet photo' src="/images/placeholder-dog.jpg" className='dog-card-mobile-image' />}
-                    <h2>{this.state.pet.name}</h2>
-                    <div className='dog-asb-div'>
-                        <h6>Age: {this.state.pet.age}</h6>
-                        <h6>Sex: {this.state.pet.sex}</h6>
-                        <h6>Breed: {this.state.pet.breed}</h6>
+                        <img alt='Pet photo' src={this.state.pet.pictureLink} className='dog-profile-image-mobile' /> :
+                        <img alt='Pet photo' src="/images/placeholder-dog.jpg" className='dog-profile-image-mobile' />}
+                    <div className='profile-info-div-mobile'>
+                        <h3>{this.state.pet.name}</h3>
+                        <div className='dog-asb-div-mobile'>
+                            <h6>Age: {this.state.pet.age}</h6>
+                            <h6>Sex: {this.state.pet.sex}</h6>
+                            <h6>Breed: {this.state.pet.breed}</h6>
+                        </div>
+                        <h5>Parent: someone</h5>
                     </div>
-                    <h5>Parent: someone</h5>
                 </div>
-                <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className='tab-nav'>
-                    <Tab eventKey="profile" title="Profile">
-                        <DogProfileTab
-                            user={this.state.user}
-                            pet={this.state.pet}
-                            petActions={this.state.actions} />
-                    </Tab>
-                    <Tab eventKey="post" title="Post">
-                        <DogPostTab
-                            pet={this.props.pet}
-                        />
-                    </Tab>
-                </Tabs>
+                <div className='tabs-div-mobile'>
+                    <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className='tab-nav'>
+                        <Tab eventKey="profile" title="Profile">
+                            <DogProfileTab
+                                user={this.state.user}
+                                pet={this.state.pet}
+                                petActions={this.state.actions} />
+                        </Tab>
+                        <Tab eventKey="post" title="Post">
+                            <DogPostTab
+                                pet={this.props.pet}
+                            />
+                        </Tab>
+                    </Tabs>
+                </div>
             </Container>
         )
     }

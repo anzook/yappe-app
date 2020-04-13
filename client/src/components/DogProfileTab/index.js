@@ -46,7 +46,7 @@ export default class DogProfileTab extends Component {
 
     render() {
         let caretakers = this.state.caretakers?.map(caretaker => {
-            return <ContactCards 
+            return <ContactCards key={caretaker.id}
                 name={caretaker.name}
                 role={caretaker.user_pets.role}
                 email={caretaker.email}

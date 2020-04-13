@@ -1,3 +1,11 @@
 .caretaker-contact-mobile{
+    border-radius: 15px;
+    margin-bottom: 2px;
+    box-shadow: 1px 7px 17px -7px rgba(0, 0, 0, 0.33);
+}
 
+.caretaker-contact-mobile a{
+    color: #1ee09d;
+    float: right;
+    font-size: 22px;
 }

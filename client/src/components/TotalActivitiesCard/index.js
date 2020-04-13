@@ -43,7 +43,7 @@ export default class TotalActivitiesCard extends Component {
     render() {
 
         return (
-            <Card className='team-contribution-card'>
+            <Card className='team-contribution-card-mobile'>
                 <Card.Body>
                     <Card.Title className=''>Total Activities Logged</Card.Title>
                     <span className='pet-act-total-span'>{this.state.actionsCount}</span>
