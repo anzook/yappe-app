@@ -11,8 +11,10 @@ export default class DogProfileTab extends Component {
         super(props);
         this.state = {
             user: [],
+            pet:[],
             previousPetID: this.props.pet.id,
             userActionsWithPet: [],
+            caretakers: []
         }
     }
 
@@ -26,19 +28,29 @@ export default class DogProfileTab extends Component {
         }
     }
 
-    getUserActionsWithPet = () =>{
+    getUserActionsWithPet = () => {
         API.getPetActionsByUser(this.props.pet.id, this.props.user.id)
             .then(actions => {
                 console.log(actions)
                 this.setState({
                     user: this.props.user,
                     previousPetID: this.props.pet.id,
-                    userActionsWithPet: actions.data
+                    pet: this.props.pet,
+                    userActionsWithPet: actions.data,
+                    caretakers: this.props.pet.users,
                 })
             })
     }
 
     render() {
+        let caretakers = this.state.caretakers?.map(caretaker => {
+            return <ContactCards 
+                name={caretaker.name}
+                role={caretaker.user_pets.role}
+                email={caretaker.email}
+                pet = {this.state.pet.name}
+            />
+        })
         return (
             <Container className='dog-profile-tab-container'>
                 <h4>Care Team</h4>
@@ -55,7 +67,7 @@ export default class DogProfileTab extends Component {
                 <Row>
                     <Col>
                         <ul className='dog-profile-tab-contact-ul'>
-                            <li>{<ContactCards />}</li>
+                            <li>{caretakers}</li>
                         </ul>
                     </Col>
                 </Row>

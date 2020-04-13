@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Container } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane } from '@fortawesome/free-regular-svg-icons'
 import './style.css';
-import API from '../../utils/API';
 import Functions from '../../utils/Functions';
 
 export default class ContactCards extends Component {
@@ -10,27 +11,15 @@ export default class ContactCards extends Component {
         this.state = {}
     }
 
-    // componentDidMount() {
-    //     this.getPet()
-    // }
-
-    // componentDidUpdate() {
-    //     if (this.state.previousPetID !== this.props.pet.id) {
-    //         this.getPet()
-    //     }
-    // }
-
-    // getPet = () => {
-    //     this.setState({
-    //         pet: this.props.pet,
-    //         previousPetID: this.props.pet.id,
-    //         actions: this.props.actions
-    //     })
-    // }
-
     render() {
         return (
-            <h6>Contact cards</h6>
+            <Card className='caretaker-contact' >
+            <Card.Body>
+                <Card.Title>{Functions.capitalize(this.props.name)}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">{Functions.capitalize(this.props.role)}</Card.Subtitle>
+                <a href={'mailto:'+this.props.email+'?subject=Yappe-%20a%20message%20about%20' + this.props.pet} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faPaperPlane} /></a>
+            </Card.Body>
+        </Card>
         )
     }
 }
