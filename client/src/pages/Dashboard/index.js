@@ -1,15 +1,10 @@
 import React, { Component } from "react";
-import {
-  Redirect,
-  BrowserRouter as Router,
-} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { Breakpoint } from 'react-socks';
 import DashboardMobile from '../../components/DashboardMobile';
 import DashboardDesktop from '../../components/DashboardDesktop';
 import YapNav from "../../components/Navbar";
-import SidebarContent from "../../components/SidebarContent";
 import DogCard from "../../components/Card";
-import { Container, Row, Col, ThemeProvider } from "react-bootstrap";
 import DogInformation from '../../components/DogInformation'
 import FirstGlance from '../../components/FirstGlance';
 import "./style.css";

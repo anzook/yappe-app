@@ -43,9 +43,6 @@ export default class DogInformation extends Component {
             othersActivities: 0
         })
         this.state.petActivities.forEach( activity => {  
-            // console.log(activity)
-         
-            console.log(this.state.id)
             if (activity.userId === this.state.id){
                 this.setState({
                     userActivities: this.state.userActivities + 1
