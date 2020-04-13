@@ -44,7 +44,7 @@ export default class DogProfileMobile extends Component {
                     </div>
                     <h5>Parent: someone</h5>
                 </div>
-                <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+                <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className='tab-nav'>
                     <Tab eventKey="profile" title="Profile">
                         <h2>profile</h2>
                     </Tab>
