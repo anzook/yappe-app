@@ -16,12 +16,11 @@ export default class LastThreeActivitesCard extends Component {
                 <h6>Activity: {action.type}</h6>
                 <h6>Logged By: {action.user.name}</h6>
                 <h6>Date: {action.updatedAt}</h6>
-                <p>{action.detail}</p>
+                <p>Comment: {action.detail}</p>
             </ListGroup.Item>
         })
         return (
             <Card >
-                <Card.Header>Recent Ativites</Card.Header>
                 <ListGroup variant="flush">
                     {activities}
                 </ListGroup>
