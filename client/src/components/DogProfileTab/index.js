@@ -51,6 +51,8 @@ export default class DogProfileTab extends Component {
                             userActions={this.state.userActionsWithPet}
                         />
                     </Col>
+                </Row>
+                <Row>
                     <Col>
                         <ul className='dog-profile-tab-contact-ul'>
                             <li>{<ContactCards />}</li>

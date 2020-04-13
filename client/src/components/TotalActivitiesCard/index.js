@@ -48,11 +48,11 @@ export default class TotalActivitiesCard extends Component {
                     <Card.Title className=''>Total Activities Logged</Card.Title>
                     <span className='pet-act-total-span'>{this.state.actionsCount}</span>
                     <div className='ul-div'>
-                        <ul>
+                        <ul className='remove-ul-styling'>
                             <li className='li-title'>Team</li>
                             <li className='li-stat'>{this.state.teamCount}</li>
                         </ul>
-                        <ul>
+                        <ul className='remove-ul-styling'>
                             <li className='li-title'>You</li>
                             <li className='li-stat'>{this.state.userCount}</li>
                         </ul>
