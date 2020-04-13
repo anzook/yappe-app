@@ -59,7 +59,7 @@ export default {
     // get actions logged by user of a specific pet
     // response is all the actions the user logged
     getUserLogsByPet: function (userId, petId) {
-        return axios.get('/api/actions/user/' + userId + '/pet');
+        return axios.get('/api/actions/user/' + userId + '/pet', petId);
     },
     // get pet actions
     // response is all the actions the done by the pet
@@ -69,7 +69,7 @@ export default {
     // get pet actions
     // response is all the actions the done by the pet
     getPetActionsByUser: function (petId, userId) {
-        return axios.get('/api/actions/pet/' + petId + '/user');
+        return axios.get('/api/actions/pet/' + petId + '/user', userId);
     },
     // update user
     updateUser: function (userId, update) {
