@@ -13,7 +13,7 @@ export default class ContactCards extends Component {
 
     render() {
         return (
-            <Card className='caretaker-contact' >
+            <Card className='caretaker-contact-mobile' >
             <Card.Body>
                 <Card.Title>{Functions.capitalize(this.props.name)}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">{Functions.capitalize(this.props.role)}</Card.Subtitle>

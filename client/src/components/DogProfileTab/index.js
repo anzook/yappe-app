@@ -14,6 +14,7 @@ export default class DogProfileTab extends Component {
             pet:[],
             previousPetID: this.props.pet.id,
             userActionsWithPet: [],
+            petActions: [],
             caretakers: []
         }
     }
@@ -38,6 +39,7 @@ export default class DogProfileTab extends Component {
                     pet: this.props.pet,
                     userActionsWithPet: actions.data,
                     caretakers: this.props.pet.users,
+                    petActions: this.props.petActions
                 })
             })
     }
@@ -51,6 +53,8 @@ export default class DogProfileTab extends Component {
                 pet = {this.state.pet.name}
             />
         })
+
+        let lastActions = this.state.petActions?.slice(0,3)
         return (
             <Container className='dog-profile-tab-container'>
                 <h4>Care Team</h4>
@@ -73,8 +77,9 @@ export default class DogProfileTab extends Component {
                 </Row>
                 <Row>
                     <Col>
-                        <h4>Reacent Activites Card</h4>
-                        <LastThreeActivitesCard />
+                        <h4>Recent Activites</h4>
+                        <LastThreeActivitesCard 
+                        actions ={lastActions}/>
                     </Col>
                 </Row>
             </Container>
