@@ -41,7 +41,9 @@ export default class DogProfileMobile extends Component {
     render() {
         return (
             <Container className='dog-profile-container-mobile'>
-                <DogProfileDropdown />
+                <DogProfileDropdown 
+                pet={this.state.pet}
+                user={this.state.user}/>
                 <div className='dog-profile-info-mobile'>
                     {this.state.pet.pictureLink ?
                         <img alt='Pet photo' src={this.state.pet.pictureLink} className='dog-profile-image-mobile' /> :

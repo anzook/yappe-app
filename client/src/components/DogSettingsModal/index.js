@@ -12,13 +12,13 @@ function DogSettingsModal(props) {
 
     return (
         <>
-            <Button className='add-act-modal-btn' onClick={handleShow}>
+            <h6 className='add-act-modal-btn' onClick={handleShow}>
                 Dog Settings
-            </Button>
+            </h6>
 
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton></Modal.Header>
+                <Modal.Header closeButton>Settings</Modal.Header>
                 <Modal.Body>
                     < DogSettingsForm close={handleClose} user={props.user} pet={props.pet}/>
                 </Modal.Body>

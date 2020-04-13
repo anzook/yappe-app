@@ -1,7 +1,9 @@
 .add-act-modal-btn{
-    background-color: #5c5c5c;
+    background-color: inherit;
+    text-align: center;
+    font-weight: 400;
 }
 
 .add-act-modal-btn:hover{
-    background-color: #7c7c7c;
+    background-color: inherit;
 }

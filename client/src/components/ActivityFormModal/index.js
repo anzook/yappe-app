@@ -12,13 +12,13 @@ function ActivitiesFormModal(props) {
 
     return (
         <>
-            <Button className='add-act-modal-btn' onClick={handleShow}>
+            <h6 className='add-act-modal-btn' onClick={handleShow}>
                 Add Activity
-            </Button>
+            </h6>
 
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton></Modal.Header>
+                <Modal.Header closeButton>Add Activity</Modal.Header>
                 <Modal.Body>
                     < ActivitiesForm close={handleClose} user={props.user} pet={props.pet}/>
                 </Modal.Body>
