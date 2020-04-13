@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Tab, Tabs } from 'react-bootstrap';
 import DogProfileDropdown from '../DogProfileDropdown';
+import DogProfileTab from '../DogProfileTab';
+import DogPostTab from '../DogPostTab';
 import './style.css';
 
 export default class DogProfileMobile extends Component {
@@ -48,10 +50,10 @@ export default class DogProfileMobile extends Component {
                 </div>
                 <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className='tab-nav'>
                     <Tab eventKey="profile" title="Profile">
-                        <h2>profile</h2>
+                        <DogProfileTab />
                     </Tab>
                     <Tab eventKey="post" title="Post">
-                        <h2>post</h2>
+                        <DogPostTab />
                     </Tab>
                 </Tabs>
             </Container>
