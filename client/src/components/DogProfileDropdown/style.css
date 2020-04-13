@@ -1,0 +1,44 @@
+.dropdown-toggle::after{
+    display: none;
+}
+
+.dropdown-toggle {
+    white-space: nowrap;
+    background-color: inherit;
+    border: none;
+    color: #525252;
+    float: right;
+    clear: both;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
+    background-color: inherit;
+    border: none;
+    color: #525252;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.dropdown-toggle.btn-primary:not(:disabled):not(.disabled).active:focus, .dropdown-toggle.btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
+    box-shadow:none;
+    border: none;
+}
+
+.dropdown-toggle.btn-primary.focus,
+.dropdown-toggle.btn-primary:focus {
+    background-color: inherit;
+    border: none;
+    color: #525252;
+}
+
+.dropdown-toggle.btn-primary:hover {
+    background-color: inherit;
+    border: none;
+    color: #525252;
+}

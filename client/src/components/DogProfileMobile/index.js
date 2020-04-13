@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Tab, Tabs } from 'react-bootstrap';
+import DogProfileDropdown from '../DogProfileDropdown';
 import './style.css';
 
 export default class DogProfileMobile extends Component {
@@ -32,6 +33,7 @@ export default class DogProfileMobile extends Component {
     render() {
         return (
             <Container className='dog-profile-container-mobile'>
+                <DogProfileDropdown />
                 <div className='dog-profile-info-mobile'>
                     {this.state.pet.pictureLink ?
                         <img alt='Pet photo' src={this.state.pet.pictureLink} className='dog-card-mobile-image' /> :
