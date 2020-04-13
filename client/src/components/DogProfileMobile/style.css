@@ -1,0 +1,31 @@
+.tab-nav {
+    background-color: inherit !important;
+    border: none;
+    padding: 0 !important;
+}
+
+.tab-nav a{
+    color: #3b3b3b;
+}
+
+.profile-info-div-mobile{
+    text-align: center;
+}
+
+.dog-asb-div-mobile{
+    display: flex;
+    justify-content: space-around;
+}
+
+.dog-profile-image-mobile{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.team-contribution-card-mobile {
+    margin-bottom: 20px;
+}

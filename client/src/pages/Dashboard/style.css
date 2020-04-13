@@ -2,7 +2,8 @@
 
 body {
     background-color: #f0f0f0;
-    overflow: hidden;
+    /* overflow: hidden; */
+    height: 100vh;
     font-family: 'Roboto', sans-serif;
     letter-spacing: .5px;
 }
@@ -21,4 +22,29 @@ body {
     height: 92vh;
     padding-left: 70px;
     z-index: 0;
+}
+
+.nav-icon-mobile-div{
+    text-align: center;
+    margin: 35px auto;
+}
+
+.logout-nav-icon-mobile{
+    margin-top: 90px;
+}
+
+.nav-icon-mobile-div svg.svg-inline--fa.fa-clipboard-list.fa-w-12,
+.nav-icon-mobile-div svg.svg-inline--fa.fa-user-friends.fa-w-20,
+.nav-icon-mobile-div svg.svg-inline--fa.fa-paw.fa-w-16,
+.nav-icon-mobile-div svg.svg-inline--fa.fa-cog.fa-w-16,
+.nav-icon-mobile-div svg.svg-inline--fa.fa-power-off.fa-w-16.icon{
+    font-size: 2.5rem;
+    color: #424242;
+}
+
+.nav-icon-mobile-div h6{
+    font-size: 1.35rem;
+    margin-top: 10px;
+    color: #424242;
+    font-weight: 600;
 }

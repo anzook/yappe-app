@@ -53,11 +53,11 @@ module.exports = {
     },
 
     // function to get actions that user logged for specfic pet
-    userLogsByPet: async ({ body, params }, res) => {
+    userLogsByPet: async ({ params }, res) => {
         const actions = await db.action.findAll({
             where: {
                 userId: params.id,
-                petID: body.pet
+                petID: params.pet
             },
             include: [{
                 model: db.pet,
@@ -70,7 +70,7 @@ module.exports = {
                 required: false
             }]
         }).catch(err => {
-            res.send(err);
+            console.log(err);
         })
 
         res.json(actions);
@@ -102,14 +102,14 @@ module.exports = {
             console.log(err);
         })
 
-        res.json(actions);
+        res.json(actions)
     },
 
     // function to get actions of pet logged by specfic user
-    petActionsByUser: async ({ params, body }, res) => {
+    petActionsByUser: async ({ params }, res) => {
         const actions = await db.action.findAll({
             where: {
-                userId: body.user,
+                userId: params.user,
                 petID: params.id
             },
             include: [{

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Breakpoint } from 'react-socks';
 import { Modal, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserFriends } from '@fortawesome/free-solid-svg-icons'
@@ -13,13 +14,24 @@ function CaretakersModal() {
     const handleShow = () => setShow(true);
 
     const renderAddDogIcon = () => (
-        <OverlayTrigger
-            placement="right"
-            delay={{ show: 250, hide: 400 }}
-            overlay={renderTooltip}
-        >
-                <FontAwesomeIcon icon={ faUserFriends }/>
-        </OverlayTrigger>
+        <div>
+        <Breakpoint customQuery="(max-width: 991px)">
+                <div className='nav-icon-mobile-div'>
+                    <FontAwesomeIcon icon={faUserFriends} />
+                    <h6>Caretakers</h6>
+                </div>
+        </Breakpoint>
+
+        <Breakpoint customQuery="(min-width: 992px)">
+            <OverlayTrigger
+                placement="right"
+                delay={{ show: 250, hide: 400 }}
+                overlay={renderTooltip}
+            >
+                <FontAwesomeIcon icon={faUserFriends} />
+            </OverlayTrigger>
+        </Breakpoint>
+    </div>
     );
 
    const renderTooltip = (props) => {

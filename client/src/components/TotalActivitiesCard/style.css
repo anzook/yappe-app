@@ -1,0 +1,8 @@
+.remove-ul-styling{
+    list-style: none;
+    padding: 0;
+}
+
+.team-contribution-card-mobile ul{
+    margin: auto 20px;
+}

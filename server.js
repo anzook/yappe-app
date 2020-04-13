@@ -39,6 +39,8 @@ else {
 require('./routes/pet-api-routes.js')(app, db);
 require('./routes/user-api-routes.js')(app, db);
 require('./routes/action-api-routes.js')(app, db);
+require('./routes/post-api-routes.js')(app, db);
+
 
 if  (process.env.NODE_ENV === "production") {
 app.get('*', (req, res) => {

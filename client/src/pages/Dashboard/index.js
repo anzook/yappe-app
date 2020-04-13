@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import { 
-  Redirect,
-  BrowserRouter as Router,
-} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+import { Breakpoint } from 'react-socks';
+import DashboardMobile from '../../components/DashboardMobile';
+import DashboardDesktop from '../../components/DashboardDesktop';
 import YapNav from "../../components/Navbar";
-import SidebarContent from "../../components/SidebarContent";
 import DogCard from "../../components/Card";
-import { Container, Row, Col } from "react-bootstrap";
 import DogInformation from '../../components/DogInformation'
 import FirstGlance from '../../components/FirstGlance';
 import "./style.css";
@@ -93,7 +91,9 @@ class Dashboard extends Component {
   renderDisplay() {
     let { display } = this.state;
     if (display === 'activities') {
-      return <FirstGlance user={this.state.user}/>
+      return <FirstGlance
+        user={this.state.user}
+      />
     }
     else if (display === 'dog-info') {
       return <DogInformation
@@ -128,15 +128,32 @@ class Dashboard extends Component {
       return (
         <div className='dashboard-div'>
           <YapNav id="yap-nav" updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-          <Container fluid>
-          <SidebarContent />
+
+          <Breakpoint customQuery="(max-width: 991px)">
+            <DashboardMobile
+              user={this.state.name}
+              userInfo={this.state.user}
+              render={this.renderDisplay()}
+              petSelect={this.state.petSelect}
+              actions={this.state.petActivities}
+            />
+          </Breakpoint>
+
+          <Breakpoint customQuery="(min-width: 992px)">
+            <DashboardDesktop cards={cardOne} render={this.renderDisplay()} />
+          </Breakpoint>
+
+          {/* <Container fluid>
+            {/* <Breakpoint medium up>
+              <SidebarContent />
+            </Breakpoint> 
             <Row>
+              <SidebarContent />
               <Col xs md={4} className='dog-cards-col'>{cardOne}</Col>
-              <Col xs md={8}>{this.renderDisplay()}
-              </Col>
+              <Col xs md={8}>{this.renderDisplay()}</Col>
             </Row>
-          </Container>
-        </div>
+          </Container> */}
+        </div >
       );
     }
   }

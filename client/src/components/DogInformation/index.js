@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ListGroup, Card, Button, Container, Row, Col } from 'react-bootstrap';
 import ActivitiesFormModal from '../../components/ActivityFormModal';
+import DogSettingsModal from '../../components/DogSettingsModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons'
 import { faTags } from '@fortawesome/free-solid-svg-icons'
@@ -15,7 +16,12 @@ export default class DogInformation extends Component {
             pet: [],
             caretakers: [],
             petActivities: [],
-            previousPetID: null
+            previousPetID: null,
+            userActivities: 0,
+            othersActivities: 0,
+            name: null,
+            email: null,
+            id: null
         }
     }
 
@@ -30,6 +36,42 @@ export default class DogInformation extends Component {
         }
     }
 
+    updateActivityCounts() {
+        this.setState({
+            userActivities: 0,
+            othersActivities: 0
+        })
+        this.state.petActivities.forEach( activity => {  
+            if (activity.userId === this.state.id){
+                this.setState({
+                    userActivities: this.state.userActivities + 1
+                })
+            } else {
+                this.setState({
+                    othersActivities: this.state.othersActivities + 1
+                })
+            }
+        })
+        }
+
+    getUserInfo = () => {
+        API.getUserInfo().then(res => {
+            if (res.data.name) {
+                this.setState({
+                  email: res.data.email,
+                  name: res.data.name,
+                  id: res.data.id,
+              });
+            } else {
+              this.setState({
+                email: null,
+                id: null,
+              });
+            }
+            this.updateActivityCounts();
+          });
+    }
+
     getPetInfo = () => {
         API.getPet(this.props.id)
             .then(pet => {
@@ -39,7 +81,7 @@ export default class DogInformation extends Component {
                     petActivities: this.props.actions,
                     previousPetID: this.props.id
                 })
-
+                this.getUserInfo();
             })
 
     }
@@ -57,8 +99,7 @@ export default class DogInformation extends Component {
                 dt.getHours().toString().padStart(2, '0')}:${
                 dt.getMinutes().toString().padStart(2, '0')}`
             );
-            //dateFormat needs small library
-            // dateFormat(date, "dS mmm, h:MMTT");
+           
         }
 
         let caretakers = this.state.caretakers?.map(caretaker => {
@@ -106,6 +147,7 @@ export default class DogInformation extends Component {
                                 <div className='dog-profile-btn-div'>
                                     <ActivitiesFormModal user={this.props.user} pet={this.props.id} />
                                     <Button className='ask-btn' variant="secondary">Post</Button>
+                                    < DogSettingsModal user={this.props.user} pet={this.props.id} />
                                 </div>
                             </Col>
                             <Col xs md={8} className='profile-intro-card'>
@@ -146,11 +188,11 @@ export default class DogInformation extends Component {
                                     <div className='ul-div'>
                                         <ul>
                                             <li className='li-title'>Team</li>
-                                            <li className='li-stat'>##</li>
+                                            <li className='li-stat'>{this.state.othersActivities}</li>
                                         </ul>
                                         <ul>
                                             <li className='li-title'>You</li>
-                                            <li className='li-stat'>##</li>
+                                            <li className='li-stat'>{this.state.userActivities}</li>
                                         </ul>
                                     </div>
                                 </Card.Body>

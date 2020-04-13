@@ -42,6 +42,8 @@
     "react-bootstrap": "^1.0.0-beta.17",
     "react-chartjs-2": "^2.9.0",
     "react-sidebar": "^3.0.2",
+    "react-socks": "^2.1.0",
+    "react-sticky": "^6.0.3",
     "sequelize": "^5.21.4"
   },
   "repository": {
