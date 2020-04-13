@@ -50,7 +50,9 @@ export default class DogProfileMobile extends Component {
                 </div>
                 <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className='tab-nav'>
                     <Tab eventKey="profile" title="Profile">
-                        <DogProfileTab />
+                        <DogProfileTab
+                        user={this.state.user}
+                        pet={this.props.pet} />
                     </Tab>
                     <Tab eventKey="post" title="Post">
                         <DogPostTab />
