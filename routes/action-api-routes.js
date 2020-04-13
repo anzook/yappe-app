@@ -25,7 +25,7 @@ module.exports = function (app) {
     .get(actionController.userLogsById);
 
   // Matches with "/api/actions/user/:id"
-  app.route('/api/actions/user/:id/pet', isAuthenticated)
+  app.route('/api/actions/user/:id/pet/:pet', isAuthenticated)
     .get(actionController.userLogsByPet);
 
   // Matches with "/api/actions/pet"
@@ -33,6 +33,6 @@ module.exports = function (app) {
     .get(actionController.petActionsById);  
     
     // Matches with "/api/actions/pet/:id"
-    app.route('/api/actions/pet/:id/user', isAuthenticated)
+    app.route('/api/actions/pet/:id/user/:user', isAuthenticated)
       .get(actionController.petActionsByUser);
 };

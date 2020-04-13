@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { ListGroup, Card, Button, Container, Row, Col } from 'react-bootstrap';
 import ActivitiesFormModal from '../../components/ActivityFormModal';
 import DogSettingsModal from '../../components/DogSettingsModal';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons'
 import { faTags } from '@fortawesome/free-solid-svg-icons'

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API from '../../utils/API';
 import { Container, Tab, Tabs } from 'react-bootstrap';
 import DogProfileDropdown from '../DogProfileDropdown';
 import DogProfileTab from '../DogProfileTab';
@@ -11,25 +12,30 @@ export default class DogProfileMobile extends Component {
         this.state = {
             user: this.props.user,
             pet: [],
-            previousPetID: null
+            previousPetID: null,
+            actions: []
         }
     }
 
     componentDidMount() {
-        this.getPet()
+        this.getInformation()
     }
 
     componentDidUpdate() {
         if (this.state.previousPetID !== this.props.pet.id) {
-            this.getPet()
+            this.getInformation()
         }
     }
 
-    getPet = () => {
-        this.setState({
-            pet: this.props.pet,
-            previousPetID: this.props.pet.id
-        })
+    getInformation = () => {
+        API.getPetActions(this.props.pet.id)
+            .then(actions => {
+                this.setState({
+                    pet: this.props.pet,
+                    previousPetID: this.props.pet.id,
+                    actions: actions.data
+                })
+            })
     }
 
     render() {
@@ -51,11 +57,14 @@ export default class DogProfileMobile extends Component {
                 <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className='tab-nav'>
                     <Tab eventKey="profile" title="Profile">
                         <DogProfileTab
-                        user={this.state.user}
-                        pet={this.props.pet} />
+                            user={this.state.user}
+                            pet={this.state.pet}
+                            petActions={this.state.actions} />
                     </Tab>
                     <Tab eventKey="post" title="Post">
-                        <DogPostTab />
+                        <DogPostTab
+                            pet={this.props.pet}
+                        />
                     </Tab>
                 </Tabs>
             </Container>

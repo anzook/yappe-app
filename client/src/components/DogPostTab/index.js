@@ -7,7 +7,7 @@ export default class DogPostTab extends Component {
         return (
             <Container>
                 <h2>Posts</h2>
-            Post Cards
+            Dog PostCard Component Here
             </Container>
         )
     }

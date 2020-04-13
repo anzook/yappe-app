@@ -135,6 +135,7 @@ class Dashboard extends Component {
               userInfo={this.state.user}
               render={this.renderDisplay()}
               petSelect={this.state.petSelect}
+              actions={this.state.petActivities}
             />
           </Breakpoint>
 

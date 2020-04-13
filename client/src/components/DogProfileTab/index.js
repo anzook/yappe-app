@@ -1,13 +1,41 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
+import ContactCards from '../ContactCards';
+import LastThreeActivitesCard from '../LastThreeActivitesCard';
+import TotalActivitiesCard from '../TotalActivitiesCard';
+import API from '../../utils/API';
 import './style.css';
 
 export default class DogProfileTab extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.user,
+            user: [],
+            previousPetID: this.props.pet.id,
+            userActionsWithPet: [],
         }
+    }
+
+    // componentDidMount() {
+    //     this.getUserActionsWithPet()
+    // }
+
+    componentDidUpdate() {
+        if (this.state.previousPetID !== this.props.pet.id) {
+            this.getUserActionsWithPet()
+        }
+    }
+
+    getUserActionsWithPet = () =>{
+        API.getPetActionsByUser(this.props.pet.id, this.props.user.id)
+            .then(actions => {
+                console.log(actions)
+                this.setState({
+                    user: this.props.user,
+                    previousPetID: this.props.pet.id,
+                    userActionsWithPet: actions.data
+                })
+            })
     }
 
     render() {
@@ -16,31 +44,24 @@ export default class DogProfileTab extends Component {
                 <h4>Care Team</h4>
                 <Row>
                     <Col>
-                        <Card className='team-contribution-card'>
-                            <Card.Body>
-                                <Card.Title className=''>Total Activities Logged</Card.Title>
-                                <span className='pet-act-total-span'>0</span>
-                                <div className='ul-div'>
-                                    <ul>
-                                        <li className='li-title'>Team</li>
-                                        <li className='li-stat'>0</li>
-                                    </ul>
-                                    <ul>
-                                        <li className='li-title'>You</li>
-                                        <li className='li-stat'>0</li>
-                                    </ul>
-                                </div>
-                            </Card.Body>
-                        </Card>
+                        <TotalActivitiesCard
+                            pet={this.props.pet}
+                            petActions={this.props.petActions}
+                            userId={this.state.user.id}
+                            userActions={this.state.userActionsWithPet}
+                        />
                     </Col>
                     <Col>
-                        <ul className='caretakers-info-ul'>
-                            <li>Contact Cards</li>
+                        <ul className='dog-profile-tab-contact-ul'>
+                            <li>{<ContactCards />}</li>
                         </ul>
                     </Col>
                 </Row>
                 <Row>
-                    <Col>Reacent Activites Card</Col>
+                    <Col>
+                        <h4>Reacent Activites Card</h4>
+                        <LastThreeActivitesCard />
+                    </Col>
                 </Row>
             </Container>
         )
