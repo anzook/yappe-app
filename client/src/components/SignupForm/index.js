@@ -75,8 +75,8 @@ class SignupForm extends Component {
             case 'password':
                 let passwordValid = true;
 
-                // must be 6 chars
-                if (password.length < 6) {
+                // must be 3 chars
+                if (password.length < 3) {
                     passwordValid = false;
                     errorMsg.password = 'Password must be at least 6 characters long';
                 }
@@ -147,100 +147,89 @@ class SignupForm extends Component {
     };
 
     render() {
-        let signup = 'signup';
         return (
-            <div>
-                <h1>yappE</h1>
-
-                <Form className={signup}>
-                    <h3>Sign Up</h3>
-                    <Form.Group>
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder="Name"
-                            onChange={this.handleInputChange}
-                            name='name'
-                            value={this.state.name}
-                            className={`
+            <Form className='signup-form'>
+                <h4>Sign Up</h4>
+                <Form.Group>
+                    <Form.Control
+                        type="text"
+                        placeholder="Name"
+                        onChange={this.handleInputChange}
+                        name='name'
+                        value={this.state.name}
+                        className={`
                                 ${(this.state.name.length > 0 && !this.state.nameValid) ?
-                                    'is-invalid' : ''}
+                                'is-invalid' : ''}
                                 
                                 ${(this.state.name.length > 0 && this.state.nameValid) ?
-                                    'is-valid' : ''}`}
-                        />
-                        <ValidationMessage valid={this.state.nameValid} message={this.state.errorMsg.username} />
-                    </Form.Group>
+                                'is-valid' : ''}`}
+                    />
+                    <ValidationMessage valid={this.state.nameValid} message={this.state.errorMsg.username} />
+                </Form.Group>
 
-                    <Form.Group >
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control
-                            type="email"
-                            placeholder="Enter email"
-                            onChange={this.handleInputChange}
-                            value={this.state.email}
-                            name='email'
-                            className={`
+                <Form.Group >
+                    <Form.Control
+                        type="email"
+                        placeholder="Email"
+                        onChange={this.handleInputChange}
+                        value={this.state.email}
+                        name='email'
+                        className={`
                             ${(this.state.email.length > 0 && !this.state.emailValid) ?
                                 'is-invalid' : ''}
                             
                             ${(this.state.email.length > 0 && this.state.emailValid) ?
                                 'is-valid' : ''}`}
-                        />
-                        <ValidationMessage valid={this.state.emailValid} message={this.state.errorMsg.email} />
-                    </Form.Group>
+                    />
+                    <ValidationMessage valid={this.state.emailValid} message={this.state.errorMsg.email} />
+                </Form.Group>
 
-                    <Form.Group >
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control
-                            type="password"
-                            placeholder="Password"
-                            onChange={this.handleInputChange}
-                            name='password'
-                            className={`
+                <Form.Group >
+                    <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        onChange={this.handleInputChange}
+                        name='password'
+                        className={`
                             ${(this.state.password.length > 0 && !this.state.passwordValid) ?
                                 'is-invalid' : ''}
                             
                             ${(this.state.password.length > 0 && this.state.passwordValid) ?
                                 'is-valid' : ''}`}
-                        />
-                        <ValidationMessage valid={this.state.passwordValid} message={this.state.errorMsg.password} />
-                    </Form.Group>
+                    />
+                    <ValidationMessage valid={this.state.passwordValid} message={this.state.errorMsg.password} />
+                </Form.Group>
 
-                    {/* render if password is valid */}
-                    {this.state.passwordValid && <Form.Group >
-                        <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control
-                            type="password"
-                            placeholder="Password"
-                            onChange={this.handleInputChange}
-                            name='passwordConfirm'
-                            disabled={!this.state.passwordValid}
-                            className={`
+                {/* render if password is valid */}
+                {this.state.passwordValid && <Form.Group >
+                    <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        onChange={this.handleInputChange}
+                        name='passwordConfirm'
+                        disabled={!this.state.passwordValid}
+                        className={`
                             ${(this.state.passwordConfirm.length > 0 && !this.state.passwordConfirmValid) ?
                                 'is-invalid' : ''}
                             
                             ${(this.state.passwordConfirm.length > 0 && this.state.passwordConfirmValid) ?
                                 'is-valid' : ''}`}
-                        />
-                        <ValidationMessage valid={this.state.passwordConfirmValid} message={this.state.errorMsg.passwordConfirm} />
-                    </Form.Group>}
+                    />
+                    <ValidationMessage valid={this.state.passwordConfirmValid} message={this.state.errorMsg.passwordConfirm} />
+                </Form.Group>}
 
-                    <Button
-                        id="signup-btn"
-                        variant="primary"
-                        type="submit"
-                        disabled={!this.state.formValid}
-                        onClick={this.handleFormSubmit}
-                    >
-                        Sign Up
+                <Button
+                    variant="primary"
+                    type="submit"
+                    disabled={!this.state.formValid}
+                    onClick={this.handleFormSubmit}
+                    className="signup-btn"
+                >
+                    Sign Up
                     </Button>
 
-                </Form >
-            </div>
+            </Form >
         )
-
-        // }
     }
 }
 export default SignupForm;

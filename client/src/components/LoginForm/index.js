@@ -64,8 +64,8 @@ export class LoginForm extends Component {
             case 'password':
                 let passwordValid = true;
 
-                // must be 6 chars
-                if (password.length < 6) {
+                // must be 3 chars
+                if (password.length < 3) {
                     passwordValid = false;
                     errorMsg.password = 'Password must be at least 6 characters long';
                 }
