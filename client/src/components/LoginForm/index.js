@@ -11,9 +11,9 @@ export class LoginForm extends Component {
     constructor() {
         super()
         this.state = {
-            email: '', emailValid: null,
-            password: '', passwordValid: null,
-            formValid: null,
+            email: '', emailValid: false,
+            password: '', passwordValid: false,
+            formValid: false,
             errorMsg: {},
             redirectTo: null
         }
