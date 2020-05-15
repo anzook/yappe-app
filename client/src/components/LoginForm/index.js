@@ -102,9 +102,8 @@ export class LoginForm extends Component {
     render() {
         return (
             <Form className="login-form">
-                <h3>Login</h3>
+                <h4>Login</h4>
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email</Form.Label>
                     <Form.Control
                         type="email"
                         placeholder="Email"
@@ -120,14 +119,12 @@ export class LoginForm extends Component {
 
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
                     <Form.Control
                         type="password"
                         placeholder="Password"
                         name="password"
                         value={this.state.password}
                         onChange={this.handleInputChange}
-                        disabled={!this.state.emailValid}
                     />
                     <ValidationMessage
                         valid={this.state.passwordValid}
@@ -135,11 +132,11 @@ export class LoginForm extends Component {
                     />
                 </Form.Group>
 
-                <Button id="login-btn"
-                    variant="primary"
+                <Button 
                     type="submit"
                     onClick={this.handleFormSubmit}
                     disabled={!this.state.formValid}
+                    className="login-btn"
                 >
                     Log In
                     </Button>

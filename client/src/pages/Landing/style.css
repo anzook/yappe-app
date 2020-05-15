@@ -1,7 +1,11 @@
 .landing-container{
     position: relative;
-    display: flex;
-    justify-content: center;
+    margin: auto;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.25);
 }
 
 .hero{
@@ -10,14 +14,39 @@
     /* display: none; */
 };
 
-/* DO NOT REMOVE .SIGNUP */
-.signup{
-    background: none;
+.landing-container h1{
+    font-family: 'Marck Script', cursive;
 }
 
+.landing-container h1{
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 7rem;
+    font-family: 'Marck Script', cursive;
+    font-weight: 500;
+    color: #ffffff;
+    padding-bottom: 20px;
+    text-shadow: 2px 2px #1ee09d;
+}
 
+.landing-forms-div {
+    margin: auto;
+    padding: 15px;
+    max-width: 450px;
+} 
+
+.landing-forms-div span.toggleBtn{
+    font-size: 13px;
+    color: #fefefe;
+    text-shadow: 2px 2px 3px #000000;
+}
 
 span.toggleBtn:hover{
     cursor: pointer;
-    color: white;
+    border-bottom: #fefefe 2px solid;
+}
+
+/* DO NOT REMOVE .SIGNUP */
+.signup{
+    background: none;
 }
