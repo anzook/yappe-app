@@ -8,18 +8,47 @@ class SignupForm extends Component {
     constructor() {
         super()
         this.state = {
-        name: '',
-        email: '',
-        password: '',
-        redirectTo: null
+            name: '', nameValid: false,
+            email: '', emailValid: false,
+            password: '', passwordValid: false,
+            passwordConfirm: '', passwordConfirmValid: false,
+            formValid: false,
+            errorMsg: {},
+            redirectTo: null
+        }
     }
-}
+
+    validateForm = () => {
+        const { usernameValid, emailValid, passwordValid, passwordConfirmValid } = this.state;
+        this.setState({
+            formValid: usernameValid && emailValid && passwordValid && passwordConfirmValid
+        })
+    }
 
     handleInputChange = event => {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
+        const name = event.target.name;
+        const value = event.target.value;
+
+        this.setState(
+            { [name]: value },
+            () => { this.validateFeild(name, value) }
+        );
     };
+
+    validateFeild(feildName, value) {
+        switch (feildName) {
+            case 'name':
+                break;
+            case 'email':
+                break;
+            case 'password':
+                break;
+            case 'passwordConfirm':
+                break;
+            default:
+                break;
+        }
+    }
 
     handleFormSubmit = event => {
         event.preventDefault();
@@ -29,35 +58,35 @@ class SignupForm extends Component {
             email: this.state.email,
             password: this.state.password
         })
-        .then(res => {
-            console.log("This is the user id: " + res.data)
-            // let userId = res.data
-            // window.location.replace('/add-dog?' + userId);
-            if (!res.data.errmsg) {
-                console.log('successful signup, logging in... ')
-                API.loginUser({
-                    email: this.state.email,
-                    password: this.state.password
-                })
-                .then(res => {
-                    if (res.status === 200) {
-                        // console.log(res)
-                        console.log('logging in... ')
+            .then(res => {
+                // console.log("This is the user id: " + res.data)
+                // let userId = res.data
+                // window.location.replace('/add-dog?' + userId);
+                if (!res.data.errmsg) {
+                    // console.log('successful signup, logging in... ')
+                    API.loginUser({
+                        email: this.state.email,
+                        password: this.state.password
+                    })
+                        .then(res => {
+                            if (res.status === 200) {
+                                // console.log(res)
+                                // console.log('logging in... ')
 
-                        // update App.js state
-                        this.props.updateUser({
-                            loggedIn: true,
-                            email: res.data.email
+                                // update App.js state
+                                this.props.updateUser({
+                                    loggedIn: true,
+                                    email: res.data.email
+                                })
+                            }
+                        }).catch(err => {
+                            console.log('Login error: ', err)
                         })
-                    }
-                }).catch(err => {
-                    console.log('Login error: ', err)            
-                })
-            }
-        }).catch(err => {
-            console.log('Signup error: ')
-            console.log(err)
-        })
+                }
+            }).catch(err => {
+                console.log('Signup error: ')
+                console.log(err)
+            })
     };
 
     render() {
@@ -67,52 +96,60 @@ class SignupForm extends Component {
         let signup = 'signup';
         return (
             <div>
-            <h1>yappE</h1>
+                <h1>yappE</h1>
 
-            <Form className={signup}>
-                <h3>Sign Up</h3>
-                <Form.Group>
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="Name"
-                        onChange={this.handleInputChange}
-                        name='name'
-                        value={this.state.name}
-                    />
-                </Form.Group>
-                <Form.Group >
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control
-                        type="email"
-                        placeholder="Enter email"
-                        onChange={this.handleInputChange}
-                        value={this.state.email}
-                        name='email'
-                    />
-                </Form.Group>
-                <Form.Group >
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                        type="password"
-                        placeholder="Password"
-                        onChange={this.handleInputChange}
-                        name='password'
+                <Form className={signup}>
+                    <h3>Sign Up</h3>
+                    <Form.Group>
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Name"
+                            onChange={this.handleInputChange}
+                            name='name'
+                            value={this.state.name}
+                        />
+                    </Form.Group>
+                    <Form.Group >
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control
+                            type="email"
+                            placeholder="Enter email"
+                            onChange={this.handleInputChange}
+                            value={this.state.email}
+                            name='email'
+                        />
+                    </Form.Group>
+                    <Form.Group >
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                            type="password"
+                            placeholder="Password"
+                            onChange={this.handleInputChange}
+                            name='password'
 
-                    />
-                </Form.Group>
-                <Button id="signup-btn"
-                    variant="primary"
-                    type="submit"
-                    onClick={this.handleFormSubmit}
-                >
-                    Sign Up
+                        />
+                    </Form.Group>                    <Form.Group >
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                            type="password"
+                            placeholder="Confirm Password"
+                            onChange={this.handleInputChange}
+                            name='passwordConfirm'
+                        />
+                    </Form.Group>
+                    <Button id="signup-btn"
+                        variant="primary"
+                        type="submit"
+                        onClick={this.handleFormSubmit}
+                    >
+                        Sign Up
                 </Button>
-            </Form >
+                </Form >
             </div>
         )
 
-    // }
-}
+        // }
+    }
 }
 export default SignupForm;
