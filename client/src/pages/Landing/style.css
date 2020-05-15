@@ -1,6 +1,12 @@
+.landing-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
 .hero{
     width: 100vw;
-    /* position: fixed */
+    position: fixed
     /* display: none; */
 };
 
@@ -14,17 +20,4 @@
 span.toggleBtn:hover{
     cursor: pointer;
     color: white;
-}
-
-.formDiv{
-    /* display: none; */
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    margin: auto;
-    width: 100%;
-    margin-top: 5%;
-    padding-left: 20%;
-    
 }

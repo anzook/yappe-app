@@ -105,21 +105,13 @@ class LandingPage extends Component {
     if (this.state.loggedIn) {
       return <Redirect to={{ pathname: this.state.redirectTo }} />
     } else {
-      let className = {
-        formDiv: 'formDiv',
-        toggleBtn: 'toggleBtn'
-      };
       return (
         <div>
           <Hero />
-          <div className={className.formDiv}>
-            <Container style={{ marginTop: 0 }}>
-              <div>
+            <Container className='landing-container formDiv'>
                 {this.renderForm()}
                 <br />
-              </div>
             </Container>
-          </div>
         </div>
       )
     }
