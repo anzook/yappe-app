@@ -36,11 +36,12 @@ class SignupForm extends Component {
     };
 
     validateFeild(feildName, value) {
+        let errorMsg = { ...this.state.errorMsg }
+
         switch (feildName) {
             case 'name':
                 const { name } = this.state;
                 let nameValid = true;
-                let errorMsg = { ...this.state.errorMsg }
 
                 if (name.length < 3) {
                     nameValid = false;
@@ -50,8 +51,21 @@ class SignupForm extends Component {
 
                 this.setState({ nameValid, errorMsg }, this.validateForm)
                 break;
+
             case 'email':
+                const { email } = this.state;
+                let emailValid = true;
+
+                // checks for format _@_._
+                if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                    emailValid = false;
+                    errorMsg.email = 'Invalid email format'
+                    console.log(errorMsg.email);
+                }
+
+                this.setState({ emailValid, errorMsg }, this.validateForm)
                 break;
+
             case 'password':
                 break;
             case 'passwordConfirm':
