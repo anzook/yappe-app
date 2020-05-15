@@ -19,9 +19,9 @@ class SignupForm extends Component {
     }
 
     validateForm = () => {
-        const { usernameValid, emailValid, passwordValid, passwordConfirmValid } = this.state;
+        const { nameValid, emailValid, passwordValid, passwordConfirmValid } = this.state;
         this.setState({
-            formValid: usernameValid && emailValid && passwordValid && passwordConfirmValid
+            formValid: nameValid && emailValid && passwordValid && passwordConfirmValid
         })
     }
 
@@ -38,6 +38,17 @@ class SignupForm extends Component {
     validateFeild(feildName, value) {
         switch (feildName) {
             case 'name':
+                const { name } = this.state;
+                let nameValid = true;
+                let errorMsg = { ...this.state.errorMsg }
+
+                if (name.length < 3) {
+                    nameValid = false;
+                    errorMsg.username = 'Name must be at least 3 characters long'
+                    console.log(errorMsg.username);
+                }
+
+                this.setState({ nameValid, errorMsg }, this.validateForm)
                 break;
             case 'email':
                 break;
@@ -129,7 +140,8 @@ class SignupForm extends Component {
                             name='password'
 
                         />
-                    </Form.Group>                    <Form.Group >
+                    </Form.Group>
+                    <Form.Group >
                         <Form.Label>Password</Form.Label>
                         <Form.Control
                             type="password"
