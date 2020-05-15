@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import API from '../../utils/API';
 
-import { Form, Button } from 'react-bootstrap'
-import API from '../../utils/API'
+import ValidationMessage from '../ValidationMessage';
+
+import { Form, Button } from 'react-bootstrap';
+
 import "./style.css";
 
 class SignupForm extends Component {
@@ -160,6 +163,7 @@ class SignupForm extends Component {
                             name='name'
                             value={this.state.name}
                         />
+                        <ValidationMessage valid={this.state.nameValid} message={this.state.errorMsg.username} />
                     </Form.Group>
 
                     <Form.Group >
@@ -171,6 +175,7 @@ class SignupForm extends Component {
                             value={this.state.email}
                             name='email'
                         />
+                        <ValidationMessage valid={this.state.emailValid} message={this.state.errorMsg.email} />
                     </Form.Group>
 
                     <Form.Group >
@@ -182,6 +187,7 @@ class SignupForm extends Component {
                             name='password'
 
                         />
+                        <ValidationMessage valid={this.state.passwordValid} message={this.state.errorMsg.password} />
                     </Form.Group>
 
                     {/* render if password is valid */}
@@ -194,6 +200,7 @@ class SignupForm extends Component {
                             name='passwordConfirm'
                             disabled={!this.state.passwordValid}
                         />
+                        <ValidationMessage valid={this.state.passwordConfirmValid} message={this.state.errorMsg.passwordConfirm} />
                     </Form.Group>}
 
                     <Button
