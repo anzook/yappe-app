@@ -73,18 +73,11 @@ class LandingPage extends Component {
     let { display } = this.state;
 
     if (display === 'first') {
-      return (
-        <div className="form">
-
-          <LoginForm
-            updateUser={this.updateUser}
-          />
-          <span className='toggleBtn' onClick={this.changeDisplay}>
-            {this.state.action}
-          </span>
-
-        </div>
-      )
+      return <LoginForm updateUser={this.updateUser} />
+        // <span className='toggleBtn' onClick={this.changeDisplay}>
+        //   {this.state.action}
+        // </span>
+      
     } else if (display === 'second') {
       return (
         <div className="form">
@@ -108,10 +101,12 @@ class LandingPage extends Component {
       return (
         <div>
           <Hero />
-            <Container className='landing-container formDiv'>
-                {this.renderForm()}
-                <br />
-            </Container>
+          <Container className='landing-container formDiv'>
+            <h1>yappE</h1>
+            <div className='form-div'>
+              {this.renderForm()}
+            </div>
+          </Container>
         </div>
       )
     }
