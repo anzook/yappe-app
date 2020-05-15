@@ -101,53 +101,49 @@ export class LoginForm extends Component {
 
     render() {
         return (
-            <div>
-                <h1>yappE</h1>
-
-                <Form className="login-form">
-                    <h3>Login</h3>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control
-                            type="email"
-                            placeholder="Email"
-                            name='email'
-                            value={this.state.email}
-                            onChange={this.handleInputChange}
-                        />
-                        <ValidationMessage
-                            valid={this.state.emailValid}
-                            message={this.state.errorMsg.email}
-                        />
-                    </Form.Group>
+            <Form className="login-form">
+                <h3>Login</h3>
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                        type="email"
+                        placeholder="Email"
+                        name='email'
+                        value={this.state.email}
+                        onChange={this.handleInputChange}
+                    />
+                    <ValidationMessage
+                        valid={this.state.emailValid}
+                        message={this.state.errorMsg.email}
+                    />
+                </Form.Group>
 
 
-                    <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control
-                            type="password"
-                            placeholder="Password"
-                            name="password"
-                            value={this.state.password}
-                            onChange={this.handleInputChange}
-                            disabled={!this.state.emailValid}
-                        />
-                        <ValidationMessage
-                            valid={this.state.passwordValid}
-                            message={this.state.errorMsg.password}
-                        />
-                    </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.handleInputChange}
+                        disabled={!this.state.emailValid}
+                    />
+                    <ValidationMessage
+                        valid={this.state.passwordValid}
+                        message={this.state.errorMsg.password}
+                    />
+                </Form.Group>
 
-                    <Button id="login-btn"
-                        variant="primary"
-                        type="submit"
-                        onClick={this.handleFormSubmit}
-                        disabled={!this.state.formValid}
-                    >
-                        Log In
+                <Button id="login-btn"
+                    variant="primary"
+                    type="submit"
+                    onClick={this.handleFormSubmit}
+                    disabled={!this.state.formValid}
+                >
+                    Log In
                     </Button>
-                </Form>
-            </div>
+            </Form>
         )
     }
     // }
