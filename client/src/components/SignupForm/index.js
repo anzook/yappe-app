@@ -18,6 +18,7 @@ class SignupForm extends Component {
         }
     }
 
+    // function to validate entire form
     validateForm = () => {
         const { nameValid, emailValid, passwordValid, passwordConfirmValid } = this.state;
         this.setState({
@@ -25,6 +26,7 @@ class SignupForm extends Component {
         })
     }
 
+    // update fields states
     handleInputChange = event => {
         const name = event.target.name;
         const value = event.target.value;
@@ -35,10 +37,12 @@ class SignupForm extends Component {
         );
     };
 
+    // validate fields
     validateFeild(feildName, value) {
         let errorMsg = { ...this.state.errorMsg }
         const { name, email, password, passwordConfirm } = this.state;
 
+        // validate name field
         switch (feildName) {
             case 'name':
                 let nameValid = true;
@@ -46,12 +50,12 @@ class SignupForm extends Component {
                 if (name.length < 3) {
                     nameValid = false;
                     errorMsg.username = 'Name must be at least 3 characters long'
-                    console.log(errorMsg.username);
                 }
 
                 this.setState({ nameValid, errorMsg }, this.validateForm)
                 break;
 
+            // validate email field
             case 'email':
                 let emailValid = true;
 
@@ -59,27 +63,28 @@ class SignupForm extends Component {
                 if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
                     emailValid = false;
                     errorMsg.email = 'Invalid email format'
-                    console.log(errorMsg.email);
                 }
 
                 this.setState({ emailValid, errorMsg }, this.validateForm)
                 break;
 
+            // validate password field
             case 'password':
                 let passwordValid = true;
 
                 // must be 6 chars
-                // must contain a number
-                // must contain a special character
-
                 if (password.length < 6) {
                     passwordValid = false;
                     errorMsg.password = 'Password must be at least 6 characters long';
                 }
+
+                // must contain a number
                 // else if (!/\d/.test(password)) {
                 //     passwordValid = false;
                 //     errorMsg.password = 'Password must contain a digit';
                 // }
+
+                // must contain a special character
                 //  else if (!/[!@#$%^&*]/.test(password)) {
                 //     passwordValid = false;
                 //     errorMsg.password = 'Password must contain special character: !@#$%^&*';
@@ -88,6 +93,7 @@ class SignupForm extends Component {
                 this.setState({ passwordValid, errorMsg }, this.validateForm);
                 break;
 
+            // validate password confirmation field
             case 'passwordConfirm':
                 let passwordConfirmValid = true;
 
@@ -104,6 +110,7 @@ class SignupForm extends Component {
         }
     }
 
+    // handle submit
     handleFormSubmit = event => {
         event.preventDefault();
         console.log("I was hit!");
@@ -113,20 +120,13 @@ class SignupForm extends Component {
             password: this.state.password
         })
             .then(res => {
-                // console.log("This is the user id: " + res.data)
-                // let userId = res.data
-                // window.location.replace('/add-dog?' + userId);
                 if (!res.data.errmsg) {
-                    // console.log('successful signup, logging in... ')
                     API.loginUser({
                         email: this.state.email,
                         password: this.state.password
                     })
                         .then(res => {
                             if (res.status === 200) {
-                                // console.log(res)
-                                // console.log('logging in... ')
-
                                 // update App.js state
                                 this.props.updateUser({
                                     loggedIn: true,
@@ -144,9 +144,6 @@ class SignupForm extends Component {
     };
 
     render() {
-        // if (this.state.redirectTo) {
-        //     return <Redirect to={{ pathname: this.state.redirectTo }} />
-        // } else {
         let signup = 'signup';
         return (
             <div>
@@ -164,6 +161,7 @@ class SignupForm extends Component {
                             value={this.state.name}
                         />
                     </Form.Group>
+
                     <Form.Group >
                         <Form.Label>Email address</Form.Label>
                         <Form.Control
@@ -174,6 +172,7 @@ class SignupForm extends Component {
                             name='email'
                         />
                     </Form.Group>
+
                     <Form.Group >
                         <Form.Label>Password</Form.Label>
                         <Form.Control
@@ -184,6 +183,8 @@ class SignupForm extends Component {
 
                         />
                     </Form.Group>
+
+                    {/* render if password is valid */}
                     {this.state.passwordValid && <Form.Group >
                         <Form.Label>Confirm Password</Form.Label>
                         <Form.Control
@@ -194,7 +195,8 @@ class SignupForm extends Component {
                             disabled={!this.state.passwordValid}
                         />
                     </Form.Group>}
-                    <Button 
+
+                    <Button
                         id="signup-btn"
                         variant="primary"
                         type="submit"
@@ -202,7 +204,8 @@ class SignupForm extends Component {
                         onClick={this.handleFormSubmit}
                     >
                         Sign Up
-                </Button>
+                    </Button>
+
                 </Form >
             </div>
         )
