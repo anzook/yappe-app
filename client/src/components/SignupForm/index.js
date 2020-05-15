@@ -67,7 +67,29 @@ class SignupForm extends Component {
                 break;
 
             case 'password':
+                const { password } = this.state;
+                let passwordValid = true;
+
+                // must be 6 chars
+                // must contain a number
+                // must contain a special character
+
+                if (password.length < 6) {
+                    passwordValid = false;
+                    errorMsg.password = 'Password must be at least 6 characters long';
+                } 
+                // else if (!/\d/.test(password)) {
+                //     passwordValid = false;
+                //     errorMsg.password = 'Password must contain a digit';
+                // }
+                //  else if (!/[!@#$%^&*]/.test(password)) {
+                //     passwordValid = false;
+                //     errorMsg.password = 'Password must contain special character: !@#$%^&*';
+                // }
+
+                this.setState({ passwordValid, errorMsg }, this.validateForm);
                 break;
+
             case 'passwordConfirm':
                 break;
             default:
