@@ -37,10 +37,10 @@ class SignupForm extends Component {
 
     validateFeild(feildName, value) {
         let errorMsg = { ...this.state.errorMsg }
+        const { name, email, password, passwordConfirm } = this.state;
 
         switch (feildName) {
             case 'name':
-                const { name } = this.state;
                 let nameValid = true;
 
                 if (name.length < 3) {
@@ -53,7 +53,6 @@ class SignupForm extends Component {
                 break;
 
             case 'email':
-                const { email } = this.state;
                 let emailValid = true;
 
                 // checks for format _@_._
@@ -67,7 +66,6 @@ class SignupForm extends Component {
                 break;
 
             case 'password':
-                const { password } = this.state;
                 let passwordValid = true;
 
                 // must be 6 chars
@@ -77,7 +75,7 @@ class SignupForm extends Component {
                 if (password.length < 6) {
                     passwordValid = false;
                     errorMsg.password = 'Password must be at least 6 characters long';
-                } 
+                }
                 // else if (!/\d/.test(password)) {
                 //     passwordValid = false;
                 //     errorMsg.password = 'Password must contain a digit';
@@ -91,7 +89,16 @@ class SignupForm extends Component {
                 break;
 
             case 'passwordConfirm':
+                let passwordConfirmValid = true;
+
+                if (password !== passwordConfirm) {
+                    passwordConfirmValid = false;
+                    errorMsg.passwordConfirm = 'Passwords do not match'
+                }
+
+                this.setState({ passwordConfirmValid, errorMsg }, this.validateForm);
                 break;
+
             default:
                 break;
         }
@@ -177,18 +184,21 @@ class SignupForm extends Component {
 
                         />
                     </Form.Group>
-                    <Form.Group >
-                        <Form.Label>Password</Form.Label>
+                    {this.state.passwordValid && <Form.Group >
+                        <Form.Label>Confirm Password</Form.Label>
                         <Form.Control
                             type="password"
-                            placeholder="Confirm Password"
+                            placeholder="Password"
                             onChange={this.handleInputChange}
                             name='passwordConfirm'
+                            disabled={!this.state.passwordValid}
                         />
-                    </Form.Group>
-                    <Button id="signup-btn"
+                    </Form.Group>}
+                    <Button 
+                        id="signup-btn"
                         variant="primary"
                         type="submit"
+                        disabled={!this.state.formValid}
                         onClick={this.handleFormSubmit}
                     >
                         Sign Up
