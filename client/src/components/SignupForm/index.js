@@ -162,6 +162,12 @@ class SignupForm extends Component {
                             onChange={this.handleInputChange}
                             name='name'
                             value={this.state.name}
+                            className={`
+                                ${(this.state.name.length > 0 && !this.state.nameValid) ?
+                                    'is-invalid' : ''}
+                                
+                                ${(this.state.name.length > 0 && this.state.nameValid) ?
+                                    'is-valid' : ''}`}
                         />
                         <ValidationMessage valid={this.state.nameValid} message={this.state.errorMsg.username} />
                     </Form.Group>
@@ -174,6 +180,12 @@ class SignupForm extends Component {
                             onChange={this.handleInputChange}
                             value={this.state.email}
                             name='email'
+                            className={`
+                            ${(this.state.email.length > 0 && !this.state.emailValid) ?
+                                'is-invalid' : ''}
+                            
+                            ${(this.state.email.length > 0 && this.state.emailValid) ?
+                                'is-valid' : ''}`}
                         />
                         <ValidationMessage valid={this.state.emailValid} message={this.state.errorMsg.email} />
                     </Form.Group>
@@ -185,7 +197,12 @@ class SignupForm extends Component {
                             placeholder="Password"
                             onChange={this.handleInputChange}
                             name='password'
-
+                            className={`
+                            ${(this.state.password.length > 0 && !this.state.passwordValid) ?
+                                'is-invalid' : ''}
+                            
+                            ${(this.state.password.length > 0 && this.state.passwordValid) ?
+                                'is-valid' : ''}`}
                         />
                         <ValidationMessage valid={this.state.passwordValid} message={this.state.errorMsg.password} />
                     </Form.Group>
@@ -199,6 +216,12 @@ class SignupForm extends Component {
                             onChange={this.handleInputChange}
                             name='passwordConfirm'
                             disabled={!this.state.passwordValid}
+                            className={`
+                            ${(this.state.passwordConfirm.length > 0 && !this.state.passwordConfirmValid) ?
+                                'is-invalid' : ''}
+                            
+                            ${(this.state.passwordConfirm.length > 0 && this.state.passwordConfirmValid) ?
+                                'is-valid' : ''}`}
                         />
                         <ValidationMessage valid={this.state.passwordConfirmValid} message={this.state.errorMsg.passwordConfirm} />
                     </Form.Group>}
