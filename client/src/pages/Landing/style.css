@@ -1,30 +1,52 @@
+.landing-container{
+    position: relative;
+    margin: auto;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
 .hero{
     width: 100vw;
-    /* position: fixed */
+    position: fixed
     /* display: none; */
 };
+
+.landing-container h1{
+    font-family: 'Marck Script', cursive;
+}
+
+.landing-container h1{
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 7rem;
+    font-family: 'Marck Script', cursive;
+    font-weight: 500;
+    color: #ffffff;
+    padding-bottom: 20px;
+    text-shadow: 2px 2px #1ee09d;
+}
+
+.landing-forms-div {
+    margin: auto;
+    padding: 15px;
+    max-width: 450px;
+} 
+
+.landing-forms-div span.toggleBtn{
+    font-size: 13px;
+    color: #fefefe;
+    text-shadow: 2px 2px 3px #000000;
+}
+
+span.toggleBtn:hover{
+    cursor: pointer;
+    border-bottom: #fefefe 2px solid;
+}
 
 /* DO NOT REMOVE .SIGNUP */
 .signup{
     background: none;
-}
-
-
-
-span.toggleBtn:hover{
-    cursor: pointer;
-    color: white;
-}
-
-.formDiv{
-    /* display: none; */
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    margin: auto;
-    width: 100%;
-    margin-top: 5%;
-    padding-left: 20%;
-    
 }

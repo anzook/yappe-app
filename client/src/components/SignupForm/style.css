@@ -1,46 +1,28 @@
-.signup {
-    border-radius: 25px;
-    background-color: rgba(192, 213, 216, 0.7);
-    box-sizing: border-box;
-    padding: 25px;
-    width: 250px;
-} 
+@import url('https://fonts.googleapis.com/css?family=Baloo+Thambi+2:400,500&display=swap');
 
-.signup{
-    border-radius: 25px;
-}
 
-#signup-btn {
-    background-color: white;
-    color: grey;
-    border: 2px solid grey;
-    border-radius: 12px;
-}
-
-h1 {
-    font-size: 48px;
-    padding-bottom: 20px;
-    text-shadow: 2px 2px darkgrey;
-}
-
-/* .signup,
-.login{
-    width: 50%;
-    background-color: rgba(85,171,189, 0.7);
-    height: 55px;
-    float: left;
+.signup-form h4,
+.signup-form .h4{
+    color: #fefefe;
+    margin-bottom: 20px;
+    letter-spacing: 1.25px;
     text-align: center;
-    line-height: 55px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    border-bottom: 4px whitesmoke;
-    cursor: pointer;
-    text-transform: uppercase;
-    color: whitesmoke;
-} */
-.signup-form .button,
-.login-form .button{
-    text-transform: uppercase;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 3px #0000007a;
+}
+
+.signup-form .form-group {
+    margin-bottom: 25px;
+}
+
+.signup-form .signup-btn {
     width: 100%;
-    font-weight: 600;
+    color: white;
+    background-color: #1ee09d;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 400;
+    margin-bottom: 10px;
 }

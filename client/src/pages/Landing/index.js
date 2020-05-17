@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { Redirect } from 'react-router-dom'
 import Container from "../../components/Container";
 import Hero from "../../components/Hero";
-import './style.css'
 import LoginForm from "../../components/LoginForm";
 import SignupForm from "../../components/SignupForm";
 import API from "../../utils/API"
+
+import './style.css'
 
 
 class LandingPage extends Component {
@@ -73,31 +74,10 @@ class LandingPage extends Component {
     let { display } = this.state;
 
     if (display === 'first') {
-      return (
-        <div className="form">
+      return <LoginForm updateUser={this.updateUser} />
 
-          <LoginForm
-            updateUser={this.updateUser}
-          />
-          <span className='toggleBtn' onClick={this.changeDisplay}>
-            {this.state.action}
-          </span>
-
-        </div>
-      )
     } else if (display === 'second') {
-      return (
-        <div className="form">
-
-          <SignupForm
-            updateUser={this.updateUser}
-          />
-          <span className='toggleBtn' onClick={this.changeDisplay}>
-            {this.state.action}
-          </span>
-
-        </div>
-      )
+      return <SignupForm updateUser={this.updateUser} />
     }
   }
 
@@ -105,20 +85,17 @@ class LandingPage extends Component {
     if (this.state.loggedIn) {
       return <Redirect to={{ pathname: this.state.redirectTo }} />
     } else {
-      let className = {
-        formDiv: 'formDiv',
-        toggleBtn: 'toggleBtn'
-      };
       return (
-        <div>
+        <div >
           <Hero />
-          <div className={className.formDiv}>
-            <Container style={{ marginTop: 0 }}>
-              <div>
-                {this.renderForm()}
-                <br />
-              </div>
-            </Container>
+          <div className='landing-container'>
+            <h1>yappE</h1>
+            <div className={'landing-forms-div'}>
+              {this.renderForm()}
+              <span className='toggleBtn' onClick={this.changeDisplay}>
+                {this.state.action}
+              </span>
+            </div>
           </div>
         </div>
       )

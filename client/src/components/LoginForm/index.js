@@ -1,152 +1,148 @@
 import React, { Component } from "react";
-import { Button, Form } from "react-bootstrap";
 import API from '../../utils/API'
+
+import ValidationMessage from '../ValidationMessage';
+
+import { Button, Form } from "react-bootstrap";
+
 import "./style.css";
 
 export class LoginForm extends Component {
     constructor() {
         super()
         this.state = {
-        email: '',
-        password: '',
-        redirectTo: null
+            email: '', emailValid: false,
+            password: '', passwordValid: false,
+            formValid: false,
+            errorMsg: {},
+            redirectTo: null
+        }
+        this.handleFormSubmit = this.handleFormSubmit.bind(this)
+        this.handleInputChange = this.handleInputChange.bind(this)
     }
-    this.handleFormSubmit = this.handleFormSubmit.bind(this)
-    this.handleInputChange = this.handleInputChange.bind(this)
-}
 
-    handleInputChange = event => {
+    // function to validate entire form
+    validateForm = () => {
+        const { emailValid, passwordValid } = this.state;
         this.setState({
-            [event.target.name]: event.target.value
-        });
+            formValid: emailValid && passwordValid
+        })
+    }
+
+    // update fields states
+    handleInputChange = event => {
+        const name = event.target.name;
+        const value = event.target.value;
+
+        this.setState(
+            { [name]: value },
+            () => { this.validateFeild(name, value) }
+        );
     };
 
+    // validate fields
+    validateFeild(feildName, value) {
+        let errorMsg = { ...this.state.errorMsg }
+        const { email, password } = this.state;
+
+        // validate name field
+        switch (feildName) {
+            // validate email field
+            case 'email':
+                let emailValid = true;
+
+                // checks for format _@_._
+                if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                    emailValid = false;
+                    errorMsg.email = 'Invalid email format'
+                }
+
+                this.setState({ emailValid, errorMsg }, this.validateForm)
+                break;
+
+            // validate password field
+            case 'password':
+                let passwordValid = true;
+
+                // must be 3 chars
+                if (password.length < 3) {
+                    passwordValid = false;
+                    errorMsg.password = 'Password must be at least 6 characters long';
+                }
+
+                this.setState({ passwordValid, errorMsg }, this.validateForm);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    // submit form function
     handleFormSubmit = event => {
         event.preventDefault();
         API.loginUser({
             email: this.state.email,
             password: this.state.password
         })
-        .then(res => {
-            // console.log('login sent, response... ')
-            // console.log(res)
-            if (res.status === 200) {
-                // update App.js state
-                this.props.updateUser({
-                    loggedIn: true,
-                    username: res.data.email
-                })
-              
-            }
-        }).catch(err => {
-            // console.log('Login error: ', err)            
-        })
-    }
+            .then(res => {
+                if (res.status === 200) {
+                    // update App.js state
+                    this.props.updateUser({
+                        loggedIn: true,
+                        username: res.data.email
+                    })
 
-    // constructor() {
-    //     super()
-    //     this.state = {
-    //       loggedIn: false,
-    //       email: null,
-    //       name: null,
-    //       display: 'first',
-    //       action: `Don't have an account? Sign up.`,
-    //       redirectTo: '/',
-    //     }
-    //     this.getUser = this.getUser.bind(this)
-    //     this.componentDidMount = this.componentDidMount.bind(this)
-    //     this.updateUser = this.updateUser.bind(this)
-    //   }
-    
-    //   componentDidMount() {
-    //     this.getUser()
-    //   }
-    
-    //   updateUser() {
-    //     // this.setState(userObject)
-    //     this.getUser();
-    //   }
-    
-    //   getUser() {
-    //     console.log("Calling request for user info... ");
-    //     API.getUserInfo().then(res => {
-    //       // console.log('Get user response: ')
-    //       if (res.data.name) {
-    //         console.log('Get User: There is a user saved in the server session: ')
-    //         console.log(res)
-    
-    //         this.setState({
-    //           loggedIn: true,
-    //           email: res.data.email,
-    //           name: res.data.name,
-    //           redirectTo: '/dashboard'
-    //         })
-    //       } else {
-    //         console.log('Get user: no user found');
-    //         this.setState({
-    //           loggedIn: false,
-    //           email: null,
-    //           redirectTo: '/'
-    //         })
-    
-    //       }
-    //     })
-    //   }
-    
-    
-      // changeDisplay = () => {
-      //   let { display, action } = this.state;
-      //   this.setState({
-      //     display: display === 'first' ? 'second' : 'first',
-      //     action: action === `Don't have an account? Sign up.` ? 'Already have an account? Log in.' : `Don't have an account? Sign up.`
-    
-      //   });
-      // }
+                }
+            }).catch(err => {
+                // console.log('Login error: ', err)            
+            })
+    }
 
     render() {
-        // if (this.state.redirectTo) {
-        //     return <Redirect to={{ pathname: this.state.redirectTo }} />
-        // } else {
-    return (
-        <div>
-            <h1>yappE</h1>
-               
-        <Form className="login-form">
-         <h3>Login</h3>
-            <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control 
-                type="email" 
-                placeholder="Email" 
-                name='email'
-                value={this.state.email}
-                onChange={this.handleInputChange}
-                />
-            </Form.Group>
+        return (
+            <Form className="login-form">
+                <h4>Login</h4>
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Control
+                        type="email"
+                        placeholder="Email"
+                        name='email'
+                        value={this.state.email}
+                        onChange={this.handleInputChange}
+                    />
+                    <ValidationMessage
+                        valid={this.state.emailValid}
+                        message={this.state.errorMsg.email}
+                    />
+                </Form.Group>
 
 
-            <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control 
-                type="password" 
-                placeholder="Password" 
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-                />
-            </Form.Group>          
+                <Form.Group controlId="formBasicPassword">
+                    <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.handleInputChange}
+                    />
+                    <ValidationMessage
+                        valid={this.state.passwordValid}
+                        message={this.state.errorMsg.password}
+                    />
+                </Form.Group>
 
-            <Button id="login-btn"
-            variant="primary" 
-            type="submit"
-            onClick={this.handleFormSubmit}
-            >
-                Log In
-            </Button>
+                <Button 
+                    type="submit"
+                    onClick={this.handleFormSubmit}
+                    disabled={!this.state.formValid}
+                    className="login-btn"
+                >
+                    Log In
+                    </Button>
             </Form>
-          </div>   
-    )
+        )
     }
-// }
-    }
-    export default LoginForm
+    // }
+}
+export default LoginForm
