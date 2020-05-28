@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { StickyContainer, Sticky } from 'react-sticky';
 import { Container, Row, Col } from 'react-bootstrap';
+
 import FirstGlanceMobile from '../FirstGlanceMobile';
 import DogProfileMobile from '../DogProfileMobile';
+
 import './style.css';
 
 export default class DashboardMobile extends Component {
