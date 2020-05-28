@@ -4,9 +4,18 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    message: {
+    post: {
       type: DataTypes.TEXT("long"),
-      allowNull: true,
+      allowNull: false,
+    },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isIn: [[
+          'note', 'question'
+        ]]
+      }
     },
   });
 

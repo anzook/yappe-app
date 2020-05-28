@@ -7,8 +7,9 @@ module.exports = {
         const post = await db.post.create(
             {
                 author: req.body.author,
-                message: req.body.message,
-                petId: req.body.petId
+                post: req.body.post,
+                petId: req.body.petId,
+                type: req.body.type
             }
         );
 
@@ -19,7 +20,7 @@ module.exports = {
         const post = await db.post.findOne({ where: { id: req.params.id } });
         await post.update(
             {
-                message: req.body.message
+                post: req.body.post
             }
         );
         res.send(post + ' post updated!')
