@@ -82,6 +82,18 @@ class LandingPage extends Component {
   }
 
   render() {
+
+    const yappeHeader = {
+      marginBottom: '20px',
+      textAlign: 'center',
+      fontSize: '7rem',
+      fontWeight: '500',
+      color: '#ffffff',
+      paddingBottom: '20px',
+      textShadow: '2px 2px #1ee09d',
+      fontFamily: `'Marck Script', cursive`
+    }
+
     if (this.state.loggedIn) {
       return <Redirect to={{ pathname: this.state.redirectTo }} />
     } else {
@@ -89,7 +101,7 @@ class LandingPage extends Component {
         <div >
           <Hero />
           <div className='landing-container'>
-            <h1>yappE</h1>
+            <h1 style={yappeHeader}>yappE</h1>
             <div className={'landing-forms-div'}>
               {this.renderForm()}
               <span className='toggleBtn' onClick={this.changeDisplay}>
