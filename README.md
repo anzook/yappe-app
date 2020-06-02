@@ -2,7 +2,7 @@
 <!-- TODO: UPDATE LINK TO DEP,OYED APPLICATION -->
 ### Social dog care made easy 
 
-<img src="https://github.com/anzook/yappe-app/blob/readMe/assets/images/yappeLogo1.png" title="yappe logo" align="right" width="120">
+<img src="https://raw.githubusercontent.com/anzook/yappe-app/master/assets/images/yappeLogo1.png" title="yappe logo" align="right" width="120">
 
 
 ---
