@@ -30,7 +30,7 @@
     "axios": "^0.18.1",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.4.1",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
